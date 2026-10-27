@@ -2,9 +2,9 @@
 
 ## Status
 
-- Phase: planning complete. No code, firmware, or hardware acquired yet.
+- Phase: hardware ordered (2026-10-27, Mauser order 2026EC1631140, EUR 89.41). Awaiting delivery. No code or firmware yet; start Bench tests on arrival.
 - Repository: this folder; git initialized with no commits.
-- Date: 2026-10-27.
+- Date: 2026-10-27 (hardware ordered).
 - Owner: Franco.
 - Goal: measure Lisbon Metro station depths and approximate tunnel profiles with a compact barometric logger, then combine the data with OpenStreetMap, GTFS, and a surface DEM to build a 3D visualization.
 
@@ -17,23 +17,23 @@
 5. **Tunnel profile:** approximate. Barometric pressure during train motion is dominated by tunnel/vehicle pressure transients. Use low-pass filtering, station anchors, and the 4% maximum grade constraint.
 6. **Phone role:** GPS, photos, voice notes, long notes. Merge with Cardputer data by timestamp and event ID.
 7. **Time:** Cardputer has no RTC. Sync via NTP at the surface through a phone hotspot, or use relative `millis` plus phone notes.
-8. **Budget:** approximately EUR 70 for the recommended BOM. Under EUR 100 with spares.
+8. **Budget:** EUR 89.41 paid for the full BOM, under the EUR 100 with-spares target.
 9. **Language stack:** Python first. Firmware is MicroPython on the UIFlow2 Cardputer firmware. Post-processing is Python. Viewer is JavaScript or Python. Java is not required. C++ is a fallback only.
 
 ## Hardware BOM
 
-Prices and stock checked 2026-10-26. Stock changes; call before travelling.
+**Purchased 2026-10-27** from Mauser online store (order 2026EC1631140, EUR 89.41 total). Awaiting delivery; Bench tests start on arrival.
 
-| Part | Price | Source | Stock note |
+| Part | Price | Source | Ref |
 |---|---:|---|---|
-| M5Stack Cardputer | EUR 37.70 | https://mauser.pt/095-3121/m5stack-cardputer-mini-computador-portatil-com-stamps3-bateria-teclado-e-display-de-1-14 | Lisbon 2; online 30 |
-| Seeed Grove BME280 | EUR 17.80 | https://mauser.pt/096-6714/seeed-modulo-grove-sensor-de-temperatura-humidade-e-pressao-atmosf-bme280 | Lisbon 0; online 7 |
-| Grove cable, 5 cm, 5-pack | EUR 1.40 | https://mauser.pt/096-6575/seeed-conjunto-de-5-cabos-grove-4-pinos-5cm | Lisbon 0; online 17 |
-| Grove cable, 20 cm, 5-pack | EUR 2.50 | https://mauser.pt/096-6569/seeed-conjunto-de-5-cabos-grove-4-pinos-20cm | online 47 |
-| microSD, 8-32 GB, FAT32 | about EUR 7 | PCDiga, Fnac, Mauser | any reputable card |
-| USB card reader | about EUR 5 | PCDiga/Fnac | only if no SD slot on laptop/phone |
+| M5Stack Cardputer | EUR 37.70 | https://mauser.pt/095-3121/m5stack-cardputer-mini-computador-portatil-com-stamps3-bateria-teclado-e-display-de-1-14 | 095-3121 |
+| Seeed Grove BME280 | EUR 17.80 | https://mauser.pt/096-6714/seeed-modulo-grove-sensor-de-temperatura-humidade-e-pressao-atmosf-bme280 | 096-6714 |
+| Grove cable, 5 cm, 5-pack | EUR 1.40 | https://mauser.pt/096-6575/seeed-conjunto-de-5-cabos-grove-4-pinos-5cm | 096-6575 |
+| Grove cable, 20 cm, 5-pack | EUR 2.50 | https://mauser.pt/096-6569/seeed-conjunto-de-5-cabos-grove-4-pinos-20cm | 096-6569 |
+| SanDisk Ultra microSDHC 32GB Class 10 + SD adapter (FAT32) | EUR 24.91 | https://mauser.pt/047-3572/sandisk-ultra | 047-3572 |
+| Logilink CR0039 USB-C microSD reader | EUR 5.10 | https://mauser.pt/047-5653/logilink-cr0039 | 047-5653 |
 
-**Total:** approximately EUR 70.
+**Total:** EUR 89.41 paid.
 
 **Mauser Lisboa:** R. Eng. Manuel Rocha 33, 1700-046 Lisboa. Monday-Friday 09:00-13:00, 14:00-18:00. +351 218 435 990. https://mauser.pt/lojas
 
@@ -338,7 +338,7 @@ Viewer ideas:
 
 ## Next steps
 
-1. Buy Cardputer, Grove BME280, 5 cm and 20 cm Grove cables, microSD.
+1. ~~Buy Cardputer, Grove BME280, 5 cm and 20 cm Grove cables, microSD~~ Done 2026-10-27, order 2026EC1631140 (includes USB-C reader).
 2. Bench test: flash UIFlow2, multi-file boot, keyboard wake, sensor read, SD write, display, battery.
 3. Implement continuous logger core and CSV schema in MicroPython.
 4. Implement UI, event markers, stability indicator, NTP sync.
