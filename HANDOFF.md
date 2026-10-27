@@ -18,6 +18,7 @@
 6. **Phone role:** GPS, photos, voice notes, long notes. Merge with Cardputer data by timestamp and event ID.
 7. **Time:** Cardputer has no RTC. Sync via NTP at the surface through a phone hotspot, or use relative `millis` plus phone notes.
 8. **Budget:** approximately EUR 70 for the recommended BOM. Under EUR 100 with spares.
+9. **Language stack:** Python first. Firmware is MicroPython on the UIFlow2 Cardputer firmware. Post-processing is Python. Viewer is JavaScript or Python. Java is not required. C++ is a fallback only.
 
 ## Hardware BOM
 
@@ -60,16 +61,38 @@ Documentation:
 
 ## Firmware plan
 
-Suggested stack: PlatformIO with Arduino framework, `M5Unified` / `M5Cardputer`, `Adafruit_BME280`, and `SD`.
+Stack: MicroPython with the M5Stack UIFlow2 Cardputer firmware. Write the survey app in Python and deploy it through the UIFlow2 WebTerminal file manager or the UIFlow2 IDE. Pin the firmware version and document it.
+
+Deployment:
+
+- Flash the Cardputer UIFlow2 firmware with M5Burner.
+- Set boot option `Run main.py directly` for standalone field use.
+- Put the app in `/flash/apps` for APP.LIST testing, or at the boot location used by `main.py`; confirm during bench tests.
+- Keep source in the repository under `firmware/`; upload the files after each change.
+- Fallback order if UIFlow2 blocks the design: plain MicroPython with community Cardputer drivers, then CircuitPython, then Arduino C++.
 
 Suggested modules:
 
-- `main.cpp` - boot, setup, main loop, power management.
-- `sensors.cpp` - BME280 sampling, averaging, pressure-to-height conversion.
-- `logger.cpp` - continuous CSV writer, flush policy, file rotation if needed.
-- `ui.cpp` - dashboard, station page, ride page, calibration, files, settings.
-- `survey.cpp` - event state machine, station/entrance context, ride context.
-- `config.h` - pins, log rates, station list, feature flags.
+- `main.py` - boot, setup, main loop, power management.
+- `sensors.py` - BME280 sampling, averaging, pressure-to-height conversion.
+- `logger.py` - continuous CSV writer, flush policy, file rotation if needed.
+- `ui.py` - dashboard, station page, ride page, calibration, files, settings.
+- `survey.py` - event state machine, station/entrance context, ride context.
+- `storage.py` - SD mount, free space, file naming, session recovery.
+- `timebase.py` - RTC, NTP, `millis`, timestamp formatting.
+- `config.py` - pins, log rates, station list, feature flags.
+
+### Firmware implementation notes
+
+- Use `time.ticks_ms` and `ticks_diff` for the sampling deadline. Do not use `sleep` for rate control.
+- Use BME280 forced mode with low oversampling. Keep the sensor away from the Cardputer and body.
+- Keep `millis` as the primary ordering field. Write `timestamp_iso` when the RTC is set.
+- Flush the CSV every 10 s. Call `os.sync()` after the flush if the port provides it.
+- Read battery voltage from ADC GPIO10 with the 2:1 divider.
+- Disable WiFi after NTP sync. Keep radios, RGB LED, speaker, and microphone off.
+- UIFlow2 puts the keyboard in low-power sleep at boot; waking it needs `fn` plus a key. Test this in the bench tests. If it is impractical in the field, use `BtnA`/G0 for event markers or switch runtime.
+- Use a watchdog with a long timeout. Feed it in the main loop and keep the timeout longer than the worst-case SD flush.
+- Keep pure logic small enough to run under both MicroPython and CPython where practical: pressure conversion, CSV formatting, event state machine.
 
 ### Continuous log
 
@@ -80,7 +103,7 @@ The logger starts at boot and writes until shutdown. There is no "start logging"
 - Flush every 10 s.
 - Close file on shutdown or when the user explicitly ends the session.
 - Check free space and show a warning below 100 MB.
-- 8 Hz CSV is roughly 3 MB/hour; 32 GB is ample.
+- 8 Hz CSV is roughly 5 MB/hour; 32 GB is ample.
 
 ### CSV schema
 
@@ -211,6 +234,16 @@ Tunnel profile is the weak part. Published metro measurements show pressure tran
 
 Reference: https://www.mdpi.com/2673-3951/6/4/113
 
+## Bench tests
+
+1. Flash UIFlow2 firmware; confirm version, boot mode, and serial/file access.
+2. Upload a multi-file app; confirm imports and standalone boot without WiFi.
+3. Confirm keyboard wake (`fn` plus a key) and event shortcuts.
+4. Mount a FAT32 microSD card; write, flush, unmount, and re-read a CSV.
+5. Read BME280 pressure, temperature, and humidity at 8 Hz for 10 min.
+6. Read battery voltage and compare with a USB meter.
+7. Confirm display sleep, wake, and radio-off behavior.
+
 ## Ground tests
 
 1. Elevator or staircase with known height. Target under 1-2 m error.
@@ -221,6 +254,8 @@ Reference: https://www.mdpi.com/2673-3951/6/4/113
 6. Short ride segment on a known section; compare pressure profile with station anchors.
 
 ## Post-processing
+
+Use Python with `pandas`, `numpy`, `scipy.signal`, `gtfs-kit`, and `rasterio`. Keep the pipeline reproducible with a pinned environment.
 
 1. Parse the continuous CSV.
 2. Split into station, ride, and calibration segments using events.
@@ -277,6 +312,7 @@ New stations:
 Viewer ideas:
 
 - Three.js local scene or CesiumJS.
+- Pure-Python alternative: PyVista for desktop or Plotly Dash for browser.
 - Cutaway view, vertical exaggeration, depth colour ramp.
 - Station labels and depth values.
 - Toggle measured vs estimated vs official data.
@@ -292,28 +328,34 @@ Viewer ideas:
 | Sensor in pocket lags | Use open pocket; test in elevator; move sensor outside if needed. |
 | No RTC | NTP at surface; relative time plus phone notes. |
 | SD corruption on power loss | Quality card; flush every 10 s; close on shutdown; keep backups. |
+| MicroPython SD write reliability | Flush and sync; quality card; 4-hour test; C++ fallback last. |
+| UIFlow2 keyboard sleep | Test `fn` plus key in the bench tests; use `BtnA`/G0 markers or another runtime if impractical. |
+| UIFlow2 API or firmware drift | Pin firmware version; document used APIs; keep alternate runtime tested. |
 | Device looks suspicious | Calculator-like enclosure; short cable; screen off; no camera; disable radios, mic, speaker, IR; no filming. |
 | Battery life | 1400 mAh base; charge nightly; screen off; optional power bank. |
 | Cardputer not rugged | Soft pouch; strain relief on Grove cable; do not block doors or platform access. |
-| Data volume | 8 Hz is about 3 MB/hour; 32 GB card is ample. |
+| Data volume | 8 Hz is about 5 MB/hour; 32 GB card is ample. |
 
 ## Next steps
 
 1. Buy Cardputer, Grove BME280, 5 cm and 20 cm Grove cables, microSD.
-2. Bench test: sensor read, SD write, keyboard, display, battery.
-3. Implement continuous logger core and CSV schema.
+2. Bench test: flash UIFlow2, multi-file boot, keyboard wake, sensor read, SD write, display, battery.
+3. Implement continuous logger core and CSV schema in MicroPython.
 4. Implement UI, event markers, stability indicator, NTP sync.
-5. Run ground tests against known heights and station depths.
-6. Pilot three stations and one short ride.
-7. Full station survey and ride-through logging.
-8. Post-process data and build the 3D viewer.
+5. Build desktop `pytest` suite with fake sensor, clock, and storage.
+6. Run ground tests against known heights and station depths.
+7. Pilot three stations and one short ride.
+8. Full station survey and ride-through logging.
+9. Post-process data in Python and build the 3D viewer.
 
 ## Open questions
 
 - Final UI layout and station/entrance list format.
 - Whether to add BLE phone sync or stay standalone.
 - Whether to add a second BME280 or ENV III for cross-checking.
-- Viewer stack: Three.js vs CesiumJS.
+- UIFlow2 multi-file boot location and keyboard wake behavior in the field.
+- Fallback runtime choice if UIFlow2 is unreliable: plain MicroPython or CircuitPython.
+- Viewer stack: Three.js, CesiumJS, or PyVista/Dash.
 - How to reconcile conflicting official and third-party depth values.
 
 ## Suggested skills
