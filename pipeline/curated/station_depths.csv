@@ -1,0 +1,16 @@
+station_id,gtfs_name,name,lines,depth_m,depth_source,depth_basis,source_url,confidence_m,alt_depth_m,alt_source,alt_note,active,note
+baixa-chiado,Baixa / Chiado,Baixa-Chiado,A|C,38.75,official,station,,,45.0,Wikipedia,Wikipedia and older sources report 45 m,1,Observador/Metro deep-station list. Platform-level depth unknown.
+olivais,Olivais,Olivais,D,28.65,official,station,,,36.0,Wikipedia,Wikipedia reports 36 m,1,Observador/Metro deep-station list. Platform-level depth unknown.
+ameixoeira,Ameixoeira,Ameixoeira,B,28.40,official,station,,,,,,1,Observador/Metro deep-station list. Platform-level depth unknown.
+encarnacao,Encarnação,Encarnação,D,25.45,official,station,,,,,,1,Observador/Metro deep-station list. Platform-level depth unknown.
+parque,Parque,Parque,A,24.65,official,station,,,,,,1,Observador/Metro deep-station list. Platform-level depth unknown.
+rato,Rato,Rato,B,23.15,official,station,,,,,,1,Observador/Metro deep-station list. Platform-level depth unknown.
+moscavide,Moscavide,Moscavide,D,21.95,official,station,,,,,,1,Observador/Metro deep-station list. Platform-level depth unknown.
+terreiro-do-paco,Terreiro do Paço,Terreiro do Paço,A,19.95,official,station,,,,,,1,Observador/Metro deep-station list. Platform-level depth unknown.
+saldanha,Saldanha,Saldanha,B|D,19.95,official,station,,,,,,1,Station-level value reused on both lines. Platform separation unknown.
+aeroporto,Aeroporto,Aeroporto,D,18.95,official,station,,,45.5,Wikipedia,Wikipedia reports 45.5 m; project description reports about 20.06 m,1,Observador/Metro deep-station list. Platform-level depth unknown.
+estrela,,Estrela,future,54.00,official,station,,,,,,0,Opening planned Q1 2027. Not in current GTFS. Value about 54 m.
+santos,,Santos,future,24.00,official,station,,,25.0,Official expansion page,Official expansion page states about 25 m,0,Opening planned Q1 2027. Not in current GTFS.
+amoreiras,,Amoreiras,future,18.50,official,station,,,,,,0,Future circular line. Not in current GTFS.
+campo-de-ourique,,Campo de Ourique,future,31.00,official,station,,,35.0,Older dossier,Older dossier reports about 35 m track depth,0,Future circular line. Not in current GTFS.
+infante-santo,,Infante Santo,future,29.50,official,station,,,19.0,Older dossier,Older dossier reports average about 19 m,0,Future circular line. Not in current GTFS.

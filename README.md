@@ -7,10 +7,44 @@ This README is the living project document. Update it as work progresses.
 ## Status
 
 - Hardware ordered 2026-10-27 (Mauser order 2026EC1631140, EUR 89.41). Awaiting delivery. Bench tests start on arrival.
-- Firmware and web viewer not started.
+- Firmware not started.
+- Local web demo implemented 2026-10-27. Real GTFS geometry, documented depths only, synthetic terrain, x-ray view, crossing QA panel, and a measured-log ingest fixture. No deployment.
 - Web viewer plan: [`.opencode/plans/web-viewer.md`](.opencode/plans/web-viewer.md).
 - Owner: Franco.
 - Date: 2026-10-27.
+
+## Local web demo
+
+Run the dummy viewer:
+
+```bash
+python3 pipeline/dummy/fetch_gtfs.py
+python3 pipeline/dummy/fetch_elevations.py
+python3 pipeline/dummy/build_dummy.py
+pnpm --dir web install
+pnpm --dir web dev
+```
+
+Open `http://localhost:5173/maps/lisboa/`.
+
+Useful views:
+
+- `?xray=1` shows the terrain as x-ray so estimated tunnels are visible.
+- `?line=C,D` isolates two lines.
+- `?station=alameda` focuses a station and opens the crossing QA panel.
+
+Checks:
+
+```bash
+python3 -m unittest discover -s pipeline/tests -v
+pnpm --dir web typecheck
+pnpm --dir web build
+pnpm --dir web preview
+```
+
+The demo uses `web/public/data/v1/` with the same asset contract the final pipeline will use. The measured fixture is at `pipeline/ingest/tests/fixtures/crossing_sample.csv` and merges only the four crossing segments around Alameda. It is synthetic test data, not a survey.
+
+Current limitation: only 10 current stations have documented depths. Most corridor sections therefore stay unknown or estimated until the survey replaces them. The viewer never draws a guessed crossing for an unknown platform.
 
 ## Core decisions
 
@@ -113,23 +147,27 @@ The logger starts at boot and writes until shutdown. There is no "start logging"
 ### CSV schema
 
 ```csv
-session_id,seq,timestamp_iso,millis,record_type,mode,line,station,entrance,event,pressure_pa,temp_c,humidity,depth_m,battery_v,note
+session_id,seq,timestamp_iso,millis,record_type,mode,line,station,platform,direction,entrance,event,pressure_pa,temp_c,humidity,depth_m,battery_v,note
 ```
 
 - `record_type`: `sample` or `event`.
 - `mode`: `idle`, `station`, `ride`, `calibration`.
+- `platform`: platform or track identifier; required at interchanges, optional elsewhere.
+- `direction`: travel direction for ride rows; optional at stations.
 - `event`: empty for samples; event name for event rows.
 - `pressure_pa`: absolute pressure in pascals.
 - `depth_m`: positive downwards from the last surface reference; empty until a reference exists.
 - `battery_v`: measured battery voltage.
 - `note`: free text.
 
+At interchanges, record each platform separately with its own `line` and `platform`. Do not copy one platform measurement to the other line.
+
 Example:
 
 ```csv
-LX_20261027_101500,1,2026-10-27T10:15:00+00:00,1200,sample,station,Azul,Baixa-Chiado,Entrance A,,101325.2,21.4,55.1,,4.05,
-LX_20261027_101500,2,2026-10-27T10:15:30+00:00,31200,event,station,Azul,Baixa-Chiado,Entrance A,SURFACE,101320.5,21.3,55.0,0.0,4.05,30s average
-LX_20261027_101500,3,2026-10-27T10:17:10+00:00,131200,event,station,Azul,Baixa-Chiado,Entrance A,PLATFORM,100872.0,21.1,60.2,38.6,4.04,30s average
+LX_20261027_101500,1,2026-10-27T10:15:00+00:00,1200,sample,station,Azul,Baixa-Chiado,P1,,Entrance A,,101325.2,21.4,55.1,,4.05,
+LX_20261027_101500,2,2026-10-27T10:15:30+00:00,31200,event,station,Azul,Baixa-Chiado,P1,,Entrance A,SURFACE,101320.5,21.3,55.0,0.0,4.05,30s average
+LX_20261027_101500,3,2026-10-27T10:17:10+00:00,131200,event,station,Azul,Baixa-Chiado,P1,,Entrance A,PLATFORM,100872.0,21.1,60.2,38.6,4.04,30s average
 ```
 
 ### Event vocabulary
@@ -197,7 +235,8 @@ No RTC. At the surface, connect to a phone hotspot, run NTP, then disable WiFi. 
 5. Stand away from the platform edge, train doors, and ceiling vents.
 6. Press `P`, wait 30-60 s. Depth appears.
 7. Record entrance ID and notes with the phone.
-8. Repeat for 2-3 entrances where practical.
+8. At interchanges, repeat for each line and platform.
+9. Repeat for 2-3 entrances where practical.
 
 Dwell time does not matter for platform depth. Measure after the train leaves to avoid piston effects.
 
@@ -262,6 +301,23 @@ Reference: https://www.mdpi.com/2673-3951/6/4/113
 5. Four-hour continuous log for SD integrity and battery.
 6. Short ride segment on a known section; compare pressure profile with station anchors.
 
+### Crossing pilot
+
+First field test after bench tests:
+
+- Green: Areeiro, Alameda, Arroios.
+- Red: Olaias, Alameda, Saldanha.
+
+At Alameda, measure both platforms separately with `line=C` and `line=D`. Without both values the viewer correctly reports an unresolved crossing.
+
+Then ride the two sections with `RIDE_START`, `STATION_STOP` at Alameda, and `RIDE_END`. Merge the log with:
+
+```bash
+python3 pipeline/ingest/merge.py --input data/logs/LX_YYYYMMDD_HHMMSS.csv --data web/public/data/v1
+```
+
+Expected result: four measured segments, measured platform depths at Alameda, and a crossing QA panel showing the vertical gap. The checked-in `crossing_sample.csv` fixture demonstrates the same path with synthetic values.
+
 ## Data pipeline
 
 Use Python with `pandas`, `numpy`, `scipy.signal`, `gtfs-kit`, and `rasterio`. Keep the pipeline reproducible with a pinned environment.
@@ -277,6 +333,10 @@ Use Python with `pandas`, `numpy`, `scipy.signal`, `gtfs-kit`, and `rasterio`. K
 9. Flag measured, anchored, interpolated, and uncertain sections.
 10. Feed station depths and tunnel profiles into the 3D viewer.
 
+The dummy viewer pipeline is in `pipeline/dummy/`. It uses GTFS, curated depths, cached Open-Meteo station elevations, and a synthetic terrain heightfield. No Geofabrik PBF or Copernicus raster is used yet.
+
+The measured-data ingest skeleton is in `pipeline/ingest/`. It parses the Cardputer CSV, builds platform and segment profiles, and merges them into the same data assets. It keeps official baselines, uses measured values only where logged, and updates the manifest capability flags.
+
 The viewer pipeline is specified in [`.opencode/plans/web-viewer.md`](.opencode/plans/web-viewer.md).
 
 ## Web viewer
@@ -290,6 +350,8 @@ Static site at `maps.pollito.tech`:
 Visual direction: Lisbon as a floating terrain slab with a cutaway view. Hills, streets, and the Tagus on top; metro tunnels inside. The ground is a real heightfield, not a flat overlay, so hilly terrain is represented correctly.
 
 Stack: Vite, TypeScript, Three.js, vanilla DOM, nginx. No backend, database, or websocket. The browser fetches the complete network once. Depths are styled by provenance: measured, official, estimated, or unknown. Unknown data is never drawn as fake underground geometry.
+
+The local demo includes an x-ray terrain toggle, per-platform interchange records, a QA panel that reports the vertical gap at a crossing, multi-line filtering, and URL state. The planned quarter cutaway, real OSM basemap, and Coolify deployment remain deferred.
 
 Full design, data model, milestones, and acceptance criteria: [`.opencode/plans/web-viewer.md`](.opencode/plans/web-viewer.md).
 

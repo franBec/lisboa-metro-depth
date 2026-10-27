@@ -1,0 +1,51 @@
+station_id,gtfs_name,lat,lon,elevation_m,source,fetched_at
+aeroporto,Aeroporto,38.768590,-9.128328,98.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+alameda,Alameda,38.737255,-9.134086,65.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+alfornelos,Alfornelos,38.760616,-9.204708,71.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+alto-dos-moinhos,Alto dos Moinhos,38.749580,-9.179946,97.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+alvalade,Alvalade,38.753456,-9.143883,84.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+amadora-este,Amadora Este,38.758373,-9.219171,98.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+ameixoeira,Ameixoeira,38.779903,-9.159986,94.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+anjos,Anjos,38.726616,-9.135025,39.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+areeiro,Areeiro,38.742600,-9.133807,85.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+arroios,Arroios,38.733475,-9.134451,63.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+avenida,Avenida,38.720116,-9.145823,42.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+baixa-chiado,Baixa / Chiado,38.710670,-9.139091,32.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+bela-vista,Bela Vista,38.747738,-9.118547,61.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+cabo-ruivo,Cabo Ruivo,38.763195,-9.104093,27.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+cais-do-sodre,Cais do Sodré,38.706154,-9.145029,6.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+campo-grande,Campo Grande,38.759880,-9.157941,81.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+campo-pequeno,Campo Pequeno,38.741420,-9.147035,72.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+carnide,Carnide,38.759308,-9.192812,83.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+chelas,Chelas,38.755283,-9.114136,65.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+cidade-universitaria,Cidade Universitária,38.751945,-9.158633,91.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+colegio-militar-luz,Colégio Militar/Luz,38.753323,-9.188663,81.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+encarnacao,Encarnação,38.775010,-9.114978,66.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+entre-campos,Entre Campos,38.747910,-9.148564,73.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+intendente,Intendente,38.722248,-9.135309,43.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+jardim-zoologico,Jardim Zoológico,38.742176,-9.168724,63.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+laranjeiras,Laranjeiras,38.748528,-9.172431,70.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+lumiar,Lumiar,38.772823,-9.159701,92.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+marques-de-pombal,Marquês de Pombal,38.724880,-9.150807,58.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+martim-moniz,Martim Moniz,38.716812,-9.135749,23.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+moscavide,Moscavide,38.774776,-9.102664,36.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+odivelas,Odivelas,38.793230,-9.173219,33.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+olaias,Olaias,38.739190,-9.123664,80.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+olivais,Olivais,38.761276,-9.112038,64.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+oriente,Oriente,38.767838,-9.099771,9.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+parque,Parque,38.729725,-9.150276,89.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+picoas,Picoas,38.730644,-9.146503,75.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+pontinha,Pontinha,38.762398,-9.196931,83.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+praca-de-espanha,Praça de Espanha,38.737670,-9.158451,70.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+quinta-das-conchas,Quinta das Conchas,38.767094,-9.155458,88.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+rato,Rato,38.720078,-9.154111,77.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+reboleira,Reboleira,38.752210,-9.224140,92.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+restauradores,Restauradores,38.715084,-9.141623,17.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+roma,Roma,38.748450,-9.141349,86.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+rossio,Rossio,38.713840,-9.138957,12.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+saldanha,Saldanha,38.735275,-9.145576,84.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+santa-apolonia,Santa Apolónia,38.713783,-9.122563,21.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+sao-sebastiao,São Sebastião,38.734840,-9.154225,87.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+senhor-roubado,Senhor Roubado,38.785750,-9.172146,23.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+telheiras,Telheiras,38.760365,-9.166056,98.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00
+terreiro-do-paco,Terreiro do Paço,38.707207,-9.133351,8.0,Open-Meteo Elevation API (Copernicus DEM),2026-10-27T22:47:09+00:00

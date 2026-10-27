@@ -1,6 +1,6 @@
 # Plan: Lisbon Metro 3D Web Viewer
 
-Status: planned, not started. Hardware pending. Web work can proceed in parallel.
+Status: local dummy implemented 2026-10-27. Real pipeline, real terrain, and deployment pending. Hardware pending.
 
 Related: [`README.md`](../../README.md).
 
@@ -64,13 +64,31 @@ The GTFS geometry is coarse, roughly 117 m per point across 44.5 km. It is accur
 
 Station fields:
 
-- `id`, `name`, `lat`, `lon`
+- `id`, `name`, `lat`, `lon` (station label and entrance anchor)
 - `lines[]`
+- `surface_elevation_m`
+- `platforms[]` - one record per line at the station
+
+Platform fields:
+
+- `line`
+- `lat`, `lon` - projected onto the line shape
 - `surface_elevation_m`
 - `platform_depth_m`, nullable
 - `depth_source`: `measured`, `official`, `estimated`, `unknown`
-- `depth_confidence_m`, nullable
-- `source_url`
+- `depth_basis`: `station` or `platform`
+- `confidence_m`, nullable
+- `official_depth_m`, nullable - retained baseline
+- `measured_depth_m`, nullable
+- `measurement_ids[]`
+- `source_url`, nullable
+- `note`, nullable
+
+Network structure:
+
+- `lines[]`
+- each line has `segments[]` with a stable ID `LINE:sortedStationA-sortedStationB`
+- each segment has `from`, `to`, `depth_source`, and `vertices[]`
 
 Tunnel vertex fields:
 
@@ -82,7 +100,11 @@ Tunnel vertex fields:
 
 Depth is measured below the local ground surface, not below sea level. Scene height is `y = surface_elevation(x, z) - depth`.
 
-Known station depths from `README.md`: 12 values. All other stations stay `unknown`. Do not invent values.
+Merge precedence: `measured` > `official` > `estimated` > `unknown`. Keep the official baseline when measured data replaces it. Never extrapolate measured data beyond the logged segment. Never copy one interchange platform depth to another line.
+
+Station-level official values are not platform-level measurements. Mark them `depth_basis: station` and show the limitation in the QA panel.
+
+Known station depths from `README.md`: 12 values. Only 10 are in the current GTFS network. All other current stations stay `unknown`. Do not invent values.
 
 Known conflicts to preserve in the curated CSV:
 
@@ -114,7 +136,7 @@ Location: `pipeline/`.
    - `network.json` - lines, tunnel polylines, per-vertex depth and source
    - `terrain.bin` - float32 heightmap
    - `ground.png` - hillshade, water, parks
-10. Validate with pytest:
+10. Validate with tests (stdlib `unittest` in the dummy; pytest for the real pipeline):
     - schema shape and required fields
     - every station joins to a line
     - distance is monotonic
@@ -132,6 +154,61 @@ Raw 8 Hz CSVs are never served to the browser. Downsample measured profiles to a
 - Total initial payload target under 5 MB.
 
 Switch JSON to typed-array binary only if the measured data exceeds the budget.
+
+## Dummy track (implemented 2026-10-27)
+
+Purpose: validate the data contract, viewer, and measured-data plug path before the survey hardware arrives.
+
+Location: `pipeline/dummy/`.
+
+- `fetch_gtfs.py` - cache the pinned GTFS ZIP.
+- `fetch_elevations.py` - fetch station surface elevations once from Open-Meteo and commit the CSV.
+- `build_dummy.py` - select one full stop pattern per line, build per-platform station records, build stable segments, interpolate depths between official anchors, and emit the v1 assets.
+- `gtfs.py` - GTFS parsing, canonical pattern selection, shape slicing.
+- `terrain.py` - synthetic Lisbon-shaped heightfield with a Tagus mask, parks, coastline falloff, hillshade, and ground texture.
+- `png.py` - dependency-free PNG writer.
+
+Dummy rules:
+
+- Real GTFS geometry.
+- Only documented station depths. All other platform depths are null.
+- Estimated tunnel depth only between two official anchors. Unknown outside.
+- Unknown segments render as surface lines only.
+- Synthetic terrain is labeled in the manifest and viewer.
+- No OSM streets, no Copernicus raster, no Docker, no deployment.
+
+Measured ingest skeleton: `pipeline/ingest/`.
+
+- `read_log.py` - parse Cardputer CSV events and ride samples.
+- `merge.py` - merge measured platform depths and segment profiles into the same assets.
+- It updates `dataset_version`, `capabilities.measured_depths`, provenance counts, and leaves untouched segments byte-identical.
+- It handles reversed ride directions by matching stations to segment orientation.
+- Fixture: `pipeline/ingest/tests/fixtures/crossing_sample.csv`.
+
+Crossing fixture: Green Areeiro-Alameda-Arroios and Red Olaias-Alameda-Saldanha. The fixture marks Alameda C at 30 m and Alameda D at 35 m, proving a 5 m vertical separation. It is synthetic test data.
+
+Viewer additions implemented for the dummy:
+
+- Per-platform station panel.
+- Interchange crossing QA panel with unresolved warning.
+- X-ray terrain toggle for underground inspection.
+- Multi-line focus `?line=C,D`.
+- Station focus `?station=alameda`.
+- X-ray URL state `?xray=1`.
+- Stable legend counts from the manifest.
+- Label decluttering.
+
+## Replace-and-plug procedure
+
+When real data exists:
+
+1. Run the real pipeline or `pipeline/ingest/merge.py`.
+2. Overwrite the same five files in `web/public/data/v1/`.
+3. Set `demo: false` when terrain becomes real.
+4. Set `capabilities.measured_depths: true`, `real_terrain: true`, and `streets: true` as layers arrive.
+5. Bump `dataset_version`. Keep `schema_version: 1` unless the contract changes.
+
+The viewer needs no code change for a partial measured overlay. Only the matching segment IDs and platform records change. A full contract break requires a new schema version and a matching viewer change.
 
 ## Web application
 
@@ -184,8 +261,10 @@ A legend is always visible. A toggle hides estimated and unknown data.
 - Orbit, pan, zoom, damping.
 - Double-click a station to fly to it.
 - Line picker highlights one line and dims the rest. URL state `?line=A`.
-- Station panel: name, line(s), depth, surface elevation, source, confidence.
-- Toggles: basemap, labels, vertical exaggeration, cutaway, provenance.
+- Station panel: name, line(s), per-platform depth, surface elevation, source, confidence.
+- Interchange QA panel: per-line platform depth and vertical gap; unresolved warning when a platform depth is unknown.
+- Toggles: basemap, labels, x-ray terrain, vertical exaggeration, cutaway, provenance.
+- URL state: `?line=C,D`, `?station=alameda`, `?xray=1`.
 - Vertical exaggeration 1x-20x, default 10x. Always show `vertical scale x10`.
 - Strive for a true-scale toggle.
 - Mobile: cap device pixel ratio, one draw call per layer, no expensive postprocessing.

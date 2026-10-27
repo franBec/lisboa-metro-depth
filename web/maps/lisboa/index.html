@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="A 3D cutaway of the Lisbon Metro, with measured and published depths shown by provenance."
+    />
+    <title>Lisboa Metro Depth</title>
+    <link rel="stylesheet" href="/styles/viewer.css" />
+  </head>
+  <body>
+    <main id="viewer">
+      <div id="scene-container" aria-label="3D view of the Lisbon Metro"></div>
+      <div id="label-layer" aria-hidden="true"></div>
+
+      <div id="hud">
+        <header class="brand">
+          <a href="/" class="brand-mark">Underground Atlas</a>
+          <h1>Lisboa <span>Metro depth</span></h1>
+        </header>
+
+        <div class="top-status">
+          <div id="demo-badge" class="demo-badge" hidden>
+            <span class="demo-dot"></span>
+            <span id="demo-text">Demo data</span>
+          </div>
+          <div class="scale-readout">
+            Vertical scale <strong id="scale-value">x10</strong>
+          </div>
+        </div>
+
+        <aside class="panel controls" aria-label="Viewer controls">
+          <div class="panel-head">
+            <h2>Network</h2>
+            <span class="hint">click to isolate</span>
+          </div>
+          <div id="line-picker" class="line-picker"></div>
+
+          <div class="divider"></div>
+
+          <div class="toggle-list">
+            <label class="toggle">
+              <input id="labels-toggle" type="checkbox" checked />
+              <span>Station labels</span>
+            </label>
+            <label class="toggle">
+              <input id="xray-toggle" type="checkbox" />
+              <span>X-ray terrain</span>
+            </label>
+            <label class="toggle">
+              <input id="inferred-toggle" type="checkbox" checked />
+              <span>Show estimated and unknown</span>
+            </label>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="scale-control">
+            <span class="hint">Vertical exaggeration</span>
+            <div id="scale-buttons" class="scale-buttons">
+              <button type="button" data-scale="1">1x</button>
+              <button type="button" data-scale="10" class="active">10x</button>
+              <button type="button" data-scale="20">20x</button>
+            </div>
+          </div>
+        </aside>
+
+        <div class="panel legend" aria-label="Depth provenance legend">
+          <div class="panel-head">
+            <h2>Provenance</h2>
+            <span id="dataset-version" class="hint"></span>
+          </div>
+          <div id="legend-items" class="legend-items"></div>
+          <p id="demo-note" class="legend-note"></p>
+        </div>
+
+        <aside id="station-panel" class="panel station-panel" hidden aria-live="polite">
+          <button id="station-close" class="panel-close" type="button" aria-label="Close station panel">
+            Close
+          </button>
+          <div id="station-content"></div>
+        </aside>
+
+        <footer id="credits" class="credits">
+          <span id="attribution"></span>
+          <span class="credits-sep">/</span>
+          <a href="/">All maps</a>
+        </footer>
+      </div>
+
+      <div id="loading" class="overlay">
+        <div class="loading-card">
+          <div class="spinner" aria-hidden="true"></div>
+          <p>Building the terrain slab...</p>
+        </div>
+      </div>
+
+      <div id="error" class="overlay" hidden>
+        <div class="loading-card error-card">
+          <p id="error-text">Could not load the data.</p>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
