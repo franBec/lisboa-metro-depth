@@ -1,0 +1,44 @@
+.station-label-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.station-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  visibility: hidden;
+  padding: 3px 6px;
+  border: 1px solid rgba(220, 220, 205, 0.16);
+  background: rgba(11, 15, 16, 0.72);
+  color: rgba(232, 229, 218, 0.82);
+  font-family: var(--font-sans);
+  font-size: 9px;
+  line-height: normal;
+  letter-spacing: 0.035em;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.station-label.interchange {
+  border-color: rgba(215, 180, 91, 0.32);
+  color: var(--color-ink);
+}
+
+.station-label.dimmed {
+  opacity: 0.12;
+}
+
+.station-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}

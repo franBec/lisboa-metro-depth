@@ -1,10 +1,18 @@
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-import { Suspense, useMemo, useRef, type ComponentRef } from 'react'
+import {
+  Suspense,
+  useMemo,
+  useRef,
+  type ComponentRef,
+  type RefObject,
+} from 'react'
 import type { Manifest, Network, Station } from '../data/schemas'
 import type { Projection } from '../lib/geo'
 import { useViewerStore } from '../state/viewerStore'
 import { CameraRig } from './CameraRig'
+import { Stations } from './Stations'
+import type { StationVisuals } from './stationVisuals'
 import { Terrain } from './Terrain'
 import { Tunnels } from './Tunnels'
 
@@ -21,6 +29,9 @@ interface ViewerSceneProps {
   projection: Projection
   selectedLines: ReadonlySet<string>
   xray: boolean
+  stationVisuals: StationVisuals
+  labelRefs: RefObject<Map<string, HTMLDivElement>>
+  onSelectStation: (stationId: string) => void
 }
 
 export function ViewerScene({
@@ -31,6 +42,9 @@ export function ViewerScene({
   projection,
   selectedLines,
   xray,
+  stationVisuals,
+  labelRefs,
+  onSelectStation,
 }: ViewerSceneProps) {
   const verticalScale = useViewerStore((state) => state.verticalScale)
   const controlsRef = useRef<OrbitControlsInstance | null>(null)
@@ -109,6 +123,14 @@ export function ViewerScene({
         lines={network.lines}
         projection={projection}
         selectedLines={selectedLines}
+      />
+
+      <Stations
+        platforms={stationVisuals.platforms}
+        labels={stationVisuals.labels}
+        selectedLines={selectedLines}
+        onSelectStation={onSelectStation}
+        labelRefs={labelRefs}
       />
     </Canvas>
   )

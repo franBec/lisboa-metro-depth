@@ -1,0 +1,160 @@
+import type { ThreeEvent } from '@react-three/fiber'
+import { useMemo, type RefObject } from 'react'
+import { Color, DoubleSide } from 'three'
+import { useViewerStore } from '../state/viewerStore'
+import { StationInteraction } from './StationInteraction'
+import { StationLabelDriver } from './StationLabelDriver'
+import type {
+  PlatformVisual,
+  StationLabelVisual,
+} from './stationVisuals'
+
+interface StationsProps {
+  platforms: PlatformVisual[]
+  labels: StationLabelVisual[]
+  selectedLines: ReadonlySet<string>
+  onSelectStation: (stationId: string) => void
+  labelRefs: RefObject<Map<string, HTMLDivElement>>
+}
+
+interface PlatformMarkerProps {
+  platform: PlatformVisual
+  active: boolean
+  visible: boolean
+  onSelect: (stationId: string) => void
+}
+
+function PlatformMarker({
+  platform,
+  active,
+  visible,
+  onSelect,
+}: PlatformMarkerProps) {
+  const measured = platform.source === 'measured'
+  const emissive = useMemo(
+    () =>
+      new Color(platform.color).multiplyScalar(measured ? 0.55 : 0.18),
+    [measured, platform.color],
+  )
+
+  const handleClick = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation()
+    if (event.delta > 6) {
+      return
+    }
+    onSelect(platform.stationId)
+  }
+
+  if (platform.depth === null || platform.platformY === null) {
+    return (
+      <mesh
+        visible={visible}
+        position={[platform.x, platform.surfaceY + 3, platform.z]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        onClick={handleClick}
+        userData={{ stationId: platform.stationId }}
+      >
+        <torusGeometry args={[20, 3, 6, 24]} />
+        <meshStandardMaterial
+          color={platform.color}
+          roughness={0.7}
+          metalness={0.1}
+          transparent
+          opacity={active ? 1 : 0.06}
+        />
+      </mesh>
+    )
+  }
+
+  return (
+    <group visible={visible}>
+      <mesh
+        position={[platform.x, platform.platformY, platform.z]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        onClick={handleClick}
+        userData={{ stationId: platform.stationId }}
+      >
+        <torusGeometry args={[38, 4.5, 8, 32]} />
+        <meshStandardMaterial
+          color={platform.color}
+          emissive={emissive}
+          roughness={0.5}
+          metalness={0.2}
+          transparent
+          opacity={active ? 1 : 0.06}
+        />
+      </mesh>
+
+      {platform.shaftHeight > 1 ? (
+        <mesh
+          position={[
+            platform.x,
+            platform.surfaceY - platform.shaftHeight / 2,
+            platform.z,
+          ]}
+          onClick={handleClick}
+          userData={{ stationId: platform.stationId }}
+        >
+          <cylinderGeometry
+            args={[3.2, 3.2, platform.shaftHeight, 8, 1, true]}
+          />
+          <meshBasicMaterial
+            color={platform.color}
+            transparent
+            opacity={active ? 0.26 : 0.06}
+            depthWrite={false}
+            side={DoubleSide}
+          />
+        </mesh>
+      ) : null}
+
+      <mesh
+        position={[platform.x, platform.platformY + 0.4, platform.z]}
+        rotation={[-Math.PI / 2, 0, 0]}
+      >
+        <circleGeometry args={[26, 28]} />
+        <meshBasicMaterial
+          color={platform.color}
+          transparent
+          opacity={active ? 0.24 : 0.06}
+          side={DoubleSide}
+          depthWrite={false}
+        />
+      </mesh>
+    </group>
+  )
+}
+
+export function Stations({
+  platforms,
+  labels,
+  selectedLines,
+  onSelectStation,
+  labelRefs,
+}: StationsProps) {
+  const requestedFocus = useViewerStore((state) => state.requestFocus)
+  const inferredVisible = useViewerStore((state) => state.inferredVisible)
+  const activeFilter = selectedLines.size ? selectedLines : null
+
+  return (
+    <group name="stations">
+      {platforms.map((platform) => (
+        <PlatformMarker
+          key={platform.key}
+          platform={platform}
+          active={activeFilter === null || activeFilter.has(platform.lineId)}
+          visible={inferredVisible || platform.source !== 'unknown'}
+          onSelect={onSelectStation}
+        />
+      ))}
+
+      <StationLabelDriver labels={labels} labelRefs={labelRefs} />
+
+      <StationInteraction
+        labels={labels}
+        onSelect={onSelectStation}
+        onFocus={requestedFocus}
+      />
+    </group>
+  )
+}
