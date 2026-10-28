@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc -b",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && TSX_TSCONFIG_PATH=tsconfig.scripts.json tsx scripts/prerender.tsx",
     "lint": "oxlint",
     "preview": "vite preview"
   },
