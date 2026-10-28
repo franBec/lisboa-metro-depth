@@ -1,5 +1,5 @@
 node_modules/
-web/dist/
+dist/
 data/raw/
 .venv/
 __pycache__/
