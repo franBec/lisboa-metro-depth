@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { ViewerHud } from '../components/hud/ViewerHud'
 import {
   ViewerErrorOverlay,
   ViewerLoadingOverlay,
@@ -114,8 +115,13 @@ function ViewerContent() {
     return <ViewerErrorOverlay message="No viewer data returned." />
   }
 
+  const selectedStation =
+    data.stations.find(
+      (station) => station.id === urlState.selectedStationId,
+    ) ?? null
+
   return (
-    <main className="fixed inset-0 bg-bg">
+    <main className="viewer-root">
       {sceneError ? null : (
         <SceneView
           data={data}
@@ -125,6 +131,18 @@ function ViewerContent() {
           onError={setSceneError}
         />
       )}
+
+      <ViewerHud
+        manifest={data.manifest}
+        lines={data.network.lines}
+        selectedLines={urlState.selectedLines}
+        selectedStation={selectedStation}
+        xray={urlState.xray}
+        onToggleLine={urlState.toggleLine}
+        onXRayToggle={urlState.setXray}
+        onCloseStation={urlState.clearStation}
+      />
+
       {!sceneReady && !sceneError ? <ViewerLoadingOverlay /> : null}
       {sceneError ? <ViewerErrorOverlay message={sceneError} /> : null}
     </main>

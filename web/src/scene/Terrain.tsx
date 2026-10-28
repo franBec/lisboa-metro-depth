@@ -68,6 +68,7 @@ export function Terrain({
     <group name="terrain">
       <mesh geometry={topGeometry} name="terrain-top">
         <meshStandardMaterial
+          key={xray ? 'top-xray' : 'top-solid'}
           map={texture}
           roughness={0.97}
           metalness={0}
@@ -79,6 +80,7 @@ export function Terrain({
 
       <mesh geometry={wallsGeometry} name="terrain-walls">
         <meshBasicMaterial
+          key={xray ? 'walls-xray' : 'walls-solid'}
           color="#211f1b"
           side={DoubleSide}
           transparent={xray}
@@ -94,6 +96,7 @@ export function Terrain({
       >
         <planeGeometry args={[widthM, heightM]} />
         <meshBasicMaterial
+          key={xray ? 'bottom-xray' : 'bottom-solid'}
           color="#121413"
           side={DoubleSide}
           transparent={xray}

@@ -1,4 +1,3 @@
-import type { ThreeEvent } from '@react-three/fiber'
 import { useMemo, type RefObject } from 'react'
 import { Color, DoubleSide } from 'three'
 import { useViewerStore } from '../state/viewerStore'
@@ -21,14 +20,12 @@ interface PlatformMarkerProps {
   platform: PlatformVisual
   active: boolean
   visible: boolean
-  onSelect: (stationId: string) => void
 }
 
 function PlatformMarker({
   platform,
   active,
   visible,
-  onSelect,
 }: PlatformMarkerProps) {
   const measured = platform.source === 'measured'
   const emissive = useMemo(
@@ -37,21 +34,12 @@ function PlatformMarker({
     [measured, platform.color],
   )
 
-  const handleClick = (event: ThreeEvent<MouseEvent>) => {
-    event.stopPropagation()
-    if (event.delta > 6) {
-      return
-    }
-    onSelect(platform.stationId)
-  }
-
   if (platform.depth === null || platform.platformY === null) {
     return (
       <mesh
         visible={visible}
         position={[platform.x, platform.surfaceY + 3, platform.z]}
         rotation={[-Math.PI / 2, 0, 0]}
-        onClick={handleClick}
         userData={{ stationId: platform.stationId }}
       >
         <torusGeometry args={[20, 3, 6, 24]} />
@@ -71,7 +59,6 @@ function PlatformMarker({
       <mesh
         position={[platform.x, platform.platformY, platform.z]}
         rotation={[-Math.PI / 2, 0, 0]}
-        onClick={handleClick}
         userData={{ stationId: platform.stationId }}
       >
         <torusGeometry args={[38, 4.5, 8, 32]} />
@@ -92,7 +79,6 @@ function PlatformMarker({
             platform.surfaceY - platform.shaftHeight / 2,
             platform.z,
           ]}
-          onClick={handleClick}
           userData={{ stationId: platform.stationId }}
         >
           <cylinderGeometry
@@ -144,7 +130,6 @@ export function Stations({
           platform={platform}
           active={activeFilter === null || activeFilter.has(platform.lineId)}
           visible={inferredVisible || platform.source !== 'unknown'}
-          onSelect={onSelectStation}
         />
       ))}
 

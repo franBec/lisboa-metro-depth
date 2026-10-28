@@ -64,6 +64,53 @@ export function StationInteraction({
   useEffect(() => {
     const canvas = gl.domElement
     const mouse = new Vector2()
+    let pointerStart: { x: number; y: number } | null = null
+
+    const handlePointerDown = (event: PointerEvent) => {
+      pointerStart = { x: event.clientX, y: event.clientY }
+    }
+
+    const handleClick = (event: MouseEvent) => {
+      const start = pointerStart
+      pointerStart = null
+      if (!start) {
+        return
+      }
+      if (Math.hypot(event.clientX - start.x, event.clientY - start.y) > 6) {
+        return
+      }
+
+      const rect = canvas.getBoundingClientRect()
+      if (rect.width === 0 || rect.height === 0) {
+        return
+      }
+
+      mouse.set(
+        ((event.clientX - rect.left) / rect.width) * 2 - 1,
+        -((event.clientY - rect.top) / rect.height) * 2 + 1,
+      )
+      raycaster.setFromCamera(mouse, camera)
+
+      const hits = raycaster.intersectObjects(scene.children, true)
+      for (const hit of hits) {
+        const stationId = findStationId(hit.object)
+        if (stationId) {
+          onSelect(stationId)
+          return
+        }
+      }
+
+      const stationId = nearestStation(
+        labels,
+        camera,
+        size,
+        event.clientX - rect.left,
+        event.clientY - rect.top,
+      )
+      if (stationId) {
+        onSelect(stationId)
+      }
+    }
 
     const handleDoubleClick = (event: MouseEvent) => {
       const rect = canvas.getBoundingClientRect()
@@ -100,8 +147,14 @@ export function StationInteraction({
       }
     }
 
+    canvas.addEventListener('pointerdown', handlePointerDown)
+    canvas.addEventListener('click', handleClick)
     canvas.addEventListener('dblclick', handleDoubleClick)
-    return () => canvas.removeEventListener('dblclick', handleDoubleClick)
+    return () => {
+      canvas.removeEventListener('pointerdown', handlePointerDown)
+      canvas.removeEventListener('click', handleClick)
+      canvas.removeEventListener('dblclick', handleDoubleClick)
+    }
   }, [camera, gl, labels, onFocus, onSelect, raycaster, scene, size])
 
   return null

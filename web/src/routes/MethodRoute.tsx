@@ -41,6 +41,15 @@ export function MethodRoute() {
         </li>
       </ul>
 
+      <h2>Known conflicts</h2>
+      <ul>
+        <li>Aeroporto: 45.5 m vs 18.95 m.</li>
+        <li>Baixa-Chiado: 45 m vs 38.75 m.</li>
+        <li>Olivais: 36 m vs 28.65 m.</li>
+        <li>Campo de Ourique: 31 m vs about 35 m.</li>
+        <li>Infante Santo: 29.5 m vs about 19 m.</li>
+      </ul>
+
       <h2>Limitations</h2>
       <ul>
         <li>The current terrain is synthetic and illustrative. It is not a survey.</li>
