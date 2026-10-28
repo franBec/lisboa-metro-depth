@@ -1,13 +1,44 @@
-import { useEffect, useMemo, useRef } from 'react'
-import { InfoPage } from '../components/InfoPage'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   ViewerErrorOverlay,
   ViewerLoadingOverlay,
 } from '../components/ViewerOverlays'
+import type { ViewerData } from '../data/client'
 import { ViewerQueryProvider } from '../data/ViewerQueryProvider'
 import { useViewerData } from '../data/query'
+import { Projection } from '../lib/geo'
+import { SceneErrorBoundary } from '../scene/SceneErrorBoundary'
+import { ViewerScene } from '../scene/ViewerScene'
 import { useViewerUrlState } from '../state/useViewerUrlState'
 import { useViewerStore } from '../state/viewerStore'
+
+interface SceneViewProps {
+  data: ViewerData
+  selectedLines: ReadonlySet<string>
+  xray: boolean
+  onError: (message: string) => void
+}
+
+function SceneView({ data, selectedLines, xray, onError }: SceneViewProps) {
+  const projection = useMemo(
+    () => new Projection(data.manifest),
+    [data.manifest],
+  )
+
+  return (
+    <SceneErrorBoundary onError={onError}>
+      <ViewerScene
+        manifest={data.manifest}
+        stations={data.stations}
+        network={data.network}
+        heights={data.heights}
+        projection={projection}
+        selectedLines={selectedLines}
+        xray={xray}
+      />
+    </SceneErrorBoundary>
+  )
+}
 
 function ViewerContent() {
   const viewerData = useViewerData()
@@ -18,10 +49,12 @@ function ViewerContent() {
   )
   const urlState = useViewerUrlState(lineIds)
   const requestFocus = useViewerStore((state) => state.requestFocus)
+  const sceneReady = useViewerStore((state) => state.sceneReady)
+  const [sceneError, setSceneError] = useState<string | null>(null)
   const initialFocusRequested = useRef(false)
 
   useEffect(() => {
-    if (initialFocusRequested.current || !data) {
+    if (initialFocusRequested.current || !data || !sceneReady) {
       return
     }
     initialFocusRequested.current = true
@@ -30,7 +63,7 @@ function ViewerContent() {
     if (stationId && data.stations.some((station) => station.id === stationId)) {
       requestFocus(stationId)
     }
-  }, [data, requestFocus, urlState.selectedStationId])
+  }, [data, requestFocus, sceneReady, urlState.selectedStationId])
 
   if (viewerData.isPending) {
     return <ViewerLoadingOverlay />
@@ -48,40 +81,19 @@ function ViewerContent() {
     return <ViewerErrorOverlay message="No viewer data returned." />
   }
 
-  const platformCount = data.stations.reduce(
-    (total, station) => total + station.platforms.length,
-    0,
-  )
-  const segmentCount = data.network.lines.reduce(
-    (total, line) => total + line.segments.length,
-    0,
-  )
-  const lineSummary = urlState.selectedLines.size
-    ? [...urlState.selectedLines].sort().join(',')
-    : 'all'
-
   return (
-    <InfoPage title="Lisboa">
-      <p>
-        The viewer data is loaded. The terrain, network, station panel, and
-        camera follow in the next changes.
-      </p>
-      <ul>
-        <li>Dataset: {data.manifest.dataset_version}</li>
-        <li>
-          Network: {data.stations.length} stations, {data.network.lines.length}{' '}
-          lines, {platformCount} platforms, {segmentCount} segments
-        </li>
-        <li>
-          Terrain: {data.manifest.terrain.width} x {data.manifest.terrain.height}
-        </li>
-        <li>
-          URL state: lines {lineSummary}, station{' '}
-          {urlState.selectedStationId ?? 'none'}, x-ray{' '}
-          {urlState.xray ? 'on' : 'off'}
-        </li>
-      </ul>
-    </InfoPage>
+    <main className="fixed inset-0 bg-bg">
+      {sceneError ? null : (
+        <SceneView
+          data={data}
+          selectedLines={urlState.selectedLines}
+          xray={urlState.xray}
+          onError={setSceneError}
+        />
+      )}
+      {!sceneReady && !sceneError ? <ViewerLoadingOverlay /> : null}
+      {sceneError ? <ViewerErrorOverlay message={sceneError} /> : null}
+    </main>
   )
 }
 
