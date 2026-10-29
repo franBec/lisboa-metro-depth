@@ -1,32 +1,29 @@
-# React + TypeScript + Vite
+# Underground Atlas web app
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React viewer for the Lisbon Metro depth map. See the root [`README.md`](../README.md) for project status, data sources, and pipeline commands.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Vite, TypeScript, React 19, React Router, React Three Fiber, Tailwind CSS 4, TanStack Query, Zustand, Zod, and Three.js.
 
-## React Compiler
+## Commands
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+pnpm --dir web dev
+pnpm --dir web typecheck
+pnpm --dir web lint
+pnpm --dir web build
+pnpm --dir web preview
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+`build` typechecks, builds Vite assets, prerenders `/`, and writes static entry documents for the viewer and method routes.
+
+## Routes
+
+- `/` - map index. Prerendered and readable without JavaScript.
+- `/maps/lisboa/` - 3D viewer.
+- `/maps/lisboa/method/` - method, provenance, and limitations.
+
+## Data
+
+The viewer fetches `public/data/v1/` at runtime. Set `VITE_DATA_BASE` to serve the same files from another base path.

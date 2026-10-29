@@ -9,9 +9,10 @@ This README is the living project document. Update it as work progresses.
 - Hardware ordered 2026-10-27 (Mauser order 2026EC1631140, EUR 89.41). Awaiting delivery. Bench tests start on arrival.
 - Firmware not started.
 - Local web demo implemented 2026-10-27. Real GTFS geometry, documented depths only, synthetic terrain, x-ray view, crossing QA panel, and a measured-log ingest fixture. No deployment.
+- Web viewer ported to React 19, React Three Fiber, Tailwind 4, TanStack Query, Zustand, and Zod on 2026-10-28. The landing page and route entry documents are prerendered. Deployment is still pending.
 - Web viewer plan: [`.opencode/plans/web-viewer.md`](.opencode/plans/web-viewer.md).
 - Owner: Franco.
-- Date: 2026-10-27.
+- Date: 2026-10-28.
 
 ## Local web demo
 
@@ -38,9 +39,12 @@ Checks:
 ```bash
 python3 -m unittest discover -s pipeline/tests -v
 pnpm --dir web typecheck
+pnpm --dir web lint
 pnpm --dir web build
 pnpm --dir web preview
 ```
+
+`pnpm --dir web build` also prerenders the landing page and writes static entry documents for `/maps/lisboa/` and `/maps/lisboa/method/`.
 
 The demo uses `web/public/data/v1/` with the same asset contract the final pipeline will use. The measured fixture is at `pipeline/ingest/tests/fixtures/crossing_sample.csv` and merges only the four crossing segments around Alameda. It is synthetic test data, not a survey.
 
@@ -57,7 +61,7 @@ Current limitation: only 10 current stations have documented depths. Most corrid
 7. **Time:** Cardputer has no RTC. Sync via NTP at the surface through a phone hotspot, or use relative `millis` plus phone notes.
 8. **Budget:** EUR 89.41 paid for the full BOM, under the EUR 100 with-spares target.
 9. **Language stack:** Python first. Firmware is MicroPython on the UIFlow2 Cardputer firmware. Post-processing is Python. The web viewer is TypeScript with Three.js. Java is not required. C++ is a fallback only.
-10. **Web stack:** static site. Vite, TypeScript, Three.js, nginx. No database, no HTTP framework, no websocket. See the viewer plan.
+10. **Web stack:** static site. Vite, TypeScript, React 19, React Router, React Three Fiber, Tailwind CSS 4, TanStack Query, Zustand, Zod, and nginx. No database, no HTTP framework, no websocket. See the viewer plan.
 
 ## Hardware
 
@@ -344,14 +348,22 @@ The viewer pipeline is specified in [`.opencode/plans/web-viewer.md`](.opencode/
 Static site at `maps.pollito.tech`:
 
 - `/` - map index.
-- `/maps/lisboa` - 3D viewer.
-- `/maps/lisboa/method` - method, provenance, and data downloads.
+- `/maps/lisboa/` - 3D viewer.
+- `/maps/lisboa/method/` - method, provenance, and limitations.
 
 Visual direction: Lisbon as a floating terrain slab with a cutaway view. Hills, streets, and the Tagus on top; metro tunnels inside. The ground is a real heightfield, not a flat overlay, so hilly terrain is represented correctly.
 
-Stack: Vite, TypeScript, Three.js, vanilla DOM, nginx. No backend, database, or websocket. The browser fetches the complete network once. Depths are styled by provenance: measured, official, estimated, or unknown. Unknown data is never drawn as fake underground geometry.
+Stack: Vite, TypeScript, React 19, React Router, React Three Fiber, Tailwind CSS 4, TanStack Query, Zustand, Zod, and nginx. No backend, database, or websocket. The browser fetches the complete network once. Depths are styled by provenance: measured, official, estimated, or unknown. Unknown data is never drawn as fake underground geometry.
 
 The local demo includes an x-ray terrain toggle, per-platform interchange records, a QA panel that reports the vertical gap at a crossing, multi-line filtering, and URL state. The planned quarter cutaway, real OSM basemap, and Coolify deployment remain deferred.
+
+`pnpm --dir web build` prerenders `/` into static HTML and writes empty-root entry documents for the viewer and method routes. The landing page works without JavaScript. For a static server, keep direct route files and add an SPA fallback for unknown paths:
+
+```nginx
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
 
 Full design, data model, milestones, and acceptance criteria: [`.opencode/plans/web-viewer.md`](.opencode/plans/web-viewer.md).
 
@@ -419,10 +431,10 @@ New stations:
 ## Roadmap
 
 1. ~~Buy Cardputer, Grove BME280, 5 cm and 20 cm Grove cables, microSD.~~ Done 2026-10-27, order 2026EC1631140 (includes USB-C reader).
-2. Web M0: repo skeleton, Vite pages, nginx, Docker, Coolify placeholder.
+2. Web M0: repo skeleton, Vite React app, nginx, Docker, Coolify placeholder.
 3. Web M1: pipeline v0 from GTFS, curated depths, DEM, and OSM.
-4. Web M2: terrain slab, cutaway, tunnels, stations, camera.
-5. Web M3: line picker, station panel, toggles, labels, mobile, method page.
+4. ~~Web M2: terrain slab, tunnels, stations, camera.~~ Done locally 2026-10-28 in the React/R3F port. Quarter cutaway and streets remain deferred.
+5. ~~Web M3: line picker, station panel, toggles, labels, mobile, method page.~~ Done locally 2026-10-28.
 6. Web M4: deploy, attribution, data download, acceptance checks.
 7. Bench test: flash UIFlow2, multi-file boot, keyboard wake, sensor read, SD write, display, battery.
 8. Implement continuous logger core and CSV schema in MicroPython.
@@ -444,6 +456,5 @@ New stations:
 - How to reconcile conflicting official and third-party depth values.
 - Viewer bbox, including margin around the outermost stations.
 - Which OSM highway classes appear at default zoom.
-- Landing page copy and visual identity.
 - Whether to publish raw CSV downloads.
 - Naming scheme for future maps under `maps.pollito.tech`.

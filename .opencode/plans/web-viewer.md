@@ -1,6 +1,6 @@
 # Plan: Lisbon Metro 3D Web Viewer
 
-Status: local dummy implemented 2026-10-27. Real pipeline, real terrain, and deployment pending. Hardware pending.
+Status: local dummy implemented 2026-10-27. React/R3F/Tailwind port completed 2026-10-28. Real pipeline, real terrain, and deployment pending. Hardware pending.
 
 Related: [`README.md`](../../README.md).
 
@@ -19,8 +19,9 @@ The site must show the network inside a hilly, recognizable Lisbon. It must dist
 2. Visual direction: floating terrain slab with a cutaway view. Diorama, not a conventional web map.
 3. Basemap: OSM data extracted at build time from Geofabrik. No tile provider, no API key, no runtime map SDK. Custom minimal style.
 4. V1 data: official station depths plus estimated tunnel geometry. Measured ride data replaces estimates after the survey.
-5. Stack: Vite, TypeScript, Three.js, vanilla DOM. No React, no backend.
+5. Stack: Vite, TypeScript, React 19, React Router, React Three Fiber, Tailwind CSS 4, TanStack Query, Zustand, Zod, and Three.js. No backend.
 6. No database, no HTTP framework, no websocket. Static build artifacts only.
+7. Landing page: prerendered at build time, readable without JavaScript.
 
 ## Non-goals
 
@@ -214,17 +215,24 @@ The viewer needs no code change for a partial measured overlay. Only the matchin
 
 Location: `web/`.
 
-- Vite multi-page build.
-- `index.html` - map index.
-- `maps/lisboa/index.html` - viewer.
-- `src/` - TypeScript modules: scene, terrain, tunnels, stations, labels, UI.
+- Vite React-TS app.
+- React Router routes: `/`, `/maps/lisboa`, `/maps/lisboa/method`, and a not-found route.
+- `src/data/` - Zod schemas, manifest-first loader, TanStack Query cache.
+- `src/state/` - Zustand UI state and URL state helpers.
+- `src/scene/` - React Three Fiber terrain, tunnels, stations, labels, and camera.
+- `src/components/hud/` - viewer panels, legend, line picker, and station QA.
+- `src/styles/` - Tailwind entry, landing styles, and viewer styles.
+- `scripts/prerender.tsx` - renders the landing page and writes route entry documents.
 - `public/data/v1/` - generated assets.
 
 Landing page:
 
-- plain HTML and CSS
-- title, one-sentence description, Lisboa card, credits
-- no client JavaScript
+- prerendered React tree with title, description, Lisboa card, and credits
+- readable without client JavaScript
+- `dist/index.html` contains the landing markup
+- `dist/maps/lisboa/index.html` and `dist/maps/lisboa/method/index.html` are generated as empty-root entry documents
+- the client hydrates prerendered markup and creates roots for viewer routes
+- static servers should keep generated route files and add `try_files $uri $uri/ /index.html;` for unknown SPA paths
 
 ## 3D scene
 
@@ -272,8 +280,10 @@ A legend is always visible. A toggle hides estimated and unknown data.
 ## Deployment
 
 - Multi-stage `Dockerfile`: `node:22-alpine` build, `nginx:alpine` serve.
+- Build command: `pnpm --dir web build`. It typechecks, builds Vite assets, and prerenders the landing and route entry documents.
 - `docker-compose.yml`: one `web` service, `expose: 80`, healthcheck, `restart: unless-stopped`.
 - Coolify domain: `maps.pollito.tech`. TLS managed by Coolify.
+- nginx SPA fallback for unknown paths: `try_files $uri $uri/ /index.html;`.
 - Cache policy: hashed assets and `/data/v1/` immutable. HTML no-store.
 - Gzip enabled. Brotli if available.
 
@@ -289,8 +299,15 @@ pipeline/
 data/raw/                 gitignored
 web/
   index.html
-  maps/lisboa/index.html
+  scripts/prerender.tsx
   src/
+    components/hud/
+    data/
+    lib/
+    routes/
+    scene/
+    state/
+    styles/
   public/data/v1/
 Dockerfile
 docker-compose.yml
@@ -301,15 +318,17 @@ README.md
 ## Milestones
 
 1. M0 - Skeleton
-   - Vite multi-page app, nginx, Dockerfile, compose.
+   - Vite React app, nginx, Dockerfile, compose.
    - Placeholder landing and viewer deployed to Coolify.
 2. M1 - Pipeline v0
    - GTFS, curated depths, DEM, and OSM extraction.
    - Generated v1 assets with validation tests.
 3. M2 - Scene
    - Terrain slab, cutaway, streets, tunnels, stations, camera.
+   - Local terrain, tunnels, stations, labels, and camera implemented 2026-10-28. Cutaway and streets pending.
 4. M3 - Interaction and UI
    - Line picker, station panel, toggles, labels, mobile, method page.
+   - Implemented 2026-10-28.
 5. M4 - Launch
    - Deploy, attribution, data download, acceptance checks.
 6. M5 - Measured data
@@ -323,6 +342,7 @@ README.md
 - Every displayed depth carries visible provenance.
 - No fabricated geometry for unknown stations.
 - Landing page works without JavaScript.
+- Direct route documents exist for `/`, `/maps/lisboa/`, and `/maps/lisboa/method/`.
 - Correct attribution for OSM, Copernicus, and Metropolitano de Lisboa.
 
 ## Risks
@@ -342,6 +362,5 @@ README.md
 
 - Exact bbox, including margin around the outermost stations.
 - Which highway classes appear at default zoom.
-- Landing page copy and visual identity.
 - Whether to publish raw CSV downloads.
 - Naming scheme for future maps under `maps.pollito.tech`.
