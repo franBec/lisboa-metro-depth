@@ -6,13 +6,14 @@ This README is the living project document. Update it as work progresses.
 
 ## Status
 
-- Hardware ordered 2026-10-27 (Mauser order 2026EC1631140, EUR 89.41). Awaiting delivery. Bench tests start on arrival.
-- Firmware not started.
+- Hardware received 2026-10-29 (Mauser order 2026EC1631140, EUR 89.41). Core bench tests passed.
+- UIFlow2 2.5.3 flashed 2026-10-29. Stock 8 MB flash backed up and verified. Bench harness in `firmware/bench/`.
+- BME280, microSD, and 10-minute 8 Hz logging pass. Display sleep, standalone boot, and UIFlow2 keyboard wake remain to test.
 - Local web demo implemented 2026-10-27. Real GTFS geometry, documented depths only, synthetic terrain, x-ray view, crossing QA panel, and a measured-log ingest fixture. No deployment.
 - Web viewer ported to React 19, React Three Fiber, Tailwind 4, TanStack Query, Zustand, and Zod on 2026-10-28. The landing page and route entry documents are prerendered. Deployment is still pending.
 - Web viewer plan: [`.opencode/plans/web-viewer.md`](.opencode/plans/web-viewer.md).
 - Owner: Franco.
-- Date: 2026-10-28.
+- Date: 2026-10-29.
 
 ## Local web demo
 
@@ -65,6 +66,8 @@ Current limitation: only 10 current stations have documented depths. Most corrid
 
 ## Hardware
 
+Step-by-step setup and bench log: [`docs/hardware-setup.md`](docs/hardware-setup.md).
+
 ### Bill of materials
 
 Purchased 2026-10-27 from Mauser (order 2026EC1631140, EUR 89.41 total).
@@ -108,11 +111,17 @@ Stack: MicroPython with the M5Stack UIFlow2 Cardputer firmware. Write the survey
 
 Deployment:
 
-- Flash the Cardputer UIFlow2 firmware with M5Burner.
+- Flash the Cardputer UIFlow2 firmware. The bench build used esptool at `0x0` with UIFlow2 2.5.3; M5Burner remains an option.
 - Set boot option `Run main.py directly` for standalone field use.
 - Put the app in `/flash/apps` for APP.LIST testing, or at the boot location used by `main.py`; confirm during bench tests.
 - Keep source in the repository under `firmware/`; upload the files after each change.
+- UIFlow2 2.5.3 does not work with `mpremote` raw REPL. Use the UIFlow2 WebTerminal or a normal serial REPL to upload files and run code.
 - Fallback order if UIFlow2 blocks the design: plain MicroPython with community Cardputer drivers, then CircuitPython, then Arduino C++.
+
+### Bench harness
+
+- `firmware/bench/bench.py` - I2C scan, BME280 read, SD mount, battery read, 8 Hz CSV logger.
+- `firmware/bench/bme280.py` - vendored MIT BME280 driver.
 
 ### Modules
 
@@ -131,7 +140,8 @@ Deployment:
 - Use BME280 forced mode with low oversampling. Keep the sensor away from the Cardputer and body.
 - Keep `millis` as the primary ordering field. Write `timestamp_iso` when the RTC is set.
 - Flush the CSV every 10 s. Call `os.sync()` after the flush if the port provides it.
-- Read battery voltage from ADC GPIO10 with the 2:1 divider.
+- Read battery voltage with `M5.Power.getBatteryVoltage()`, which returns millivolts. Direct `machine.ADC(Pin(10))` failed on UIFlow2 2.5.3 with `ESP_ERR_NOT_FOUND`.
+- Mount the microSD manually with `machine.SDCard(slot=3, sck=Pin(40), mosi=Pin(14), miso=Pin(39), cs=Pin(12))` and `os.mount(..., "/sd")`. UIFlow2 2.5.3 does not auto-mount it.
 - Disable WiFi after NTP sync. Keep radios, RGB LED, speaker, and microphone off.
 - UIFlow2 puts the keyboard in low-power sleep at boot; waking it needs `fn` plus a key. Test this in the bench tests. If it is impractical in the field, use `BtnA`/G0 for event markers or switch runtime.
 - Use a watchdog with a long timeout. Feed it in the main loop and keep the timeout longer than the worst-case SD flush.
@@ -296,6 +306,20 @@ Reference: https://www.mdpi.com/2673-3951/6/4/113
 6. Read battery voltage and compare with a USB meter.
 7. Confirm display sleep, wake, and radio-off behavior.
 
+### Bench results: 2026-10-29
+
+- Cardputer: ESP32-S3 rev v0.2, 8 MB flash, MAC `48:ca:43:b5:da:80`.
+- Firmware: UIFlow2 2.5.3, MicroPython v1.27.0-dirty. Asset SHA256 `8c51394d129c940ce887ae7b14dff3d3eed7608e342567acc8c34df3170ae6b0`.
+- Stock flash backup: `~/backups/cardputer/cardputer-stock-8mb.bin`, 8,388,608 bytes, SHA256 `8e43ab75fe449feb515408c35a83be8e892319290a54cdc72fa9797b642098ee`. `verify-flash` passed.
+- BME280: Grove I2C address `0x76`, chip ID `0x60`. Pressure at rest about 100,996 Pa.
+- microSD: 32 GB FAT32. UIFlow2 does not auto-mount it; manual mount at `/sd` works.
+- 30 s smoke test: 240/240 samples, 0 missed deadlines.
+- 10 min at 8 Hz: 4,800/4,800 samples, 0 missed deadlines. Sample interval 116-134 ms. Pressure 100,987.36-101,005.56 Pa. Temperature 23.02-23.59 C. Humidity 44.10-46.30 %. Battery 4.12-4.20 V while USB-powered. No USB meter or multimeter was available, so battery voltage is firmware-reported only.
+- Log file: `data/raw/bench/BENCH_335502.csv`, 407,201 bytes, SHA256 `47c93e19347b06802ba59fe2fa9b03294b56ac10f1efad88447f3cb0072d2222`.
+- The CSV parses with `pipeline/ingest/read_log.py`.
+- RTC timestamp fields are empty because NTP was not configured.
+- Deferred: display sleep/wake, standalone boot without WiFi, and keyboard wake under UIFlow2.
+
 ### Ground tests
 
 1. Elevator or staircase with known height. Target under 1-2 m error.
@@ -436,7 +460,7 @@ New stations:
 4. ~~Web M2: terrain slab, tunnels, stations, camera.~~ Done locally 2026-10-28 in the React/R3F port. Quarter cutaway and streets remain deferred.
 5. ~~Web M3: line picker, station panel, toggles, labels, mobile, method page.~~ Done locally 2026-10-28.
 6. Web M4: deploy, attribution, data download, acceptance checks.
-7. Bench test: flash UIFlow2, multi-file boot, keyboard wake, sensor read, SD write, display, battery.
+7. Bench test: flash UIFlow2, multi-file boot, keyboard wake, sensor read, SD write, display, battery. Partial 2026-10-29: flash, sensor, SD, and 10-minute logging pass; display sleep, standalone boot, and UIFlow2 keyboard wake remain.
 8. Implement continuous logger core and CSV schema in MicroPython.
 9. Implement UI, event markers, stability indicator, NTP sync.
 10. Build desktop `pytest` suite with fake sensor, clock, and storage.
