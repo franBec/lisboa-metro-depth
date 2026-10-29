@@ -29,6 +29,10 @@ pnpm --dir web dev
 
 Open `http://localhost:5173/maps/lisboa/`.
 
+The GTFS download is cached in `data/raw/`, which is gitignored and absent from a fresh clone. `fetch_gtfs.py` recreates it, so the steps above work on a clean checkout. `fetch_elevations.py` refreshes the tracked `pipeline/curated/station_elevations.csv`. The generated assets in `web/public/data/v1/` are committed.
+
+Raw sensor logs are tracked separately in `data/measurements/`; see [Raw measurement data](#raw-measurement-data).
+
 Useful views:
 
 - `?xray=1` shows the terrain as x-ray so estimated tunnels are visible.
@@ -310,12 +314,12 @@ Reference: https://www.mdpi.com/2673-3951/6/4/113
 
 - Cardputer: ESP32-S3 rev v0.2, 8 MB flash, MAC `48:ca:43:b5:da:80`.
 - Firmware: UIFlow2 2.5.3, MicroPython v1.27.0-dirty. Asset SHA256 `8c51394d129c940ce887ae7b14dff3d3eed7608e342567acc8c34df3170ae6b0`.
-- Stock flash backup: `~/backups/cardputer/cardputer-stock-8mb.bin`, 8,388,608 bytes, SHA256 `8e43ab75fe449feb515408c35a83be8e892319290a54cdc72fa9797b642098ee`. `verify-flash` passed.
+- Stock flash backup: kept outside the repository at `~/backups/cardputer/cardputer-stock-8mb.bin` on the setup machine, 8,388,608 bytes, SHA256 `8e43ab75fe449feb515408c35a83be8e892319290a54cdc72fa9797b642098ee`. `verify-flash` passed. Each unit has its own stock image, so back up yours before flashing.
 - BME280: Grove I2C address `0x76`, chip ID `0x60`. Pressure at rest about 100,996 Pa.
 - microSD: 32 GB FAT32. UIFlow2 does not auto-mount it; manual mount at `/sd` works.
 - 30 s smoke test: 240/240 samples, 0 missed deadlines.
 - 10 min at 8 Hz: 4,800/4,800 samples, 0 missed deadlines. Sample interval 116-134 ms. Pressure 100,987.36-101,005.56 Pa. Temperature 23.02-23.59 C. Humidity 44.10-46.30 %. Battery 4.12-4.20 V while USB-powered. No USB meter or multimeter was available, so battery voltage is firmware-reported only.
-- Log file: `data/raw/bench/BENCH_335502.csv`, 407,201 bytes, SHA256 `47c93e19347b06802ba59fe2fa9b03294b56ac10f1efad88447f3cb0072d2222`.
+- Log file: [`data/measurements/bench/BENCH_335502.csv`](data/measurements/bench/BENCH_335502.csv), 407,201 bytes, SHA256 `47c93e19347b06802ba59fe2fa9b03294b56ac10f1efad88447f3cb0072d2222`. All three bench logs are committed.
 - The CSV parses with `pipeline/ingest/read_log.py`.
 - RTC timestamp fields are empty because NTP was not configured.
 - Deferred: display sleep/wake, standalone boot without WiFi, and keyboard wake under UIFlow2.
@@ -338,10 +342,10 @@ First field test after bench tests:
 
 At Alameda, measure both platforms separately with `line=C` and `line=D`. Without both values the viewer correctly reports an unresolved crossing.
 
-Then ride the two sections with `RIDE_START`, `STATION_STOP` at Alameda, and `RIDE_END`. Merge the log with:
+Then ride the two sections with `RIDE_START`, `STATION_STOP` at Alameda, and `RIDE_END`. Copy the Cardputer CSV exports into `data/measurements/field/`, add the session to `data/measurements/index.json`, then merge the log with:
 
 ```bash
-python3 pipeline/ingest/merge.py --input data/logs/LX_YYYYMMDD_HHMMSS.csv --data web/public/data/v1
+python3 pipeline/ingest/merge.py --input data/measurements/field/LX_YYYYMMDD_HHMMSS.csv --data web/public/data/v1
 ```
 
 Expected result: four measured segments, measured platform depths at Alameda, and a crossing QA panel showing the vertical gap. The checked-in `crossing_sample.csv` fixture demonstrates the same path with synthetic values.
@@ -364,6 +368,12 @@ Use Python with `pandas`, `numpy`, `scipy.signal`, `gtfs-kit`, and `rasterio`. K
 The dummy viewer pipeline is in `pipeline/dummy/`. It uses GTFS, curated depths, cached Open-Meteo station elevations, and a synthetic terrain heightfield. No Geofabrik PBF or Copernicus raster is used yet.
 
 The measured-data ingest skeleton is in `pipeline/ingest/`. It parses the Cardputer CSV, builds platform and segment profiles, and merges them into the same data assets. It keeps official baselines, uses measured values only where logged, and updates the manifest capability flags.
+
+### Raw measurement data
+
+Raw Cardputer CSVs are committed under [`data/measurements/`](data/measurements/). Bench logs live in `data/measurements/bench/` and survey logs go in `data/measurements/field/`. The files are immutable, and [`data/measurements/index.json`](data/measurements/index.json) records provenance, row counts, and SHA256 for each session. Add new sessions through the procedure in [`data/measurements/README.md`](data/measurements/README.md).
+
+The download cache in `data/raw/` stays gitignored. Measurement data is licensed CC BY 4.0 with attribution to Franco (lisboa-metro-depth); see [`LICENSE-DATA`](LICENSE-DATA). Third-party data such as the GTFS feed keeps its own terms.
 
 The viewer pipeline is specified in [`.opencode/plans/web-viewer.md`](.opencode/plans/web-viewer.md).
 
@@ -480,5 +490,4 @@ New stations:
 - How to reconcile conflicting official and third-party depth values.
 - Viewer bbox, including margin around the outermost stations.
 - Which OSM highway classes appear at default zoom.
-- Whether to publish raw CSV downloads.
 - Naming scheme for future maps under `maps.pollito.tech`.

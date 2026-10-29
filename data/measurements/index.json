@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "license": "CC-BY-4.0",
+  "attribution": "Franco (lisboa-metro-depth)",
+  "device": {
+    "board": "M5Stack Cardputer",
+    "firmware": "UIFlow2 2.5.3",
+    "micropython": "v1.27.0-dirty",
+    "sensor": "Seeed Grove BME280",
+    "sensor_address": "0x76",
+    "sensor_chip_id": "0x60"
+  },
+  "sessions": [
+    {
+      "session_id": "BENCH_196440",
+      "file": "bench/BENCH_196440.csv",
+      "kind": "bench",
+      "date": "2026-10-29",
+      "duration_s": 30,
+      "rows": 242,
+      "bytes": 19391,
+      "sha256": "19186c0be0bb8b45e419d31175d60cbac4376506a40d2bd8dacb05d0cf1ebcc1",
+      "notes": "30 s smoke test at 8 Hz; 240 samples plus start and end events."
+    },
+    {
+      "session_id": "BENCH_284861",
+      "file": "bench/BENCH_284861.csv",
+      "kind": "bench",
+      "date": "2026-10-29",
+      "duration_s": 30,
+      "rows": 242,
+      "bytes": 20359,
+      "sha256": "6c561ae7a5c5b674b45f4b832eb66a640cd31c7504ba046bf487a404c2b700d2",
+      "notes": "30 s smoke test at 8 Hz; 240 samples plus start and end events."
+    },
+    {
+      "session_id": "BENCH_335502",
+      "file": "bench/BENCH_335502.csv",
+      "kind": "bench",
+      "date": "2026-10-29",
+      "duration_s": 600,
+      "rows": 4802,
+      "bytes": 407201,
+      "sha256": "47c93e19347b06802ba59fe2fa9b03294b56ac10f1efad88447f3cb0072d2222",
+      "notes": "10 min endurance test at 8 Hz; 4,800 samples plus start and end events."
+    }
+  ]
+}

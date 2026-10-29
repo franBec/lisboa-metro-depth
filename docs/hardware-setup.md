@@ -2,7 +2,7 @@
 
 Status: Cardputer + Grove BME280 + 32 GB microSD. UIFlow2 2.5.3 flashed. Core bench tests passed on 2026-10-29.
 
-> **Warning:** This setup was performed on a NixOS 25.11 system. The commands and configuration paths below are specific to that machine. Adapt them if you use another OS or another NixOS configuration.
+> **Note:** This setup was performed on Linux (NixOS 25.11, kernel 6.12.81, x86_64). The commands use Linux device paths such as `/dev/ttyACM0`. Adapt them for macOS or Windows.
 
 This document records the setup steps actually used. It is not the final survey firmware procedure.
 
@@ -23,45 +23,17 @@ This document records the setup steps actually used. It is not the final survey 
 - Do not force Grove connectors. They are keyed.
 - Hold the BME280 by its PCB edges. Do not cover the pressure port.
 - Keep the stock firmware backup. Do not delete it.
-- Do not commit firmware binaries or raw logs to git.
+- Do not commit firmware binaries to git. Commit measurement logs only through `data/measurements/` and its index.
 
-## Host setup on this NixOS machine
+## Host setup
 
-Host: NixOS 25.11, kernel 6.12.81, x86_64.
-
-Serial access is declared in the NixOS dotfiles flake, not in `/etc/nixos/configuration.nix`.
-
-Source:
-
-```text
-~/nixos-dotfiles/system-modules/users.nix
-```
-
-The change is commit `2512c96` and is imported through `system-modules/common.nix`. It adds:
-
-```nix
-users.users.pollito.extraGroups = [ "dialout" ];
-
-services.udev.extraRules = ''
-  SUBSYSTEM=="tty", KERNEL=="ttyACM*", ATTRS{idVendor}=="303a", MODE="0660", GROUP="dialout", TAG+="uaccess"
-'';
-```
-
-Rebuild only with the flake:
+Your user must be able to open the USB serial port. On most Linux distributions, add your user to the group that owns `/dev/ttyACM*`, usually `dialout`:
 
 ```bash
-sudo nixos-rebuild switch --flake ~/nixos-dotfiles#Lenovo-ideapad-L340-15IRH
+sudo usermod -aG dialout "$USER"
 ```
 
-Do not run plain `sudo nixos-rebuild switch` on this machine. `/etc/nixos/configuration.nix` is a stale install default and would rebuild a different system.
-
-The running system reads the rule from:
-
-```text
-/run/current-system/etc/udev/rules.d/99-local.rules
-```
-
-Verify after logging in with the new group membership:
+Log out and back in, then verify:
 
 ```bash
 id -nG
@@ -70,11 +42,28 @@ ls -l /dev/ttyACM0
 
 Expected: `dialout` in the group list, and `crw-rw---- root dialout` for the port.
 
-Tools were used from nixpkgs:
+Alternatively, add a udev rule for the Espressif USB vendor ID (`303a`) in `/etc/udev/rules.d/99-esp32-serial.rules`:
+
+```text
+SUBSYSTEM=="tty", KERNEL=="ttyACM*", ATTRS{idVendor}=="303a", MODE="0660", GROUP="dialout", TAG+="uaccess"
+```
+
+Reload the rules and re-plug the device:
 
 ```bash
-nix shell nixpkgs#esptool nixpkgs#mpremote
+sudo udevadm control --reload-rules
+sudo udevadm trigger
 ```
+
+On macOS, install the Espressif USB driver if needed and use `/dev/cu.usbmodem*`. On Windows, install the Espressif USB-JTAG driver and use the COM port shown in Device Manager.
+
+Install the tools with pip, pipx, or your package manager:
+
+```bash
+python3 -m pip install --user esptool mpremote
+```
+
+If your distribution blocks system pip installs, use a virtual environment or pipx instead. On NixOS, `nix shell nixpkgs#esptool nixpkgs#mpremote` also works.
 
 Versions used: `esptool 5.1.0`, `mpremote 1.25.0`. A temporary Python virtual environment with `mpremote 1.29.0` was also used for diagnostics; it gave the same result.
 
@@ -144,7 +133,7 @@ Record the SHA256:
 sha256sum ~/backups/cardputer/cardputer-stock-8mb.bin
 ```
 
-Observed hash for this unit:
+Observed hash for the setup unit. Your unit has its own stock image and will produce a different hash:
 
 ```text
 8e43ab75fe449feb515408c35a83be8e892319290a54cdc72fa9797b642098ee
@@ -333,12 +322,12 @@ The script:
 | Log size | 407,201 bytes |
 | Log rows | 4,802 data rows: 4,800 samples + 2 events |
 | Parsing | `pipeline/ingest/read_log.py` accepts the file |
-| Pipeline tests | 9/9 pass |
+| Pipeline tests | 9/9 pass at setup time |
 
-Log file:
+Log file from the setup run (committed):
 
 ```text
-data/raw/bench/BENCH_335502.csv
+data/measurements/bench/BENCH_335502.csv
 ```
 
 SHA256:
@@ -347,7 +336,7 @@ SHA256:
 47c93e19347b06802ba59fe2fa9b03294b56ac10f1efad88447f3cb0072d2222
 ```
 
-`data/raw/` is ignored by git. The CSV timestamps are empty because NTP/RTC was not configured.
+The file is tracked through [`data/measurements/index.json`](../data/measurements/index.json). The CSV timestamps are empty because NTP/RTC was not configured.
 
 ## 11. Remaining
 
