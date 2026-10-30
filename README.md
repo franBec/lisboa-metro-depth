@@ -8,8 +8,8 @@ This README is the living project document. Update it as work progresses.
 
 - Hardware received 2026-10-29 (Mauser order 2026EC1631140, EUR 89.41). Core bench tests passed.
 - UIFlow2 2.5.3 flashed 2026-10-29. Stock 8 MB flash backed up and verified. Bench harness in `firmware/bench/`.
-- BME280, microSD, and 10-minute 8 Hz logging pass. Display sleep, standalone boot, and UIFlow2 keyboard wake remain to test.
-- Field survey logger implemented 2026-10-30 in `firmware/field/`: presets, station windows, ride mode, anchors, notes, single-screen dashboard. Full dry run passed on device (surface, platform, 8 Hz ride, station stop, note, session end); 30-minute endurance run and the pilot trip remain.
+- BME280, microSD, and 10-minute 8 Hz logging pass. Standalone boot and keyboard wake on battery pass with the field app; display sleep remains to test.
+- Field survey logger implemented 2026-10-30 in `firmware/field/`: presets, station windows, ride mode, anchors, notes, single-screen dashboard. Full dry run (surface, platform, 8 Hz ride, station stop, note, session end) and a 30-minute battery endurance run passed: 3960 rows in ~30 min with no crash, ride samples averaging 125 ms at 8 Hz, `SESSION_START`/`SESSION_END` intact, keyboard registering after 60 s idle, battery reading 4.19 V going in and 4.15 V coming out. Device firmware is byte-identical to `0e6799f`. The cross-line pilot trip remains.
 - Local web demo implemented 2026-10-27. Real GTFS geometry, documented depths only, synthetic terrain, x-ray view, crossing QA panel, and a measured-log ingest fixture. No deployment.
 - Web viewer ported to React 19, React Three Fiber, Tailwind 4, TanStack Query, Zustand, and Zod on 2026-10-28. The landing page and route entry documents are prerendered. Deployment is still pending.
 - Web viewer plan: [`.opencode/plans/web-viewer.md`](.opencode/plans/web-viewer.md).

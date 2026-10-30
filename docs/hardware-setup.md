@@ -411,6 +411,7 @@ Verified on-device behaviour:
 - `n` starts note capture; the next key within 15 s becomes the note tag.
 - `q` closes the session (`SESSION_END` row, flush, rename `LX_CURRENT.csv` to the session name) and returns to idle.
 - The microSD must be seated before power-up; the app shows `FIELD error / SD mount failed` otherwise. All SD pin facts are as in section 7.
+- 30-minute battery endurance run (2026-10-30): 3960 rows over ~30 min, no crash, no screen freeze. Ride mode wrote 2504 samples averaging 125 ms (8 Hz exact; per-sample jitter 66-185 ms). Station sampling pauses during the S/P averaging windows by design. Keyboard registered after 60 s of dashboard idle. Battery read 4.19 V at session start and 4.15 V at session end (`M5.Power.getBatteryLevel()` stays 100% all run; the voltage is the useful signal).
 
 Field fact: keyboard events work when the device runs on battery (USB unplugged). With a serial listener attached, keys may be dead; unplug, operate, replug. Serial REPL + WebTerminal are upload/debug tools only.
 
