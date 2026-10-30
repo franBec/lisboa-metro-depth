@@ -9,11 +9,12 @@ This README is the living project document. Update it as work progresses.
 - Hardware received 2026-10-29 (Mauser order 2026EC1631140, EUR 89.41). Core bench tests passed.
 - UIFlow2 2.5.3 flashed 2026-10-29. Stock 8 MB flash backed up and verified. Bench harness in `firmware/bench/`.
 - BME280, microSD, and 10-minute 8 Hz logging pass. Display sleep, standalone boot, and UIFlow2 keyboard wake remain to test.
+- Field survey logger implemented 2026-10-30 in `firmware/field/`: presets, station windows, ride mode, anchors, notes, single-screen dashboard. Full dry run passed on device (surface, platform, 8 Hz ride, station stop, note, session end); 30-minute endurance run and the pilot trip remain.
 - Local web demo implemented 2026-10-27. Real GTFS geometry, documented depths only, synthetic terrain, x-ray view, crossing QA panel, and a measured-log ingest fixture. No deployment.
 - Web viewer ported to React 19, React Three Fiber, Tailwind 4, TanStack Query, Zustand, and Zod on 2026-10-28. The landing page and route entry documents are prerendered. Deployment is still pending.
 - Web viewer plan: [`.opencode/plans/web-viewer.md`](.opencode/plans/web-viewer.md).
 - Owner: Franco.
-- Date: 2026-10-29.
+- Date: 2026-10-30.
 
 ## Local web demo
 
@@ -126,6 +127,30 @@ Deployment:
 
 - `firmware/bench/bench.py` - I2C scan, BME280 read, SD mount, battery read, 8 Hz CSV logger.
 - `firmware/bench/bme280.py` - vendored MIT BME280 driver.
+
+### Field logger (`firmware/field/`)
+
+Single-session survey logger. Source of truth in the repo; deployed to the device as `/flash/main.py` plus `/flash/apps/field/`:
+
+- `main.py` - boot, SD mount, sensor init, keyboard dispatch, 5 Hz dashboard, main loop.
+- `bme280.py` - vendored MIT driver (copy of the bench driver).
+- `config.py` - presets, pins, rates, key map, windows, depth conversion (hypsometric `8434*ln(p0/p1)`).
+- `logger.py` - CSV writer: exact bench header, sanitised notes, `SESSION_START`/`SESSION_END`, `LX_YYYYMMDD_HHMMSS` naming (ticks fallback), temp-file `/sd/LX_CURRENT.csv` then rename, flush every 10 s and after each event.
+- `survey.py` - event state machine: presets 1-6 with canonical CSV codes (`C`/`D`), station-keyed surface store, `(line,station)` anchors with `/sd/anchors.csv` persistence, ride mode with rate switch 1 Hz/8 Hz, station stops, note tags.
+- `ui.py` - single dashboard: preset label, mode, live pressure/depth/battery, window countdown, message row, key legend.
+
+Deployment (UIFlow2 2.5.3, boot-option `Run main.py directly`):
+
+1. Upload the six files to `/flash/apps/field/` with the WebTerminal file manager.
+2. Copy `apps/field/main.py` to `/flash/main.py`, then set `boot_option=0` in NVS (`esp32.NVS("uiflow")`), `os.sync()`.
+3. Power-cycle. The app takes the screen and the keyboard directly after boot.
+
+Keyboard facts (verified 2026-10-30):
+
+- `hardware.MatrixKeyboard` (`tick()` + `get_key()` returning ASCII codes, lowercase letters) works when the app runs in the boot context.
+- A REPL session after Ctrl-C interrupting the launcher does NOT receive key events reliably; plan on boot-context operation only.
+- Keys register with USB unplugged (battery). With a serial listener attached the keys can go dead; if that happens, unplug, operate, replug. Field behaviour is the intended single-source truth.
+- Key map: digits 1-6 presets, `s` surface window, `p` platform window, `r` ride toggle, `k` station stop, `n` note plus next-key tag, `q` session end. Events land in canonical codes recorded above.
 
 ### Modules
 

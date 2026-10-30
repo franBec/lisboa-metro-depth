@@ -360,6 +360,66 @@ esptool --chip esp32s3 --port /dev/ttyACM0 --baud 921600 \
 
 Re-enter download mode first. Keep the backup outside the repository.
 
+## 13. Field firmware deployment
+
+Status: implemented 2026-10-30, see `firmware/field/` and the README field logger section.
+
+Deploy steps that were verified on device:
+
+1. Power the Cardputer into the UIFlow2 launcher menu.
+2. Connect the WebTerminal at `https://uiflow2.m5stack.com/` (or a fresh serial REPL).
+3. Create the app directory once:
+
+```python
+import os
+try:
+    os.mkdir("/flash/apps/field")
+except OSError:
+    pass
+print("MDIR OK", os.listdir("/flash/apps"))
+```
+
+4. Upload the six `firmware/field/*.py` files to `/flash/apps/field/` with the WebTerminal file manager (binary upload preserves multi-line sources exactly; REPL pastes collapse newlines in this firmware and cannot be trusted for app files).
+5. Copy the boot entry once per app update:
+
+```python
+open("/flash/main.py", "w").write(open("/flash/apps/field/main.py").read())
+print("BOOTCOPY OK")
+```
+
+6. Bootstrap the boot option once:
+
+```python
+import esp32
+nvs = esp32.NVS("uiflow")
+nvs.set_u8("boot_option", 0)
+nvs.commit()
+import os
+os.sync()
+print("BOOTSET OK")
+```
+
+7. Power-cycle. `boot_option=0` runs `/flash/main.py` directly; the app owns the screen and keyboard from that moment.
+
+Verified on-device behaviour:
+
+- Dashboard draws and samples start as soon as a preset key (1-6) is pressed; before that the app sits idle with no rows.
+- `S` gives a 60 s average with a countdown, `P` a 45 s one; pressing any key during a window cancels it.
+- After the surface completes, station samples show the depth against the station surface; the surface store is keyed by station so the Alameda surface serves both lines.
+- Platform completion writes `anchors.csv` (`line,station,depth_m`) on the card; the file reloads at boot.
+- Ride mode (`r`) switches 1 Hz -> 8 Hz; sample spacing stayed 120-134 ms on-device; `k` logs `STATION_STOP` with the stored anchor depth or a `raw-anchor` note.
+- `n` starts note capture; the next key within 15 s becomes the note tag.
+- `q` closes the session (`SESSION_END` row, flush, rename `LX_CURRENT.csv` to the session name) and returns to idle.
+- The microSD must be seated before power-up; the app shows `FIELD error / SD mount failed` otherwise. All SD pin facts are as in section 7.
+
+Field fact: keyboard events work when the device runs on battery (USB unplugged). With a serial listener attached, keys may be dead; unplug, operate, replug. Serial REPL + WebTerminal are upload/debug tools only.
+
+## 14. Recovery checklist (field firmware)
+
+- A frozen screen means the app crashed: power-cycle. The latest crash reason was printed to the serial log (`FIELD crash: ...`); boot proceeds normally afterwards.
+- If `/flash/main.py` needs a rewrite, use step 5 above; verify with `print('survey' in open('/flash/main.py').read())` before cycling.
+- To return to the launcher for WebTerminal work, reset `boot_option=1` the same way as step 6 and power-cycle.
+
 ## References
 
 - Project README: [`../README.md`](../README.md)
