@@ -407,7 +407,7 @@ Verified on-device behaviour:
 - `S` gives a 60 s average with a countdown, `P` a 45 s one; pressing any key during a window cancels it.
 - After the surface completes, station samples show the depth against the station surface; the surface store is keyed by station so the Alameda surface serves both lines.
 - Platform completion writes `anchors.csv` (`line,station,depth_m`) on the card; the file reloads at boot.
-- Ride mode (`r`) switches 1 Hz -> 8 Hz; sample spacing stayed 120-134 ms on-device; `k` logs `STATION_STOP` with the stored anchor depth or a `raw-anchor` note.
+- Ride mode (`r`) switches 1 Hz -> 8 Hz; sample spacing stayed 120-134 ms on-device; `k` logs `STATION_STOP` with the stored anchor depth or a `raw-anchor` note. `k` only writes that row while a ride is active; at the dashboard it shows `no ride` on screen and writes nothing.
 - `n` starts note capture; the next key within 15 s becomes the note tag.
 - `q` closes the session (`SESSION_END` row, flush, rename `LX_CURRENT.csv` to the session name) and returns to idle.
 - The microSD must be seated before power-up; the app shows `FIELD error / SD mount failed` otherwise. All SD pin facts are as in section 7.
@@ -420,6 +420,16 @@ Field fact: keyboard events work when the device runs on battery (USB unplugged)
 - A frozen screen means the app crashed: power-cycle. The latest crash reason was printed to the serial log (`FIELD crash: ...`); boot proceeds normally afterwards.
 - If `/flash/main.py` needs a rewrite, use step 5 above; verify with `print('survey' in open('/flash/main.py').read())` before cycling.
 - To return to the launcher for WebTerminal work, reset `boot_option=1` the same way as step 6 and power-cycle.
+
+## 15. Serial REPL notes (plain cable work)
+
+Facts from driving the Cardputer over `/dev/ttyACM0` with pyserial (learned 2026-10-30):
+
+- End every REPL statement with a single trailing `\r` (`CR`). Adding `\x04` (EOT) after the line makes the `>>> ` prompt take about 4 s to return, which slows file upload roughly tenfold; without it the prompt comes back in well under a second.
+- Long multi-block paste-mode writes (`Ctrl-E` / `\x05` ... `\x04`) hang on this firmware and are unreliable on long scripts. For file uploads use the chunked form instead: buffer base64 pieces one short statement at a time, then a single final statement writes the decoded bytes.
+- Readback can lie. Right after `open(path, 'w').write(...)` over REPL, a later `len(open(path).read())` may report the OLD length. Run `os.sync()` and verify sizes from a fresh serial session before trusting them.
+- The USB CDC endpoint wedges after a long serial session (10+ min of streaming): the device node stays present but `open()` blocks forever, with nothing in `dmesg`. Unplug/replug (or power-cycle) is the only recovery. Keep each serial phase short and let the device idle between phases.
+- Boot output is silent for a healthy field app: an empty stream after power-up means no crash; only exceptions print (`FIELD crash: ...`).
 
 ## References
 
