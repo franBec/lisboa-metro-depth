@@ -561,8 +561,8 @@ body:has(.viewer-root) {
 }
 
 .station-dot {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   flex: 0 0 auto;
 }

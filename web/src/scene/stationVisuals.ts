@@ -19,7 +19,7 @@ export interface PlatformVisual {
 export interface StationLabelVisual {
   stationId: string
   name: string
-  color: string
+  colors: string[]
   lineIds: string[]
   interchange: boolean
   allUnknown: boolean
@@ -74,7 +74,7 @@ export function buildStationVisuals(
     labels.push({
       stationId: station.id,
       name: station.name,
-      color: lineColors.get(station.lines[0]) ?? '#999999',
+      colors: station.lines.map((lineId) => lineColors.get(lineId) ?? '#999999'),
       lineIds: station.lines,
       interchange: station.lines.length > 1,
       allUnknown,

@@ -7,6 +7,20 @@ interface StationLabelOverlayProps {
   labelRefs: RefObject<Map<string, HTMLDivElement>>
 }
 
+function dotBackground(colors: string[]): string {
+  if (colors.length <= 1) {
+    return colors[0] ?? '#999999'
+  }
+
+  const slice = 100 / colors.length
+  const stops = colors.map(
+    (color, index) =>
+      `${color} ${index * slice}% ${(index + 1) * slice}%`,
+  )
+
+  return `linear-gradient(90deg, ${stops.join(', ')})`
+}
+
 export function StationLabelOverlay({
   labels,
   selectedLines,
@@ -40,7 +54,7 @@ export function StationLabelOverlay({
           >
             <span
               className="station-dot"
-              style={{ background: label.color }}
+              style={{ background: dotBackground(label.colors) }}
             />
             <span>{label.name}</span>
           </div>
