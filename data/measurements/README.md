@@ -38,7 +38,8 @@ The schema and event vocabulary are documented in the project [README](../../REA
 1. Copy the CSV from the microSD card without modifying it.
 2. Put bench logs in `bench/` and survey logs in `field/`.
 3. Add an `index.json` entry. Compute the digest with `sha256sum <file>`.
-4. Run `python3 -m unittest discover -s pipeline/tests -v`.
+4. Run `python3 pipeline/ingest/check_field_log.py <file>` and inspect the event and measurement summary.
+5. Run `python3 -m unittest discover -s pipeline/tests -v`.
 
 Keep field notes free of personal information because the raw files are published.
 

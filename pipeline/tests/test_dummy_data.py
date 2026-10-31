@@ -19,7 +19,10 @@ class DummyDataTest(unittest.TestCase):
     def test_manifest_contract(self) -> None:
         self.assertEqual(self.manifest["schema_version"], 1)
         self.assertTrue(self.manifest["demo"])
-        self.assertFalse(self.manifest["capabilities"]["measured_depths"])
+        measured = self.manifest["counts"].get("measured_platforms", 0) + self.manifest[
+            "counts"
+        ].get("measured_segments", 0)
+        self.assertEqual(self.manifest["capabilities"]["measured_depths"], measured > 0)
         self.assertFalse(self.manifest["capabilities"]["real_terrain"])
         self.assertEqual(self.manifest["counts"]["stations"], len(self.stations))
         self.assertEqual(self.manifest["counts"]["lines"], len(self.network["lines"]))
@@ -48,7 +51,6 @@ class DummyDataTest(unittest.TestCase):
         alameda = next(station for station in self.stations if station["id"] == "alameda")
         self.assertEqual(sorted(alameda["lines"]), ["C", "D"])
         self.assertEqual(len(alameda["platforms"]), 2)
-        self.assertTrue(all(platform["platform_depth_m"] is None for platform in alameda["platforms"]))
 
     def test_network_segments(self) -> None:
         station_ids = {station["id"] for station in self.stations}
@@ -91,9 +93,9 @@ class DummyDataTest(unittest.TestCase):
         segments = [segment for line in self.network["lines"] for segment in line["segments"]]
         estimated = sum(segment["depth_source"] == "estimated" for segment in segments)
         unknown = sum(segment["depth_source"] == "unknown" for segment in segments)
-        self.assertEqual(self.manifest["provenance_counts"]["segments"]["estimated"], estimated)
-        self.assertEqual(self.manifest["provenance_counts"]["segments"]["unknown"], unknown)
-        self.assertEqual(self.manifest["provenance_counts"]["segments"]["measured"], 0)
+        for source in ("measured", "estimated", "unknown"):
+            expected = sum(segment["depth_source"] == source for segment in segments)
+            self.assertEqual(self.manifest["provenance_counts"]["segments"][source], expected)
         self.assertGreater(estimated, 0)
         self.assertGreater(unknown, 0)
 

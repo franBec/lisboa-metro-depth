@@ -42,30 +42,34 @@
         "lat": 38.737255,
         "lon": -9.134086,
         "surface_elevation_m": 69.76,
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 6.82,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 6.82,
+        "measurement_ids": [
+          "LX_3193:738"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       },
       {
         "line": "D",
         "lat": 38.737255,
         "lon": -9.134086,
         "surface_elevation_m": 69.76,
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 17.55,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 17.55,
+        "measurement_ids": [
+          "LX_3193:1018"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -246,15 +250,17 @@
         "lat": 38.7426,
         "lon": -9.133807,
         "surface_elevation_m": 86.76,
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 8.96,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 8.96,
+        "measurement_ids": [
+          "LX_3193:248"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -273,15 +279,17 @@
         "lat": 38.733475,
         "lon": -9.134451,
         "surface_elevation_m": 67.55,
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 6.42,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 6.42,
+        "measurement_ids": [
+          "LX_3193:2600"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -915,15 +923,17 @@
         "lat": 38.73919,
         "lon": -9.123664,
         "surface_elevation_m": 83.99,
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 20.21,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 20.21,
+        "measurement_ids": [
+          "LX_3193:22280"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -1282,15 +1292,17 @@
         "lat": 38.735275,
         "lon": -9.145576,
         "surface_elevation_m": 85.67,
-        "platform_depth_m": 19.95,
-        "depth_source": "official",
-        "depth_basis": "station",
+        "platform_depth_m": 19.6,
+        "depth_source": "measured",
+        "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": 19.95,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 19.6,
+        "measurement_ids": [
+          "LX_3193:24663"
+        ],
         "source_url": null,
-        "note": "Station-level value reused on both lines. Platform separation unknown."
+        "note": "Measured platform depth."
       }
     ]
   },

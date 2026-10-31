@@ -9,12 +9,13 @@ This README is the living project document. Update it as work progresses.
 - Hardware received 2026-10-29 (Mauser order 2026EC1631140, EUR 89.41). Core bench tests passed.
 - UIFlow2 2.5.3 flashed 2026-10-29. Stock 8 MB flash backed up and verified. Bench harness in `firmware/bench/`.
 - BME280, microSD, and 10-minute 8 Hz logging pass. Standalone boot and keyboard wake on battery pass with the field app; display sleep remains to test.
-- Field survey logger implemented 2026-10-30 in `firmware/field/`: presets, station windows, ride mode, anchors, notes, single-screen dashboard. Full dry run (surface, platform, 8 Hz ride, station stop, note, session end) and a 30-minute battery endurance run passed: 3960 rows in ~30 min with no crash, ride samples averaging 125 ms at 8 Hz, `SESSION_START`/`SESSION_END` intact, keyboard registering after 60 s idle, battery reading 4.19 V going in and 4.15 V coming out. Device firmware is byte-identical to `0e6799f`. The cross-line pilot trip remains.
-- Local web demo implemented 2026-10-27. Real GTFS geometry, documented depths only, synthetic terrain, x-ray view, crossing QA panel, and a measured-log ingest fixture. No deployment.
+- Field survey logger implemented 2026-10-30 in `firmware/field/`: presets, station windows, ride mode, anchors, notes, single-screen dashboard. Full dry run (surface, platform, 8 Hz ride, station stop, note, session end) and a 30-minute battery endurance run passed: 3960 rows in ~30 min with no crash, ride samples averaging 125 ms at 8 Hz, `SESSION_START`/`SESSION_END` intact, keyboard registering after 60 s idle, battery reading 4.19 V going in and 4.15 V coming out. Device firmware was byte-identical to `0e6799f` for that run. The pilot exposed a depth-sign bug: firmware stored altitude, not positive-down depth. Repo firmware is fixed; re-flash the device before the next survey.
+- First cross-line pilot completed 2026-10-31. Six platform depths and four crossing segments measured. Alameda gap: C 6.82 m, D 17.55 m, vertical gap 10.73 m. Saldanha D 19.60 m vs official 19.95 m. Log: [`data/measurements/field/LX_3193.csv`](data/measurements/field/LX_3193.csv). Raw 8 Hz profiles remain unfiltered. The measured overlay is merged into `web/public/data/v1`.
+- Local web demo implemented 2026-10-27. Real GTFS geometry, documented and measured depths, synthetic terrain, x-ray view, crossing QA panel, and a measured-log ingest fixture. No deployment.
 - Web viewer ported to React 19, React Three Fiber, Tailwind 4, TanStack Query, Zustand, and Zod on 2026-10-28. The landing page and route entry documents are prerendered. Deployment is still pending.
 - Web viewer plan: [`.opencode/plans/web-viewer.md`](.opencode/plans/web-viewer.md).
 - Owner: Franco.
-- Date: 2026-10-30.
+- Date: 2026-10-31.
 
 ## Local web demo
 
@@ -52,9 +53,9 @@ pnpm --dir web preview
 
 `pnpm --dir web build` also prerenders the landing page and writes static entry documents for `/maps/lisboa/` and `/maps/lisboa/method/`.
 
-The demo uses `web/public/data/v1/` with the same asset contract the final pipeline will use. The measured fixture is at `pipeline/ingest/tests/fixtures/crossing_sample.csv` and merges only the four crossing segments around Alameda. It is synthetic test data, not a survey.
+The demo uses `web/public/data/v1/` with the same asset contract the final pipeline will use. The first cross-line pilot is merged: six measured platform depths and four measured segments around Alameda. The synthetic ingest fixture remains at `pipeline/ingest/tests/fixtures/crossing_sample.csv`.
 
-Current limitation: only 10 current stations have documented depths. Most corridor sections therefore stay unknown or estimated until the survey replaces them. The viewer never draws a guessed crossing for an unknown platform.
+Current limitation: six platforms have measured depths. Most corridor sections remain unknown or estimated until more surveys replace them. Raw ride profiles are stored but not filtered or re-referenced yet; the current network uses two vertices per segment. The viewer never draws a guessed crossing for an unknown platform.
 
 ## Core decisions
 
@@ -134,7 +135,7 @@ Single-session survey logger. Source of truth in the repo; deployed to the devic
 
 - `main.py` - boot, SD mount, sensor init, keyboard dispatch, 5 Hz dashboard, main loop.
 - `bme280.py` - vendored MIT driver (copy of the bench driver).
-- `config.py` - presets, pins, rates, key map, windows, depth conversion (hypsometric `8434*ln(p0/p1)`).
+- `config.py` - presets, pins, rates, key map, windows, positive-down depth (`8434*ln(p_now/p_ref)`).
 - `logger.py` - CSV writer: exact bench header, sanitised notes, `SESSION_START`/`SESSION_END`, `LX_YYYYMMDD_HHMMSS` naming (ticks fallback), temp-file `/sd/LX_CURRENT.csv` then rename, flush every 10 s and after each event.
 - `survey.py` - event state machine: presets 1-6 with canonical CSV codes (`C`/`D`), station-keyed surface store, `(line,station)` anchors with `/sd/anchors.csv` persistence, ride mode with rate switch 1 Hz/8 Hz, station stops, note tags.
 - `ui.py` - single dashboard: preset label, mode, live pressure/depth/battery, window countdown, message row, key legend.
@@ -360,20 +361,21 @@ Reference: https://www.mdpi.com/2673-3951/6/4/113
 
 ### Crossing pilot
 
-First field test after bench tests:
+Completed 2026-10-31. Route:
 
 - Green: Areeiro, Alameda, Arroios.
 - Red: Olaias, Alameda, Saldanha.
 
 At Alameda, measure both platforms separately with `line=C` and `line=D`. Without both values the viewer correctly reports an unresolved crossing.
 
-Then ride the two sections with `RIDE_START`, `STATION_STOP` at Alameda, and `RIDE_END`. Copy the Cardputer CSV exports into `data/measurements/field/`, add the session to `data/measurements/index.json`, then merge the log with:
+Then ride the two sections with `RIDE_START`, `STATION_STOP` at Alameda, and `RIDE_END`. Measure the destination platform before the ride when possible. Otherwise the final `STATION_STOP` is logged as `raw-anchor`, and ingest re-anchors it to the later platform measurement. Copy the Cardputer CSV exports into `data/measurements/field/`, add the session to `data/measurements/index.json`, then check and merge:
 
 ```bash
+python3 pipeline/ingest/check_field_log.py data/measurements/field/LX_YYYYMMDD_HHMMSS.csv
 python3 pipeline/ingest/merge.py --input data/measurements/field/LX_YYYYMMDD_HHMMSS.csv --data web/public/data/v1
 ```
 
-Expected result: four measured segments, measured platform depths at Alameda, and a crossing QA panel showing the vertical gap. The checked-in `crossing_sample.csv` fixture demonstrates the same path with synthetic values.
+Result: four measured segments and six measured platforms. Alameda C is 6.82 m deep, Alameda D is 17.55 m deep, and the vertical gap is 10.73 m. Saldanha D is 19.60 m against the official 19.95 m station-level value. Raw 8 Hz profiles remain unfiltered and are not yet used for vertical shape. The `crossing_sample.csv` fixture still demonstrates the path with synthetic values.
 
 ## Data pipeline
 

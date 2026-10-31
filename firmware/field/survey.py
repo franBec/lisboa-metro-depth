@@ -56,7 +56,7 @@ class Survey:
                     except ValueError:
                         continue
                     if line_code and station:
-                        self.anchors_depth[(line_code, station)] = depth
+                        self.anchors_depth[(line_code, station)] = abs(depth)
         except OSError:
             self.log_line("anchors file absent; starting empty")
             return

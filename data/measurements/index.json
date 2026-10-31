@@ -43,6 +43,28 @@
       "bytes": 407201,
       "sha256": "47c93e19347b06802ba59fe2fa9b03294b56ac10f1efad88447f3cb0072d2222",
       "notes": "10 min endurance test at 8 Hz; 4,800 samples plus start and end events."
+    },
+    {
+      "session_id": "LX_31832",
+      "file": "bench/LX_31832.csv",
+      "kind": "bench",
+      "date": "2026-10-30",
+      "duration_s": 1763.008,
+      "rows": 3960,
+      "bytes": 356546,
+      "sha256": "fff91522c5a38372319b602649269b8a3cba36364a7af02d0b4a0685eb796329",
+      "notes": "30 min endurance run at 1 Hz/8 Hz; one surface, one platform, and one ride marker. Note tag 9 exercises the note key. Battery 4.19 V to 4.15 V."
+    },
+    {
+      "session_id": "LX_3193",
+      "file": "field/LX_3193.csv",
+      "kind": "survey",
+      "date": "2026-10-31",
+      "duration_s": 6711.831,
+      "rows": 24696,
+      "bytes": 2196697,
+      "sha256": "4ee9e21f66d58eda0f852595c5ba5695a153f7b8a5a433ad6c842ec3cb171ea6",
+      "notes": "Cross-line pilot survey. Six platform measurements and four Alameda crossing segments. Duplicate Olaias surface: first measured during ride mode, second used. Green RIDE_END missed at Areeiro and closed at Olaias. Saldanha STATION_STOP is raw-anchor and was re-anchored to the later platform measurement during ingest. No RTC timestamps."
     }
   ]
 }

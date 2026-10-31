@@ -44,7 +44,9 @@ def read_log(path: Path) -> list[dict[str, str]]:
         missing = {"record_type", "event", "line", "station", "depth_m"} - set(reader.fieldnames)
         if missing:
             raise ValueError(f"missing columns: {', '.join(sorted(missing))}")
-        return [{key: (value or "").strip() for key, value in row.items()} for row in reader]
+        rows = [{key: (value or "").strip() for key, value in row.items()} for row in reader]
+    _normalize_legacy_depths(rows)
+    return rows
 
 
 def _float(value: str) -> float | None:
@@ -54,6 +56,25 @@ def _float(value: str) -> float | None:
         return float(value)
     except ValueError:
         return None
+
+
+def _normalize_legacy_depths(rows: list[dict[str, str]]) -> None:
+    depths = [
+        depth
+        for row in rows
+        if row.get("event") in {"PLATFORM", "STATION_STOP"}
+        and (depth := _float(row.get("depth_m", ""))) is not None
+        and depth != 0
+    ]
+    if not depths:
+        return
+    negatives = sum(depth < 0 for depth in depths)
+    if negatives * 2 <= len(depths):
+        return
+    for row in rows:
+        depth = _float(row.get("depth_m", ""))
+        if depth is not None and depth != 0:
+            row["depth_m"] = str(-depth)
 
 
 def _measurement_id(row: dict[str, str]) -> str:
@@ -171,4 +192,15 @@ def extract_segment_profiles(rows: list[dict[str, str]]) -> dict[str, SegmentPro
 def aggregate(rows: list[dict[str, str]]) -> tuple[
     dict[tuple[str, str], PlatformMeasurement], dict[str, SegmentProfile]
 ]:
-    return extract_platform_measurements(rows), extract_segment_profiles(rows)
+    platforms = extract_platform_measurements(rows)
+    profiles = extract_segment_profiles(rows)
+    for profile in profiles.values():
+        if not profile.points:
+            continue
+        start = platforms.get((profile.line, profile.from_station))
+        end = platforms.get((profile.line, profile.to_station))
+        if start is not None:
+            profile.points[0] = (0.0, start.depth_m)
+        if end is not None:
+            profile.points[-1] = (1.0, end.depth_m)
+    return platforms, profiles

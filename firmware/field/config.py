@@ -156,4 +156,4 @@ def depth_m(p_ref, p_now):
         return None
     if p_now <= 0 or p_ref <= 0:
         return None
-    return 8434.0 * math.log(p_ref / p_now)
+    return 8434.0 * math.log(p_now / p_ref)

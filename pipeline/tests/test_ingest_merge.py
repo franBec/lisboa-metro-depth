@@ -34,8 +34,8 @@ class IngestMergeTest(unittest.TestCase):
             self.assertEqual(result["segment_records"], 4)
             self.assertTrue(manifest["capabilities"]["measured_depths"])
             self.assertTrue(manifest["demo"])
-            self.assertNotEqual(manifest["dataset_version"], before_manifest["dataset_version"])
-            self.assertTrue(manifest["dataset_version"].endswith("+measured"))
+            expected_version = before_manifest["dataset_version"].split("+")[0] + "+measured"
+            self.assertEqual(manifest["dataset_version"], expected_version)
 
             expected_segments = {
                 "C:alameda-areeiro",
