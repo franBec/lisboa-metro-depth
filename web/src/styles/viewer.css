@@ -840,15 +840,32 @@ body:has(.viewer-root) {
   visibility: hidden;
   padding: 3px 6px;
   border: 1px solid rgba(220, 220, 205, 0.16);
+  border-radius: 0;
+  appearance: none;
   background: rgba(11, 15, 16, 0.72);
   color: rgba(232, 229, 218, 0.82);
   font-family: var(--font-sans);
   font-size: 9px;
+  font-weight: 400;
   line-height: normal;
   letter-spacing: 0.035em;
+  text-align: left;
   white-space: nowrap;
-  pointer-events: none;
-  transition: opacity 160ms ease;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 160ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.station-label:hover,
+.station-label:focus-visible {
+  border-color: rgba(215, 180, 91, 0.45);
+  background: rgba(11, 15, 16, 0.94);
+  color: var(--color-ink);
+  outline: none;
+}
+
+.station-label:focus-visible {
+  box-shadow: 0 0 0 1px var(--color-accent);
 }
 
 .station-label.interchange {

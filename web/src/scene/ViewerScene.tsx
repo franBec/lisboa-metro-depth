@@ -32,7 +32,7 @@ interface ViewerSceneProps {
   selectedSegmentId: string | null
   xray: boolean
   stationVisuals: StationVisuals
-  labelRefs: RefObject<Map<string, HTMLDivElement>>
+  labelRefs: RefObject<Map<string, HTMLButtonElement>>
   onSelectStation: (stationId: string) => void
   onSelectSegment: (segmentId: string) => void
 }

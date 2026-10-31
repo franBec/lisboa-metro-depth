@@ -50,7 +50,7 @@ function SceneView({
       ),
     [data.network.lines, data.stations, projection, verticalScale],
   )
-  const labelRefs = useRef(new Map<string, HTMLDivElement>())
+  const labelRefs = useRef(new Map<string, HTMLButtonElement>())
 
   return (
     <>
@@ -75,6 +75,7 @@ function SceneView({
         labels={stationVisuals.labels}
         selectedLines={selectedLines}
         labelRefs={labelRefs}
+        onSelectStation={onSelectStation}
       />
     </>
   )

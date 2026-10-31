@@ -6,7 +6,7 @@ import type { StationLabelVisual } from './stationVisuals'
 
 interface StationLabelDriverProps {
   labels: StationLabelVisual[]
-  labelRefs: RefObject<Map<string, HTMLDivElement>>
+  labelRefs: RefObject<Map<string, HTMLButtonElement>>
 }
 
 export function StationLabelDriver({
@@ -23,7 +23,7 @@ export function StationLabelDriver({
   useFrame(() => {
     const setVisible = (
       stationId: string,
-      element: HTMLDivElement,
+      element: HTMLButtonElement,
       visible: boolean,
     ) => {
       if (visibilityRef.current.get(stationId) === visible) {
@@ -45,7 +45,7 @@ export function StationLabelDriver({
 
     const candidates: Array<{
       label: StationLabelVisual
-      element: HTMLDivElement
+      element: HTMLButtonElement
       x: number
       y: number
       priority: number

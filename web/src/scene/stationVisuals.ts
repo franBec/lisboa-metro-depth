@@ -23,6 +23,7 @@ export interface StationLabelVisual {
   lineIds: string[]
   interchange: boolean
   allUnknown: boolean
+  depthSummary: string
   position: Vector3
 }
 
@@ -78,6 +79,13 @@ export function buildStationVisuals(
       lineIds: station.lines,
       interchange: station.lines.length > 1,
       allUnknown,
+      depthSummary: station.platforms
+        .map((platform) =>
+          platform.platform_depth_m === null
+            ? `${platform.line} unknown`
+            : `${platform.line} ${platform.platform_depth_m.toFixed(1)} m`,
+        )
+        .join(' · '),
       position: new Vector3(x, surfaceY + 42, z),
     })
   }

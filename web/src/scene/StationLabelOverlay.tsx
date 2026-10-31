@@ -4,7 +4,8 @@ import type { StationLabelVisual } from './stationVisuals'
 interface StationLabelOverlayProps {
   labels: StationLabelVisual[]
   selectedLines: ReadonlySet<string>
-  labelRefs: RefObject<Map<string, HTMLDivElement>>
+  labelRefs: RefObject<Map<string, HTMLButtonElement>>
+  onSelectStation: (stationId: string) => void
 }
 
 function dotBackground(colors: string[]): string {
@@ -25,9 +26,10 @@ export function StationLabelOverlay({
   labels,
   selectedLines,
   labelRefs,
+  onSelectStation,
 }: StationLabelOverlayProps) {
   return (
-    <div className="station-label-layer" aria-hidden="true">
+    <div className="station-label-layer">
       {labels.map((label) => {
         const active =
           selectedLines.size === 0 ||
@@ -41,9 +43,13 @@ export function StationLabelOverlay({
           .join(' ')
 
         return (
-          <div
+          <button
             key={label.stationId}
+            type="button"
             className={className}
+            aria-label={`Open ${label.name} station`}
+            title={`${label.name} · ${label.depthSummary}`}
+            onClick={() => onSelectStation(label.stationId)}
             ref={(element) => {
               if (element) {
                 labelRefs.current.set(label.stationId, element)
@@ -57,7 +63,7 @@ export function StationLabelOverlay({
               style={{ background: dotBackground(label.colors) }}
             />
             <span>{label.name}</span>
-          </div>
+          </button>
         )
       })}
     </div>

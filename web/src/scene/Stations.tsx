@@ -14,7 +14,7 @@ interface StationsProps {
   labels: StationLabelVisual[]
   selectedLines: ReadonlySet<string>
   onSelectStation: (stationId: string) => void
-  labelRefs: RefObject<Map<string, HTMLDivElement>>
+  labelRefs: RefObject<Map<string, HTMLButtonElement>>
   tunnelRuns: TunnelRun[]
   xray: boolean
   onSelectSegment: (segmentId: string) => void
