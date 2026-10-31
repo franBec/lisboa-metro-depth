@@ -90,6 +90,7 @@ def main() -> None:
     for line in lines:
         for station in line["stations"]:  # type: ignore[union-attr]
             station_id = str(station["slug"])
+            ground = elevations[station_id]
             record = stations.setdefault(
                 station_id,
                 {
@@ -97,6 +98,8 @@ def main() -> None:
                     "name": station["name"],
                     "lat": station["lat"],
                     "lon": station["lon"],
+                    "ground_elevation_m": float(ground["elevation_m"]),
+                    "ground_elevation_source": ground["source"],
                     "platforms": {},
                 },
             )
@@ -105,6 +108,8 @@ def main() -> None:
                 "lat": station["lat"],
                 "lon": station["lon"],
                 "surface_elevation_m": 0.0,
+                "ground_elevation_m": float(ground["elevation_m"]),
+                "ground_elevation_source": ground["source"],
                 "platform_depth_m": None,
                 "depth_source": "unknown",
                 "depth_basis": "platform",
@@ -292,6 +297,8 @@ def main() -> None:
                     "lat": round(float(platform["lat"]), 6),
                     "lon": round(float(platform["lon"]), 6),
                     "surface_elevation_m": round(float(platform["surface_elevation_m"]), 2),
+                    "ground_elevation_m": round(float(platform["ground_elevation_m"]), 2),
+                    "ground_elevation_source": platform["ground_elevation_source"],
                     "platform_depth_m": platform["platform_depth_m"],
                     "depth_source": platform["depth_source"],
                     "depth_basis": platform["depth_basis"],
@@ -311,6 +318,8 @@ def main() -> None:
                 "lat": round(float(station["lat"]), 6),
                 "lon": round(float(station["lon"]), 6),
                 "surface_elevation_m": round(float(station["surface_elevation_m"]), 2),
+                "ground_elevation_m": round(float(station["ground_elevation_m"]), 2),
+                "ground_elevation_source": station["ground_elevation_source"],
                 "lines": [platform["line"] for platform in platforms],
                 "platforms": platforms,
             }
@@ -370,6 +379,8 @@ def main() -> None:
             "Unknown depths remain null. No underground geometry is drawn where depth is unknown.",
             "Measured survey data will replace estimated segments without changing the viewer.",
             "Toggle X-ray terrain to see estimated tunnels below the surface.",
+            "Station ground elevations come from the Copernicus DEM; the 3D terrain is synthetic.",
+            "Tunnel slopes are averages between platform anchors, not continuous surveyed grades.",
         ],
         "demo_note": "Local demo: real GTFS geometry, documented depths only, synthetic terrain. Toggle X-ray terrain to see estimated tunnels.",
     }

@@ -1,12 +1,15 @@
 import { Link } from 'react-router'
-import type { CSSProperties } from 'react'
+import { useMemo, type CSSProperties } from 'react'
 import type { Line, Manifest, Station } from '../../data/schemas'
 import {
   SOURCE_COLORS,
   SOURCE_LABELS,
   SOURCE_ORDER,
 } from '../../lib/provenance'
+import { getSegmentMetrics } from '../../lib/segmentMetrics'
 import { useViewerStore } from '../../state/viewerStore'
+import { LongSection } from './LongSection'
+import { SegmentPanel } from './SegmentPanel'
 import { StationPanel } from './StationPanel'
 
 const SCALES = [1, 10, 20]
@@ -14,23 +17,41 @@ const SCALES = [1, 10, 20]
 interface ViewerHudProps {
   manifest: Manifest
   lines: Line[]
+  stations: Station[]
   selectedLines: ReadonlySet<string>
   selectedStation: Station | null
+  selectedSegmentId: string | null
+  sectionOpen: boolean
+  sectionLineId: string
   xray: boolean
   onToggleLine: (lineId: string) => void
-  onXRayToggle: (enabled: boolean) => void
+  onSelectStation: (stationId: string) => void
+  onSelectSegment: (segmentId: string) => void
   onCloseStation: () => void
+  onCloseSegment: () => void
+  onToggleSection: (enabled: boolean) => void
+  onSelectSectionLine: (lineId: string) => void
+  onXRayToggle: (enabled: boolean) => void
 }
 
 export function ViewerHud({
   manifest,
   lines,
+  stations,
   selectedLines,
   selectedStation,
+  selectedSegmentId,
+  sectionOpen,
+  sectionLineId,
   xray,
   onToggleLine,
-  onXRayToggle,
+  onSelectStation,
+  onSelectSegment,
   onCloseStation,
+  onCloseSegment,
+  onToggleSection,
+  onSelectSectionLine,
+  onXRayToggle,
 }: ViewerHudProps) {
   const labelsVisible = useViewerStore((state) => state.labelsVisible)
   const inferredVisible = useViewerStore((state) => state.inferredVisible)
@@ -40,6 +61,28 @@ export function ViewerHud({
     (state) => state.setInferredVisible,
   )
   const setVerticalScale = useViewerStore((state) => state.setVerticalScale)
+
+  const stationById = useMemo(
+    () => new Map(stations.map((station) => [station.id, station])),
+    [stations],
+  )
+  const selectedSegment = useMemo(() => {
+    if (!selectedSegmentId) {
+      return null
+    }
+    for (const line of lines) {
+      const segment = line.segments.find(
+        (candidate) => candidate.id === selectedSegmentId,
+      )
+      if (segment) {
+        return {
+          line,
+          metrics: getSegmentMetrics(line.id, segment, stationById),
+        }
+      }
+    }
+    return null
+  }, [lines, selectedSegmentId, stationById])
 
   const demoText = manifest.capabilities.measured_depths
     ? 'Demo terrain · measured overlay'
@@ -130,6 +173,16 @@ export function ViewerHud({
           <label className="toggle">
             <input
               type="checkbox"
+              checked={sectionOpen}
+              onChange={(event) =>
+                onToggleSection(event.target.checked)
+              }
+            />
+            <span>Long section</span>
+          </label>
+          <label className="toggle">
+            <input
+              type="checkbox"
               checked={inferredVisible}
               onChange={(event) =>
                 setInferredVisible(event.target.checked)
@@ -201,10 +254,32 @@ export function ViewerHud({
       </div>
 
       <StationPanel
-        station={selectedStation}
+        station={selectedSegment ? null : selectedStation}
         lines={lines}
+        stations={stations}
         onClose={onCloseStation}
+        onSelectSegment={onSelectSegment}
       />
+
+      <SegmentPanel
+        metrics={selectedSegment?.metrics ?? null}
+        line={selectedSegment?.line ?? null}
+        onClose={onCloseSegment}
+      />
+
+      {sectionOpen ? (
+        <LongSection
+          lines={lines}
+          stations={stations}
+          lineId={sectionLineId}
+          selectedSegmentId={selectedSegmentId}
+          selectedStationId={selectedStation?.id ?? null}
+          onSelectLine={onSelectSectionLine}
+          onSelectSegment={onSelectSegment}
+          onSelectStation={onSelectStation}
+          onClose={() => onToggleSection(false)}
+        />
+      ) : null}
 
       <footer id="credits" className="credits">
         <span id="attribution">

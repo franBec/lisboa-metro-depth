@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import json
 import math
 import unittest
@@ -15,6 +16,15 @@ class DummyDataTest(unittest.TestCase):
         cls.manifest = json.loads((DATA / "manifest.json").read_text(encoding="utf-8"))
         cls.stations = json.loads((DATA / "stations.json").read_text(encoding="utf-8"))
         cls.network = json.loads((DATA / "network.json").read_text(encoding="utf-8"))
+        with open(
+            ROOT / "pipeline" / "curated" / "station_elevations.csv",
+            encoding="utf-8",
+            newline="",
+        ) as handle:
+            cls.ground_elevations = {
+                row["station_id"]: float(row["elevation_m"])
+                for row in csv.DictReader(handle)
+            }
 
     def test_manifest_contract(self) -> None:
         self.assertEqual(self.manifest["schema_version"], 1)
@@ -40,7 +50,17 @@ class DummyDataTest(unittest.TestCase):
                 sorted(station["lines"]),
                 sorted(platform["line"] for platform in station["platforms"]),
             )
+            self.assertAlmostEqual(
+                station["ground_elevation_m"],
+                self.ground_elevations[station["id"]],
+                places=1,
+            )
+            self.assertTrue(station["ground_elevation_source"])
             for platform in station["platforms"]:
+                self.assertAlmostEqual(
+                    platform["ground_elevation_m"],
+                    station["ground_elevation_m"],
+                )
                 if platform["depth_source"] == "unknown":
                     self.assertIsNone(platform["platform_depth_m"])
                 else:

@@ -23,6 +23,8 @@ export function useViewerUrlState(lineIds: string[]) {
   const validLineIds = useMemo(() => new Set(lineIds), [lineIds])
   const lineParam = searchParams.get('line')
   const selectedStationId = searchParams.get('station')
+  const selectedSegmentId = searchParams.get('segment')
+  const sectionOpen = searchParams.get('section') === '1'
   const xray = searchParams.get('xray') === '1'
 
   const selectedLines = useMemo(
@@ -78,7 +80,10 @@ export function useViewerUrlState(lineIds: string[]) {
 
   const selectStation = useCallback(
     (stationId: string): void => {
-      update((params) => params.set('station', stationId), true)
+      update((params) => {
+        params.set('station', stationId)
+        params.delete('segment')
+      }, true)
     },
     [update],
   )
@@ -86,6 +91,33 @@ export function useViewerUrlState(lineIds: string[]) {
   const clearStation = useCallback((): void => {
     update((params) => params.delete('station'), true)
   }, [update])
+
+  const selectSegment = useCallback(
+    (segmentId: string): void => {
+      update((params) => {
+        params.set('segment', segmentId)
+        params.delete('station')
+      }, true)
+    },
+    [update],
+  )
+
+  const clearSegment = useCallback((): void => {
+    update((params) => params.delete('segment'), true)
+  }, [update])
+
+  const setSection = useCallback(
+    (enabled: boolean): void => {
+      update((params) => {
+        if (enabled) {
+          params.set('section', '1')
+        } else {
+          params.delete('section')
+        }
+      }, true)
+    },
+    [update],
+  )
 
   const setXray = useCallback(
     (enabled: boolean): void => {
@@ -103,10 +135,15 @@ export function useViewerUrlState(lineIds: string[]) {
   return {
     selectedLines,
     selectedStationId,
+    selectedSegmentId,
+    sectionOpen,
     xray,
     toggleLine,
     selectStation,
     clearStation,
+    selectSegment,
+    clearSegment,
+    setSection,
     setXray,
   }
 }

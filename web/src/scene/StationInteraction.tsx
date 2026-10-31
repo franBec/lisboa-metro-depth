@@ -2,11 +2,15 @@ import { useThree } from '@react-three/fiber'
 import { useEffect } from 'react'
 import { Vector2, Vector3, type Camera, type Object3D } from 'three'
 import type { StationLabelVisual } from './stationVisuals'
+import type { TunnelRun } from './tunnelRuns'
 
 interface StationInteractionProps {
   labels: StationLabelVisual[]
   onSelect: (stationId: string) => void
   onFocus: (stationId: string) => void
+  tunnelRuns: TunnelRun[]
+  xray: boolean
+  onSelectSegment: (segmentId: string) => void
 }
 
 function findStationId(object: Object3D): string | null {
@@ -50,10 +54,76 @@ function nearestStation(
   return nearestId
 }
 
+function distanceToSegment(
+  px: number,
+  py: number,
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+): number {
+  const dx = x2 - x1
+  const dy = y2 - y1
+  const lengthSq = dx * dx + dy * dy
+  if (lengthSq === 0) {
+    return Math.hypot(px - x1, py - y1)
+  }
+  const t = Math.max(
+    0,
+    Math.min(1, ((px - x1) * dx + (py - y1) * dy) / lengthSq),
+  )
+  return Math.hypot(px - (x1 + t * dx), py - (y1 + t * dy))
+}
+
+function nearestTunnel(
+  runs: TunnelRun[],
+  camera: Camera,
+  size: { width: number; height: number },
+  x: number,
+  y: number,
+): string | null {
+  const projected = new Vector3()
+  let nearestId: string | null = null
+  let nearestDistance = 8
+
+  for (const run of runs) {
+    let previous: { x: number; y: number } | null = null
+    for (const point of run.points) {
+      projected.set(point[0], point[1], point[2]).project(camera)
+      if (projected.z < -1 || projected.z > 1) {
+        previous = null
+        continue
+      }
+      const screenX = (projected.x * 0.5 + 0.5) * size.width
+      const screenY = (-projected.y * 0.5 + 0.5) * size.height
+      if (previous) {
+        const distance = distanceToSegment(
+          x,
+          y,
+          previous.x,
+          previous.y,
+          screenX,
+          screenY,
+        )
+        if (distance < nearestDistance) {
+          nearestDistance = distance
+          nearestId = run.segmentId
+        }
+      }
+      previous = { x: screenX, y: screenY }
+    }
+  }
+
+  return nearestId
+}
+
 export function StationInteraction({
   labels,
   onSelect,
   onFocus,
+  tunnelRuns,
+  xray,
+  onSelectSegment,
 }: StationInteractionProps) {
   const gl = useThree((state) => state.gl)
   const camera = useThree((state) => state.camera)
@@ -109,7 +179,44 @@ export function StationInteraction({
       )
       if (stationId) {
         onSelect(stationId)
+        return
       }
+
+      if (xray) {
+        const segmentId = nearestTunnel(
+          tunnelRuns,
+          camera,
+          size,
+          event.clientX - rect.left,
+          event.clientY - rect.top,
+        )
+        if (segmentId) {
+          onSelectSegment(segmentId)
+        }
+      }
+    }
+
+    const handlePointerMove = (event: PointerEvent) => {
+      if (!xray) {
+        canvas.style.cursor = ''
+        return
+      }
+      const rect = canvas.getBoundingClientRect()
+      if (rect.width === 0 || rect.height === 0) {
+        return
+      }
+      const segmentId = nearestTunnel(
+        tunnelRuns,
+        camera,
+        size,
+        event.clientX - rect.left,
+        event.clientY - rect.top,
+      )
+      canvas.style.cursor = segmentId ? 'pointer' : ''
+    }
+
+    const handlePointerLeave = () => {
+      canvas.style.cursor = ''
     }
 
     const handleDoubleClick = (event: MouseEvent) => {
@@ -150,12 +257,28 @@ export function StationInteraction({
     canvas.addEventListener('pointerdown', handlePointerDown)
     canvas.addEventListener('click', handleClick)
     canvas.addEventListener('dblclick', handleDoubleClick)
+    canvas.addEventListener('pointermove', handlePointerMove)
+    canvas.addEventListener('pointerleave', handlePointerLeave)
     return () => {
       canvas.removeEventListener('pointerdown', handlePointerDown)
       canvas.removeEventListener('click', handleClick)
       canvas.removeEventListener('dblclick', handleDoubleClick)
+      canvas.removeEventListener('pointermove', handlePointerMove)
+      canvas.removeEventListener('pointerleave', handlePointerLeave)
     }
-  }, [camera, gl, labels, onFocus, onSelect, raycaster, scene, size])
+  }, [
+    camera,
+    gl,
+    labels,
+    onFocus,
+    onSelect,
+    onSelectSegment,
+    raycaster,
+    scene,
+    size,
+    tunnelRuns,
+    xray,
+  ])
 
   return null
 }

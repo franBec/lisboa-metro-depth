@@ -198,6 +198,9 @@ Viewer additions implemented for the dummy:
 - X-ray URL state `?xray=1`.
 - Stable legend counts from the manifest.
 - Label decluttering.
+- Tunnel section panel with length, end depths, track level, and average slope: `?segment=C:alameda-areeiro`.
+- Line long-section strip with station anchors, measured and estimated runs, and unknown gaps: `?section=1`.
+- Real Copernicus DEM station elevation stored separately from the synthetic viewer terrain.
 
 ## Replace-and-plug procedure
 

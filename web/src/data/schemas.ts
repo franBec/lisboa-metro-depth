@@ -95,6 +95,8 @@ export const platformSchema = z.object({
   lat: coordinate,
   lon: coordinate,
   surface_elevation_m: finiteNumber,
+  ground_elevation_m: finiteNumber,
+  ground_elevation_source: z.string().min(1),
   platform_depth_m: finiteNumber.nullable(),
   depth_source: depthSourceSchema,
   depth_basis: z.enum(['station', 'platform']),
@@ -112,6 +114,8 @@ export const stationSchema = z.object({
   lat: coordinate,
   lon: coordinate,
   surface_elevation_m: finiteNumber,
+  ground_elevation_m: finiteNumber,
+  ground_elevation_source: z.string().min(1),
   lines: z.array(z.string().min(1)).min(1),
   platforms: z.array(platformSchema).min(1),
 })

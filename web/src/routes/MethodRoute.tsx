@@ -41,6 +41,33 @@ export function MethodRoute() {
         </li>
       </ul>
 
+      <h2>Tunnel sections</h2>
+      <p>
+        A tunnel section uses the measured or official platform depth at each
+        end and the station surface elevation from the Copernicus DEM. Track
+        level is surface minus depth. Average slope is the track-level change
+        divided by the track length between platforms. It is an average, not a
+        continuous measured grade.
+      </p>
+      <ul>
+        <li>
+          Measured platform depths currently resolve four tunnel sections
+          around Alameda.
+        </li>
+        <li>
+          Three more sections use official station-level depths. Their slope is
+          indicative, not platform-level.
+        </li>
+        <li>
+          The line between two known platforms is drawn straight. The tunnel
+          shape between them is not surveyed.
+        </li>
+        <li>
+          The raw 8 Hz ride profiles are not used for geometry yet. Tunnel
+          pressure transients dominate that signal.
+        </li>
+      </ul>
+
       <h2>Known conflicts</h2>
       <ul>
         <li>Aeroporto: 45.5 m vs 18.95 m.</li>
@@ -55,6 +82,8 @@ export function MethodRoute() {
         <li>The current terrain is synthetic and illustrative. It is not a survey.</li>
         <li>Most platforms still have unknown depths.</li>
         <li>Estimated tunnel profiles are approximate and are not measurements.</li>
+        <li>The 3D terrain is illustrative; tunnel grades use the station DEM separately.</li>
+        <li>Surface elevation is sampled at the station coordinate, not the surveyed entrance.</li>
       </ul>
 
       <p>

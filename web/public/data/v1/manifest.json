@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "dataset_version": "2026-10-27.dummy+measured",
-  "generated_at": "2026-10-27T23:08:36+00:00",
+  "generated_at": "2026-10-31T20:27:19+00:00",
   "demo": true,
   "capabilities": {
     "real_terrain": false,
@@ -66,12 +66,14 @@
     "Official station depths are station-level values, not platform-level measurements.",
     "Unknown depths remain null. No underground geometry is drawn where depth is unknown.",
     "Measured survey data will replace estimated segments without changing the viewer.",
-    "Toggle X-ray terrain to see estimated tunnels below the surface."
+    "Toggle X-ray terrain to see estimated tunnels below the surface.",
+    "Station ground elevations come from the Copernicus DEM; the 3D terrain is synthetic.",
+    "Tunnel slopes are averages between platform anchors, not continuous surveyed grades."
   ],
   "demo_note": "Local demo: real GTFS geometry, documented depths, measured overlay, synthetic terrain. Toggle X-ray terrain to see remaining estimated tunnels.",
   "last_measurement_merge": {
     "source": "data/measurements/field/LX_3193.csv",
-    "merged_at": "2026-10-31T19:01:59+00:00",
+    "merged_at": "2026-10-31T20:27:29+00:00",
     "platform_records": 6,
     "segment_records": 4
   }

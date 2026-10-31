@@ -7,6 +7,7 @@ import type {
   PlatformVisual,
   StationLabelVisual,
 } from './stationVisuals'
+import type { TunnelRun } from './tunnelRuns'
 
 interface StationsProps {
   platforms: PlatformVisual[]
@@ -14,6 +15,9 @@ interface StationsProps {
   selectedLines: ReadonlySet<string>
   onSelectStation: (stationId: string) => void
   labelRefs: RefObject<Map<string, HTMLDivElement>>
+  tunnelRuns: TunnelRun[]
+  xray: boolean
+  onSelectSegment: (segmentId: string) => void
 }
 
 interface PlatformMarkerProps {
@@ -117,6 +121,9 @@ export function Stations({
   selectedLines,
   onSelectStation,
   labelRefs,
+  tunnelRuns,
+  xray,
+  onSelectSegment,
 }: StationsProps) {
   const requestedFocus = useViewerStore((state) => state.requestFocus)
   const inferredVisible = useViewerStore((state) => state.inferredVisible)
@@ -139,6 +146,9 @@ export function Stations({
         labels={labels}
         onSelect={onSelectStation}
         onFocus={requestedFocus}
+        tunnelRuns={tunnelRuns}
+        xray={xray}
+        onSelectSegment={onSelectSegment}
       />
     </group>
   )

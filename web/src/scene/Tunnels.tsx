@@ -2,15 +2,13 @@ import { Line } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { useMemo } from 'react'
 import { Vector2 } from 'three'
-import type { Line as MetroLine } from '../data/schemas'
-import type { Projection } from '../lib/geo'
 import { useViewerStore } from '../state/viewerStore'
-import { buildTunnelRuns } from './tunnelRuns'
+import type { TunnelRun } from './tunnelRuns'
 
 interface TunnelsProps {
-  lines: MetroLine[]
-  projection: Projection
+  runs: TunnelRun[]
   selectedLines: ReadonlySet<string>
+  selectedSegmentId: string | null
 }
 
 const BASE_OPACITY = {
@@ -21,11 +19,10 @@ const BASE_OPACITY = {
 } as const
 
 export function Tunnels({
-  lines,
-  projection,
+  runs,
   selectedLines,
+  selectedSegmentId,
 }: TunnelsProps) {
-  const verticalScale = useViewerStore((state) => state.verticalScale)
   const inferredVisible = useViewerStore((state) => state.inferredVisible)
   const size = useThree((state) => state.size)
   const dpr = useThree((state) => state.viewport.dpr)
@@ -33,10 +30,6 @@ export function Tunnels({
   const resolution = useMemo(
     () => new Vector2(size.width * dpr, size.height * dpr),
     [dpr, size.height, size.width],
-  )
-  const runs = useMemo(
-    () => buildTunnelRuns(lines, projection, verticalScale),
-    [lines, projection, verticalScale],
   )
   const activeFilter = selectedLines.size ? selectedLines : null
 
@@ -46,19 +39,28 @@ export function Tunnels({
         const unknown = run.source === 'unknown'
         const estimated = run.source === 'estimated'
         const active = activeFilter === null || activeFilter.has(run.lineId)
+        const selected = run.segmentId === selectedSegmentId
         const visible =
           inferredVisible ||
           run.source === 'measured' ||
           run.source === 'official'
+        const lineWidth = selected ? 5.6 : unknown ? 2.8 : 3.8
+        const opacity = selected
+          ? 1
+          : selectedSegmentId
+            ? 0.16
+            : active
+              ? BASE_OPACITY[run.source]
+              : 0.08
 
         return (
           <Line
             key={run.id}
             points={run.points}
             color={run.color}
-            lineWidth={unknown ? 2.8 : 3.8}
+            lineWidth={lineWidth}
             transparent
-            opacity={active ? BASE_OPACITY[run.source] : 0.08}
+            opacity={opacity}
             dashed={estimated || unknown}
             dashSize={unknown ? 18 : 55}
             gapSize={unknown ? 18 : 34}
@@ -68,6 +70,7 @@ export function Tunnels({
             renderOrder={3}
             resolution={resolution}
             visible={visible}
+            userData={{ segmentId: run.segmentId }}
           />
         )
       })}

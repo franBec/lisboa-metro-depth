@@ -14,6 +14,7 @@ import { CameraRig } from './CameraRig'
 import { Stations } from './Stations'
 import type { StationVisuals } from './stationVisuals'
 import { Terrain } from './Terrain'
+import { buildTunnelRuns } from './tunnelRuns'
 import { Tunnels } from './Tunnels'
 
 type OrbitControlsInstance = ComponentRef<typeof OrbitControls>
@@ -28,10 +29,12 @@ interface ViewerSceneProps {
   heights: Float32Array
   projection: Projection
   selectedLines: ReadonlySet<string>
+  selectedSegmentId: string | null
   xray: boolean
   stationVisuals: StationVisuals
   labelRefs: RefObject<Map<string, HTMLDivElement>>
   onSelectStation: (stationId: string) => void
+  onSelectSegment: (segmentId: string) => void
 }
 
 export function ViewerScene({
@@ -41,13 +44,31 @@ export function ViewerScene({
   heights,
   projection,
   selectedLines,
+  selectedSegmentId,
   xray,
   stationVisuals,
   labelRefs,
   onSelectStation,
+  onSelectSegment,
 }: ViewerSceneProps) {
   const verticalScale = useViewerStore((state) => state.verticalScale)
+  const inferredVisible = useViewerStore((state) => state.inferredVisible)
   const controlsRef = useRef<OrbitControlsInstance | null>(null)
+  const tunnelRuns = useMemo(
+    () => buildTunnelRuns(network.lines, projection, verticalScale),
+    [network.lines, projection, verticalScale],
+  )
+  const pickableRuns = useMemo(
+    () =>
+      tunnelRuns.filter(
+        (run) =>
+          (inferredVisible ||
+            run.source === 'measured' ||
+            run.source === 'official') &&
+          (selectedLines.size === 0 || selectedLines.has(run.lineId)),
+      ),
+    [inferredVisible, selectedLines, tunnelRuns],
+  )
 
   const { widthM, heightM } = projection.bounds
   const targetY = manifest.terrain.max_m * 2.5
@@ -120,9 +141,9 @@ export function ViewerScene({
       </Suspense>
 
       <Tunnels
-        lines={network.lines}
-        projection={projection}
+        runs={tunnelRuns}
         selectedLines={selectedLines}
+        selectedSegmentId={selectedSegmentId}
       />
 
       <Stations
@@ -131,6 +152,9 @@ export function ViewerScene({
         selectedLines={selectedLines}
         onSelectStation={onSelectStation}
         labelRefs={labelRefs}
+        tunnelRuns={pickableRuns}
+        xray={xray}
+        onSelectSegment={onSelectSegment}
       />
     </Canvas>
   )

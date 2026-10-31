@@ -19,16 +19,20 @@ import '../styles/viewer.css'
 interface SceneViewProps {
   data: ViewerData
   selectedLines: ReadonlySet<string>
+  selectedSegmentId: string | null
   xray: boolean
   onSelectStation: (stationId: string) => void
+  onSelectSegment: (segmentId: string) => void
   onError: (message: string) => void
 }
 
 function SceneView({
   data,
   selectedLines,
+  selectedSegmentId,
   xray,
   onSelectStation,
+  onSelectSegment,
   onError,
 }: SceneViewProps) {
   const projection = useMemo(
@@ -58,10 +62,12 @@ function SceneView({
           heights={data.heights}
           projection={projection}
           selectedLines={selectedLines}
+          selectedSegmentId={selectedSegmentId}
           xray={xray}
           stationVisuals={stationVisuals}
           labelRefs={labelRefs}
           onSelectStation={onSelectStation}
+          onSelectSegment={onSelectSegment}
         />
       </SceneErrorBoundary>
 
@@ -85,7 +91,33 @@ function ViewerContent() {
   const requestFocus = useViewerStore((state) => state.requestFocus)
   const sceneReady = useViewerStore((state) => state.sceneReady)
   const [sceneError, setSceneError] = useState<string | null>(null)
+  const [sectionLineChoice, setSectionLineChoice] = useState<{
+    lineId: string
+    selectionKey: string
+  } | null>(null)
   const initialFocusRequested = useRef(false)
+
+  const selectedStation = useMemo(
+    () =>
+      data?.stations.find(
+        (station) => station.id === urlState.selectedStationId,
+      ) ?? null,
+    [data, urlState.selectedStationId],
+  )
+  const selectionKey =
+    urlState.selectedSegmentId ?? selectedStation?.id ?? ''
+  const fallbackSectionLineId =
+    urlState.selectedSegmentId?.split(':')[0] ??
+    selectedStation?.lines[0] ??
+    [...urlState.selectedLines][0] ??
+    (lineIds.includes('C') ? 'C' : lineIds[0]) ??
+    'A'
+  const activeSectionLineId =
+    sectionLineChoice &&
+    sectionLineChoice.selectionKey === selectionKey &&
+    lineIds.includes(sectionLineChoice.lineId)
+      ? sectionLineChoice.lineId
+      : fallbackSectionLineId
 
   useEffect(() => {
     if (initialFocusRequested.current || !data || !sceneReady) {
@@ -115,19 +147,20 @@ function ViewerContent() {
     return <ViewerErrorOverlay message="No viewer data returned." />
   }
 
-  const selectedStation =
-    data.stations.find(
-      (station) => station.id === urlState.selectedStationId,
-    ) ?? null
-
   return (
-    <main className="viewer-root">
+    <main
+      className={
+        urlState.sectionOpen ? 'viewer-root section-open' : 'viewer-root'
+      }
+    >
       {sceneError ? null : (
         <SceneView
           data={data}
           selectedLines={urlState.selectedLines}
+          selectedSegmentId={urlState.selectedSegmentId}
           xray={urlState.xray}
           onSelectStation={urlState.selectStation}
+          onSelectSegment={urlState.selectSegment}
           onError={setSceneError}
         />
       )}
@@ -135,12 +168,23 @@ function ViewerContent() {
       <ViewerHud
         manifest={data.manifest}
         lines={data.network.lines}
+        stations={data.stations}
         selectedLines={urlState.selectedLines}
         selectedStation={selectedStation}
+        selectedSegmentId={urlState.selectedSegmentId}
+        sectionOpen={urlState.sectionOpen}
+        sectionLineId={activeSectionLineId}
         xray={urlState.xray}
         onToggleLine={urlState.toggleLine}
+        onSelectStation={urlState.selectStation}
+        onSelectSegment={urlState.selectSegment}
         onXRayToggle={urlState.setXray}
         onCloseStation={urlState.clearStation}
+        onCloseSegment={urlState.clearSegment}
+        onToggleSection={urlState.setSection}
+        onSelectSectionLine={(lineId) =>
+          setSectionLineChoice({ lineId, selectionKey })
+        }
       />
 
       {!sceneReady && !sceneError ? <ViewerLoadingOverlay /> : null}

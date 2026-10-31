@@ -1,10 +1,17 @@
-import type { Platform, Station } from '../../data/schemas'
+import type { Line, Platform, Station } from '../../data/schemas'
 import { SOURCE_LABELS } from '../../lib/provenance'
+import {
+  formatInteger,
+  getSegmentMetrics,
+} from '../../lib/segmentMetrics'
+import { StationSection } from './StationSection'
 
 interface StationPanelProps {
   station: Station | null
-  lines: Array<{ id: string; name: string; color: string }>
+  lines: Line[]
+  stations: Station[]
   onClose: () => void
+  onSelectSegment: (segmentId: string) => void
 }
 
 function GridRow({ label, value }: { label: string; value: string }) {
@@ -152,9 +159,29 @@ function CrossingSummary({ station }: { station: Station }) {
 export function StationPanel({
   station,
   lines,
+  stations,
   onClose,
+  onSelectSegment,
 }: StationPanelProps) {
   const lineById = new Map(lines.map((line) => [line.id, line]))
+  const lineColors = new Map(lines.map((line) => [line.id, line.color]))
+  const lineNames = new Map(lines.map((line) => [line.id, line.name]))
+  const stationById = new Map(
+    stations.map((candidate) => [candidate.id, candidate]),
+  )
+  const tunnels = station
+    ? lines.flatMap((line) =>
+        line.segments
+          .filter(
+            (segment) =>
+              segment.from === station.id || segment.to === station.id,
+          )
+          .map((segment) => ({
+            line,
+            metrics: getSegmentMetrics(line.id, segment, stationById),
+          })),
+      )
+    : []
 
   return (
     <aside
@@ -183,8 +210,54 @@ export function StationPanel({
             {station.lines
               .map((lineId) => lineById.get(lineId)?.name ?? lineId)
               .join(' · ')}{' '}
-            — surface {station.surface_elevation_m.toFixed(1)} m
+            — surface {station.ground_elevation_m.toFixed(1)} m (DEM)
           </p>
+
+          <StationSection
+            platforms={station.platforms}
+            lineColors={lineColors}
+            lineNames={lineNames}
+          />
+
+          <CrossingSummary station={station} />
+
+          {tunnels.length ? (
+            <div className="tunnel-list">
+              <div className="tunnel-heading">
+                <h3>Tunnels from here</h3>
+                <span className="hint">select</span>
+              </div>
+              {tunnels.map(({ line, metrics }) => {
+                const isFrom = metrics.from.stationId === station.id
+                const thisEnd = isFrom ? metrics.from : metrics.to
+                const otherEnd = isFrom ? metrics.to : metrics.from
+                return (
+                  <button
+                    key={metrics.segmentId}
+                    type="button"
+                    className="tunnel-row"
+                    onClick={() => onSelectSegment(metrics.segmentId)}
+                  >
+                    <span
+                      className="line-swatch"
+                      style={{ background: line.color }}
+                    />
+                    <span className="tunnel-main">
+                      <span className="tunnel-name">{otherEnd.name}</span>
+                      <span className="tunnel-meta">
+                        {formatDepthValue(thisEnd.depthM)} →{' '}
+                        {formatDepthValue(otherEnd.depthM)} ·{' '}
+                        {SOURCE_LABELS[metrics.quality]}
+                      </span>
+                    </span>
+                    <span className="tunnel-length">
+                      {formatInteger(metrics.lengthM)} m
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+          ) : null}
 
           <div className="platform-list">
             {station.platforms.map((platform, index) => (
@@ -201,9 +274,12 @@ export function StationPanel({
             ))}
           </div>
 
-          <CrossingSummary station={station} />
         </>
       ) : null}
     </aside>
   )
+}
+
+function formatDepthValue(value: number | null): string {
+  return value === null ? 'unknown' : `${value.toFixed(2)} m`
 }

@@ -3,6 +3,7 @@ import type { Projection } from '../lib/geo'
 
 export interface TunnelRun {
   id: string
+  segmentId: string
   lineId: string
   source: DepthSource
   color: string
@@ -44,6 +45,7 @@ export function buildTunnelRuns(
 
         runs.push({
           id: `${line.id}:${segment.id}:${runIndex}`,
+          segmentId: segment.id,
           lineId: line.id,
           source,
           color: line.color,
