@@ -1,0 +1,5 @@
+station_id,line_id,axis_lat,axis_lon,bearing_deg,offset_m,platform_length_m,platform_width_m,blend_m,structure,source
+baixa-chiado,A,38.710633,-9.140174,355.5,9.25,105.5,4.5,200,underground,OSM platform ways 898560641 898560642 1111892935 898560644; https://www.openstreetmap.org/way/898560641
+baixa-chiado,C,38.710633,-9.140174,355.5,-9.25,105.5,4.5,200,underground,OSM platform ways 898560641 898560642 1111892935 898560644; https://www.openstreetmap.org/way/898560641
+campo-grande,B,38.760148,-9.157963,69.5,-4.0,106.5,4.5,200,overground,OSM platform ways 906972100 906972101 906972102 906972103; https://www.openstreetmap.org/way/906972100
+campo-grande,C,38.760148,-9.157963,69.5,4.0,106.5,4.5,200,overground,OSM platform ways 906972100 906972101 906972102 906972103; https://www.openstreetmap.org/way/906972100

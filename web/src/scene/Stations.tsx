@@ -38,6 +38,66 @@ function PlatformMarker({
     [measured, platform.color],
   )
 
+  if (
+    platform.parallel &&
+    platform.bearingDeg !== null &&
+    platform.platformLengthM !== null &&
+    platform.platformWidthM !== null
+  ) {
+    const platformY = platform.platformY ?? platform.surfaceY + 3
+    const rotationY =
+      Math.PI / 2 - (platform.bearingDeg * Math.PI) / 180
+    const opacity = active ? (platform.depth === null ? 0.7 : 1) : 0.08
+
+    return (
+      <group visible={visible}>
+        {platform.shaftHeight > 1 ? (
+          <mesh
+            position={[
+              platform.x,
+              platform.surfaceY - platform.shaftHeight / 2,
+              platform.z,
+            ]}
+            userData={{ stationId: platform.stationId }}
+          >
+            <cylinderGeometry
+              args={[3.2, 3.2, platform.shaftHeight, 8, 1, true]}
+            />
+            <meshBasicMaterial
+              color={platform.color}
+              transparent
+              opacity={active ? 0.26 : 0.06}
+              depthWrite={false}
+              side={DoubleSide}
+            />
+          </mesh>
+        ) : null}
+
+        <mesh
+          position={[platform.x, platformY, platform.z]}
+          rotation={[0, rotationY, 0]}
+          userData={{ stationId: platform.stationId }}
+        >
+          <boxGeometry
+            args={[
+              platform.platformLengthM,
+              2.4,
+              platform.platformWidthM,
+            ]}
+          />
+          <meshStandardMaterial
+            color={platform.color}
+            emissive={emissive}
+            roughness={0.5}
+            metalness={0.2}
+            transparent
+            opacity={opacity}
+          />
+        </mesh>
+      </group>
+    )
+  }
+
   if (platform.depth === null || platform.platformY === null) {
     return (
       <mesh

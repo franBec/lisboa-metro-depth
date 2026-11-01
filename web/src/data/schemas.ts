@@ -13,6 +13,25 @@ export const depthSourceSchema = z.enum([
 
 export type DepthSource = z.infer<typeof depthSourceSchema>
 
+export const structureSchema = z.enum([
+  'underground',
+  'overground',
+  'at-grade',
+  'unknown',
+])
+
+export type Structure = z.infer<typeof structureSchema>
+
+export const interchangeSchema = z.object({
+  kind: z.literal('parallel'),
+  axis_bearing_deg: finiteNumber,
+  spacing_m: nonNegativeNumber,
+  platform_length_m: nonNegativeNumber,
+  platform_width_m: nonNegativeNumber,
+})
+
+export type Interchange = z.infer<typeof interchangeSchema>
+
 const attributionSchema = z.object({
   name: z.string().min(1),
   role: z.string().min(1),
@@ -118,6 +137,8 @@ export const stationSchema = z.object({
   ground_elevation_source: z.string().min(1),
   lines: z.array(z.string().min(1)).min(1),
   platforms: z.array(platformSchema).min(1),
+  structure: structureSchema.optional(),
+  interchange: interchangeSchema.optional(),
 })
 
 export const vertexSchema = z.object({

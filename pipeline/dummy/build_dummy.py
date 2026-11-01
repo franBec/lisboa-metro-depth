@@ -8,7 +8,9 @@ import math
 from datetime import datetime, timezone
 from pathlib import Path
 
-from gtfs import Gtfs, ensure_gtfs, interpolate_shape, shape_slice, slugify
+from gtfs import Gtfs, ensure_gtfs, shape_slice, slugify
+from interchanges import deform_shape_for_interchange, load_interchanges
+from osm import fit_shape_to_stations, load_shapes as load_osm_shapes
 from terrain import (
     BBox,
     build_bbox,
@@ -83,6 +85,8 @@ def apply_grade_cap(
 def main() -> None:
     gtfs = Gtfs(ensure_gtfs(ROOT / "data" / "raw"))
     lines = gtfs.select_canonical()
+    osm_shapes = load_osm_shapes(ROOT / "data" / "raw")
+    interchanges = load_interchanges(ROOT / "pipeline" / "curated" / "interchanges.csv")
     depths = load_depths(ROOT / "pipeline" / "curated" / "station_depths.csv")
     elevations = load_elevations(ROOT / "pipeline" / "curated" / "station_elevations.csv")
 
@@ -173,12 +177,47 @@ def main() -> None:
     provenance_segments = {"measured": 0, "official": 0, "estimated": 0, "unknown": 0}
 
     for line in lines:
+        line_id = str(line["id"])
         line_stations = line["stations"]  # type: ignore[assignment]
-        shape = line["shape"]  # type: ignore[assignment]
+        gtfs_shape = line["shape"]  # type: ignore[assignment]
+        shape = list(osm_shapes.get(line_id, gtfs_shape))
+        targets: dict[str, dict[str, float]] = {}
+        for station_id, interchange in interchanges.items():
+            track = interchange.tracks.get(line_id)
+            if track is None:
+                continue
+            shape, target = deform_shape_for_interchange(shape, track)
+            targets[station_id] = target
+
+        fitted_stations = []
+        for station in line_stations:  # type: ignore[union-attr]
+            target = targets.get(str(station["slug"]))
+            if target is None:
+                fitted_stations.append(station)
+            else:
+                fitted_stations.append(
+                    {
+                        "lat": target["lat"],
+                        "lon": target["lon"],
+                        "slug": station["slug"],
+                    }
+                )
+        shape, station_points = fit_shape_to_stations(shape, fitted_stations)
+        for index, station in enumerate(line_stations):  # type: ignore[arg-type]
+            target = targets.get(str(station["slug"]))
+            if target is not None:
+                station_points[index] = target
+        station_distances = [round(point["distance_m"], 2) for point in station_points]
+        if any(
+            later <= earlier
+            for earlier, later in zip(station_distances, station_distances[1:])
+        ):
+            raise RuntimeError(
+                f"non-monotonic stations on {line_id} after interchange deformation"
+            )
         segments: list[dict[str, object]] = []
 
-        for station in line_stations:  # type: ignore[union-attr]
-            point = interpolate_shape(shape, float(station["distance_m"]))  # type: ignore[arg-type]
+        for station, point in zip(line_stations, station_points, strict=True):  # type: ignore[arg-type]
             platform = stations[str(station["slug"])]["platforms"][line["id"]]  # type: ignore[index]
             platform["lat"] = point["lat"]
             platform["lon"] = point["lon"]
@@ -191,12 +230,12 @@ def main() -> None:
             end = line_stations[index + 1]  # type: ignore[index]
             start_id = str(start["slug"])
             end_id = str(end["slug"])
-            start_distance = float(start["distance_m"])  # type: ignore[arg-type]
-            end_distance = float(end["distance_m"])  # type: ignore[arg-type]
+            start_distance = station_distances[index]
+            end_distance = station_distances[index + 1]
             if end_distance <= start_distance:
                 raise RuntimeError(f"non-monotonic stations on {line['id']}: {start_id} -> {end_id}")
 
-            slice_points = shape_slice(shape, start_distance, end_distance)  # type: ignore[arg-type]
+            slice_points = shape_slice(shape, start_distance, end_distance)
             vertices: list[dict[str, object]] = []
             for point in slice_points:
                 vertices.append(
@@ -225,11 +264,11 @@ def main() -> None:
             )
 
         anchors: list[tuple[float, float]] = []
-        for station in line_stations:  # type: ignore[union-attr]
+        for index, station in enumerate(line_stations):  # type: ignore[arg-type]
             platform = stations[str(station["slug"])]["platforms"][line["id"]]  # type: ignore[index]
             if platform["platform_depth_m"] is not None:
                 anchors.append(
-                    (float(station["distance_m"]), float(platform["platform_depth_m"]))  # type: ignore[arg-type]
+                    (station_distances[index], float(platform["platform_depth_m"]))
                 )
 
         all_vertices = [
@@ -286,6 +325,20 @@ def main() -> None:
         )
 
     station_records: list[dict[str, object]] = []
+    interchange_metadata = {
+        station_id: {
+            "kind": "parallel",
+            "axis_bearing_deg": interchange.bearing_deg,
+            "spacing_m": round(interchange.spacing_m, 2),
+            "platform_length_m": interchange.platform_length_m,
+            "platform_width_m": interchange.platform_width_m,
+        }
+        for station_id, interchange in interchanges.items()
+    }
+    structure_metadata = {
+        station_id: interchange.structure
+        for station_id, interchange in interchanges.items()
+    }
     provenance_platforms = {"measured": 0, "official": 0, "estimated": 0, "unknown": 0}
     for station in sorted(stations.values(), key=lambda item: str(item["name"])):
         platforms = []
@@ -311,19 +364,23 @@ def main() -> None:
                 }
             )
             provenance_platforms[str(platform["depth_source"])] += 1
-        station_records.append(
-            {
-                "id": station["id"],
-                "name": station["name"],
-                "lat": round(float(station["lat"]), 6),
-                "lon": round(float(station["lon"]), 6),
-                "surface_elevation_m": round(float(station["surface_elevation_m"]), 2),
-                "ground_elevation_m": round(float(station["ground_elevation_m"]), 2),
-                "ground_elevation_source": station["ground_elevation_source"],
-                "lines": [platform["line"] for platform in platforms],
-                "platforms": platforms,
-            }
-        )
+        record: dict[str, object] = {
+            "id": station["id"],
+            "name": station["name"],
+            "lat": round(float(station["lat"]), 6),
+            "lon": round(float(station["lon"]), 6),
+            "surface_elevation_m": round(float(station["surface_elevation_m"]), 2),
+            "ground_elevation_m": round(float(station["ground_elevation_m"]), 2),
+            "ground_elevation_source": station["ground_elevation_source"],
+            "lines": [platform["line"] for platform in platforms],
+            "platforms": platforms,
+        }
+        station_id = str(station["id"])
+        if station_id in interchange_metadata:
+            record["interchange"] = interchange_metadata[station_id]
+        if station_id in structure_metadata:
+            record["structure"] = structure_metadata[station_id]
+        station_records.append(record)
 
     manifest = {
         "schema_version": 1,
@@ -368,6 +425,11 @@ def main() -> None:
                 "url": "https://dados.gov.pt/",
             },
             {
+                "name": "OpenStreetMap contributors",
+                "role": "Metro route and platform geometry (ODbL)",
+                "url": "https://www.openstreetmap.org/copyright",
+            },
+            {
                 "name": "Open-Meteo Elevation API",
                 "role": "Station surface elevation samples (Copernicus DEM)",
                 "url": "https://open-meteo.com/en/docs/elevation-api",
@@ -375,6 +437,8 @@ def main() -> None:
         ],
         "source_notes": [
             "Terrain is synthetic and illustrative. It is not a survey.",
+            "Tunnel alignment follows OpenStreetMap route geometry, not the coarse GTFS shape.",
+            "Baixa-Chiado and Campo Grande are cross-platform interchanges; their parallel station geometry is curated from OSM platform ways.",
             "Official station depths are station-level values, not platform-level measurements.",
             "Unknown depths remain null. No underground geometry is drawn where depth is unknown.",
             "Measured survey data will replace estimated segments without changing the viewer.",
@@ -382,7 +446,7 @@ def main() -> None:
             "Station ground elevations come from the Copernicus DEM; the 3D terrain is synthetic.",
             "Tunnel slopes are averages between platform anchors, not continuous surveyed grades.",
         ],
-        "demo_note": "Local demo: real GTFS geometry, documented depths only, synthetic terrain. Toggle X-ray terrain to see estimated tunnels.",
+        "demo_note": "Local demo: real OSM/GTFS geometry, documented depths only, synthetic terrain. Toggle X-ray terrain to see estimated tunnels.",
     }
 
     OUTPUT.mkdir(parents=True, exist_ok=True)

@@ -13,9 +13,9 @@
     "platforms": [
       {
         "line": "D",
-        "lat": 38.76859,
-        "lon": -9.128328,
-        "surface_elevation_m": 97.02,
+        "lat": 38.768419,
+        "lon": -9.128277,
+        "surface_elevation_m": 96.96,
         "ground_elevation_m": 98.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 18.95,
@@ -45,9 +45,9 @@
     "platforms": [
       {
         "line": "C",
-        "lat": 38.737255,
-        "lon": -9.134086,
-        "surface_elevation_m": 69.76,
+        "lat": 38.737239,
+        "lon": -9.133815,
+        "surface_elevation_m": 69.79,
         "ground_elevation_m": 65.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 6.82,
@@ -64,9 +64,9 @@
       },
       {
         "line": "D",
-        "lat": 38.737255,
-        "lon": -9.134086,
-        "surface_elevation_m": 69.76,
+        "lat": 38.73676,
+        "lon": -9.133955,
+        "surface_elevation_m": 69.61,
         "ground_elevation_m": 65.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 17.55,
@@ -97,9 +97,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.760616,
-        "lon": -9.204708,
-        "surface_elevation_m": 68.12,
+        "lat": 38.760385,
+        "lon": -9.20479,
+        "surface_elevation_m": 68.0,
         "ground_elevation_m": 71.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -128,9 +128,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.74958,
-        "lon": -9.179946,
-        "surface_elevation_m": 98.53,
+        "lat": 38.749905,
+        "lon": -9.179898,
+        "surface_elevation_m": 98.41,
         "ground_elevation_m": 97.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -159,9 +159,9 @@
     "platforms": [
       {
         "line": "C",
-        "lat": 38.753456,
-        "lon": -9.143883,
-        "surface_elevation_m": 85.95,
+        "lat": 38.753374,
+        "lon": -9.144134,
+        "surface_elevation_m": 85.89,
         "ground_elevation_m": 84.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -190,9 +190,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.758373,
-        "lon": -9.219171,
-        "surface_elevation_m": 92.8,
+        "lat": 38.758189,
+        "lon": -9.219083,
+        "surface_elevation_m": 92.68,
         "ground_elevation_m": 98.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -221,8 +221,8 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.779903,
-        "lon": -9.159986,
+        "lat": 38.779731,
+        "lon": -9.159428,
         "surface_elevation_m": 90.89,
         "ground_elevation_m": 94.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
@@ -252,9 +252,9 @@
     "platforms": [
       {
         "line": "C",
-        "lat": 38.726616,
-        "lon": -9.135025,
-        "surface_elevation_m": 46.05,
+        "lat": 38.726606,
+        "lon": -9.134858,
+        "surface_elevation_m": 46.08,
         "ground_elevation_m": 39.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -283,8 +283,8 @@
     "platforms": [
       {
         "line": "C",
-        "lat": 38.7426,
-        "lon": -9.133807,
+        "lat": 38.742615,
+        "lon": -9.133501,
         "surface_elevation_m": 86.76,
         "ground_elevation_m": 85.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
@@ -316,9 +316,9 @@
     "platforms": [
       {
         "line": "C",
-        "lat": 38.733475,
-        "lon": -9.134451,
-        "surface_elevation_m": 67.55,
+        "lat": 38.733459,
+        "lon": -9.134178,
+        "surface_elevation_m": 67.53,
         "ground_elevation_m": 63.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 6.42,
@@ -349,8 +349,8 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.720116,
-        "lon": -9.145823,
+        "lat": 38.720121,
+        "lon": -9.145814,
         "surface_elevation_m": 49.6,
         "ground_elevation_m": 42.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
@@ -381,9 +381,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.71067,
-        "lon": -9.139091,
-        "surface_elevation_m": 25.37,
+        "lat": 38.71064,
+        "lon": -9.140068,
+        "surface_elevation_m": 25.97,
         "ground_elevation_m": 32.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 38.75,
@@ -398,9 +398,9 @@
       },
       {
         "line": "C",
-        "lat": 38.71067,
-        "lon": -9.139091,
-        "surface_elevation_m": 25.37,
+        "lat": 38.710626,
+        "lon": -9.14028,
+        "surface_elevation_m": 25.94,
         "ground_elevation_m": 32.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 38.75,
@@ -413,7 +413,15 @@
         "source_url": null,
         "note": "Observador/Metro deep-station list. Platform-level depth unknown."
       }
-    ]
+    ],
+    "interchange": {
+      "kind": "parallel",
+      "axis_bearing_deg": 355.5,
+      "spacing_m": 18.5,
+      "platform_length_m": 105.5,
+      "platform_width_m": 4.5
+    },
+    "structure": "underground"
   },
   {
     "id": "bela-vista",
@@ -429,9 +437,9 @@
     "platforms": [
       {
         "line": "D",
-        "lat": 38.747738,
-        "lon": -9.118547,
-        "surface_elevation_m": 66.42,
+        "lat": 38.747458,
+        "lon": -9.117724,
+        "surface_elevation_m": 66.47,
         "ground_elevation_m": 61.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -460,9 +468,9 @@
     "platforms": [
       {
         "line": "D",
-        "lat": 38.763195,
-        "lon": -9.104093,
-        "surface_elevation_m": 27.17,
+        "lat": 38.762977,
+        "lon": -9.104092,
+        "surface_elevation_m": 27.35,
         "ground_elevation_m": 27.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -491,9 +499,9 @@
     "platforms": [
       {
         "line": "C",
-        "lat": 38.706154,
-        "lon": -9.145029,
-        "surface_elevation_m": 3.0,
+        "lat": 38.706072,
+        "lon": -9.145032,
+        "surface_elevation_m": 2.5,
         "ground_elevation_m": 6.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -523,9 +531,9 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.75988,
-        "lon": -9.157941,
-        "surface_elevation_m": 84.49,
+        "lat": 38.760182,
+        "lon": -9.157979,
+        "surface_elevation_m": 84.47,
         "ground_elevation_m": 81.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -540,9 +548,9 @@
       },
       {
         "line": "C",
-        "lat": 38.75988,
-        "lon": -9.157941,
-        "surface_elevation_m": 84.49,
+        "lat": 38.760114,
+        "lon": -9.157947,
+        "surface_elevation_m": 84.47,
         "ground_elevation_m": 81.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -555,7 +563,15 @@
         "source_url": null,
         "note": null
       }
-    ]
+    ],
+    "interchange": {
+      "kind": "parallel",
+      "axis_bearing_deg": 69.5,
+      "spacing_m": 8.0,
+      "platform_length_m": 106.5,
+      "platform_width_m": 4.5
+    },
+    "structure": "overground"
   },
   {
     "id": "campo-pequeno",
@@ -571,9 +587,9 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.74142,
-        "lon": -9.147035,
-        "surface_elevation_m": 75.49,
+        "lat": 38.741447,
+        "lon": -9.14685,
+        "surface_elevation_m": 75.46,
         "ground_elevation_m": 72.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -602,9 +618,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.759308,
-        "lon": -9.192812,
-        "surface_elevation_m": 80.49,
+        "lat": 38.759268,
+        "lon": -9.192724,
+        "surface_elevation_m": 80.5,
         "ground_elevation_m": 83.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -633,9 +649,9 @@
     "platforms": [
       {
         "line": "D",
-        "lat": 38.755283,
-        "lon": -9.114136,
-        "surface_elevation_m": 67.07,
+        "lat": 38.75519,
+        "lon": -9.113747,
+        "surface_elevation_m": 66.95,
         "ground_elevation_m": 65.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -664,9 +680,9 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.751945,
-        "lon": -9.158633,
-        "surface_elevation_m": 94.07,
+        "lat": 38.751782,
+        "lon": -9.159208,
+        "surface_elevation_m": 93.91,
         "ground_elevation_m": 91.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -695,9 +711,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.753323,
-        "lon": -9.188663,
-        "surface_elevation_m": 79.73,
+        "lat": 38.75313,
+        "lon": -9.188833,
+        "surface_elevation_m": 79.64,
         "ground_elevation_m": 81.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -726,9 +742,9 @@
     "platforms": [
       {
         "line": "D",
-        "lat": 38.77501,
-        "lon": -9.114978,
-        "surface_elevation_m": 61.8,
+        "lat": 38.775252,
+        "lon": -9.115206,
+        "surface_elevation_m": 61.77,
         "ground_elevation_m": 66.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 25.45,
@@ -757,9 +773,9 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.74791,
-        "lon": -9.148564,
-        "surface_elevation_m": 76.51,
+        "lat": 38.74794,
+        "lon": -9.148402,
+        "surface_elevation_m": 76.53,
         "ground_elevation_m": 73.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -788,9 +804,9 @@
     "platforms": [
       {
         "line": "C",
-        "lat": 38.722248,
-        "lon": -9.135309,
-        "surface_elevation_m": 48.03,
+        "lat": 38.722247,
+        "lon": -9.135293,
+        "surface_elevation_m": 48.02,
         "ground_elevation_m": 43.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -819,8 +835,8 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.742176,
-        "lon": -9.168724,
+        "lat": 38.742108,
+        "lon": -9.168924,
         "surface_elevation_m": 70.87,
         "ground_elevation_m": 63.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
@@ -850,9 +866,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.748528,
-        "lon": -9.172431,
-        "surface_elevation_m": 76.87,
+        "lat": 38.748209,
+        "lon": -9.172999,
+        "surface_elevation_m": 77.13,
         "ground_elevation_m": 70.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -881,8 +897,8 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.772823,
-        "lon": -9.159701,
+        "lat": 38.772963,
+        "lon": -9.159156,
         "surface_elevation_m": 91.14,
         "ground_elevation_m": 92.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
@@ -913,9 +929,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.72488,
-        "lon": -9.150807,
-        "surface_elevation_m": 65.1,
+        "lat": 38.725265,
+        "lon": -9.149599,
+        "surface_elevation_m": 66.15,
         "ground_elevation_m": 58.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -930,9 +946,9 @@
       },
       {
         "line": "B",
-        "lat": 38.72488,
-        "lon": -9.150807,
-        "surface_elevation_m": 65.1,
+        "lat": 38.72468,
+        "lon": -9.150318,
+        "surface_elevation_m": 65.02,
         "ground_elevation_m": 58.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -961,9 +977,9 @@
     "platforms": [
       {
         "line": "C",
-        "lat": 38.716812,
-        "lon": -9.135749,
-        "surface_elevation_m": 29.61,
+        "lat": 38.716817,
+        "lon": -9.135836,
+        "surface_elevation_m": 29.64,
         "ground_elevation_m": 23.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -992,9 +1008,9 @@
     "platforms": [
       {
         "line": "D",
-        "lat": 38.774776,
-        "lon": -9.102664,
-        "surface_elevation_m": 35.22,
+        "lat": 38.77491,
+        "lon": -9.102674,
+        "surface_elevation_m": 35.28,
         "ground_elevation_m": 36.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 21.95,
@@ -1023,9 +1039,9 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.79323,
-        "lon": -9.173219,
-        "surface_elevation_m": 30.42,
+        "lat": 38.793279,
+        "lon": -9.172964,
+        "surface_elevation_m": 30.39,
         "ground_elevation_m": 33.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1054,9 +1070,9 @@
     "platforms": [
       {
         "line": "D",
-        "lat": 38.73919,
-        "lon": -9.123664,
-        "surface_elevation_m": 83.99,
+        "lat": 38.739475,
+        "lon": -9.123965,
+        "surface_elevation_m": 83.86,
         "ground_elevation_m": 80.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 20.21,
@@ -1087,9 +1103,9 @@
     "platforms": [
       {
         "line": "D",
-        "lat": 38.761276,
-        "lon": -9.112038,
-        "surface_elevation_m": 63.02,
+        "lat": 38.761131,
+        "lon": -9.111675,
+        "surface_elevation_m": 62.83,
         "ground_elevation_m": 64.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 28.65,
@@ -1118,9 +1134,9 @@
     "platforms": [
       {
         "line": "D",
-        "lat": 38.767838,
-        "lon": -9.099771,
-        "surface_elevation_m": 10.43,
+        "lat": 38.767836,
+        "lon": -9.099735,
+        "surface_elevation_m": 10.45,
         "ground_elevation_m": 9.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1150,7 +1166,7 @@
       {
         "line": "A",
         "lat": 38.729725,
-        "lon": -9.150276,
+        "lon": -9.150272,
         "surface_elevation_m": 89.99,
         "ground_elevation_m": 89.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
@@ -1180,9 +1196,9 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.730644,
-        "lon": -9.146503,
-        "surface_elevation_m": 79.8,
+        "lat": 38.730713,
+        "lon": -9.146686,
+        "surface_elevation_m": 79.96,
         "ground_elevation_m": 75.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1211,9 +1227,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.762398,
-        "lon": -9.196931,
-        "surface_elevation_m": 80.68,
+        "lat": 38.762228,
+        "lon": -9.196851,
+        "surface_elevation_m": 80.61,
         "ground_elevation_m": 83.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1242,9 +1258,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.73767,
-        "lon": -9.158451,
-        "surface_elevation_m": 76.28,
+        "lat": 38.737541,
+        "lon": -9.15849,
+        "surface_elevation_m": 76.34,
         "ground_elevation_m": 70.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1273,9 +1289,9 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.767094,
-        "lon": -9.155458,
-        "surface_elevation_m": 89.88,
+        "lat": 38.767091,
+        "lon": -9.155488,
+        "surface_elevation_m": 89.87,
         "ground_elevation_m": 88.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1304,9 +1320,9 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.720078,
-        "lon": -9.154111,
-        "surface_elevation_m": 79.57,
+        "lat": 38.720315,
+        "lon": -9.154268,
+        "surface_elevation_m": 79.61,
         "ground_elevation_m": 77.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 23.15,
@@ -1335,9 +1351,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.75221,
-        "lon": -9.22414,
-        "surface_elevation_m": 87.3,
+        "lat": 38.752193,
+        "lon": -9.224092,
+        "surface_elevation_m": 87.27,
         "ground_elevation_m": 92.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1366,9 +1382,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.715084,
-        "lon": -9.141623,
-        "surface_elevation_m": 25.71,
+        "lat": 38.71511,
+        "lon": -9.141566,
+        "surface_elevation_m": 25.68,
         "ground_elevation_m": 17.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1397,9 +1413,9 @@
     "platforms": [
       {
         "line": "C",
-        "lat": 38.74845,
-        "lon": -9.141349,
-        "surface_elevation_m": 87.1,
+        "lat": 38.74842,
+        "lon": -9.141435,
+        "surface_elevation_m": 87.07,
         "ground_elevation_m": 86.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1428,9 +1444,9 @@
     "platforms": [
       {
         "line": "C",
-        "lat": 38.71384,
-        "lon": -9.138957,
-        "surface_elevation_m": 21.78,
+        "lat": 38.713763,
+        "lon": -9.138917,
+        "surface_elevation_m": 21.79,
         "ground_elevation_m": 12.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1460,9 +1476,9 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.735275,
-        "lon": -9.145576,
-        "surface_elevation_m": 85.67,
+        "lat": 38.735308,
+        "lon": -9.145353,
+        "surface_elevation_m": 85.65,
         "ground_elevation_m": 84.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 19.95,
@@ -1477,9 +1493,9 @@
       },
       {
         "line": "D",
-        "lat": 38.735275,
-        "lon": -9.145576,
-        "surface_elevation_m": 85.67,
+        "lat": 38.735168,
+        "lon": -9.145571,
+        "surface_elevation_m": 85.72,
         "ground_elevation_m": 84.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": 19.6,
@@ -1510,9 +1526,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.713783,
-        "lon": -9.122563,
-        "surface_elevation_m": 10.64,
+        "lat": 38.713686,
+        "lon": -9.12242,
+        "surface_elevation_m": 10.27,
         "ground_elevation_m": 21.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1541,9 +1557,9 @@
     "platforms": [
       {
         "line": "B",
-        "lat": 38.78575,
-        "lon": -9.172146,
-        "surface_elevation_m": 20.2,
+        "lat": 38.785819,
+        "lon": -9.171877,
+        "surface_elevation_m": 20.31,
         "ground_elevation_m": 23.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1573,9 +1589,9 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.73484,
-        "lon": -9.154225,
-        "surface_elevation_m": 89.42,
+        "lat": 38.734785,
+        "lon": -9.15433,
+        "surface_elevation_m": 89.5,
         "ground_elevation_m": 87.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1590,9 +1606,9 @@
       },
       {
         "line": "D",
-        "lat": 38.73484,
-        "lon": -9.154225,
-        "surface_elevation_m": 89.42,
+        "lat": 38.734627,
+        "lon": -9.153032,
+        "surface_elevation_m": 88.04,
         "ground_elevation_m": 87.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1621,9 +1637,9 @@
     "platforms": [
       {
         "line": "C",
-        "lat": 38.760365,
-        "lon": -9.166056,
-        "surface_elevation_m": 98.94,
+        "lat": 38.759934,
+        "lon": -9.166148,
+        "surface_elevation_m": 98.82,
         "ground_elevation_m": 98.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
         "platform_depth_m": null,
@@ -1652,8 +1668,8 @@
     "platforms": [
       {
         "line": "A",
-        "lat": 38.707207,
-        "lon": -9.133351,
+        "lat": 38.707388,
+        "lon": -9.133475,
         "surface_elevation_m": 0.0,
         "ground_elevation_m": 8.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",

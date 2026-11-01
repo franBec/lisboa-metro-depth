@@ -59,7 +59,7 @@ Checked 2026-10-27.
 | OSM | Geofabrik Portugal extract, 426,748,590 bytes. Accessible. |
 | OSM entrances | `railway=subway_entrance` nodes, extracted from the Geofabrik PBF, not from GTFS. |
 
-The GTFS geometry is coarse, roughly 117 m per point across 44.5 km. It is accurate enough for the city-scale view. Use OSM way geometry later if curves misalign with streets.
+The GTFS geometry is coarse, roughly 117 m per point across 44.5 km. The dummy build therefore takes horizontal alignment from the pinned OSM route relations (relations `371021`, `7734162`, `7734160`, `371084`), which follow the real track, and keeps GTFS stops and schedule. GTFS shapes remain the fallback when no OSM relation is cached.
 
 ## Data model
 
@@ -123,15 +123,16 @@ Location: `pipeline/`.
 2. Parse GTFS `routes.txt`, `stops.txt`, `shapes.txt`, `trips.txt`.
 3. Select one direction per line. Merge shapes at interchanges.
 4. Join `curated/station_depths.csv`.
-5. Clip the Geofabrik PBF to the Lisbon bbox. Extract:
+5. Join `curated/interchanges.csv` and straighten the two cross-platform interchange windows onto the curated axis.
+6. Clip the Geofabrik PBF to the Lisbon bbox. Extract:
    - streets by highway class
    - water polygons
    - parks and green areas
    - `railway=subway_entrance`
-6. Clip the Copernicus DEM. Build a heightmap and hillshade.
-7. Simplify street geometry, drape every vertex on the DEM.
-8. Interpolate tunnel depth between station anchors. Enforce the 4% grade cap. Mark every segment with provenance.
-9. Emit:
+7. Clip the Copernicus DEM. Build a heightmap and hillshade.
+8. Simplify street geometry, drape every vertex on the DEM.
+9. Interpolate tunnel depth between station anchors. Enforce the 4% grade cap. Mark every segment with provenance.
+10. Emit:
    - `manifest.json` - bbox, version, generation date, attribution
    - `stations.json`
    - `network.json` - lines, tunnel polylines, per-vertex depth and source
@@ -192,6 +193,7 @@ Viewer additions implemented for the dummy:
 
 - Per-platform station panel.
 - Interchange crossing QA panel with unresolved warning.
+- Cross-platform interchange panel: parallel platform slabs and a spacing summary at Baixa-Chiado and Campo Grande.
 - X-ray terrain toggle for underground inspection.
 - Multi-line focus `?line=C,D`.
 - Station focus `?station=alameda`.

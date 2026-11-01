@@ -24,6 +24,7 @@ Run the dummy viewer:
 
 ```bash
 python3 pipeline/dummy/fetch_gtfs.py
+python3 pipeline/dummy/fetch_osm.py
 python3 pipeline/dummy/fetch_elevations.py
 python3 pipeline/dummy/build_dummy.py
 pnpm --dir web install
@@ -32,7 +33,9 @@ pnpm --dir web dev
 
 Open `http://localhost:5173/maps/lisboa/`.
 
-The GTFS download is cached in `data/raw/`, which is gitignored and absent from a fresh clone. `fetch_gtfs.py` recreates it, so the steps above work on a clean checkout. `fetch_elevations.py` refreshes the tracked `pipeline/curated/station_elevations.csv`. The generated assets in `web/public/data/v1/` are committed.
+The GTFS and OSM downloads are cached in `data/raw/`, which is gitignored and absent from a fresh clone. `fetch_gtfs.py` and `fetch_osm.py` recreate them, so the steps above work on a clean checkout. `build_dummy.py` fetches either cache automatically when missing. `fetch_elevations.py` refreshes the tracked `pipeline/curated/station_elevations.csv`. The generated assets in `web/public/data/v1/` are committed.
+
+`pipeline/curated/interchanges.csv` pins the two cross-platform interchanges. It carries the station axis, lateral track offset, platform length, and source for Baixa-Chiado and Campo Grande. The build straightens each line through that window and blends back into the OSM alignment.
 
 Raw sensor logs are tracked separately in `data/measurements/`; see [Raw measurement data](#raw-measurement-data).
 
@@ -58,7 +61,7 @@ pnpm --dir web preview
 
 The demo uses `web/public/data/v1/` with the same asset contract the final pipeline will use. The first cross-line pilot is merged: six measured platform depths and four measured segments around Alameda. The synthetic ingest fixture remains at `pipeline/ingest/tests/fixtures/crossing_sample.csv`.
 
-Current limitation: six platforms have measured depths. Most corridor sections remain unknown or estimated until more surveys replace them. Raw ride profiles are stored but not filtered or re-referenced yet; the current network uses two vertices per segment. The viewer never draws a guessed crossing for an unknown platform. Tunnel sections are straight lines between platform anchors, not continuous surveyed profiles. Average slope is indicative because the surface reference is the station DEM point, not the surveyed entrance.
+Current limitation: six platforms have measured depths. Most corridor sections remain unknown or estimated until more surveys replace them. Raw ride profiles are stored but not filtered or re-referenced yet; the merge clamps them to the 4% grade cap before writing vertex depths. Horizontal alignment follows the OSM route relations, so tunnel lines trace the real track rather than a straight chord between stations. Baixa-Chiado and Campo Grande are cross-platform interchanges: their platforms run side by side, and the build models one representative track and platform per line rather than all four tracks. The viewer never draws a guessed crossing for an unknown platform. Vertical sections are still linear between platform anchors, not continuous surveyed profiles. Average slope is indicative because the surface reference is the station DEM point, not the surveyed entrance.
 
 ## Core decisions
 
@@ -378,7 +381,7 @@ python3 pipeline/ingest/check_field_log.py data/measurements/field/LX_YYYYMMDD_H
 python3 pipeline/ingest/merge.py --input data/measurements/field/LX_YYYYMMDD_HHMMSS.csv --data web/public/data/v1
 ```
 
-Result: four measured segments and six measured platforms. Alameda C is 6.82 m deep, Alameda D is 17.55 m deep, and the vertical gap is 10.73 m. Saldanha D is 19.60 m against the official 19.95 m station-level value. Raw 8 Hz profiles remain unfiltered and are not yet used for vertical shape. The `crossing_sample.csv` fixture still demonstrates the path with synthetic values.
+Result: four measured segments and six measured platforms. Alameda C is 6.82 m deep, Alameda D is 17.55 m deep, and the vertical gap is 10.73 m. Saldanha D is 19.60 m against the official 19.95 m station-level value. Raw 8 Hz profiles remain unfiltered and unreferenced, so the merge clamps adjacent vertex depths to the 4% grade cap. The `crossing_sample.csv` fixture still demonstrates the path with synthetic values.
 
 ## Data pipeline
 
@@ -395,7 +398,7 @@ Use Python with `pandas`, `numpy`, `scipy.signal`, `gtfs-kit`, and `rasterio`. K
 9. Flag measured, anchored, interpolated, and uncertain sections.
 10. Feed station depths and tunnel profiles into the 3D viewer.
 
-The dummy viewer pipeline is in `pipeline/dummy/`. It uses GTFS, curated depths, cached Open-Meteo station elevations, and a synthetic terrain heightfield. No Geofabrik PBF or Copernicus raster is used yet.
+The dummy viewer pipeline is in `pipeline/dummy/`. It uses GTFS stops and schedule, OSM route and platform geometry, curated depths, cached Open-Meteo station elevations, and a synthetic terrain heightfield. No Geofabrik PBF or Copernicus raster is used yet.
 
 The measured-data ingest skeleton is in `pipeline/ingest/`. It parses the Cardputer CSV, builds platform and segment profiles, and merges them into the same data assets. It keeps official baselines, uses measured values only where logged, and updates the manifest capability flags.
 
@@ -419,7 +422,7 @@ Visual direction: Lisbon as a floating terrain slab with a cutaway view. Hills, 
 
 Stack: Vite, TypeScript, React 19, React Router, React Three Fiber, Tailwind CSS 4, TanStack Query, Zustand, Zod, and nginx. No backend, database, or websocket. The browser fetches the complete network once. Depths are styled by provenance: measured, official, estimated, or unknown. Unknown data is never drawn as fake underground geometry.
 
-The local demo includes an x-ray terrain toggle, per-platform interchange records, a QA panel that reports the vertical gap at a crossing, multi-line filtering, tunnel sections, a line long-section strip, and URL state. The planned quarter cutaway, real OSM basemap, and Coolify deployment remain deferred.
+The local demo includes an x-ray terrain toggle, per-platform interchange records, a QA panel that reports the vertical gap at a crossing or the horizontal separation at a cross-platform interchange, multi-line filtering, tunnel sections, a line long-section strip, and URL state. The planned quarter cutaway, real OSM basemap, and Coolify deployment remain deferred.
 
 `pnpm --dir web build` prerenders `/` into static HTML and writes empty-root entry documents for the viewer and method routes. The landing page works without JavaScript. For a static server, keep direct route files and add an SPA fallback for unknown paths:
 
@@ -433,7 +436,7 @@ Full design, data model, milestones, and acceptance criteria: [`.opencode/plans/
 
 ### Horizontal data sources
 
-- OpenStreetMap `railway=subway`, station, and entrance data.
+- OpenStreetMap `railway=subway` route relations, station, and entrance data (ODbL). The dummy build pins relations `371021`, `7734162`, `7734160`, and `371084` for lines A-D.
 - Metropolitano de Lisboa GTFS mirror: https://dados.gov.pt/s/resources/gtfs-do-metropolitano-de-lisboa/20261026-150924-d399cedf/googletransit.zip The direct `metrolisboa.pt` link returns 403.
 - Lisbon open data: `Rede Ferroviária Subterrânea` and `Estações de Metro`.
 - Surface DEM: Copernicus GLO-30 or Lisbon LiDAR.
@@ -489,7 +492,8 @@ New stations:
 | Cardputer not rugged | Soft pouch; strain relief on Grove cable; do not block doors or platform access. |
 | Data volume | 8 Hz is about 5 MB/hour; 32 GB card is ample. |
 | Few official station depths | Mark unknown values; fill from the survey; never invent data. |
-| Coarse GTFS shapes | Refine against OSM way geometry. |
+| OSM relation ids change | Pinned ids live in `pipeline/dummy/osm.py`; the build fails loudly if a relation no longer follows the station order. |
+| Curated interchange values drift | `pipeline/curated/interchanges.csv` records OSM platform way ids and is covered by parallel-geometry tests. |
 | Vertical exaggeration misleads | Label the scale; offer a true-scale toggle. |
 
 ## Roadmap

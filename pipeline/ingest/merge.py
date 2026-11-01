@@ -19,6 +19,8 @@ from read_log import (
     read_log,
 )
 
+GRADE_CAP = 0.04
+
 
 def _interpolate(points: list[tuple[float, float]], t: float) -> float:
     if t <= points[0][0]:
@@ -67,6 +69,31 @@ def _apply_platforms(
     return applied
 
 
+def _cap_grades(
+    depths: list[float], distances: list[float]
+) -> list[float]:
+    """Clamp adjacent depth changes to the 4% tunnel grade cap.
+
+    Raw ride profiles are neither filtered nor re-referenced yet, so their
+    barometric noise can exceed a physically plausible slope. The platform
+    anchors at both ends stay fixed.
+    """
+    depths = list(depths)
+    for index in range(1, len(depths)):
+        max_change = GRADE_CAP * max(distances[index] - distances[index - 1], 0.0)
+        depths[index] = min(
+            max(depths[index], depths[index - 1] - max_change),
+            depths[index - 1] + max_change,
+        )
+    for index in range(len(depths) - 2, -1, -1):
+        max_change = GRADE_CAP * max(distances[index + 1] - distances[index], 0.0)
+        depths[index] = min(
+            max(depths[index], depths[index + 1] - max_change),
+            depths[index + 1] + max_change,
+        )
+    return depths
+
+
 def _apply_profiles(network: dict, profiles: dict[str, SegmentProfile]) -> int:
     applied = 0
     for line in network["lines"]:
@@ -83,11 +110,15 @@ def _apply_profiles(network: dict, profiles: dict[str, SegmentProfile]) -> int:
             if span <= 0:
                 continue
             reversed_run = profile.from_station != segment["from"]
+            distances = [float(vertex["distance_m"]) for vertex in vertices]
+            depths = []
             for vertex in vertices:
                 t = (float(vertex["distance_m"]) - first) / span
                 if reversed_run:
                     t = 1.0 - t
-                vertex["depth_m"] = round(_interpolate(profile.points, t), 2)
+                depths.append(max(_interpolate(profile.points, t), 0.0))
+            for vertex, depth in zip(vertices, _cap_grades(depths, distances), strict=True):
+                vertex["depth_m"] = round(depth, 2)
                 vertex["source"] = "measured"
             segment["depth_source"] = "measured"
             segment["measurement_ids"] = profile.measurement_ids
@@ -138,7 +169,7 @@ def merge_data(data_dir: Path, log_path: Path) -> dict[str, object]:
         "segment_records": applied_segments,
     }
     manifest["demo_note"] = (
-        "Local demo: real GTFS geometry, documented depths, measured overlay, synthetic terrain. "
+        "Local demo: real OSM/GTFS geometry, documented depths, measured overlay, synthetic terrain. "
         "Toggle X-ray terrain to see remaining estimated tunnels."
     )
 

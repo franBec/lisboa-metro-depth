@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "dataset_version": "2026-10-27.dummy+measured",
-  "generated_at": "2026-10-31T20:27:19+00:00",
+  "generated_at": "2026-11-01T15:37:37+00:00",
   "demo": true,
   "capabilities": {
     "real_terrain": false,
@@ -56,6 +56,11 @@
       "url": "https://dados.gov.pt/"
     },
     {
+      "name": "OpenStreetMap contributors",
+      "role": "Metro route and platform geometry (ODbL)",
+      "url": "https://www.openstreetmap.org/copyright"
+    },
+    {
       "name": "Open-Meteo Elevation API",
       "role": "Station surface elevation samples (Copernicus DEM)",
       "url": "https://open-meteo.com/en/docs/elevation-api"
@@ -63,6 +68,8 @@
   ],
   "source_notes": [
     "Terrain is synthetic and illustrative. It is not a survey.",
+    "Tunnel alignment follows OpenStreetMap route geometry, not the coarse GTFS shape.",
+    "Baixa-Chiado and Campo Grande are cross-platform interchanges; their parallel station geometry is curated from OSM platform ways.",
     "Official station depths are station-level values, not platform-level measurements.",
     "Unknown depths remain null. No underground geometry is drawn where depth is unknown.",
     "Measured survey data will replace estimated segments without changing the viewer.",
@@ -70,10 +77,10 @@
     "Station ground elevations come from the Copernicus DEM; the 3D terrain is synthetic.",
     "Tunnel slopes are averages between platform anchors, not continuous surveyed grades."
   ],
-  "demo_note": "Local demo: real GTFS geometry, documented depths, measured overlay, synthetic terrain. Toggle X-ray terrain to see remaining estimated tunnels.",
+  "demo_note": "Local demo: real OSM/GTFS geometry, documented depths, measured overlay, synthetic terrain. Toggle X-ray terrain to see remaining estimated tunnels.",
   "last_measurement_merge": {
-    "source": "data/measurements/field/LX_3193.csv",
-    "merged_at": "2026-10-31T20:27:29+00:00",
+    "source": "../../data/measurements/field/LX_3193.csv",
+    "merged_at": "2026-11-01T15:37:51+00:00",
     "platform_records": 6,
     "segment_records": 4
   }

@@ -14,6 +14,10 @@ export interface PlatformVisual {
   platformY: number | null
   depth: number | null
   shaftHeight: number
+  parallel: boolean
+  bearingDeg: number | null
+  platformLengthM: number | null
+  platformWidthM: number | null
 }
 
 export interface StationLabelVisual {
@@ -45,6 +49,7 @@ export function buildStationVisuals(
   for (const station of stations) {
     const { x, z } = projection.toWorld(station.lat, station.lon)
     const surfaceY = station.surface_elevation_m * verticalScale
+    const interchange = station.interchange ?? null
     const allUnknown = station.platforms.every(
       (platform) => platform.platform_depth_m === null,
     )
@@ -69,6 +74,10 @@ export function buildStationVisuals(
           depth === null ? null : platformSurfaceY - depth * verticalScale,
         depth,
         shaftHeight,
+        parallel: interchange?.kind === 'parallel',
+        bearingDeg: interchange?.axis_bearing_deg ?? null,
+        platformLengthM: interchange?.platform_length_m ?? null,
+        platformWidthM: interchange?.platform_width_m ?? null,
       })
     })
 

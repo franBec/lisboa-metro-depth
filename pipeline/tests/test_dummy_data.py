@@ -139,6 +139,121 @@ class DummyDataTest(unittest.TestCase):
         ):
             self.assertIn(expected, segment_ids)
 
+    @staticmethod
+    def _bearing(first: dict, second: dict) -> float:
+        dx = (second["lon"] - first["lon"]) * 111_320 * math.cos(
+            math.radians(first["lat"])
+        )
+        dz = (second["lat"] - first["lat"]) * 110_540
+        return (math.degrees(math.atan2(dx, dz)) + 360) % 360
+
+    def test_parallel_interchanges(self) -> None:
+        station_by_id = {station["id"]: station for station in self.stations}
+        segments_by_line = {
+            line["id"]: line["segments"] for line in self.network["lines"]
+        }
+
+        for station_id, line_ids in (
+            ("baixa-chiado", ("A", "C")),
+            ("campo-grande", ("B", "C")),
+        ):
+            station = station_by_id[station_id]
+            interchange = station["interchange"]
+            self.assertEqual(interchange["kind"], "parallel")
+            self.assertIn(station["structure"], ("underground", "overground"))
+
+            platforms = {platform["line"]: platform for platform in station["platforms"]}
+            first, second = (platforms[line_id] for line_id in line_ids)
+            dx = (second["lon"] - first["lon"]) * 111_320 * math.cos(
+                math.radians(first["lat"])
+            )
+            dz = (second["lat"] - first["lat"]) * 110_540
+            self.assertAlmostEqual(
+                math.hypot(dx, dz), interchange["spacing_m"], delta=0.6
+            )
+
+            center_lat = (first["lat"] + second["lat"]) / 2
+            center_lon = (first["lon"] + second["lon"]) / 2
+            bearing = math.radians(interchange["axis_bearing_deg"])
+            along = (math.sin(bearing), math.cos(bearing))
+            right = (math.cos(bearing), -math.sin(bearing))
+            for platform in platforms.values():
+                px = (platform["lon"] - center_lon) * 111_320 * math.cos(
+                    math.radians(center_lat)
+                )
+                pz = (platform["lat"] - center_lat) * 110_540
+                self.assertAlmostEqual(
+                    px * along[0] + pz * along[1], 0.0, delta=0.6
+                )
+                self.assertAlmostEqual(
+                    abs(px * right[0] + pz * right[1]),
+                    interchange["spacing_m"] / 2,
+                    delta=0.6,
+                )
+
+            for line_id in line_ids:
+                platform = platforms[line_id]
+                unique: dict[tuple[float, float], dict] = {}
+                for segment in segments_by_line[line_id]:
+                    for vertex in segment["vertices"]:
+                        key = (round(vertex["lat"], 9), round(vertex["lon"], 9))
+                        unique.setdefault(key, vertex)
+                vertices = list(unique.values())
+
+                def distance_to_platform(vertex: dict) -> float:
+                    return math.hypot(
+                        (vertex["lat"] - platform["lat"]) * 110_540,
+                        (vertex["lon"] - platform["lon"])
+                        * 111_320
+                        * math.cos(math.radians(platform["lat"])),
+                    )
+
+                station_vertex = min(vertices, key=distance_to_platform)
+                station_distance = station_vertex["distance_m"]
+                before = max(
+                    (
+                        vertex
+                        for vertex in vertices
+                        if vertex["distance_m"] < station_distance
+                    ),
+                    key=lambda vertex: vertex["distance_m"],
+                )
+                after = min(
+                    (
+                        vertex
+                        for vertex in vertices
+                        if vertex["distance_m"] > station_distance
+                    ),
+                    key=lambda vertex: vertex["distance_m"],
+                )
+                bearing = self._bearing(before, after)
+                difference = abs(bearing - interchange["axis_bearing_deg"]) % 180
+                self.assertLess(
+                    min(difference, 180 - difference),
+                    1.5,
+                    f"{station_id}/{line_id}: bearing {bearing:.1f} does not match axis",
+                )
+
+                ax = (before["lon"] - platform["lon"]) * 111_320 * math.cos(
+                    math.radians(platform["lat"])
+                )
+                az = (before["lat"] - platform["lat"]) * 110_540
+                bx = (after["lon"] - platform["lon"]) * 111_320 * math.cos(
+                    math.radians(platform["lat"])
+                )
+                bz = (after["lat"] - platform["lat"]) * 110_540
+                length = math.hypot(bx - ax, bz - az)
+                offset = (
+                    abs(ax * (bz - az) - az * (bx - ax)) / length
+                    if length
+                    else 0.0
+                )
+                self.assertLess(
+                    offset,
+                    1.0,
+                    f"{station_id}/{line_id}: platform is {offset:.2f} m off its track",
+                )
+
 
 if __name__ == "__main__":
     unittest.main()

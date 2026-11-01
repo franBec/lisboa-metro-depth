@@ -6,12 +6,18 @@ export function MethodRoute() {
       <p>
         This map shows published station depths and estimated tunnel profiles for
         the Lisbon Metro. Every depth carries its provenance. Unknown values stay
-        unknown, and the viewer never draws a guessed crossing.
+        unknown, and the viewer never draws a guessed crossing. Known
+        cross-platform interchanges are modeled explicitly from OpenStreetMap
+        platform geometry.
       </p>
 
       <h2>Sources</h2>
       <ul>
         <li>Metropolitano de Lisboa GTFS: line shapes, stops, and timetable.</li>
+        <li>
+          OpenStreetMap route and platform geometry (ODbL): track alignment and
+          parallel interchange layouts.
+        </li>
         <li>
           Open-Meteo Elevation API, based on Copernicus DEM: station surface
           elevations.
@@ -63,8 +69,13 @@ export function MethodRoute() {
           shape between them is not surveyed.
         </li>
         <li>
-          The raw 8 Hz ride profiles are not used for geometry yet. Tunnel
-          pressure transients dominate that signal.
+          Raw ride profiles are clamped to the 4% grade cap before they reach
+          the geometry. They are not filtered or re-referenced yet.
+        </li>
+        <li>
+          Baixa-Chiado and Campo Grande are cross-platform interchanges. Their
+          platforms run side by side; the model shows one representative track
+          and platform per line, not all four tracks.
         </li>
       </ul>
 
@@ -81,6 +92,10 @@ export function MethodRoute() {
       <ul>
         <li>The current terrain is synthetic and illustrative. It is not a survey.</li>
         <li>Most platforms still have unknown depths.</li>
+        <li>
+          Campo Grande is treated as overground, following OSM layer tags and
+          the published station description.
+        </li>
         <li>Estimated tunnel profiles are approximate and are not measurements.</li>
         <li>The 3D terrain is illustrative; tunnel grades use the station DEM separately.</li>
         <li>Surface elevation is sampled at the station coordinate, not the surveyed entrance.</li>

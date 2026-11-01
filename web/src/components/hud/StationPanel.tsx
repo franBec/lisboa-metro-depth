@@ -86,6 +86,45 @@ function CrossingSummary({ station }: { station: Station }) {
     return null
   }
 
+  if (station.interchange?.kind === 'parallel') {
+    const known = station.platforms.filter(
+      (platform) => platform.platform_depth_m !== null,
+    )
+    const unknown = station.platforms.length - known.length
+    const depth = known.length
+      ? Math.max(...known.map((platform) => platform.platform_depth_m ?? 0))
+      : null
+    const depthText =
+      unknown > 0
+        ? 'Platform depths are not surveyed yet; no vertical crossing is assumed.'
+        : depth !== null &&
+            known.every(
+              (platform) =>
+                Math.abs((platform.platform_depth_m ?? 0) - depth) < 0.05,
+            )
+          ? `Both platforms share the ${depth.toFixed(2)} m station level.`
+          : 'Platform depths differ; check the survey.'
+    const structureText =
+      station.structure === 'overground'
+        ? 'The station is overground.'
+        : station.structure === 'underground'
+          ? 'The station is underground.'
+          : null
+
+    return (
+      <div className="crossing-box">
+        <h3>Cross-platform interchange</h3>
+        <p>
+          Lines {station.lines.join(' and ')} run side by side through this
+          station, {station.interchange.spacing_m.toFixed(1)} m apart
+          horizontally.
+        </p>
+        <p>{depthText}</p>
+        {structureText ? <p>{structureText}</p> : null}
+      </div>
+    )
+  }
+
   const known = station.platforms.filter(
     (platform) => platform.platform_depth_m !== null,
   )
