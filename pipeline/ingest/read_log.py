@@ -21,6 +21,12 @@ class PlatformMeasurement:
     depth_m: float
     measurement_ids: list[str] = field(default_factory=list)
     confidence_m: float | None = None
+    entrance: str = ""
+    ref_entrance: str = ""
+    # (depth_m, entrance, ref_entrance) for every PLATFORM row seen. Depth is
+    # relative to a street entrance, so samples from different entrances are
+    # kept apart instead of averaged.
+    samples: list[tuple[float, str, str]] = field(default_factory=list)
 
 
 @dataclass
@@ -45,7 +51,6 @@ def read_log(path: Path) -> list[dict[str, str]]:
         if missing:
             raise ValueError(f"missing columns: {', '.join(sorted(missing))}")
         rows = [{key: (value or "").strip() for key, value in row.items()} for row in reader]
-    _normalize_legacy_depths(rows)
     return rows
 
 
@@ -56,25 +61,6 @@ def _float(value: str) -> float | None:
         return float(value)
     except ValueError:
         return None
-
-
-def _normalize_legacy_depths(rows: list[dict[str, str]]) -> None:
-    depths = [
-        depth
-        for row in rows
-        if row.get("event") in {"PLATFORM", "STATION_STOP"}
-        and (depth := _float(row.get("depth_m", ""))) is not None
-        and depth != 0
-    ]
-    if not depths:
-        return
-    negatives = sum(depth < 0 for depth in depths)
-    if negatives * 2 <= len(depths):
-        return
-    for row in rows:
-        depth = _float(row.get("depth_m", ""))
-        if depth is not None and depth != 0:
-            row["depth_m"] = str(-depth)
 
 
 def _measurement_id(row: dict[str, str]) -> str:
@@ -97,6 +83,9 @@ def extract_platform_measurements(
             continue
         station_id = slugify(station)
         key = (line, station_id)
+        entrance = row.get("entrance", "")
+        ref_entrance = row.get("ref_entrance", "")
+        sample = (depth, entrance, ref_entrance)
         measurement = measurements.get(key)
         if measurement is None:
             measurements[key] = PlatformMeasurement(
@@ -105,9 +94,15 @@ def extract_platform_measurements(
                 depth_m=depth,
                 measurement_ids=[_measurement_id(row)],
                 confidence_m=_float(row.get("confidence_m", "")),
+                entrance=entrance,
+                ref_entrance=ref_entrance,
+                samples=[sample],
             )
         else:
             measurement.depth_m = depth
+            measurement.entrance = entrance
+            measurement.ref_entrance = ref_entrance
+            measurement.samples.append(sample)
             measurement.measurement_ids.append(_measurement_id(row))
     return measurements
 
@@ -181,6 +176,14 @@ def extract_segment_profiles(rows: list[dict[str, str]]) -> dict[str, SegmentPro
             samples = []
         elif event == "STATION_STOP" and run is not None:
             stops.append((index, row))
+        elif event == "STOP_VOID" and run is not None:
+            voided = row.get("note", "").replace("void seq", "").strip()
+            if voided:
+                stops = [
+                    (stop_index, stop)
+                    for stop_index, stop in stops
+                    if stop.get("seq", "") != voided
+                ]
         elif record_type == "sample" and run is not None:
             samples.append((index, row))
         elif event == "RIDE_END":

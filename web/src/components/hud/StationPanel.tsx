@@ -14,6 +14,19 @@ interface StationPanelProps {
   onSelectSegment: (segmentId: string) => void
 }
 
+function structureLabel(structure: Station['structure']): string | null {
+  if (structure === 'overground') return 'Overground station: the platforms sit above street level.'
+  if (structure === 'at-grade') return 'At-grade station: the platforms sit between street levels.'
+  if (structure === 'underground') return null
+  return null
+}
+
+function formatDepth(depth: number): string {
+  return depth < -0.05
+    ? `${Math.abs(depth).toFixed(2)} m above street`
+    : `${depth.toFixed(2)} m`
+}
+
 function GridRow({ label, value }: { label: string; value: string }) {
   return (
     <>
@@ -51,7 +64,7 @@ function PlatformRow({
           value={
             platform.platform_depth_m === null
               ? 'Unknown'
-              : `${platform.platform_depth_m.toFixed(2)} m`
+              : formatDepth(platform.platform_depth_m)
           }
         />
         <GridRow label="Basis" value={platform.depth_basis} />
@@ -104,12 +117,7 @@ function CrossingSummary({ station }: { station: Station }) {
             )
           ? `Both platforms share the ${depth.toFixed(2)} m station level.`
           : 'Platform depths differ; check the survey.'
-    const structureText =
-      station.structure === 'overground'
-        ? 'The station is overground.'
-        : station.structure === 'underground'
-          ? 'The station is underground.'
-          : null
+    const structureText = structureLabel(station.structure)
 
     return (
       <div className="crossing-box">
@@ -251,6 +259,9 @@ export function StationPanel({
               .join(' · ')}{' '}
             — surface {station.ground_elevation_m.toFixed(1)} m (DEM)
           </p>
+          {structureLabel(station.structure) ? (
+            <p className="station-sub">{structureLabel(station.structure)}</p>
+          ) : null}
 
           <StationSection
             platforms={station.platforms}

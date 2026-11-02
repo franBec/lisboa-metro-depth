@@ -32,7 +32,7 @@ class MeasurementIndexTest(unittest.TestCase):
             session_ids.add(session["session_id"])
             self.assertNotIn(session["file"], files)
             files.add(session["file"])
-            self.assertIn(session["kind"], {"bench", "survey"})
+            self.assertIn(session["kind"], {"bench", "survey", "poc"})
             self.assertGreater(session["rows"], 0)
             self.assertGreater(session["bytes"], 0)
 
@@ -43,6 +43,10 @@ class MeasurementIndexTest(unittest.TestCase):
             data = path.read_bytes()
             self.assertEqual(len(data), session["bytes"], session["file"])
             self.assertEqual(hashlib.sha256(data).hexdigest(), session["sha256"], session["file"])
+
+    def test_pilot_is_demoted(self) -> None:
+        by_id = {session["session_id"]: session for session in self.sessions}
+        self.assertEqual(by_id["LX_3193"]["kind"], "poc")
 
     def test_files_parse(self) -> None:
         for session in self.sessions:

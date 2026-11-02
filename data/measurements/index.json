@@ -58,13 +58,13 @@
     {
       "session_id": "LX_3193",
       "file": "field/LX_3193.csv",
-      "kind": "survey",
+      "kind": "poc",
       "date": "2026-10-31",
       "duration_s": 6711.831,
       "rows": 24696,
       "bytes": 2196697,
       "sha256": "4ee9e21f66d58eda0f852595c5ba5695a153f7b8a5a433ad6c842ec3cb171ea6",
-      "notes": "Cross-line pilot survey. Six platform measurements and four Alameda crossing segments. Duplicate Olaias surface: first measured during ride mode, second used. Green RIDE_END missed at Areeiro and closed at Olaias. Saldanha STATION_STOP is raw-anchor and was re-anchored to the later platform measurement during ingest. No RTC timestamps."
+      "notes": "Demoted to POC. Measured with the pilot build that stored altitude instead of positive-down depth, and with station-keyed surfaces. Excluded from merges; the crossing will be re-surveyed with the per-entrance field build."
     }
   ]
 }

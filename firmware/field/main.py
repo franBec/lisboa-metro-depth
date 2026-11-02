@@ -7,13 +7,15 @@ import M5
 
 for _path in ("/flash/apps/field",):
     if _path not in sys.path:
-        sys.path.append(_path)
+        sys.path.insert(0, _path)
 
 from bme280 import BME280
 from config import (
     BME280_ADDRESSES,
+    BUILD_ID,
     COLOR_BG,
     COLOR_FG,
+    EV_CLOCK,
     I2C_FREQ,
     I2C_SCL_PIN,
     I2C_SDA_PIN,
@@ -24,9 +26,11 @@ from config import (
     SD_SCK_PIN,
     SD_SLOT,
     UI_PERIOD_MS,
+    event_for_key,
 )
 from logger import Logger
 from survey import Survey
+import timebase
 import ui
 
 
@@ -94,7 +98,7 @@ def error_screen(disp, message):
 def main():
     M5.begin()
     disp = M5.Display
-    log_line("FIELD boot")
+    log_line("FIELD boot %s" % BUILD_ID)
 
     if not ensure_sd():
         error_screen(disp, "SD mount failed")
@@ -120,7 +124,7 @@ def main():
     disp.fillScreen(COLOR_BG)
     disp.setTextColor(COLOR_FG, COLOR_BG)
     disp.drawString("FIELD", 4, 4)
-    disp.drawString("boot done", 4, 22)
+    disp.drawString(BUILD_ID, 4, 22)
 
     try:
         while True:
@@ -130,7 +134,7 @@ def main():
             if survey.rate_hz != 1000 // period_ms:
                 period_ms = 1000 // survey.rate_hz
                 next_tick = now
-            if survey.preset and time.ticks_diff(now, next_tick) >= 0:
+            if not survey.ended and time.ticks_diff(now, next_tick) >= 0:
                 try:
                     temp, pressure, humidity = sensor.read_compensated_data()
                 except Exception as exc:
@@ -150,16 +154,20 @@ def main():
                     temp_k = press_k = hum_k = None
                 battery_k = battery_voltage()
                 if press_k is not None:
-                    survey.handle_key(key, now, press_k, temp_k, hum_k, battery_k)
+                    if event_for_key(key) == EV_CLOCK:
+                        note = timebase.sync(log_line)
+                        survey.message = note
+                        survey.write_clock_event(time.ticks_ms(), battery_k, note)
+                        log_line(note)
+                    else:
+                        survey.handle_key(
+                            key, now, press_k, temp_k, hum_k, battery_k
+                        )
             logger.tick(now)
             if time.ticks_diff(now, last_ui) >= UI_PERIOD_MS:
                 last_ui = now
                 status = survey.status()
-                status["bar"] = status["preset"]["color"] if status["preset"] else 0
-                extra = "SD %s s%d" % (
-                    "ok" if logger.file else "-",
-                    logger.session_seq if logger.file else 0,
-                )
+                extra = "SD %s" % ("ok" if logger.file else "-")
                 try:
                     ui.draw_dashboard(disp, status, extra)
                 except OSError:

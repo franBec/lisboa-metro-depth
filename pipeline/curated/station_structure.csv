@@ -1,0 +1,5 @@
+station_id,line_id,structure,height_above_street_m,source,note
+campo-grande,B,overground,,pt.wikipedia posicao=Elevada; OSM way 584733308 layer=1 bridge=yes,"Platforms on the viaduct. Height unmeasured; fill from the survey. Expect a negative depth."
+campo-grande,C,overground,,pt.wikipedia posicao=Elevada; OSM way 22875902 bridge=viaduct layer=1,"Platforms on the viaduct, shared deck with line B. Height unmeasured; fill from the survey."
+senhor-roubado,B,overground,,pt.wikipedia posicao=Elevada; OSM ways 584763787 584763800 layer=2,"Platform on a layer-2 viaduct above the bus terminal. Three of four accesses are at street level."
+odivelas,B,at-grade,,pt.wikipedia posicao=Superficial/Subterranea; OSM way 584763792 layer=2,"Platforms between an upper and a lower street atrium. Only station with an atrium above and below the platforms."

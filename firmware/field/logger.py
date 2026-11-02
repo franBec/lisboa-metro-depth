@@ -2,6 +2,7 @@ import os
 import time
 
 from config import (
+    BUILD_ID,
     CURRENT_NAME,
     EV_SESSION_END,
     SESSION_PREFIX,
@@ -12,7 +13,7 @@ from config import (
 
 CSV_HEADER = (
     "session_id,seq,timestamp_iso,millis,record_type,mode,line,station,"
-    "platform,direction,entrance,event,pressure_pa,temp_c,humidity,"
+    "platform,direction,entrance,ref_entrance,event,pressure_pa,temp_c,humidity,"
     "depth_m,battery_v,note"
 )
 
@@ -60,9 +61,43 @@ class Logger:
     def is_open(self):
         return self.file is not None
 
+    def _recover_current(self):
+        """Preserve an interrupted LX_CURRENT.csv before the next session truncates it."""
+        try:
+            handle = open(self.current_path)
+        except OSError:
+            return
+        try:
+            handle.readline()
+            first = handle.readline()
+        finally:
+            handle.close()
+        session_id = first.split(",")[0].strip() if first else ""
+        if not session_id:
+            try:
+                os.remove(self.current_path)
+            except OSError:
+                pass
+            return
+        target = SD_PATH + "/" + session_id + ".csv"
+        attempt = 0
+        while True:
+            try:
+                os.stat(target)
+            except OSError:
+                break
+            attempt += 1
+            target = SD_PATH + "/" + session_id + "_r%d.csv" % attempt
+        try:
+            os.rename(self.current_path, target)
+            self.log_line("recovered %s" % target)
+        except OSError as exc:
+            self.log_line("recover failed: %r" % exc)
+
     def _ensure_open(self, now_ms):
         if self.file is not None:
             return True
+        self._recover_current()
         self.session_id = session_name(now_ms)
         self.session_seq = 0
         self.path = SD_PATH + "/" + self.session_id + ".csv"
@@ -75,7 +110,19 @@ class Logger:
             return False
         self.file.write(CSV_HEADER + "\n")
         self._flush()
-        self._row(now_ms, "event", "idle", None, "SESSION_START", None, None, None, None, None, "")
+        self._row(
+            now_ms,
+            "event",
+            "idle",
+            None,
+            "SESSION_START",
+            None,
+            None,
+            None,
+            None,
+            None,
+            BUILD_ID,
+        )
         self._flush()
         self.last_flush = now_ms
         free = self._free_mb()
@@ -124,7 +171,7 @@ class Logger:
         note,
     ):
         if not self._ensure_open(now_ms):
-            return
+            return None
         ctx = ctx or {}
         self.session_seq += 1
         parts = (
@@ -139,6 +186,7 @@ class Logger:
             sanitized_text(ctx.get("platform")),
             sanitized_text(ctx.get("direction")),
             sanitized_text(ctx.get("entrance")),
+            sanitized_text(ctx.get("ref_entrance")),
             sanitized_text(event),
             f2(pressure),
             f2(temp),
@@ -154,8 +202,9 @@ class Logger:
             self.log_line("write failed: %r" % exc)
             self.file = None
             self.session_id = None
-            return
+            return None
         self.last_flush = now_ms
+        return self.session_seq
 
     def write_sample(self, now_ms, mode, ctx, pressure, temp, humidity, depth, battery):
         self._row(now_ms, "sample", mode, ctx, "", pressure, temp, humidity, depth, battery, "")
@@ -175,8 +224,21 @@ class Logger:
         battery,
         note="",
     ):
-        self._row(now_ms, "event", mode, ctx, event, pressure, temp, humidity, depth, battery, note)
+        seq = self._row(
+            now_ms,
+            "event",
+            mode,
+            ctx,
+            event,
+            pressure,
+            temp,
+            humidity,
+            depth,
+            battery,
+            note,
+        )
         self._flush()
+        return seq
 
     def close_session(self, now_ms, battery=None):
         if self.file is None:

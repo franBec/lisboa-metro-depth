@@ -11,6 +11,7 @@ from pathlib import Path
 from gtfs import Gtfs, ensure_gtfs, shape_slice, slugify
 from interchanges import deform_shape_for_interchange, load_interchanges
 from osm import fit_shape_to_stations, load_shapes as load_osm_shapes
+from structures import load_station_structures
 from terrain import (
     BBox,
     build_bbox,
@@ -89,6 +90,9 @@ def main() -> None:
     interchanges = load_interchanges(ROOT / "pipeline" / "curated" / "interchanges.csv")
     depths = load_depths(ROOT / "pipeline" / "curated" / "station_depths.csv")
     elevations = load_elevations(ROOT / "pipeline" / "curated" / "station_elevations.csv")
+    structures = load_station_structures(
+        ROOT / "pipeline" / "curated" / "station_structure.csv"
+    )
 
     stations: dict[str, dict[str, object]] = {}
     for line in lines:
@@ -335,10 +339,15 @@ def main() -> None:
         }
         for station_id, interchange in interchanges.items()
     }
-    structure_metadata = {
-        station_id: interchange.structure
-        for station_id, interchange in interchanges.items()
-    }
+    structure_metadata = dict(structures)
+    for station_id, interchange in interchanges.items():
+        known = structure_metadata.get(station_id)
+        if known is not None and known != interchange.structure:
+            raise RuntimeError(
+                f"{station_id}: station_structure.csv says {known}, "
+                f"interchanges.csv says {interchange.structure}"
+            )
+        structure_metadata[station_id] = interchange.structure
     provenance_platforms = {"measured": 0, "official": 0, "estimated": 0, "unknown": 0}
     for station in sorted(stations.values(), key=lambda item: str(item["name"])):
         platforms = []
