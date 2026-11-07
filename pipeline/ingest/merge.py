@@ -76,21 +76,25 @@ def _cap_grades(
 
     Raw ride profiles are neither filtered nor re-referenced yet, so their
     barometric noise can exceed a physically plausible slope. The platform
-    anchors at both ends stay fixed.
+    anchors at both ends stay fixed; interior samples may still be noisy
+    until the profile filtering pass exists.
     """
     depths = list(depths)
-    for index in range(1, len(depths)):
+    first_anchor, last_anchor = depths[0], depths[-1]
+    for index in range(1, len(depths) - 1):
         max_change = GRADE_CAP * max(distances[index] - distances[index - 1], 0.0)
         depths[index] = min(
             max(depths[index], depths[index - 1] - max_change),
             depths[index - 1] + max_change,
         )
-    for index in range(len(depths) - 2, -1, -1):
+    for index in range(len(depths) - 2, 0, -1):
         max_change = GRADE_CAP * max(distances[index + 1] - distances[index], 0.0)
         depths[index] = min(
             max(depths[index], depths[index + 1] - max_change),
             depths[index + 1] + max_change,
         )
+    depths[0] = first_anchor
+    depths[-1] = last_anchor
     return depths
 
 

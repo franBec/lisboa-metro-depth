@@ -9,6 +9,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "web" / "public" / "data" / "v1"
 
+with open(ROOT / "pipeline" / "curated" / "station_structure.csv", encoding="utf-8") as _handle:
+    NON_UNDERGROUND = {
+        row["station_id"] for row in csv.DictReader(_handle) if row["structure"] != "underground"
+    }
+
 
 class DummyDataTest(unittest.TestCase):
     @classmethod
@@ -65,7 +70,8 @@ class DummyDataTest(unittest.TestCase):
                     self.assertIsNone(platform["platform_depth_m"])
                 else:
                     self.assertIsNotNone(platform["platform_depth_m"])
-                    self.assertGreaterEqual(platform["platform_depth_m"], 0)
+                    if station["id"] not in NON_UNDERGROUND:
+                        self.assertGreaterEqual(platform["platform_depth_m"], 0)
 
     def test_alameda_is_two_platforms(self) -> None:
         alameda = next(station for station in self.stations if station["id"] == "alameda")
