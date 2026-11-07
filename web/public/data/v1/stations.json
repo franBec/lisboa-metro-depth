@@ -222,15 +222,17 @@
         "surface_elevation_m": 90.89,
         "ground_elevation_m": 94.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": 28.4,
-        "depth_source": "official",
-        "depth_basis": "station",
+        "platform_depth_m": 28.34,
+        "depth_source": "measured",
+        "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": 28.4,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 28.34,
+        "measurement_ids": [
+          "LX_1446:1934"
+        ],
         "source_url": null,
-        "note": "Observador/Metro deep-station list. Platform-level depth unknown."
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -528,15 +530,17 @@
         "surface_elevation_m": 84.47,
         "ground_elevation_m": 81.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": -9.31,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": -9.31,
+        "measurement_ids": [
+          "LX_1446:4209"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       },
       {
         "line": "C",
@@ -584,15 +588,17 @@
         "surface_elevation_m": 75.46,
         "ground_elevation_m": 72.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 6.95,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 6.95,
+        "measurement_ids": [
+          "LX_1446:6644"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -677,15 +683,17 @@
         "surface_elevation_m": 93.91,
         "ground_elevation_m": 91.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 9.97,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 9.97,
+        "measurement_ids": [
+          "LX_1446:5130"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -770,15 +778,17 @@
         "surface_elevation_m": 76.53,
         "ground_elevation_m": 73.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 7.34,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 7.34,
+        "measurement_ids": [
+          "LX_1446:6005"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -894,15 +904,18 @@
         "surface_elevation_m": 91.14,
         "ground_elevation_m": 92.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 16.57,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 16.57,
+        "measurement_ids": [
+          "LX_1446:2678",
+          "LX_1446:2751"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -943,15 +956,17 @@
         "surface_elevation_m": 65.02,
         "ground_elevation_m": 58.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 11.53,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 11.53,
+        "measurement_ids": [
+          "LX_1446:9053"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -1036,15 +1051,17 @@
         "surface_elevation_m": 30.39,
         "ground_elevation_m": 33.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 3.43,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 3.43,
+        "measurement_ids": [
+          "LX_1446:324"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ],
     "structure": "at-grade"
@@ -1192,15 +1209,17 @@
         "surface_elevation_m": 79.96,
         "ground_elevation_m": 75.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 7.02,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 7.02,
+        "measurement_ids": [
+          "LX_1446:8500"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -1285,15 +1304,17 @@
         "surface_elevation_m": 89.87,
         "ground_elevation_m": 88.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": 11.62,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 11.62,
+        "measurement_ids": [
+          "LX_1446:3542"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -1316,15 +1337,17 @@
         "surface_elevation_m": 79.61,
         "ground_elevation_m": 77.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": 23.15,
-        "depth_source": "official",
-        "depth_basis": "station",
+        "platform_depth_m": 22.19,
+        "depth_source": "measured",
+        "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": 23.15,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 22.19,
+        "measurement_ids": [
+          "LX_1446:10007"
+        ],
         "source_url": null,
-        "note": "Observador/Metro deep-station list. Platform-level depth unknown."
+        "note": "Measured platform depth."
       }
     ]
   },
@@ -1472,15 +1495,17 @@
         "surface_elevation_m": 85.65,
         "ground_elevation_m": 84.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": 19.95,
-        "depth_source": "official",
-        "depth_basis": "station",
+        "platform_depth_m": 8.87,
+        "depth_source": "measured",
+        "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": 19.95,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": 8.87,
+        "measurement_ids": [
+          "LX_1446:7549"
+        ],
         "source_url": null,
-        "note": "Station-level value reused on both lines. Platform separation unknown."
+        "note": "Measured platform depth."
       },
       {
         "line": "D",
@@ -1551,15 +1576,17 @@
         "surface_elevation_m": 20.31,
         "ground_elevation_m": 23.0,
         "ground_elevation_source": "Open-Meteo Elevation API (Copernicus DEM)",
-        "platform_depth_m": null,
-        "depth_source": "unknown",
+        "platform_depth_m": -10.32,
+        "depth_source": "measured",
         "depth_basis": "platform",
         "confidence_m": null,
         "official_depth_m": null,
-        "measured_depth_m": null,
-        "measurement_ids": [],
+        "measured_depth_m": -10.32,
+        "measurement_ids": [
+          "LX_1446:1006"
+        ],
         "source_url": null,
-        "note": null
+        "note": "Measured platform depth."
       }
     ],
     "structure": "overground"
