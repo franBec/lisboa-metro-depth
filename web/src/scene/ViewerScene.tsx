@@ -11,6 +11,8 @@ import type { Manifest, Network, Station } from '../data/schemas'
 import type { Projection } from '../lib/geo'
 import { useViewerStore } from '../state/viewerStore'
 import { CameraRig } from './CameraRig'
+import { Landmarks } from './Landmarks'
+import type { LandmarkVisuals } from './landmarkVisuals'
 import { Stations } from './Stations'
 import type { StationVisuals } from './stationVisuals'
 import { Terrain } from './Terrain'
@@ -32,7 +34,9 @@ interface ViewerSceneProps {
   selectedSegmentId: string | null
   xray: boolean
   stationVisuals: StationVisuals
+  landmarkVisuals: LandmarkVisuals
   labelRefs: RefObject<Map<string, HTMLButtonElement>>
+  landmarkLabelRefs: RefObject<Map<string, HTMLButtonElement>>
   onSelectStation: (stationId: string) => void
   onSelectSegment: (segmentId: string) => void
 }
@@ -47,7 +51,9 @@ export function ViewerScene({
   selectedSegmentId,
   xray,
   stationVisuals,
+  landmarkVisuals,
   labelRefs,
+  landmarkLabelRefs,
   onSelectStation,
   onSelectSegment,
 }: ViewerSceneProps) {
@@ -146,9 +152,13 @@ export function ViewerScene({
         selectedSegmentId={selectedSegmentId}
       />
 
+      <Landmarks pins={landmarkVisuals.pins} />
+
       <Stations
         platforms={stationVisuals.platforms}
         labels={stationVisuals.labels}
+        landmarkLabels={landmarkVisuals.labels}
+        landmarkLabelRefs={landmarkLabelRefs}
         selectedLines={selectedLines}
         onSelectStation={onSelectStation}
         labelRefs={labelRefs}

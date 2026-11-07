@@ -884,6 +884,60 @@ body:has(.viewer-root) {
   flex: 0 0 auto;
 }
 
+.landmark-label-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.landmark-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  visibility: hidden;
+  padding: 2px 5px;
+  border: none;
+  appearance: none;
+  background: rgba(11, 15, 16, 0.55);
+  color: rgba(226, 222, 207, 0.66);
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.05em;
+  text-align: left;
+  white-space: nowrap;
+  cursor: default;
+  pointer-events: none;
+}
+
+.landmark-label .landmark-glyph {
+  width: 5px;
+  height: 5px;
+  background: #d4b073;
+  transform: rotate(45deg);
+  flex: 0 0 auto;
+}
+
+.landmark-label.kind-park {
+  background: none;
+  color: rgba(168, 197, 152, 0.58);
+  font-style: italic;
+  letter-spacing: 0.07em;
+}
+
+.landmark-label.kind-water {
+  background: none;
+  color: rgba(148, 189, 208, 0.6);
+  font-style: italic;
+  letter-spacing: 0.09em;
+}
+
 .overlay {
   position: absolute;
   inset: 0;
@@ -932,6 +986,12 @@ body:has(.viewer-root) {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-height: 790px) {
+  .viewer-root .legend {
+    display: none;
   }
 }
 
@@ -1009,6 +1069,11 @@ body:has(.viewer-root) {
 
   .viewer-root .line-picker {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .viewer-root .toggle-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px 12px;
   }
 
   .viewer-root .long-section {

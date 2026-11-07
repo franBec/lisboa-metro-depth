@@ -54,9 +54,13 @@ export function ViewerHud({
   onXRayToggle,
 }: ViewerHudProps) {
   const labelsVisible = useViewerStore((state) => state.labelsVisible)
+  const landmarksVisible = useViewerStore((state) => state.landmarksVisible)
   const inferredVisible = useViewerStore((state) => state.inferredVisible)
   const verticalScale = useViewerStore((state) => state.verticalScale)
   const setLabelsVisible = useViewerStore((state) => state.setLabelsVisible)
+  const setLandmarksVisible = useViewerStore(
+    (state) => state.setLandmarksVisible,
+  )
   const setInferredVisible = useViewerStore(
     (state) => state.setInferredVisible,
   )
@@ -161,6 +165,16 @@ export function ViewerHud({
               }
             />
             <span>Station labels</span>
+          </label>
+          <label className="toggle">
+            <input
+              type="checkbox"
+              checked={landmarksVisible}
+              onChange={(event) =>
+                setLandmarksVisible(event.target.checked)
+              }
+            />
+            <span>Landmarks</span>
           </label>
           <label className="toggle">
             <input

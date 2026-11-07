@@ -3,6 +3,7 @@ import { Color, DoubleSide } from 'three'
 import { useViewerStore } from '../state/viewerStore'
 import { StationInteraction } from './StationInteraction'
 import { StationLabelDriver } from './StationLabelDriver'
+import type { LandmarkLabelVisual } from './landmarkVisuals'
 import type {
   PlatformVisual,
   StationLabelVisual,
@@ -12,6 +13,8 @@ import type { TunnelRun } from './tunnelRuns'
 interface StationsProps {
   platforms: PlatformVisual[]
   labels: StationLabelVisual[]
+  landmarkLabels: LandmarkLabelVisual[]
+  landmarkLabelRefs: RefObject<Map<string, HTMLButtonElement>>
   selectedLines: ReadonlySet<string>
   onSelectStation: (stationId: string) => void
   labelRefs: RefObject<Map<string, HTMLButtonElement>>
@@ -178,6 +181,8 @@ function PlatformMarker({
 export function Stations({
   platforms,
   labels,
+  landmarkLabels,
+  landmarkLabelRefs,
   selectedLines,
   onSelectStation,
   labelRefs,
@@ -200,7 +205,12 @@ export function Stations({
         />
       ))}
 
-      <StationLabelDriver labels={labels} labelRefs={labelRefs} />
+      <StationLabelDriver
+        labels={labels}
+        labelRefs={labelRefs}
+        landmarkLabels={landmarkLabels}
+        landmarkLabelRefs={landmarkLabelRefs}
+      />
 
       <StationInteraction
         labels={labels}

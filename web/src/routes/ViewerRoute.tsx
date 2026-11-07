@@ -8,8 +8,10 @@ import type { ViewerData } from '../data/client'
 import { ViewerQueryProvider } from '../data/ViewerQueryProvider'
 import { useViewerData } from '../data/query'
 import { Projection } from '../lib/geo'
+import { LandmarkLabelOverlay } from '../scene/LandmarkLabelOverlay'
 import { SceneErrorBoundary } from '../scene/SceneErrorBoundary'
 import { StationLabelOverlay } from '../scene/StationLabelOverlay'
+import { buildLandmarkVisuals } from '../scene/landmarkVisuals'
 import { buildStationVisuals } from '../scene/stationVisuals'
 import { ViewerScene } from '../scene/ViewerScene'
 import { useViewerUrlState } from '../state/useViewerUrlState'
@@ -50,7 +52,12 @@ function SceneView({
       ),
     [data.network.lines, data.stations, projection, verticalScale],
   )
+  const landmarkVisuals = useMemo(
+    () => buildLandmarkVisuals(data.landmarks, projection, verticalScale),
+    [data.landmarks, projection, verticalScale],
+  )
   const labelRefs = useRef(new Map<string, HTMLButtonElement>())
+  const landmarkLabelRefs = useRef(new Map<string, HTMLButtonElement>())
 
   return (
     <>
@@ -65,7 +72,9 @@ function SceneView({
           selectedSegmentId={selectedSegmentId}
           xray={xray}
           stationVisuals={stationVisuals}
+          landmarkVisuals={landmarkVisuals}
           labelRefs={labelRefs}
+          landmarkLabelRefs={landmarkLabelRefs}
           onSelectStation={onSelectStation}
           onSelectSegment={onSelectSegment}
         />
@@ -76,6 +85,11 @@ function SceneView({
         selectedLines={selectedLines}
         labelRefs={labelRefs}
         onSelectStation={onSelectStation}
+      />
+
+      <LandmarkLabelOverlay
+        labels={landmarkVisuals.labels}
+        labelRefs={landmarkLabelRefs}
       />
     </>
   )

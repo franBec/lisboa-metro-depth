@@ -52,6 +52,25 @@ def load_depths(path: Path) -> dict[str, dict[str, object]]:
     return depths
 
 
+def load_landmarks(path: Path) -> list[dict[str, object]]:
+    landmarks: list[dict[str, object]] = []
+    with open(path, encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle):
+            kind = row["kind"].strip()
+            if kind not in {"landmark", "park", "water"}:
+                raise ValueError(f"landmark {row['id']!r}: unknown kind {kind!r}")
+            landmarks.append(
+                {
+                    "id": row["id"].strip(),
+                    "name": row["name"].strip(),
+                    "kind": kind,
+                    "lat": float(row["lat"]),
+                    "lon": float(row["lon"]),
+                }
+            )
+    return landmarks
+
+
 def load_elevations(path: Path) -> dict[str, dict[str, object]]:
     with open(path, encoding="utf-8", newline="") as handle:
         rows = list(csv.DictReader(handle))
@@ -93,6 +112,7 @@ def main() -> None:
     structures = load_station_structures(
         ROOT / "pipeline" / "curated" / "station_structure.csv"
     )
+    landmarks = load_landmarks(ROOT / "pipeline" / "curated" / "landmarks.csv")
 
     stations: dict[str, dict[str, object]] = {}
     for line in lines:
@@ -176,6 +196,28 @@ def main() -> None:
         )
         for platform in station["platforms"].values():  # type: ignore[union-attr]
             platform["surface_elevation_m"] = station["surface_elevation_m"]
+
+    mark_records: list[dict[str, object]] = []
+    for landmark in landmarks:
+        lat = float(landmark["lat"])  # type: ignore[arg-type]
+        lon = float(landmark["lon"])  # type: ignore[arg-type]
+        if not (bbox.min_lat < lat < bbox.max_lat and bbox.min_lon < lon < bbox.max_lon):
+            raise RuntimeError(
+                f"landmark {landmark['id']} lies outside the station bbox; "
+                "extend build_bbox margins or curate it out"
+            )
+        mark_records.append(
+            {
+                "id": landmark["id"],
+                "name": landmark["name"],
+                "kind": landmark["kind"],
+                "lat": round(lat, 6),
+                "lon": round(lon, 6),
+                "surface_elevation_m": round(
+                    sample_height(heights, TERRAIN_SIZE, bbox, lat, lon), 2
+                ),
+            }
+        )
 
     network_lines: list[dict[str, object]] = []
     provenance_segments = {"measured": 0, "official": 0, "estimated": 0, "unknown": 0}
@@ -422,6 +464,7 @@ def main() -> None:
             "lines": len(network_lines),
             "platforms": sum(len(station["platforms"]) for station in station_records),
             "segments": sum(len(line["segments"]) for line in network_lines),
+            "landmarks": len(mark_records),
         },
         "provenance_counts": {
             "platforms": provenance_platforms,
@@ -454,6 +497,7 @@ def main() -> None:
             "Toggle X-ray terrain to see estimated tunnels below the surface.",
             "Station ground elevations come from the Copernicus DEM; the 3D terrain is synthetic.",
             "Tunnel slopes are averages between platform anchors, not continuous surveyed grades.",
+            "Landmark positions and kinds are curated; surface elevations are sampled on the synthetic terrain.",
         ],
         "demo_note": "Local demo: real OSM/GTFS geometry, documented depths only, synthetic terrain. Toggle X-ray terrain to see estimated tunnels.",
     }
@@ -465,6 +509,9 @@ def main() -> None:
     (OUTPUT / "stations.json").write_text(
         json.dumps(station_records, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
+    (OUTPUT / "landmarks.json").write_text(
+        json.dumps(mark_records, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
     (OUTPUT / "network.json").write_text(
         json.dumps({"lines": network_lines}, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
@@ -475,7 +522,7 @@ def main() -> None:
     print(f"wrote {OUTPUT}")
     print(
         f"stations={len(station_records)} lines={len(network_lines)} "
-        f"segments={manifest['counts']['segments']}"
+        f"segments={manifest['counts']['segments']} landmarks={len(mark_records)}"
     )
     print(f"terrain={bbox.width_m:.0f}m x {bbox.height_m:.0f}m, height {min_height:.1f}..{max_height:.1f}m")
 

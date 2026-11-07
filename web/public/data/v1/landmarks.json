@@ -1,0 +1,98 @@
+[
+  {
+    "id": "castelo-sao-jorge",
+    "name": "Castelo de São Jorge",
+    "kind": "landmark",
+    "lat": 38.7139,
+    "lon": -9.1335,
+    "surface_elevation_m": 28.29
+  },
+  {
+    "id": "se-de-lisboa",
+    "name": "Sé de Lisboa",
+    "kind": "landmark",
+    "lat": 38.7098,
+    "lon": -9.1328,
+    "surface_elevation_m": 9.23
+  },
+  {
+    "id": "praca-do-comercio",
+    "name": "Praça do Comércio",
+    "kind": "landmark",
+    "lat": 38.7077,
+    "lon": -9.1365,
+    "surface_elevation_m": 5.38
+  },
+  {
+    "id": "aqueduto-aguas-livres",
+    "name": "Aqueduto das Águas Livres",
+    "kind": "landmark",
+    "lat": 38.7239,
+    "lon": -9.1649,
+    "surface_elevation_m": 68.12
+  },
+  {
+    "id": "estadio-da-luz",
+    "name": "Estádio da Luz",
+    "kind": "landmark",
+    "lat": 38.7527,
+    "lon": -9.1847,
+    "surface_elevation_m": 83.28
+  },
+  {
+    "id": "estadio-jose-alvalade",
+    "name": "Estádio José Alvalade",
+    "kind": "landmark",
+    "lat": 38.7612,
+    "lon": -9.1608,
+    "surface_elevation_m": 86.66
+  },
+  {
+    "id": "museu-gulbenkian",
+    "name": "Museu Gulbenkian",
+    "kind": "landmark",
+    "lat": 38.7378,
+    "lon": -9.1535,
+    "surface_elevation_m": 81.05
+  },
+  {
+    "id": "torre-vasco-da-gama",
+    "name": "Torre Vasco da Gama",
+    "kind": "landmark",
+    "lat": 38.7747,
+    "lon": -9.0913,
+    "surface_elevation_m": 45.29
+  },
+  {
+    "id": "oceanario",
+    "name": "Oceanário de Lisboa",
+    "kind": "landmark",
+    "lat": 38.7635,
+    "lon": -9.0937,
+    "surface_elevation_m": 35.19
+  },
+  {
+    "id": "aeroporto-terminal",
+    "name": "Aeroporto de Lisboa",
+    "kind": "landmark",
+    "lat": 38.7726,
+    "lon": -9.1306,
+    "surface_elevation_m": 83.04
+  },
+  {
+    "id": "serra-de-monsanto",
+    "name": "Serra de Monsanto",
+    "kind": "park",
+    "lat": 38.735,
+    "lon": -9.19,
+    "surface_elevation_m": 70.03
+  },
+  {
+    "id": "rio-tejo",
+    "name": "Rio Tejo",
+    "kind": "water",
+    "lat": 38.688,
+    "lon": -9.19,
+    "surface_elevation_m": 0.0
+  }
+]

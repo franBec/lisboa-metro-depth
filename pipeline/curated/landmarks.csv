@@ -1,0 +1,13 @@
+id,name,kind,lat,lon
+castelo-sao-jorge,Castelo de São Jorge,landmark,38.7139,-9.1335
+se-de-lisboa,Sé de Lisboa,landmark,38.7098,-9.1328
+praca-do-comercio,Praça do Comércio,landmark,38.7077,-9.1365
+aqueduto-aguas-livres,Aqueduto das Águas Livres,landmark,38.7239,-9.1649
+estadio-da-luz,Estádio da Luz,landmark,38.7527,-9.1847
+estadio-jose-alvalade,Estádio José Alvalade,landmark,38.7612,-9.1608
+museu-gulbenkian,Museu Gulbenkian,landmark,38.7378,-9.1535
+torre-vasco-da-gama,Torre Vasco da Gama,landmark,38.7747,-9.0913
+oceanario,Oceanário de Lisboa,landmark,38.7635,-9.0937
+aeroporto-terminal,Aeroporto de Lisboa,landmark,38.7726,-9.1306
+serra-de-monsanto,Serra de Monsanto,park,38.7350,-9.1900
+rio-tejo,Rio Tejo,water,38.6880,-9.1900

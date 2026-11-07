@@ -21,6 +21,7 @@ class DummyDataTest(unittest.TestCase):
         cls.manifest = json.loads((DATA / "manifest.json").read_text(encoding="utf-8"))
         cls.stations = json.loads((DATA / "stations.json").read_text(encoding="utf-8"))
         cls.network = json.loads((DATA / "network.json").read_text(encoding="utf-8"))
+        cls.landmarks = json.loads((DATA / "landmarks.json").read_text(encoding="utf-8"))
         with open(
             ROOT / "pipeline" / "curated" / "station_elevations.csv",
             encoding="utf-8",
@@ -124,6 +125,30 @@ class DummyDataTest(unittest.TestCase):
             self.assertEqual(self.manifest["provenance_counts"]["segments"][source], expected)
         self.assertGreater(estimated, 0)
         self.assertGreater(unknown, 0)
+
+    def test_landmarks(self) -> None:
+        with open(ROOT / "pipeline" / "curated" / "landmarks.csv", encoding="utf-8", newline="") as handle:
+            curated = {row["id"]: row for row in csv.DictReader(handle)}
+        bbox = self.manifest["bbox"]
+        self.assertEqual(self.manifest["counts"]["landmarks"], len(self.landmarks))
+        seen = set()
+        for landmark in self.landmarks:
+            self.assertNotIn(landmark["id"], seen)
+            seen.add(landmark["id"])
+            self.assertIn(landmark["id"], curated)
+            row = curated[landmark["id"]]
+            self.assertEqual(landmark["name"], row["name"])
+            self.assertEqual(landmark["kind"], row["kind"])
+            self.assertAlmostEqual(landmark["lat"], float(row["lat"]), places=5)
+            self.assertAlmostEqual(landmark["lon"], float(row["lon"]), places=5)
+            self.assertIn(landmark["kind"], ("landmark", "park", "water"))
+            self.assertTrue(
+                bbox["min_lat"] < landmark["lat"] < bbox["max_lat"]
+                and bbox["min_lon"] < landmark["lon"] < bbox["max_lon"],
+                landmark["id"],
+            )
+            self.assertFalse(math.isnan(landmark["surface_elevation_m"]))
+            self.assertGreaterEqual(landmark["surface_elevation_m"], 0.0)
 
     def test_terrain_assets(self) -> None:
         terrain = self.manifest["terrain"]

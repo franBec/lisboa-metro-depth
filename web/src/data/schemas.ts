@@ -170,7 +170,21 @@ export const lineSchema = z.object({
   segments: z.array(segmentSchema),
 })
 
+export const landmarkKindSchema = z.enum(['landmark', 'park', 'water'])
+
+export type LandmarkKind = z.infer<typeof landmarkKindSchema>
+
+export const landmarkSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  kind: landmarkKindSchema,
+  lat: coordinate,
+  lon: coordinate,
+  surface_elevation_m: finiteNumber,
+})
+
 export const stationsSchema = z.array(stationSchema)
+export const landmarksSchema = z.array(landmarkSchema)
 export const networkSchema = z.object({
   lines: z.array(lineSchema).min(1),
 })
@@ -182,3 +196,4 @@ export type Vertex = z.infer<typeof vertexSchema>
 export type Segment = z.infer<typeof segmentSchema>
 export type Line = z.infer<typeof lineSchema>
 export type Network = z.infer<typeof networkSchema>
+export type Landmark = z.infer<typeof landmarkSchema>

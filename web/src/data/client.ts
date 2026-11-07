@@ -1,8 +1,10 @@
 import type { ZodType } from 'zod'
 import {
+  landmarksSchema,
   manifestSchema,
   networkSchema,
   stationsSchema,
+  type Landmark,
   type Manifest,
   type Network,
   type Station,
@@ -10,6 +12,7 @@ import {
 
 const STATIONS_FILE = 'stations.json'
 const NETWORK_FILE = 'network.json'
+const LANDMARKS_FILE = 'landmarks.json'
 
 function normalizeBase(base: string): string {
   return base.endsWith('/') ? base : `${base}/`
@@ -31,6 +34,7 @@ export interface ViewerData {
   manifest: Manifest
   stations: Station[]
   network: Network
+  landmarks: Landmark[]
   heights: Float32Array
 }
 
@@ -82,9 +86,10 @@ export async function loadViewerData(): Promise<ViewerData> {
     'manifest.json',
   )
 
-  const [stations, network, terrainBuffer] = await Promise.all([
+  const [stations, network, landmarks, terrainBuffer] = await Promise.all([
     fetchJson(dataUrl(STATIONS_FILE), stationsSchema, STATIONS_FILE),
     fetchJson(dataUrl(NETWORK_FILE), networkSchema, NETWORK_FILE),
+    fetchJson(dataUrl(LANDMARKS_FILE), landmarksSchema, LANDMARKS_FILE),
     fetchBinary(dataUrl(manifest.terrain.file), manifest.terrain.file),
   ])
 
@@ -103,5 +108,5 @@ export async function loadViewerData(): Promise<ViewerData> {
     )
   }
 
-  return { manifest, stations, network, heights }
+  return { manifest, stations, network, landmarks, heights }
 }
