@@ -65,6 +65,17 @@
       "bytes": 2196697,
       "sha256": "4ee9e21f66d58eda0f852595c5ba5695a153f7b8a5a433ad6c842ec3cb171ea6",
       "notes": "Demoted to POC. Measured with the pilot build that stored altitude instead of positive-down depth, and with station-keyed surfaces. Excluded from merges; the crossing will be re-surveyed with the per-entrance field build."
+    },
+    {
+      "session_id": "LX_1446",
+      "file": "field/LX_1446.csv",
+      "kind": "survey",
+      "date": "2026-11-07",
+      "duration_s": 11433.375,
+      "rows": 19772,
+      "bytes": 2248451,
+      "sha256": "f24b99f91a807a694f00383ea4426ed39649cea568266c5f506a3c75a6d129f8",
+      "notes": "Yellow line B survey Odivelas -> Rato with build field-20261102c. 13 platforms with per-entrance surfaces, a second Odivelas entrance reference, and a full Rato -> Odivelas ride with 13 station stops of 8 Hz profile. Ameixoeira official cross-check within 0.06 m. A stray keypress at Saldanha was aborted before logging; Lumiar logged two agreed platform windows that measure intra-station repeatability at about 7 mm. Companion GPS track in field/LX_1446_gps.gpx. NTP clock sync, battery 4.03 V to 3.86 V."
     }
   ]
 }

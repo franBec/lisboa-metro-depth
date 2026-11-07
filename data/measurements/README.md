@@ -13,6 +13,10 @@ data/measurements/
   field/             station, entrance, and ride-through survey logs
 ```
 
+Companion phone records live next to the Cardputer session they support. They
+are named `<session_id>_gps.gpx`/`.kml` from the GPSLogger export and are not
+listed in `index.json`, which covers only Cardputer CSVs.
+
 ## Index
 
 Every CSV must have an entry in `index.json` with:
