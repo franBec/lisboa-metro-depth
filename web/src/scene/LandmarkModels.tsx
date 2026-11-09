@@ -1,6 +1,5 @@
-import { DoubleSide, Shape } from 'three'
+import { Shape } from 'three'
 import {
-  arcadeOutline,
   ellipsePlan,
   extrudeThick,
   extrudeUp,
@@ -37,6 +36,8 @@ const WHITE = '#e3ded1'
 const WHITE_EMISSIVE = '#55503f'
 const ACCENT_RED = '#a5433f'
 const ACCENT_RED_EMISSIVE = '#3a1614'
+const IRON = '#5f5b52'
+const IRON_EMISSIVE = '#25231e'
 
 interface FlatProps {
   color: string
@@ -264,37 +265,6 @@ export function PracaDoComercio() {
 }
 
 /**
- * Aqueduto das Águas Livres. The real structure stretches ~940m at up to
- * 38m tall across the Alcântara valley; built near true size as one
- * elevation-profile arcade (pier legs and semicircular arches woven into a
- * single silhouette) rotated along its SW-NE approach to the valley.
- */
-const AQUEDUTO_BAND = extrudeThick(
-  arcadeOutline(10, 37, 24, 26, 42),
-  12,
-)
-export function AquedutoAguasLivres() {
-  const majors: Array<number> = [-111, 0, 111]
-  return (
-    <group rotation={[0, 0.6, 0]}>
-      <mesh geometry={AQUEDUTO_BAND}>
-        <Flat color={STONE} emissive={STONE_EMISSIVE} />
-      </mesh>
-      <mesh position={[0, 44.5, 0]}>
-        <boxGeometry args={[374, 5, 16]} />
-        <Flat color={STONE} emissive={STONE_EMISSIVE} />
-      </mesh>
-      {majors.map((x) => (
-        <mesh key={x} position={[x, 24, 0]}>
-          <boxGeometry args={[16, 48, 16]} />
-          <Flat color={STONE} emissive={STONE_EMISSIVE} />
-        </mesh>
-      ))}
-    </group>
-  )
-}
-
-/**
  * Estádio da Luz. Bowl plan ~250x220m stepped in two rings (lower and upper
  * seating tiers as true ellipse extrusions), roof band and pitch floor.
  */
@@ -438,104 +408,6 @@ export function MuseuGulbenkian() {
   )
 }
 
-/** Torre Vasco da Gama. Real tower is 145m; shown at roughly 1.5x. */
-export function TorreVascoDaGama() {
-  return (
-    <group>
-      <mesh position={[0, 13, 0]}>
-        <cylinderGeometry args={[30, 46, 26, 9, 1, true]} />
-        <Flat color={STONE} emissive={STONE_EMISSIVE} side={DoubleSide} />
-      </mesh>
-      <mesh position={[0, 84, 0]}>
-        <cylinderGeometry args={[12, 24, 132, 9]} />
-        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
-      </mesh>
-      <mesh position={[0, 44, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[27, 2.5, 4, 12]} />
-        <Flat color={GLASS} emissive={GLASS_EMISSIVE} />
-      </mesh>
-      <mesh position={[0, 106, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[15, 2.5, 4, 12]} />
-        <Flat color={GLASS} emissive={GLASS_EMISSIVE} />
-      </mesh>
-      <mesh position={[0, 128, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[13, 2.5, 4, 12]} />
-        <Flat color={GLASS} emissive={GLASS_EMISSIVE} />
-      </mesh>
-      <mesh position={[0, 157, 0]}>
-        <cylinderGeometry args={[24, 20, 14, 9]} />
-        <Glass />
-      </mesh>
-      <mesh position={[0, 165.5, 0]}>
-        <cylinderGeometry args={[25, 25, 3, 9]} />
-        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
-      </mesh>
-      <mesh position={[0, 193, 0]}>
-        <cylinderGeometry args={[2.5, 2.5, 56, 6]} />
-        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
-      </mesh>
-    </group>
-  )
-}
-
-/**
- * Oceanário de Lisboa. Ship-shaped mass ~160x100m with the bridgehouse
- * block; plan traced from the building's oval hull outline.
- */
-const OCEANARIO_HULL = extrudeUp(
-  planShape([
-    [66, -24],
-    [82, -8],
-    [82, 12],
-    [64, 32],
-    [34, 46],
-    [-6, 50],
-    [-44, 42],
-    [-70, 26],
-    [-80, 6],
-    [-74, -16],
-    [-52, -34],
-    [-16, -44],
-    [28, -44],
-  ]),
-  22,
-  1,
-)
-const OCEANARIO_BRIDGE = extrudeUp(
-  planShape([
-    [40, -14],
-    [66, -14],
-    [66, 14],
-    [40, 14],
-  ]),
-  16,
-)
-const OCEANARIO_CROWN = extrudeUp(
-  planShape([
-    [44, -10],
-    [62, -10],
-    [62, 10],
-    [44, 10],
-  ]),
-  6,
-)
-
-export function Oceanario() {
-  return (
-    <group rotation={[0, 0.5, 0]}>
-      <mesh geometry={OCEANARIO_HULL}>
-        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
-      </mesh>
-      <mesh geometry={OCEANARIO_BRIDGE} position={[0, 20, 0]}>
-        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
-      </mesh>
-      <mesh geometry={OCEANARIO_CROWN} position={[0, 36, 0]}>
-        <Glass />
-      </mesh>
-    </group>
-  )
-}
-
 /**
  * Aeroporto de Lisboa. Terminal hall ~280m long with two north piers, the
  * glazed landside band, and the control tower at the east end.
@@ -606,9 +478,392 @@ export function Aeroporto() {
   )
 }
 
+/**
+ * Elevador de Santa Justa. The 45 m iron lift is drawn at the scene's
+ * vertical exaggeration: stone base, four open iron columns, viewing deck,
+ * glazed cabin and spire.
+ */
+export function ElevadorDeSantaJusta() {
+  const columns: Array<[number, number]> = [
+    [-6, -5],
+    [-6, 5],
+    [6, -5],
+    [6, 5],
+  ]
+  return (
+    <group rotation={[0, 0.35, 0]}>
+      <mesh position={[0, 5, 0]}>
+        <boxGeometry args={[22, 10, 18]} />
+        <Flat color={STONE} emissive={STONE_EMISSIVE} />
+      </mesh>
+      <mesh position={[0, 28, 0]}>
+        <boxGeometry args={[10, 40, 10]} />
+        <Flat color={IRON} emissive={IRON_EMISSIVE} />
+      </mesh>
+      {columns.map(([x, z]) => (
+        <mesh key={`${x}:${z}`} position={[x, 30, z]}>
+          <boxGeometry args={[2.4, 44, 2.4]} />
+          <Flat color={IRON} emissive={IRON_EMISSIVE} />
+        </mesh>
+      ))}
+      <mesh position={[0, 54, 0]}>
+        <boxGeometry args={[20, 3, 18]} />
+        <Flat color={STONE} emissive={STONE_EMISSIVE} />
+      </mesh>
+      <mesh position={[0, 61, 0]}>
+        <boxGeometry args={[14, 11, 12]} />
+        <Glass />
+      </mesh>
+      <mesh position={[0, 68.5, 0]}>
+        <coneGeometry args={[9, 7, 8]} />
+        <Flat color={TILE} emissive={TILE_EMISSIVE} />
+      </mesh>
+    </group>
+  )
+}
 
+/**
+ * Arco da Rua Augusta. 30 m triumphal arch shown at the scene scale: one
+ * deep arch opening, side pylons and a heavy attic cornice.
+ */
+const ARCO_SHAPE = new Shape()
+ARCO_SHAPE.moveTo(-15, 0)
+ARCO_SHAPE.lineTo(-8, 0)
+ARCO_SHAPE.lineTo(-8, 20)
+ARCO_SHAPE.absarc(0, 20, 8, Math.PI, 0, true)
+ARCO_SHAPE.lineTo(8, 0)
+ARCO_SHAPE.lineTo(15, 0)
+ARCO_SHAPE.lineTo(15, 44)
+ARCO_SHAPE.lineTo(-15, 44)
+ARCO_SHAPE.closePath()
+const ARCO_BAND = extrudeThick(ARCO_SHAPE, 12)
 
+export function ArcoRuaAugusta() {
+  return (
+    <group rotation={[0, 0.15, 0]}>
+      <mesh geometry={ARCO_BAND} position={[0, 0, -6]}>
+        <Flat color={STONE} emissive={STONE_EMISSIVE} />
+      </mesh>
+      <mesh position={[0, 47, 0]}>
+        <boxGeometry args={[34, 6, 14]} />
+        <Flat color={STONE} emissive={STONE_EMISSIVE} />
+      </mesh>
+      <mesh position={[0, 43.5, 0]}>
+        <boxGeometry args={[30, 2, 13]} />
+        <Flat color={PLASTER} emissive={PLASTER_EMISSIVE} />
+      </mesh>
+    </group>
+  )
+}
 
+/**
+ * Panteão Nacional. White marble cross plan, drum, hemispherical dome and
+ * lantern; the west portico faces the river.
+ */
+const PANTEON_BASE = extrudeUp(
+  planShape([
+    [-28, -24],
+    [28, -24],
+    [28, 24],
+    [-28, 24],
+  ]),
+  22,
+  0.8,
+)
+const PANTEON_PORTICO = extrudeUp(
+  planShape([
+    [-12, -34],
+    [12, -34],
+    [12, -24],
+    [-12, -24],
+  ]),
+  18,
+  0.6,
+)
+const PANTEON_COLUMNS = [-10, -6, -2, 2, 6, 10]
 
+export function PanteaoNacional() {
+  return (
+    <group rotation={[0, -0.15, 0]}>
+      <mesh geometry={PANTEON_BASE}>
+        <Flat color={PLASTER} emissive={PLASTER_EMISSIVE} />
+      </mesh>
+      <mesh geometry={PANTEON_PORTICO}>
+        <Flat color={PLASTER} emissive={PLASTER_EMISSIVE} />
+      </mesh>
+      {PANTEON_COLUMNS.map((x) => (
+        <mesh key={x} position={[x, 9, -34]}>
+          <cylinderGeometry args={[1.4, 1.4, 18, 6]} />
+          <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
+        </mesh>
+      ))}
+      <mesh position={[0, 29, 0]}>
+        <cylinderGeometry args={[16, 16, 14, 16]} />
+        <Flat color={PLASTER} emissive={PLASTER_EMISSIVE} />
+      </mesh>
+      <mesh position={[0, 36, 0]}>
+        <sphereGeometry args={[14, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2]} />
+        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
+      </mesh>
+      <mesh position={[0, 53, 0]}>
+        <cylinderGeometry args={[3, 4, 6, 8]} />
+        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
+      </mesh>
+    </group>
+  )
+}
 
+/**
+ * Estação do Rossio. Long neoclassical facade with a raised central pavilion
+ * and two glazed horseshoe-arch entrances.
+ */
+const ROSSIO_WING = extrudeUp(
+  planShape([
+    [-64, -10],
+    [64, -10],
+    [64, 10],
+    [-64, 10],
+  ]),
+  24,
+  0.6,
+)
+const ROSSIO_CENTER = extrudeUp(
+  planShape([
+    [-20, -14],
+    [20, -14],
+    [20, 14],
+    [-20, 14],
+  ]),
+  34,
+  0.6,
+)
+const ROSSIO_WING_ROOF = extrudeUp(
+  planShape([
+    [-66, -12],
+    [66, -12],
+    [66, 12],
+    [-66, 12],
+  ]),
+  3,
+)
+const ROSSIO_CENTER_ROOF = extrudeUp(
+  planShape([
+    [-22, -16],
+    [22, -16],
+    [22, 16],
+    [-22, 16],
+  ]),
+  3,
+)
 
+export function EstacaoDoRossio() {
+  return (
+    <group rotation={[0, 0.05, 0]}>
+      <mesh geometry={ROSSIO_WING}>
+        <Flat color={PLASTER} emissive={PLASTER_EMISSIVE} />
+      </mesh>
+      <mesh geometry={ROSSIO_CENTER}>
+        <Flat color={OCHRE} emissive={OCHRE_EMISSIVE} />
+      </mesh>
+      <mesh geometry={ROSSIO_WING_ROOF} position={[0, 25, 0]}>
+        <Flat color={TILE} emissive={TILE_EMISSIVE} />
+      </mesh>
+      <mesh geometry={ROSSIO_CENTER_ROOF} position={[0, 35.5, 0]}>
+        <Flat color={TILE} emissive={TILE_EMISSIVE} />
+      </mesh>
+      {[-38, 38].map((x) => (
+        <mesh key={x} position={[x, 8, 10.2]}>
+          <boxGeometry args={[10, 14, 1]} />
+          <Glass />
+        </mesh>
+      ))}
+      <mesh position={[0, 39.5, 0]}>
+        <boxGeometry args={[8, 5, 6]} />
+        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
+      </mesh>
+    </group>
+  )
+}
+
+/**
+ * Mercado da Ribeira. 100 m iron market hall with a gabled roof and raised
+ * clerestory over the central aisle.
+ */
+const RIBEIRA_HALL = extrudeUp(
+  planShape([
+    [-52, -26],
+    [52, -26],
+    [52, 26],
+    [-52, 26],
+  ]),
+  14,
+  0.6,
+)
+const RIBEIRA_ROOF_SHAPE = new Shape()
+RIBEIRA_ROOF_SHAPE.moveTo(-28, 0)
+RIBEIRA_ROOF_SHAPE.lineTo(0, 12)
+RIBEIRA_ROOF_SHAPE.lineTo(28, 0)
+RIBEIRA_ROOF_SHAPE.closePath()
+const RIBEIRA_ROOF = extrudeThick(RIBEIRA_ROOF_SHAPE, 104)
+
+export function MercadoDaRibeira() {
+  return (
+    <group rotation={[0, 0.05, 0]}>
+      <mesh geometry={RIBEIRA_HALL}>
+        <Flat color={PLASTER} emissive={PLASTER_EMISSIVE} />
+      </mesh>
+      <mesh geometry={RIBEIRA_ROOF} position={[-52, 14, 0]} rotation={[0, Math.PI / 2, 0]}>
+        <Flat color={TILE} emissive={TILE_EMISSIVE} />
+      </mesh>
+      <mesh position={[0, 28, 0]}>
+        <boxGeometry args={[40, 4, 10]} />
+        <Glass />
+      </mesh>
+      <mesh position={[0, 7, 26.2]}>
+        <boxGeometry args={[22, 10, 1]} />
+        <Glass />
+      </mesh>
+    </group>
+  )
+}
+
+/**
+ * Praça de Touros do Campo Pequeno. Circular arena ~80 m across with a ring
+ * wall, shallow tiled roof, central lantern and four corner towers.
+ */
+const ARENA_WALL = extrudeUp(ellipsePlan(45, 45, { rx: 37, ry: 37 }), 16, 0.8)
+const ARENA_PITCH = extrudeUp(ellipsePlan(32, 32, null), 2)
+const ARENA_TOWERS: Array<[number, number]> = [
+  [31, 31],
+  [-31, 31],
+  [31, -31],
+  [-31, -31],
+]
+
+export function PracaDeTourosCampoPequeno() {
+  return (
+    <group>
+      <mesh geometry={ARENA_WALL}>
+        <Flat color={OCHRE} emissive={OCHRE_EMISSIVE} />
+      </mesh>
+      <mesh geometry={ARENA_PITCH} position={[0, 1.5, 0]}>
+        <Flat color={PITCH} emissive={PITCH_EMISSIVE} />
+      </mesh>
+      <mesh position={[0, 22, 0]}>
+        <coneGeometry args={[40, 12, 24]} />
+        <Flat color={TILE} emissive={TILE_EMISSIVE} />
+      </mesh>
+      <mesh position={[0, 30, 0]}>
+        <cylinderGeometry args={[3, 4, 4, 8]} />
+        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
+      </mesh>
+      {ARENA_TOWERS.map(([x, z]) => (
+        <group key={`${x}:${z}`} position={[x, 0, z]}>
+          <mesh position={[0, 10, 0]}>
+            <cylinderGeometry args={[4, 4.5, 20, 8]} />
+            <Flat color={OCHRE} emissive={OCHRE_EMISSIVE} />
+          </mesh>
+          <mesh position={[0, 23, 0]}>
+            <coneGeometry args={[5, 6, 8]} />
+            <Flat color={TILE} emissive={TILE_EMISSIVE} />
+          </mesh>
+        </group>
+      ))}
+    </group>
+  )
+}
+
+/**
+ * Gare do Oriente. Long glazed train shed on a podium, with a raised central
+ * hall, repeated columns and a clerestory ridge.
+ */
+const GARE_PODIUM = extrudeUp(
+  planShape([
+    [-100, -45],
+    [100, -45],
+    [100, 45],
+    [-100, 45],
+  ]),
+  6,
+  0.6,
+)
+const GARE_HALL = extrudeUp(
+  planShape([
+    [-42, -24],
+    [42, -24],
+    [42, 24],
+    [-42, 24],
+  ]),
+  36,
+  0.6,
+)
+const GARE_COLUMN_POSITIONS: Array<[number, number]> = Array.from(
+  { length: 9 },
+  (_, index) => {
+    const x = -80 + index * 20
+    return [
+      [x, -40],
+      [x, 40],
+    ] as Array<[number, number]>
+  },
+).flat()
+
+export function GareDoOriente() {
+  return (
+    <group rotation={[0, 0.08, 0]}>
+      <mesh geometry={GARE_PODIUM}>
+        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
+      </mesh>
+      <mesh geometry={GARE_HALL} position={[0, 6, 0]}>
+        <Flat color={PLASTER} emissive={PLASTER_EMISSIVE} />
+      </mesh>
+      {GARE_COLUMN_POSITIONS.map(([x, z]) => (
+        <mesh key={`${x}:${z}`} position={[x, 24, z]}>
+          <boxGeometry args={[3, 36, 3]} />
+          <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
+        </mesh>
+      ))}
+      <mesh position={[0, 43, 0]}>
+        <boxGeometry args={[184, 2, 88]} />
+        <Glass />
+      </mesh>
+      <mesh position={[0, 46, 0]}>
+        <boxGeometry args={[24, 4, 24]} />
+        <Glass />
+      </mesh>
+    </group>
+  )
+}
+
+/**
+ * Pavilhão de Portugal. Two concrete side blocks carry a long suspended
+ * canopy over the glass exhibition hall.
+ */
+export function PavilhaoDePortugal() {
+  return (
+    <group rotation={[0, -0.12, 0]}>
+      <mesh position={[0, 1.5, 0]}>
+        <boxGeometry args={[100, 3, 70]} />
+        <Flat color={STONE} emissive={STONE_EMISSIVE} />
+      </mesh>
+      {[-36, 36].map((x) => (
+        <mesh key={x} position={[x, 9, 0]}>
+          <boxGeometry args={[18, 18, 40]} />
+          <Flat color={PLASTER} emissive={PLASTER_EMISSIVE} />
+        </mesh>
+      ))}
+      <mesh position={[0, 13, 0]}>
+        <boxGeometry args={[56, 14, 46]} />
+        <Glass />
+      </mesh>
+      <mesh position={[0, 22, 0]}>
+        <boxGeometry args={[104, 4, 72]} />
+        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
+      </mesh>
+      <mesh position={[0, 25, 0]}>
+        <boxGeometry args={[40, 2, 12]} />
+        <Flat color={WHITE} emissive={WHITE_EMISSIVE} />
+      </mesh>
+    </group>
+  )
+}

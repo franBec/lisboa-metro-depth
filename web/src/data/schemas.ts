@@ -204,6 +204,8 @@ export const landmarkSchema = z.object({
   kind: landmarkKindSchema,
   lat: coordinate,
   lon: coordinate,
+  station_id: z.string().min(1),
+  distance_m: nonNegativeNumber,
   surface_elevation_m: finiteNumber,
 })
 

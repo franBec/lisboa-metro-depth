@@ -166,6 +166,22 @@ export function StationLabelDriver({
     const kept: Array<{ x: number; y: number }> = []
     const visibleCandidates: LabelCandidate[] = []
     for (const candidate of candidates) {
+      const conflict = kept.find(
+        (point) =>
+          Math.hypot(point.x - candidate.x, point.y - candidate.y) <= 44,
+      )
+
+      // Station labels win collisions. Nudge a losing landmark label away
+      // from the winning point so very close landmarks stay readable.
+      if (conflict && candidate.priority === 2) {
+        const width = candidate.element.offsetWidth
+        const direction = candidate.x >= conflict.x ? 1 : -1
+        const shiftedX = candidate.x + direction * (width + 18)
+        if (shiftedX > 6 && shiftedX < size.width - 90) {
+          candidate.x = shiftedX
+        }
+      }
+
       const clear = kept.every(
         (point) =>
           Math.hypot(point.x - candidate.x, point.y - candidate.y) > 44,

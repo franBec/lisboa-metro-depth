@@ -10,7 +10,7 @@ from pathlib import Path
 
 from gtfs import Gtfs, ensure_gtfs, interpolate_shape, shape_slice, slugify
 from interchanges import deform_shape_for_interchange, load_interchanges
-from osm import fit_shape_to_stations, load_shapes as load_osm_shapes
+from osm import fit_shape_to_stations, haversine_m, load_shapes as load_osm_shapes
 from structures import load_station_structures
 from terrain import (
     BBox,
@@ -30,6 +30,7 @@ METERS_PER_DEG_LAT = 110_540.0
 METERS_PER_DEG_LON = 111_320.0
 PLATFORM_LENGTH_M = 105.0
 PLATFORM_WIDTH_M = 4.5
+LANDMARK_MAX_DISTANCE_M = 500.0
 CURVED_PLATFORMS = {("marques-de-pombal", "A")}
 
 
@@ -71,6 +72,8 @@ def load_landmarks(path: Path) -> list[dict[str, object]]:
                     "kind": kind,
                     "lat": float(row["lat"]),
                     "lon": float(row["lon"]),
+                    "station_id": row["station_id"].strip(),
+                    "distance_m": float(row["distance_m"]),
                 }
             )
     return landmarks
@@ -238,6 +241,42 @@ def main() -> None:
     for landmark in landmarks:
         lat = float(landmark["lat"])  # type: ignore[arg-type]
         lon = float(landmark["lon"])  # type: ignore[arg-type]
+        station_id = str(landmark["station_id"])
+        station = stations.get(station_id)
+        if station is None:
+            raise RuntimeError(
+                f"landmark {landmark['id']} names unknown station {station_id!r}"
+            )
+        nearest_station_id = min(
+            stations,
+            key=lambda candidate_id: haversine_m(
+                lat,
+                lon,
+                float(stations[candidate_id]["lat"]),  # type: ignore[arg-type]
+                float(stations[candidate_id]["lon"]),  # type: ignore[arg-type]
+            ),
+        )
+        if nearest_station_id != station_id:
+            raise RuntimeError(
+                f"landmark {landmark['id']} names {station_id}, "
+                f"but the nearest station is {nearest_station_id}"
+            )
+        distance = haversine_m(
+            lat,
+            lon,
+            float(station["lat"]),  # type: ignore[arg-type]
+            float(station["lon"]),  # type: ignore[arg-type]
+        )
+        if distance > LANDMARK_MAX_DISTANCE_M:
+            raise RuntimeError(
+                f"landmark {landmark['id']} is {distance:.0f} m from "
+                f"{station_id}; limit is {LANDMARK_MAX_DISTANCE_M:.0f} m"
+            )
+        if abs(distance - float(landmark["distance_m"])) > 1.0:  # type: ignore[arg-type]
+            raise RuntimeError(
+                f"landmark {landmark['id']} distance_m is "
+                f"{landmark['distance_m']}, computed {distance:.1f}"
+            )
         if not (bbox.min_lat < lat < bbox.max_lat and bbox.min_lon < lon < bbox.max_lon):
             raise RuntimeError(
                 f"landmark {landmark['id']} lies outside the station bbox; "
@@ -250,6 +289,8 @@ def main() -> None:
                 "kind": landmark["kind"],
                 "lat": round(lat, 6),
                 "lon": round(lon, 6),
+                "station_id": station_id,
+                "distance_m": round(distance),
                 "surface_elevation_m": round(
                     sample_height(heights, TERRAIN_SIZE, bbox, lat, lon), 2
                 ),
@@ -551,7 +592,7 @@ def main() -> None:
             "Toggle X-ray terrain to see estimated tunnels below the surface.",
             "Station ground elevations come from the Copernicus DEM; the 3D terrain is synthetic.",
             "Tunnel slopes are averages between platform anchors, not continuous surveyed grades.",
-            "Landmark positions and kinds are curated; surface elevations are sampled on the synthetic terrain.",
+            "Landmark positions and kinds are curated; each landmark sits within 500 m of its nearest station, and surface elevations are sampled on the synthetic terrain.",
         ],
         "demo_note": "Local demo: real OSM/GTFS geometry, documented depths only, synthetic terrain. Toggle X-ray terrain to see estimated tunnels.",
     }

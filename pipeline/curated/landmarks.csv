@@ -1,13 +1,53 @@
-id,name,kind,lat,lon
-castelo-sao-jorge,Castelo de São Jorge,landmark,38.7139,-9.1335
-se-de-lisboa,Sé de Lisboa,landmark,38.7098,-9.1328
-praca-do-comercio,Praça do Comércio,landmark,38.7077,-9.1365
-aqueduto-aguas-livres,Aqueduto das Águas Livres,landmark,38.7239,-9.1649
-estadio-da-luz,Estádio da Luz,landmark,38.7527,-9.1847
-estadio-jose-alvalade,Estádio José Alvalade,landmark,38.7612,-9.1608
-museu-gulbenkian,Museu Gulbenkian,landmark,38.7378,-9.1535
-torre-vasco-da-gama,Torre Vasco da Gama,landmark,38.7747,-9.0913
-oceanario,Oceanário de Lisboa,landmark,38.7635,-9.0937
-aeroporto-terminal,Aeroporto de Lisboa,landmark,38.7726,-9.1306
-serra-de-monsanto,Serra de Monsanto,park,38.7350,-9.1900
-rio-tejo,Rio Tejo,water,38.6880,-9.1900
+id,name,kind,lat,lon,station_id,distance_m
+aeroporto-terminal,Aeroporto de Lisboa,landmark,38.7726,-9.1306,aeroporto,487
+praca-de-alvalade,Praça de Alvalade,landmark,38.7532444,-9.1440649,alvalade,28
+praca-francisco-sa-carneiro,Praça Francisco Sá Carneiro,landmark,38.7422789,-9.1333305,areeiro,55
+praca-do-chile,Praça do Chile,landmark,38.7335279,-9.1344048,arroios,7
+mercado-de-arroios,Mercado de Arroios,landmark,38.7352417,-9.1326629,arroios,250
+cinema-sao-jorge,Cinema São Jorge,landmark,38.7204112,-9.1465454,avenida,71
+elevador-santa-justa,Elevador de Santa Justa,landmark,38.71194,-9.13917,baixa-chiado,141
+convento-do-carmo,Convento do Carmo,landmark,38.71222,-9.14,baixa-chiado,190
+largo-do-carmo,Largo do Carmo,landmark,38.7119294,-9.1408449,baixa-chiado,207
+museu-do-dinheiro,Museu do Dinheiro,landmark,38.7086234,-9.1387855,baixa-chiado,229
+arco-rua-augusta,Arco da Rua Augusta,landmark,38.7084,-9.1368,baixa-chiado,321
+mercado-da-ribeira,Mercado da Ribeira,landmark,38.707,-9.146,cais-do-sodre,126
+pink-street,Pink Street,landmark,38.7071237,-9.143458,cais-do-sodre,174
+estadio-jose-alvalade,Estádio José Alvalade,landmark,38.7611,-9.16056,campo-grande,265
+jardim-do-campo-grande,Jardim do Campo Grande,park,38.7569537,-9.1536273,campo-grande,496
+praca-de-touros-campo-pequeno,Praça de Touros do Campo Pequeno,landmark,38.7425,-9.14528,campo-pequeno,194
+centro-colombo,Centro Colombo,landmark,38.75444,-9.18833,colegio-militar-luz,128
+estadio-da-luz,Estádio da Luz,landmark,38.7528,-9.18472,colegio-militar-luz,347
+monumento-herois-guerra-peninsular,Monumento aos Heróis da Guerra Peninsular,landmark,38.7483316,-9.1485207,entre-campos,47
+biblioteca-nacional,Biblioteca Nacional de Portugal,landmark,38.75111,-9.1525,entre-campos,493
+largo-do-intendente,Largo do Intendente,landmark,38.7208279,-9.1348794,intendente,162
+campo-dos-martires-da-patria,Campo dos Mártires da Pátria,park,38.72194,-9.13972,intendente,384
+jardim-zoologico,Jardim Zoológico de Lisboa,park,38.745,-9.17138889,jardim-zoologico,390
+praca-do-marques-de-pombal,Praça do Marquês de Pombal,landmark,38.72527778,-9.15,marques-de-pombal,83
+praca-martim-moniz,Praça Martim Moniz,landmark,38.7159973,-9.1363463,martim-moniz,104
+miradouro-senhora-do-monte,Miradouro da Senhora do Monte,landmark,38.71888889,-9.13277778,martim-moniz,346
+castelo-sao-jorge,Castelo de São Jorge,landmark,38.71417,-9.13333,martim-moniz,361
+gare-do-oriente,Gare do Oriente,landmark,38.76778,-9.09917,oriente,53
+centro-vasco-da-gama,Centro Vasco da Gama,landmark,38.76771556,-9.09770028,oriente,180
+pavilhao-de-portugal,Pavilhão de Portugal,landmark,38.7665583,-9.0950972,oriente,429
+parque-eduardo-vii,Parque Eduardo VII,park,38.72833333,-9.15277778,parque,267
+estufa-fria,Estufa Fria,park,38.7293283,-9.1554966,parque,455
+praca-de-espanha,Praça de Espanha,landmark,38.73805556,-9.15777778,praca-de-espanha,72
+quinta-das-conchas,Quinta das Conchas,park,38.7673617,-9.155521,quinta-das-conchas,30
+largo-do-rato,Largo do Rato,landmark,38.720151,-9.1548919,rato,68
+amoreiras,Amoreiras,landmark,38.7220284,-9.1565882,rato,305
+estacao-rossio,Estação do Rossio,landmark,38.714389,-9.1416222,restauradores,77
+praca-dos-restauradores,Praça dos Restauradores,landmark,38.71584889,-9.14162806,restauradores,85
+coliseu-dos-recreios,Coliseu dos Recreios,landmark,38.71675,-9.14016667,restauradores,224
+jardim-sao-pedro-alcantara,Jardim de São Pedro de Alcântara,park,38.71527778,-9.14444444,restauradores,246
+praca-d-pedro-iv,Praça D. Pedro IV,landmark,38.7137564,-9.1393431,rossio,35
+igreja-de-sao-domingos,Igreja de São Domingos,landmark,38.7144,-9.1394,rossio,73
+praca-da-figueira,Praça da Figueira,landmark,38.712823,-9.138908,rossio,113
+teatro-nacional-d-maria-ii,Teatro Nacional D. Maria II,landmark,38.7148,-9.1398,rossio,129
+atrium-saldanha,Atrium Saldanha,landmark,38.73285,-9.1446806,saldanha,281
+panteao-nacional,Panteão Nacional,landmark,38.715028,-9.124667,santa-apolonia,229
+mercado-de-santa-clara,Mercado de Santa Clara,landmark,38.71566667,-9.12547222,santa-apolonia,328
+feira-da-ladra,Feira da Ladra,landmark,38.7153925,-9.1259289,santa-apolonia,343
+museu-gulbenkian,Museu Calouste Gulbenkian,landmark,38.73667,-9.15417,sao-sebastiao,204
+casa-dos-bicos,Casa dos Bicos,landmark,38.7091589,-9.1326355,terreiro-do-paco,226
+praca-do-comercio,Praça do Comércio,landmark,38.70777778,-9.13638889,terreiro-do-paco,271
+se-de-lisboa,Sé de Lisboa,landmark,38.70972,-9.13306,terreiro-do-paco,281

@@ -8,6 +8,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "web" / "public" / "data" / "v1"
+EARTH_RADIUS_M = 6_371_000.0
+
+
+def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    p1 = math.radians(lat1)
+    p2 = math.radians(lat2)
+    dp = p2 - p1
+    dl = math.radians(lon2 - lon1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * EARTH_RADIUS_M * math.asin(math.sqrt(a))
 
 with open(ROOT / "pipeline" / "curated" / "station_structure.csv", encoding="utf-8") as _handle:
     NON_UNDERGROUND = {
@@ -161,6 +171,7 @@ class DummyDataTest(unittest.TestCase):
     def test_landmarks(self) -> None:
         with open(ROOT / "pipeline" / "curated" / "landmarks.csv", encoding="utf-8", newline="") as handle:
             curated = {row["id"]: row for row in csv.DictReader(handle)}
+        stations = {station["id"]: station for station in self.stations}
         bbox = self.manifest["bbox"]
         self.assertEqual(self.manifest["counts"]["landmarks"], len(self.landmarks))
         seen = set()
@@ -174,6 +185,21 @@ class DummyDataTest(unittest.TestCase):
             self.assertAlmostEqual(landmark["lat"], float(row["lat"]), places=5)
             self.assertAlmostEqual(landmark["lon"], float(row["lon"]), places=5)
             self.assertIn(landmark["kind"], ("landmark", "park", "water"))
+            station = stations[landmark["station_id"]]
+            self.assertEqual(landmark["station_id"], row["station_id"])
+            distance = haversine_m(
+                landmark["lat"],
+                landmark["lon"],
+                station["lat"],
+                station["lon"],
+            )
+            self.assertLessEqual(distance, 500.0, landmark["id"])
+            self.assertAlmostEqual(
+                landmark["distance_m"],
+                distance,
+                delta=1.0,
+                msg=landmark["id"],
+            )
             self.assertTrue(
                 bbox["min_lat"] < landmark["lat"] < bbox["max_lat"]
                 and bbox["min_lon"] < landmark["lon"] < bbox["max_lon"],

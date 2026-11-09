@@ -1,98 +1,522 @@
 [
   {
-    "id": "castelo-sao-jorge",
-    "name": "Castelo de São Jorge",
-    "kind": "landmark",
-    "lat": 38.7139,
-    "lon": -9.1335,
-    "surface_elevation_m": 28.29
-  },
-  {
-    "id": "se-de-lisboa",
-    "name": "Sé de Lisboa",
-    "kind": "landmark",
-    "lat": 38.7098,
-    "lon": -9.1328,
-    "surface_elevation_m": 9.23
-  },
-  {
-    "id": "praca-do-comercio",
-    "name": "Praça do Comércio",
-    "kind": "landmark",
-    "lat": 38.7077,
-    "lon": -9.1365,
-    "surface_elevation_m": 5.38
-  },
-  {
-    "id": "aqueduto-aguas-livres",
-    "name": "Aqueduto das Águas Livres",
-    "kind": "landmark",
-    "lat": 38.7239,
-    "lon": -9.1649,
-    "surface_elevation_m": 68.12
-  },
-  {
-    "id": "estadio-da-luz",
-    "name": "Estádio da Luz",
-    "kind": "landmark",
-    "lat": 38.7527,
-    "lon": -9.1847,
-    "surface_elevation_m": 83.28
-  },
-  {
-    "id": "estadio-jose-alvalade",
-    "name": "Estádio José Alvalade",
-    "kind": "landmark",
-    "lat": 38.7612,
-    "lon": -9.1608,
-    "surface_elevation_m": 86.66
-  },
-  {
-    "id": "museu-gulbenkian",
-    "name": "Museu Gulbenkian",
-    "kind": "landmark",
-    "lat": 38.7378,
-    "lon": -9.1535,
-    "surface_elevation_m": 81.05
-  },
-  {
-    "id": "torre-vasco-da-gama",
-    "name": "Torre Vasco da Gama",
-    "kind": "landmark",
-    "lat": 38.7747,
-    "lon": -9.0913,
-    "surface_elevation_m": 45.29
-  },
-  {
-    "id": "oceanario",
-    "name": "Oceanário de Lisboa",
-    "kind": "landmark",
-    "lat": 38.7635,
-    "lon": -9.0937,
-    "surface_elevation_m": 35.19
-  },
-  {
     "id": "aeroporto-terminal",
     "name": "Aeroporto de Lisboa",
     "kind": "landmark",
     "lat": 38.7726,
     "lon": -9.1306,
+    "station_id": "aeroporto",
+    "distance_m": 487,
     "surface_elevation_m": 83.04
   },
   {
-    "id": "serra-de-monsanto",
-    "name": "Serra de Monsanto",
-    "kind": "park",
-    "lat": 38.735,
-    "lon": -9.19,
-    "surface_elevation_m": 70.03
+    "id": "praca-de-alvalade",
+    "name": "Praça de Alvalade",
+    "kind": "landmark",
+    "lat": 38.753244,
+    "lon": -9.144065,
+    "station_id": "alvalade",
+    "distance_m": 28,
+    "surface_elevation_m": 85.84
   },
   {
-    "id": "rio-tejo",
-    "name": "Rio Tejo",
-    "kind": "water",
-    "lat": 38.688,
-    "lon": -9.19,
-    "surface_elevation_m": 0.0
+    "id": "praca-francisco-sa-carneiro",
+    "name": "Praça Francisco Sá Carneiro",
+    "kind": "landmark",
+    "lat": 38.742279,
+    "lon": -9.13333,
+    "station_id": "areeiro",
+    "distance_m": 55,
+    "surface_elevation_m": 86.39
+  },
+  {
+    "id": "praca-do-chile",
+    "name": "Praça do Chile",
+    "kind": "landmark",
+    "lat": 38.733528,
+    "lon": -9.134405,
+    "station_id": "arroios",
+    "distance_m": 7,
+    "surface_elevation_m": 67.57
+  },
+  {
+    "id": "mercado-de-arroios",
+    "name": "Mercado de Arroios",
+    "kind": "landmark",
+    "lat": 38.735242,
+    "lon": -9.132663,
+    "station_id": "arroios",
+    "distance_m": 250,
+    "surface_elevation_m": 69.09
+  },
+  {
+    "id": "cinema-sao-jorge",
+    "name": "Cinema São Jorge",
+    "kind": "landmark",
+    "lat": 38.720411,
+    "lon": -9.146545,
+    "station_id": "avenida",
+    "distance_m": 71,
+    "surface_elevation_m": 50.65
+  },
+  {
+    "id": "elevador-santa-justa",
+    "name": "Elevador de Santa Justa",
+    "kind": "landmark",
+    "lat": 38.71194,
+    "lon": -9.13917,
+    "station_id": "baixa-chiado",
+    "distance_m": 141,
+    "surface_elevation_m": 26.67
+  },
+  {
+    "id": "convento-do-carmo",
+    "name": "Convento do Carmo",
+    "kind": "landmark",
+    "lat": 38.71222,
+    "lon": -9.14,
+    "station_id": "baixa-chiado",
+    "distance_m": 190,
+    "surface_elevation_m": 27.16
+  },
+  {
+    "id": "largo-do-carmo",
+    "name": "Largo do Carmo",
+    "kind": "landmark",
+    "lat": 38.711929,
+    "lon": -9.140845,
+    "station_id": "baixa-chiado",
+    "distance_m": 207,
+    "surface_elevation_m": 28.33
+  },
+  {
+    "id": "museu-do-dinheiro",
+    "name": "Museu do Dinheiro",
+    "kind": "landmark",
+    "lat": 38.708623,
+    "lon": -9.138785,
+    "station_id": "baixa-chiado",
+    "distance_m": 229,
+    "surface_elevation_m": 14.81
+  },
+  {
+    "id": "arco-rua-augusta",
+    "name": "Arco da Rua Augusta",
+    "kind": "landmark",
+    "lat": 38.7084,
+    "lon": -9.1368,
+    "station_id": "baixa-chiado",
+    "distance_m": 321,
+    "surface_elevation_m": 9.84
+  },
+  {
+    "id": "mercado-da-ribeira",
+    "name": "Mercado da Ribeira",
+    "kind": "landmark",
+    "lat": 38.707,
+    "lon": -9.146,
+    "station_id": "cais-do-sodre",
+    "distance_m": 126,
+    "surface_elevation_m": 6.88
+  },
+  {
+    "id": "pink-street",
+    "name": "Pink Street",
+    "kind": "landmark",
+    "lat": 38.707124,
+    "lon": -9.143458,
+    "station_id": "cais-do-sodre",
+    "distance_m": 174,
+    "surface_elevation_m": 7.4
+  },
+  {
+    "id": "estadio-jose-alvalade",
+    "name": "Estádio José Alvalade",
+    "kind": "landmark",
+    "lat": 38.7611,
+    "lon": -9.16056,
+    "station_id": "campo-grande",
+    "distance_m": 265,
+    "surface_elevation_m": 86.28
+  },
+  {
+    "id": "jardim-do-campo-grande",
+    "name": "Jardim do Campo Grande",
+    "kind": "park",
+    "lat": 38.756954,
+    "lon": -9.153627,
+    "station_id": "campo-grande",
+    "distance_m": 496,
+    "surface_elevation_m": 83.73
+  },
+  {
+    "id": "praca-de-touros-campo-pequeno",
+    "name": "Praça de Touros do Campo Pequeno",
+    "kind": "landmark",
+    "lat": 38.7425,
+    "lon": -9.14528,
+    "station_id": "campo-pequeno",
+    "distance_m": 194,
+    "surface_elevation_m": 75.88
+  },
+  {
+    "id": "centro-colombo",
+    "name": "Centro Colombo",
+    "kind": "landmark",
+    "lat": 38.75444,
+    "lon": -9.18833,
+    "station_id": "colegio-militar-luz",
+    "distance_m": 128,
+    "surface_elevation_m": 79.86
+  },
+  {
+    "id": "estadio-da-luz",
+    "name": "Estádio da Luz",
+    "kind": "landmark",
+    "lat": 38.7528,
+    "lon": -9.18472,
+    "station_id": "colegio-militar-luz",
+    "distance_m": 347,
+    "surface_elevation_m": 83.15
+  },
+  {
+    "id": "monumento-herois-guerra-peninsular",
+    "name": "Monumento aos Heróis da Guerra Peninsular",
+    "kind": "landmark",
+    "lat": 38.748332,
+    "lon": -9.148521,
+    "station_id": "entre-campos",
+    "distance_m": 47,
+    "surface_elevation_m": 76.65
+  },
+  {
+    "id": "biblioteca-nacional",
+    "name": "Biblioteca Nacional de Portugal",
+    "kind": "landmark",
+    "lat": 38.75111,
+    "lon": -9.1525,
+    "station_id": "entre-campos",
+    "distance_m": 493,
+    "surface_elevation_m": 81.86
+  },
+  {
+    "id": "largo-do-intendente",
+    "name": "Largo do Intendente",
+    "kind": "landmark",
+    "lat": 38.720828,
+    "lon": -9.134879,
+    "station_id": "intendente",
+    "distance_m": 162,
+    "surface_elevation_m": 45.85
+  },
+  {
+    "id": "campo-dos-martires-da-patria",
+    "name": "Campo dos Mártires da Pátria",
+    "kind": "park",
+    "lat": 38.72194,
+    "lon": -9.13972,
+    "station_id": "intendente",
+    "distance_m": 384,
+    "surface_elevation_m": 49.9
+  },
+  {
+    "id": "jardim-zoologico",
+    "name": "Jardim Zoológico de Lisboa",
+    "kind": "park",
+    "lat": 38.745,
+    "lon": -9.171389,
+    "station_id": "jardim-zoologico",
+    "distance_m": 390,
+    "surface_elevation_m": 77.2
+  },
+  {
+    "id": "praca-do-marques-de-pombal",
+    "name": "Praça do Marquês de Pombal",
+    "kind": "landmark",
+    "lat": 38.725278,
+    "lon": -9.15,
+    "station_id": "marques-de-pombal",
+    "distance_m": 83,
+    "surface_elevation_m": 65.92
+  },
+  {
+    "id": "praca-martim-moniz",
+    "name": "Praça Martim Moniz",
+    "kind": "landmark",
+    "lat": 38.715997,
+    "lon": -9.136346,
+    "station_id": "martim-moniz",
+    "distance_m": 104,
+    "surface_elevation_m": 29.25
+  },
+  {
+    "id": "miradouro-senhora-do-monte",
+    "name": "Miradouro da Senhora do Monte",
+    "kind": "landmark",
+    "lat": 38.718889,
+    "lon": -9.132778,
+    "station_id": "martim-moniz",
+    "distance_m": 346,
+    "surface_elevation_m": 39.18
+  },
+  {
+    "id": "castelo-sao-jorge",
+    "name": "Castelo de São Jorge",
+    "kind": "landmark",
+    "lat": 38.71417,
+    "lon": -9.13333,
+    "station_id": "martim-moniz",
+    "distance_m": 361,
+    "surface_elevation_m": 29.19
+  },
+  {
+    "id": "gare-do-oriente",
+    "name": "Gare do Oriente",
+    "kind": "landmark",
+    "lat": 38.76778,
+    "lon": -9.09917,
+    "station_id": "oriente",
+    "distance_m": 53,
+    "surface_elevation_m": 10.91
+  },
+  {
+    "id": "centro-vasco-da-gama",
+    "name": "Centro Vasco da Gama",
+    "kind": "landmark",
+    "lat": 38.767716,
+    "lon": -9.0977,
+    "station_id": "oriente",
+    "distance_m": 180,
+    "surface_elevation_m": 15.17
+  },
+  {
+    "id": "pavilhao-de-portugal",
+    "name": "Pavilhão de Portugal",
+    "kind": "landmark",
+    "lat": 38.766558,
+    "lon": -9.095097,
+    "station_id": "oriente",
+    "distance_m": 429,
+    "surface_elevation_m": 26.56
+  },
+  {
+    "id": "parque-eduardo-vii",
+    "name": "Parque Eduardo VII",
+    "kind": "park",
+    "lat": 38.728333,
+    "lon": -9.152778,
+    "station_id": "parque",
+    "distance_m": 267,
+    "surface_elevation_m": 80.02
+  },
+  {
+    "id": "estufa-fria",
+    "name": "Estufa Fria",
+    "kind": "park",
+    "lat": 38.729328,
+    "lon": -9.155497,
+    "station_id": "parque",
+    "distance_m": 455,
+    "surface_elevation_m": 78.11
+  },
+  {
+    "id": "praca-de-espanha",
+    "name": "Praça de Espanha",
+    "kind": "landmark",
+    "lat": 38.738056,
+    "lon": -9.157778,
+    "station_id": "praca-de-espanha",
+    "distance_m": 72,
+    "surface_elevation_m": 76.51
+  },
+  {
+    "id": "quinta-das-conchas",
+    "name": "Quinta das Conchas",
+    "kind": "park",
+    "lat": 38.767362,
+    "lon": -9.155521,
+    "station_id": "quinta-das-conchas",
+    "distance_m": 30,
+    "surface_elevation_m": 89.8
+  },
+  {
+    "id": "largo-do-rato",
+    "name": "Largo do Rato",
+    "kind": "landmark",
+    "lat": 38.720151,
+    "lon": -9.154892,
+    "station_id": "rato",
+    "distance_m": 68,
+    "surface_elevation_m": 79.03
+  },
+  {
+    "id": "amoreiras",
+    "name": "Amoreiras",
+    "kind": "landmark",
+    "lat": 38.722028,
+    "lon": -9.156588,
+    "station_id": "rato",
+    "distance_m": 305,
+    "surface_elevation_m": 72.44
+  },
+  {
+    "id": "estacao-rossio",
+    "name": "Estação do Rossio",
+    "kind": "landmark",
+    "lat": 38.714389,
+    "lon": -9.141622,
+    "station_id": "restauradores",
+    "distance_m": 77,
+    "surface_elevation_m": 25.68
+  },
+  {
+    "id": "praca-dos-restauradores",
+    "name": "Praça dos Restauradores",
+    "kind": "landmark",
+    "lat": 38.715849,
+    "lon": -9.141628,
+    "station_id": "restauradores",
+    "distance_m": 85,
+    "surface_elevation_m": 27.53
+  },
+  {
+    "id": "coliseu-dos-recreios",
+    "name": "Coliseu dos Recreios",
+    "kind": "landmark",
+    "lat": 38.71675,
+    "lon": -9.140167,
+    "station_id": "restauradores",
+    "distance_m": 224,
+    "surface_elevation_m": 31.42
+  },
+  {
+    "id": "jardim-sao-pedro-alcantara",
+    "name": "Jardim de São Pedro de Alcântara",
+    "kind": "park",
+    "lat": 38.715278,
+    "lon": -9.144444,
+    "station_id": "restauradores",
+    "distance_m": 246,
+    "surface_elevation_m": 34.74
+  },
+  {
+    "id": "praca-d-pedro-iv",
+    "name": "Praça D. Pedro IV",
+    "kind": "landmark",
+    "lat": 38.713756,
+    "lon": -9.139343,
+    "station_id": "rossio",
+    "distance_m": 35,
+    "surface_elevation_m": 22.06
+  },
+  {
+    "id": "igreja-de-sao-domingos",
+    "name": "Igreja de São Domingos",
+    "kind": "landmark",
+    "lat": 38.7144,
+    "lon": -9.1394,
+    "station_id": "rossio",
+    "distance_m": 73,
+    "surface_elevation_m": 22.71
+  },
+  {
+    "id": "praca-da-figueira",
+    "name": "Praça da Figueira",
+    "kind": "landmark",
+    "lat": 38.712823,
+    "lon": -9.138908,
+    "station_id": "rossio",
+    "distance_m": 113,
+    "surface_elevation_m": 23.93
+  },
+  {
+    "id": "teatro-nacional-d-maria-ii",
+    "name": "Teatro Nacional D. Maria II",
+    "kind": "landmark",
+    "lat": 38.7148,
+    "lon": -9.1398,
+    "station_id": "rossio",
+    "distance_m": 129,
+    "surface_elevation_m": 23.97
+  },
+  {
+    "id": "atrium-saldanha",
+    "name": "Atrium Saldanha",
+    "kind": "landmark",
+    "lat": 38.73285,
+    "lon": -9.144681,
+    "station_id": "saldanha",
+    "distance_m": 281,
+    "surface_elevation_m": 79.54
+  },
+  {
+    "id": "panteao-nacional",
+    "name": "Panteão Nacional",
+    "kind": "landmark",
+    "lat": 38.715028,
+    "lon": -9.124667,
+    "station_id": "santa-apolonia",
+    "distance_m": 229,
+    "surface_elevation_m": 19.74
+  },
+  {
+    "id": "mercado-de-santa-clara",
+    "name": "Mercado de Santa Clara",
+    "kind": "landmark",
+    "lat": 38.715667,
+    "lon": -9.125472,
+    "station_id": "santa-apolonia",
+    "distance_m": 328,
+    "surface_elevation_m": 25.53
+  },
+  {
+    "id": "feira-da-ladra",
+    "name": "Feira da Ladra",
+    "kind": "landmark",
+    "lat": 38.715393,
+    "lon": -9.125929,
+    "station_id": "santa-apolonia",
+    "distance_m": 343,
+    "surface_elevation_m": 25.21
+  },
+  {
+    "id": "museu-gulbenkian",
+    "name": "Museu Calouste Gulbenkian",
+    "kind": "landmark",
+    "lat": 38.73667,
+    "lon": -9.15417,
+    "station_id": "sao-sebastiao",
+    "distance_m": 204,
+    "surface_elevation_m": 84.31
+  },
+  {
+    "id": "casa-dos-bicos",
+    "name": "Casa dos Bicos",
+    "kind": "landmark",
+    "lat": 38.709159,
+    "lon": -9.132635,
+    "station_id": "terreiro-do-paco",
+    "distance_m": 226,
+    "surface_elevation_m": 5.5
+  },
+  {
+    "id": "praca-do-comercio",
+    "name": "Praça do Comércio",
+    "kind": "landmark",
+    "lat": 38.707778,
+    "lon": -9.136389,
+    "station_id": "terreiro-do-paco",
+    "distance_m": 271,
+    "surface_elevation_m": 5.57
+  },
+  {
+    "id": "se-de-lisboa",
+    "name": "Sé de Lisboa",
+    "kind": "landmark",
+    "lat": 38.70972,
+    "lon": -9.13306,
+    "station_id": "terreiro-do-paco",
+    "distance_m": 281,
+    "surface_elevation_m": 9.13
   }
 ]

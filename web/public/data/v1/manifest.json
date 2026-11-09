@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "dataset_version": "2026-10-27.dummy+measured",
-  "generated_at": "2026-11-09T13:57:05+00:00",
+  "generated_at": "2026-11-09T15:23:17+00:00",
   "demo": true,
   "capabilities": {
     "real_terrain": false,
@@ -32,7 +32,7 @@
     "lines": 4,
     "platforms": 56,
     "segments": 52,
-    "landmarks": 12,
+    "landmarks": 52,
     "measured_platforms": 13,
     "measured_segments": 12
   },
@@ -78,13 +78,13 @@
     "Toggle X-ray terrain to see estimated tunnels below the surface.",
     "Station ground elevations come from the Copernicus DEM; the 3D terrain is synthetic.",
     "Tunnel slopes are averages between platform anchors, not continuous surveyed grades.",
-    "Landmark positions and kinds are curated; surface elevations are sampled on the synthetic terrain.",
+    "Landmark positions and kinds are curated; each landmark sits within 500 m of its nearest station, and surface elevations are sampled on the synthetic terrain.",
     "Measured ride profiles are filtered and aligned to platform anchors; their intermediate shapes are estimates, not surveyed track geometry. The 4% display-grade cap cannot be enforced when fixed anchors exceed it."
   ],
   "demo_note": "Local demo: real OSM/GTFS geometry, documented depths, measured overlay, synthetic terrain. Toggle X-ray terrain to see remaining estimated tunnels.",
   "last_measurement_merge": {
-    "source": "../../data/measurements/field/LX_1446.csv",
-    "merged_at": "2026-11-09T13:57:15+00:00",
+    "source": "data/measurements/field/LX_1446.csv",
+    "merged_at": "2026-11-09T15:23:44+00:00",
     "platform_records": 13,
     "segment_records": 12
   }
