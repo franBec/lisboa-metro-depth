@@ -32,6 +32,29 @@ export const interchangeSchema = z.object({
 
 export type Interchange = z.infer<typeof interchangeSchema>
 
+const platformPathPointSchema = z.object({
+  lat: coordinate,
+  lon: coordinate,
+})
+
+export const platformGeometrySchema = z.discriminatedUnion('shape', [
+  z.object({
+    shape: z.literal('straight'),
+    bearing_deg: finiteNumber,
+    length_m: nonNegativeNumber,
+    width_m: nonNegativeNumber,
+  }),
+  z.object({
+    shape: z.literal('curved'),
+    bearing_deg: z.null(),
+    length_m: nonNegativeNumber,
+    width_m: nonNegativeNumber,
+    path: z.array(platformPathPointSchema).min(2),
+  }),
+])
+
+export type PlatformGeometry = z.infer<typeof platformGeometrySchema>
+
 const attributionSchema = z.object({
   name: z.string().min(1),
   role: z.string().min(1),
@@ -125,6 +148,7 @@ export const platformSchema = z.object({
   measurement_ids: z.array(z.string()),
   source_url: z.string().url().nullable(),
   note: z.string().nullable(),
+  geometry: platformGeometrySchema,
 })
 
 export const stationSchema = z.object({

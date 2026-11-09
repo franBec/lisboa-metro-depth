@@ -74,6 +74,20 @@ class DummyDataTest(unittest.TestCase):
                     if station["id"] not in NON_UNDERGROUND:
                         self.assertGreaterEqual(platform["platform_depth_m"], 0)
 
+    def test_platform_geometry(self) -> None:
+        for station in self.stations:
+            for platform in station["platforms"]:
+                geometry = platform["geometry"]
+                if geometry["shape"] == "straight":
+                    self.assertIsNotNone(geometry["bearing_deg"])
+                    self.assertGreater(geometry["length_m"], 0)
+                    continue
+                self.assertEqual(
+                    (station["id"], platform["line"]), ("marques-de-pombal", "A")
+                )
+                self.assertIsNone(geometry["bearing_deg"])
+                self.assertGreaterEqual(len(geometry["path"]), 2)
+
     def test_alameda_is_two_platforms(self) -> None:
         alameda = next(station for station in self.stations if station["id"] == "alameda")
         self.assertEqual(sorted(alameda["lines"]), ["C", "D"])

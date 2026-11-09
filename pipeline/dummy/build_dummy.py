@@ -8,7 +8,7 @@ import math
 from datetime import datetime, timezone
 from pathlib import Path
 
-from gtfs import Gtfs, ensure_gtfs, shape_slice, slugify
+from gtfs import Gtfs, ensure_gtfs, interpolate_shape, shape_slice, slugify
 from interchanges import deform_shape_for_interchange, load_interchanges
 from osm import fit_shape_to_stations, load_shapes as load_osm_shapes
 from structures import load_station_structures
@@ -26,6 +26,11 @@ OUTPUT = ROOT / "web" / "public" / "data" / "v1"
 TERRAIN_SIZE = 256
 GRADE_CAP = 0.04
 DEMO_DATE = "2026-10-27"
+METERS_PER_DEG_LAT = 110_540.0
+METERS_PER_DEG_LON = 111_320.0
+PLATFORM_LENGTH_M = 105.0
+PLATFORM_WIDTH_M = 4.5
+CURVED_PLATFORMS = {("marques-de-pombal", "A")}
 
 
 def load_depths(path: Path) -> dict[str, dict[str, object]]:
@@ -100,6 +105,38 @@ def apply_grade_cap(
     if abs(depths[0] - start_depth) > 0.01 or abs(depths[-1] - end_depth) > 0.01:
         raise ValueError("grade cap conflicts with fixed station anchors")
     return depths
+
+
+def compass_bearing(start: dict[str, float], end: dict[str, float]) -> float:
+    dy = (end["lat"] - start["lat"]) * METERS_PER_DEG_LAT
+    dx = (end["lon"] - start["lon"]) * METERS_PER_DEG_LON * math.cos(math.radians(start["lat"]))
+    return math.degrees(math.atan2(dx, dy)) % 360.0
+
+
+def platform_geometry(
+    shape: list[dict[str, float]], distance: float, curved: bool
+) -> dict[str, object]:
+    half = PLATFORM_LENGTH_M / 2
+    if curved:
+        path = shape_slice(shape, distance - half, distance + half)
+        return {
+            "shape": "curved",
+            "bearing_deg": None,
+            "length_m": PLATFORM_LENGTH_M,
+            "width_m": PLATFORM_WIDTH_M,
+            "path": [
+                {"lat": round(point["lat"], 6), "lon": round(point["lon"], 6)}
+                for point in path
+            ],
+        }
+    start = interpolate_shape(shape, distance - half)
+    end = interpolate_shape(shape, distance + half)
+    return {
+        "shape": "straight",
+        "bearing_deg": round(compass_bearing(start, end), 2),
+        "length_m": PLATFORM_LENGTH_M,
+        "width_m": PLATFORM_WIDTH_M,
+    }
 
 
 def main() -> None:
@@ -263,13 +300,28 @@ def main() -> None:
             )
         segments: list[dict[str, object]] = []
 
-        for station, point in zip(line_stations, station_points, strict=True):  # type: ignore[arg-type]
+        for index, (station, point) in enumerate(zip(line_stations, station_points, strict=True)):  # type: ignore[arg-type]
             platform = stations[str(station["slug"])]["platforms"][line["id"]]  # type: ignore[index]
             platform["lat"] = point["lat"]
             platform["lon"] = point["lon"]
             platform["surface_elevation_m"] = sample_height(
                 heights, TERRAIN_SIZE, bbox, point["lat"], point["lon"]
             )
+            interchange = interchanges.get(str(station["slug"]))
+            track = interchange.tracks.get(line_id) if interchange is not None else None
+            if track is not None:
+                platform["geometry"] = {
+                    "shape": "straight",
+                    "bearing_deg": track.bearing_deg,
+                    "length_m": track.platform_length_m,
+                    "width_m": track.platform_width_m,
+                }
+            else:
+                platform["geometry"] = platform_geometry(
+                    shape,
+                    station_distances[index],
+                    (str(station["slug"]), line_id) in CURVED_PLATFORMS,
+                )
 
         for index in range(len(line_stations) - 1):  # type: ignore[arg-type]
             start = line_stations[index]  # type: ignore[index]
@@ -400,6 +452,7 @@ def main() -> None:
                     "line": platform["line"],
                     "lat": round(float(platform["lat"]), 6),
                     "lon": round(float(platform["lon"]), 6),
+                    "geometry": platform["geometry"],
                     "surface_elevation_m": round(float(platform["surface_elevation_m"]), 2),
                     "ground_elevation_m": round(float(platform["ground_elevation_m"]), 2),
                     "ground_elevation_source": platform["ground_elevation_source"],
@@ -491,6 +544,7 @@ def main() -> None:
             "Terrain is synthetic and illustrative. It is not a survey.",
             "Tunnel alignment follows OpenStreetMap route geometry, not the coarse GTFS shape.",
             "Baixa-Chiado and Campo Grande are cross-platform interchanges; their parallel station geometry is curated from OSM platform ways.",
+            "Other platform boxes follow the OSM track bearing with a default 105 m length; Marquês de Pombal (Linha Azul) sits on a curve and is drawn as a bent box along the track.",
             "Official station depths are station-level values, not platform-level measurements.",
             "Unknown depths remain null. No underground geometry is drawn where depth is unknown.",
             "Measured survey data will replace estimated segments without changing the viewer.",

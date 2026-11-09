@@ -1,6 +1,13 @@
 import { Vector3 } from 'three'
-import type { DepthSource, Line, Station } from '../data/schemas'
+import type {
+  DepthSource,
+  Line,
+  PlatformGeometry,
+  Station,
+} from '../data/schemas'
 import type { Projection } from '../lib/geo'
+
+const SLAB_OVERLAP_M = 1
 
 export interface PlatformVisual {
   key: string
@@ -14,10 +21,15 @@ export interface PlatformVisual {
   platformY: number | null
   depth: number | null
   shaftHeight: number
-  parallel: boolean
-  bearingDeg: number | null
-  platformLengthM: number | null
-  platformWidthM: number | null
+  slabs: PlatformSlab[]
+}
+
+export interface PlatformSlab {
+  x: number
+  z: number
+  rotationY: number
+  lengthM: number
+  widthM: number
 }
 
 export interface StationLabelVisual {
@@ -36,6 +48,45 @@ export interface StationVisuals {
   labels: StationLabelVisual[]
 }
 
+function platformSlabs(
+  geometry: PlatformGeometry,
+  platformPoint: { x: number; z: number },
+  projection: Projection,
+): PlatformSlab[] {
+  if (geometry.shape === 'straight') {
+    return [
+      {
+        x: platformPoint.x,
+        z: platformPoint.z,
+        rotationY: Math.PI / 2 - (geometry.bearing_deg * Math.PI) / 180,
+        lengthM: geometry.length_m,
+        widthM: geometry.width_m,
+      },
+    ]
+  }
+
+  const points = geometry.path.map((point) =>
+    projection.toWorld(point.lat, point.lon),
+  )
+  const slabs: PlatformSlab[] = []
+  for (let index = 1; index < points.length; index += 1) {
+    const from = points[index - 1]
+    const to = points[index]
+    const dx = to.x - from.x
+    const dz = to.z - from.z
+    const length = Math.hypot(dx, dz)
+    if (length === 0) continue
+    slabs.push({
+      x: (from.x + to.x) / 2,
+      z: (from.z + to.z) / 2,
+      rotationY: Math.atan2(-dz, dx),
+      lengthM: length + SLAB_OVERLAP_M,
+      widthM: geometry.width_m,
+    })
+  }
+  return slabs
+}
+
 export function buildStationVisuals(
   stations: Station[],
   lines: Line[],
@@ -49,7 +100,6 @@ export function buildStationVisuals(
   for (const station of stations) {
     const { x, z } = projection.toWorld(station.lat, station.lon)
     const surfaceY = station.surface_elevation_m * verticalScale
-    const interchange = station.interchange ?? null
     const allUnknown = station.platforms.every(
       (platform) => platform.platform_depth_m === null,
     )
@@ -74,10 +124,7 @@ export function buildStationVisuals(
           depth === null ? null : platformSurfaceY - depth * verticalScale,
         depth,
         shaftHeight,
-        parallel: interchange?.kind === 'parallel',
-        bearingDeg: interchange?.axis_bearing_deg ?? null,
-        platformLengthM: interchange?.platform_length_m ?? null,
-        platformWidthM: interchange?.platform_width_m ?? null,
+        slabs: platformSlabs(platform.geometry, platformPoint, projection),
       })
     })
 
