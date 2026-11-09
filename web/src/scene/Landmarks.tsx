@@ -1,4 +1,7 @@
 import { DoubleSide } from 'three'
+import { createElement } from 'react'
+import { useViewerStore } from '../state/viewerStore'
+import { getLandmarkModel, hasLandmarkModel } from './landmarkModels'
 import type { LandmarkPinVisual } from './landmarkVisuals'
 import {
   LANDMARK_PIN_LIFT,
@@ -12,7 +15,33 @@ interface LandmarkMarkerProps {
   pin: LandmarkPinVisual
 }
 
+interface LandmarkModelProps {
+  id: string
+}
+
+function LandmarkModel({ id }: LandmarkModelProps) {
+  const model = getLandmarkModel(id)
+  return model ? createElement(model) : null
+}
+
 function LandmarkMarker({ pin }: LandmarkMarkerProps) {
+  if (hasLandmarkModel(pin.id)) {
+    return (
+      <group position={[pin.x, pin.surfaceY, pin.z]}>
+        <mesh position={[0, 0.6, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[20, 1.4, 6, 32]} />
+          <meshBasicMaterial
+            color={BRASS}
+            transparent
+            opacity={0.2}
+            side={DoubleSide}
+            depthWrite={false}
+          />
+        </mesh>
+        <LandmarkModel id={pin.id} />
+      </group>
+    )
+  }
   return (
     <group position={[pin.x, pin.surfaceY, pin.z]}>
       <mesh position={[0, 0.6, 0]} rotation={[-Math.PI / 2, 0, 0]}>
@@ -50,8 +79,9 @@ interface LandmarksProps {
 }
 
 export function Landmarks({ pins }: LandmarksProps) {
+  const visible = useViewerStore((state) => state.landmarksVisible)
   return (
-    <group name="landmarks">
+    <group name="landmarks" visible={visible}>
       {pins.map((pin) => (
         <LandmarkMarker key={pin.id} pin={pin} />
       ))}

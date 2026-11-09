@@ -1,6 +1,7 @@
 import { Vector3 } from 'three'
 import type { Landmark, LandmarkKind } from '../data/schemas'
 import type { Projection } from '../lib/geo'
+import { LANDMARK_MODEL_TOPS, hasLandmarkModel } from './landmarkModels'
 
 export interface LandmarkPinVisual {
   id: string
@@ -48,11 +49,18 @@ export function buildLandmarkVisuals(
       pins.push({ id: landmark.id, name: landmark.name, x, z, surfaceY })
     }
 
+    // Labels for modeled landmarks clear the building's top; the rest keep
+    // the flat pin/park/water lifts.
+    const lift =
+      landmark.kind === 'landmark' && hasLandmarkModel(landmark.id)
+        ? LANDMARK_MODEL_TOPS[landmark.id] + 45
+        : LABEL_LIFT[landmark.kind]
+
     labels.push({
       id: landmark.id,
       name: landmark.name,
       kind: landmark.kind,
-      position: new Vector3(x, surfaceY + LABEL_LIFT[landmark.kind], z),
+      position: new Vector3(x, surfaceY + lift, z),
     })
   }
 
