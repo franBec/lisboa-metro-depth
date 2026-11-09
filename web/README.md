@@ -24,7 +24,7 @@ pnpm --dir web preview
 - `/maps/lisboa/` - 3D viewer.
 - `/maps/lisboa/method/` - method, provenance, and limitations.
 
-Viewer URL state: `?line=C,D`, `?station=alameda`, `?segment=C:alameda-areeiro`, `?section=1`, and `?xray=1`.
+Viewer URL state: `?line=C,D`, `?station=alameda`, `?segment=C:alameda-areeiro`, `?section=1`, and `?xray=0` to turn off the default x-ray terrain.
 
 ## Data
 

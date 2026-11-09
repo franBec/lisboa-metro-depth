@@ -25,7 +25,7 @@ export function useViewerUrlState(lineIds: string[]) {
   const selectedStationId = searchParams.get('station')
   const selectedSegmentId = searchParams.get('segment')
   const sectionOpen = searchParams.get('section') === '1'
-  const xray = searchParams.get('xray') === '1'
+  const xray = searchParams.get('xray') !== '0'
 
   const selectedLines = useMemo(
     () => parseSelectedLines(lineParam, validLineIds),
@@ -123,9 +123,9 @@ export function useViewerUrlState(lineIds: string[]) {
     (enabled: boolean): void => {
       update((params) => {
         if (enabled) {
-          params.set('xray', '1')
-        } else {
           params.delete('xray')
+        } else {
+          params.set('xray', '0')
         }
       }, true)
     },

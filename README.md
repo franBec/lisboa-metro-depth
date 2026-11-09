@@ -44,7 +44,7 @@ Raw sensor logs are tracked separately in `data/measurements/`; see [Raw measure
 
 Useful views:
 
-- `?xray=1` shows the terrain as x-ray so estimated tunnels are visible.
+- X-ray terrain is on by default so estimated tunnels are visible; `?xray=0` shows solid terrain.
 - `?line=C,D` isolates two lines.
 - `?station=alameda` focuses a station and opens the crossing QA panel.
 - `?segment=C:alameda-areeiro` opens a tunnel section with length, end depths, track level, and average slope.
