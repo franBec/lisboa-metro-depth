@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
+import warnings
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,6 +22,7 @@ from read_log import (
 )
 
 GRADE_CAP = 0.04
+PROFILE_STEP_M = 20.0
 
 
 def _interpolate(points: list[tuple[float, float]], t: float) -> float:
@@ -70,32 +73,79 @@ def _apply_platforms(
 
 
 def _cap_grades(
-    depths: list[float], distances: list[float]
+    elevations: list[float], distances: list[float], segment_id: str = ""
 ) -> list[float]:
-    """Clamp adjacent depth changes to the 4% tunnel grade cap.
-
-    Raw ride profiles are neither filtered nor re-referenced yet, so their
-    barometric noise can exceed a physically plausible slope. The platform
-    anchors at both ends stay fixed; interior samples may still be noisy
-    until the profile filtering pass exists.
-    """
-    depths = list(depths)
-    first_anchor, last_anchor = depths[0], depths[-1]
-    for index in range(1, len(depths) - 1):
+    """Limit track elevation changes while keeping both platform anchors fixed."""
+    elevations = list(elevations)
+    first_anchor, last_anchor = elevations[0], elevations[-1]
+    span = distances[-1] - distances[0]
+    if abs(last_anchor - first_anchor) > GRADE_CAP * span:
+        warnings.warn(
+            f"{segment_id}: platform anchors exceed the 4% grade cap; using their average grade",
+            stacklevel=2,
+        )
+        return [
+            first_anchor + (distance - distances[0]) / span * (last_anchor - first_anchor)
+            for distance in distances
+        ]
+    for index in range(1, len(elevations) - 1):
         max_change = GRADE_CAP * max(distances[index] - distances[index - 1], 0.0)
-        depths[index] = min(
-            max(depths[index], depths[index - 1] - max_change),
-            depths[index - 1] + max_change,
+        elevations[index] = min(
+            max(elevations[index], elevations[index - 1] - max_change),
+            elevations[index - 1] + max_change,
         )
-    for index in range(len(depths) - 2, 0, -1):
+    for index in range(len(elevations) - 2, 0, -1):
         max_change = GRADE_CAP * max(distances[index + 1] - distances[index], 0.0)
-        depths[index] = min(
-            max(depths[index], depths[index + 1] - max_change),
-            depths[index + 1] + max_change,
+        elevations[index] = min(
+            max(elevations[index], elevations[index + 1] - max_change),
+            elevations[index + 1] + max_change,
         )
-    depths[0] = first_anchor
-    depths[-1] = last_anchor
-    return depths
+    return elevations
+
+
+def _smooth_profile(points: list[tuple[float, float]]) -> list[tuple[float, float]]:
+    """Filter ride samples and remove their linear offset between the anchors."""
+    samples = points[1:-1]
+    if not samples:
+        return [(0.0, 0.0), (1.0, 0.0)]
+
+    # A 10% window suppresses pressure noise without treating it as track detail.
+    radius = max(1, round(len(samples) * 0.05))
+    sums = [0.0]
+    for _, depth in samples:
+        sums.append(sums[-1] + depth)
+    filtered = []
+    for index, (t, _) in enumerate(samples):
+        start = max(0, index - radius)
+        end = min(len(samples), index + radius + 1)
+        filtered.append((t, (sums[end] - sums[start]) / (end - start)))
+
+    start_depth, end_depth = filtered[0][1], filtered[-1][1]
+    start_t, end_t = filtered[0][0], filtered[-1][0]
+    residuals = [(0.0, 0.0)]
+    for t, depth in filtered:
+        fraction = (t - start_t) / (end_t - start_t) if end_t > start_t else 0.0
+        baseline = start_depth + fraction * (end_depth - start_depth)
+        residuals.append((t, depth - baseline))
+    residuals.append((1.0, 0.0))
+    return residuals
+
+
+def _densify(vertices: list[dict]) -> list[dict]:
+    """Add samples along existing straight horizontal edges, without moving them."""
+    result = [vertices[0]]
+    for first, second in zip(vertices, vertices[1:]):
+        span = float(second["distance_m"]) - float(first["distance_m"])
+        steps = max(1, math.ceil((span - 1e-9) / PROFILE_STEP_M))
+        for index in range(1, steps):
+            t = index / steps
+            point = dict(first)
+            for key in ("lat", "lon", "distance_m", "surface_elevation_m"):
+                value = float(first[key]) + t * (float(second[key]) - float(first[key]))
+                point[key] = round(value, 8 if key in ("lat", "lon") else 2)
+            result.append(point)
+        result.append(second)
+    return result
 
 
 def _apply_profiles(network: dict, profiles: dict[str, SegmentProfile]) -> int:
@@ -113,17 +163,53 @@ def _apply_profiles(network: dict, profiles: dict[str, SegmentProfile]) -> int:
             span = last - first
             if span <= 0:
                 continue
+            vertices = _densify(vertices)
             reversed_run = profile.from_station != segment["from"]
             distances = [float(vertex["distance_m"]) for vertex in vertices]
-            depths = []
+            residuals = _smooth_profile(profile.points)
+            start_depth = profile.points[-1 if reversed_run else 0][1]
+            end_depth = profile.points[0 if reversed_run else -1][1]
+            start_elevation = float(vertices[0]["surface_elevation_m"]) - start_depth
+            end_elevation = float(vertices[-1]["surface_elevation_m"]) - end_depth
+            average_grade = abs(end_elevation - start_elevation) / span
+            easing = (
+                min(1.0, max(0.0, 2.0 * (GRADE_CAP * 0.98 / average_grade - 1.0)))
+                if average_grade else 1.0
+            )
+            baseline = []
+            corrections = []
             for vertex in vertices:
                 t = (float(vertex["distance_m"]) - first) / span
-                if reversed_run:
-                    t = 1.0 - t
-                depths.append(max(_interpolate(profile.points, t), 0.0))
-            for vertex, depth in zip(vertices, _cap_grades(depths, distances), strict=True):
-                vertex["depth_m"] = round(depth, 2)
+                eased = t + easing * (t * t * (3.0 - 2.0 * t) - t)
+                # Fade uncertain ride details into the fixed platform anchors.
+                taper = 16.0 * t * t * (1.0 - t) * (1.0 - t)
+                residual = _interpolate(residuals, 1.0 - t if reversed_run else t)
+                baseline.append(start_elevation + eased * (end_elevation - start_elevation))
+                corrections.append(-taper * residual)
+            # Scale the whole correction rather than clipping it into sharp corners.
+            strength = 1.0
+            if average_grade <= GRADE_CAP:
+                for index in range(1, len(vertices)):
+                    limit = GRADE_CAP * (distances[index] - distances[index - 1])
+                    base_change = baseline[index] - baseline[index - 1]
+                    correction_change = corrections[index] - corrections[index - 1]
+                    if correction_change > 0:
+                        strength = min(
+                            strength, max(0.0, (limit - base_change) / correction_change)
+                        )
+                    elif correction_change < 0:
+                        strength = min(
+                            strength, max(0.0, (-limit - base_change) / correction_change)
+                        )
+            elevations = [
+                base + strength * correction
+                for base, correction in zip(baseline, corrections, strict=True)
+            ]
+            capped = _cap_grades(elevations, distances, segment["id"])
+            for vertex, elevation in zip(vertices, capped, strict=True):
+                vertex["depth_m"] = round(float(vertex["surface_elevation_m"]) - elevation, 2)
                 vertex["source"] = "measured"
+            segment["vertices"] = vertices
             segment["depth_source"] = "measured"
             segment["measurement_ids"] = profile.measurement_ids
             applied += 1
@@ -176,6 +262,13 @@ def merge_data(data_dir: Path, log_path: Path) -> dict[str, object]:
         "Local demo: real OSM/GTFS geometry, documented depths, measured overlay, synthetic terrain. "
         "Toggle X-ray terrain to see remaining estimated tunnels."
     )
+    note = (
+        "Measured ride profiles are filtered and aligned to platform anchors; "
+        "their intermediate shapes are estimates, not surveyed track geometry. "
+        "The 4% display-grade cap cannot be enforced when fixed anchors exceed it."
+    )
+    if note not in manifest["source_notes"]:
+        manifest["source_notes"].append(note)
 
     stations_path.write_text(
         json.dumps(stations, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"

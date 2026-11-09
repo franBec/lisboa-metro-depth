@@ -57,20 +57,22 @@ export function MethodRoute() {
       </p>
       <ul>
         <li>
-          Measured platform depths currently resolve four tunnel sections
-          around Alameda.
+          Measured platform depths currently resolve the yellow line's tunnel
+          sections.
         </li>
         <li>
-          Three more sections use official station-level depths. Their slope is
+          Some sections use official station-level depths. Their slope is
           indicative, not platform-level.
         </li>
         <li>
-          The line between two known platforms is drawn straight. The tunnel
-          shape between them is not surveyed.
+          Section diagrams draw a straight line between platform anchors. The
+          tunnel shape between them is not surveyed.
         </li>
         <li>
-          Raw ride profiles are clamped to the 4% grade cap before they reach
-          the geometry. They are not filtered or re-referenced yet.
+          Ride samples are smoothed and aligned to the platform anchors for the
+          3D view. Their time-based positions and synthetic terrain make the
+          resulting shapes approximate. The 4% display-grade cap cannot be
+          enforced when the fixed anchors exceed it.
         </li>
         <li>
           Baixa-Chiado and Campo Grande are cross-platform interchanges. Their

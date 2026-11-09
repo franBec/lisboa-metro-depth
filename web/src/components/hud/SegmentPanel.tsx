@@ -26,7 +26,7 @@ function Row({ label, value }: { label: string; value: string }) {
 
 function shapeNote(metrics: SegmentMetrics): string {
   if (metrics.profileQuality === 'endpoints') {
-    return 'Straight line between measured platforms. The tunnel shape between them is not surveyed.'
+    return 'The section diagram joins measured platforms. The 3D profile is a filtered estimate, not surveyed track.'
   }
   if (metrics.profileQuality === 'interpolated') {
     return 'Interpolated between station anchors. Not surveyed.'

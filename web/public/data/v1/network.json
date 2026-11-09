@@ -3051,11 +3051,43 @@
               "source": "measured"
             },
             {
+              "lat": 38.79317863,
+              "lon": -9.17278427,
+              "distance_m": 19.14,
+              "surface_elevation_m": 30.43,
+              "depth_m": 3.47,
+              "source": "measured"
+            },
+            {
+              "lat": 38.79307837,
+              "lon": -9.17260473,
+              "distance_m": 38.29,
+              "surface_elevation_m": 30.47,
+              "depth_m": 3.5,
+              "source": "measured"
+            },
+            {
               "lat": 38.7929781,
               "lon": -9.1724252,
               "distance_m": 57.43,
               "surface_elevation_m": 30.51,
-              "depth_m": 5.73,
+              "depth_m": 3.53,
+              "source": "measured"
+            },
+            {
+              "lat": 38.79289937,
+              "lon": -9.17230587,
+              "distance_m": 70.98,
+              "surface_elevation_m": 30.62,
+              "depth_m": 3.62,
+              "source": "measured"
+            },
+            {
+              "lat": 38.79282063,
+              "lon": -9.17218653,
+              "distance_m": 84.53,
+              "surface_elevation_m": 30.73,
+              "depth_m": 3.72,
               "source": "measured"
             },
             {
@@ -3063,7 +3095,15 @@
               "lon": -9.1720672,
               "distance_m": 98.08,
               "surface_elevation_m": 30.84,
-              "depth_m": 7.35,
+              "depth_m": 3.82,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7926596,
+              "lon": -9.1719405,
+              "distance_m": 112.37,
+              "surface_elevation_m": 30.98,
+              "depth_m": 3.94,
               "source": "measured"
             },
             {
@@ -3071,7 +3111,15 @@
               "lon": -9.1718138,
               "distance_m": 126.66,
               "surface_elevation_m": 31.11,
-              "depth_m": 8.5,
+              "depth_m": 4.06,
+              "source": "measured"
+            },
+            {
+              "lat": 38.792467,
+              "lon": -9.17165285,
+              "distance_m": 145.24,
+              "surface_elevation_m": 31.37,
+              "depth_m": 4.32,
               "source": "measured"
             },
             {
@@ -3079,7 +3127,15 @@
               "lon": -9.1714919,
               "distance_m": 163.81,
               "surface_elevation_m": 31.63,
-              "depth_m": 9.98,
+              "depth_m": 4.58,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7922812,
+              "lon": -9.17139935,
+              "distance_m": 175.42,
+              "surface_elevation_m": 31.81,
+              "depth_m": 4.74,
               "source": "measured"
             },
             {
@@ -3087,7 +3143,15 @@
               "lon": -9.1713068,
               "distance_m": 187.03,
               "surface_elevation_m": 31.99,
-              "depth_m": 10.91,
+              "depth_m": 4.89,
+              "source": "measured"
+            },
+            {
+              "lat": 38.79213565,
+              "lon": -9.171229,
+              "distance_m": 197.33,
+              "surface_elevation_m": 32.14,
+              "depth_m": 5.0,
               "source": "measured"
             },
             {
@@ -3095,7 +3159,15 @@
               "lon": -9.1711512,
               "distance_m": 207.64,
               "surface_elevation_m": 32.29,
-              "depth_m": 11.74,
+              "depth_m": 5.08,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7919922,
+              "lon": -9.17108415,
+              "distance_m": 217.66,
+              "surface_elevation_m": 32.45,
+              "depth_m": 5.17,
               "source": "measured"
             },
             {
@@ -3103,7 +3175,7 @@
               "lon": -9.1710171,
               "distance_m": 227.68,
               "surface_elevation_m": 32.6,
-              "depth_m": 12.54,
+              "depth_m": 5.24,
               "source": "measured"
             },
             {
@@ -3111,7 +3183,7 @@
               "lon": -9.1709266,
               "distance_m": 242.88,
               "surface_elevation_m": 32.82,
-              "depth_m": 13.15,
+              "depth_m": 5.32,
               "source": "measured"
             },
             {
@@ -3119,7 +3191,7 @@
               "lon": -9.1708421,
               "distance_m": 258.53,
               "surface_elevation_m": 33.06,
-              "depth_m": 13.77,
+              "depth_m": 5.49,
               "source": "measured"
             },
             {
@@ -3127,7 +3199,7 @@
               "lon": -9.1707844,
               "distance_m": 270.49,
               "surface_elevation_m": 33.24,
-              "depth_m": 14.25,
+              "depth_m": 5.64,
               "source": "measured"
             },
             {
@@ -3135,7 +3207,15 @@
               "lon": -9.1707341,
               "distance_m": 281.82,
               "surface_elevation_m": 33.39,
-              "depth_m": 14.7,
+              "depth_m": 5.75,
+              "source": "measured"
+            },
+            {
+              "lat": 38.791364,
+              "lon": -9.17068785,
+              "distance_m": 295.91,
+              "surface_elevation_m": 33.55,
+              "depth_m": 5.87,
               "source": "measured"
             },
             {
@@ -3143,7 +3223,15 @@
               "lon": -9.1706416,
               "distance_m": 310.01,
               "surface_elevation_m": 33.7,
-              "depth_m": 15.83,
+              "depth_m": 6.0,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7911351,
+              "lon": -9.17061445,
+              "distance_m": 322.18,
+              "surface_elevation_m": 33.81,
+              "depth_m": 6.08,
               "source": "measured"
             },
             {
@@ -3151,7 +3239,15 @@
               "lon": -9.1705873,
               "distance_m": 334.35,
               "surface_elevation_m": 33.93,
-              "depth_m": 16.8,
+              "depth_m": 6.18,
+              "source": "measured"
+            },
+            {
+              "lat": 38.790925,
+              "lon": -9.1705752,
+              "distance_m": 345.82,
+              "surface_elevation_m": 33.98,
+              "depth_m": 6.17,
               "source": "measured"
             },
             {
@@ -3159,7 +3255,15 @@
               "lon": -9.1705631,
               "distance_m": 357.29,
               "surface_elevation_m": 34.02,
-              "depth_m": 17.72,
+              "depth_m": 6.11,
+              "source": "measured"
+            },
+            {
+              "lat": 38.79072925,
+              "lon": -9.1705601,
+              "distance_m": 367.64,
+              "surface_elevation_m": 34.06,
+              "depth_m": 6.01,
               "source": "measured"
             },
             {
@@ -3167,7 +3271,7 @@
               "lon": -9.1705571,
               "distance_m": 377.99,
               "surface_elevation_m": 34.09,
-              "depth_m": 18.55,
+              "depth_m": 5.92,
               "source": "measured"
             },
             {
@@ -3175,7 +3279,15 @@
               "lon": -9.1705725,
               "distance_m": 397.62,
               "surface_elevation_m": 34.07,
-              "depth_m": 19.33,
+              "depth_m": 5.61,
+              "source": "measured"
+            },
+            {
+              "lat": 38.79035555,
+              "lon": -9.17059195,
+              "distance_m": 409.37,
+              "surface_elevation_m": 34.0,
+              "depth_m": 5.37,
               "source": "measured"
             },
             {
@@ -3183,7 +3295,15 @@
               "lon": -9.1706114,
               "distance_m": 421.11,
               "surface_elevation_m": 33.93,
-              "depth_m": 20.27,
+              "depth_m": 5.13,
+              "source": "measured"
+            },
+            {
+              "lat": 38.79014675,
+              "lon": -9.17064395,
+              "distance_m": 433.04,
+              "surface_elevation_m": 33.85,
+              "depth_m": 4.89,
               "source": "measured"
             },
             {
@@ -3191,7 +3311,15 @@
               "lon": -9.1706765,
               "distance_m": 444.97,
               "surface_elevation_m": 33.77,
-              "depth_m": 20.49,
+              "depth_m": 4.63,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7899212,
+              "lon": -9.17073315,
+              "distance_m": 459.33,
+              "surface_elevation_m": 33.55,
+              "depth_m": 4.21,
               "source": "measured"
             },
             {
@@ -3199,7 +3327,15 @@
               "lon": -9.1707898,
               "distance_m": 473.68,
               "surface_elevation_m": 33.33,
-              "depth_m": 19.34,
+              "depth_m": 3.78,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78965305,
+              "lon": -9.1708867,
+              "distance_m": 492.04,
+              "surface_elevation_m": 33.01,
+              "depth_m": 3.21,
               "source": "measured"
             },
             {
@@ -3207,7 +3343,31 @@
               "lon": -9.1709836,
               "distance_m": 510.4,
               "surface_elevation_m": 32.69,
-              "depth_m": 17.87,
+              "depth_m": 2.59,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78939135,
+              "lon": -9.17108435,
+              "distance_m": 525.87,
+              "surface_elevation_m": 32.32,
+              "depth_m": 1.98,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7892765,
+              "lon": -9.1711851,
+              "distance_m": 541.35,
+              "surface_elevation_m": 31.96,
+              "depth_m": 1.42,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78916165,
+              "lon": -9.17128585,
+              "distance_m": 556.82,
+              "surface_elevation_m": 31.59,
+              "depth_m": 0.85,
               "source": "measured"
             },
             {
@@ -3215,7 +3375,23 @@
               "lon": -9.1713866,
               "distance_m": 572.29,
               "surface_elevation_m": 31.23,
-              "depth_m": 15.39,
+              "depth_m": 0.33,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78891123,
+              "lon": -9.1715122,
+              "distance_m": 590.88,
+              "surface_elevation_m": 30.68,
+              "depth_m": -0.41,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78877567,
+              "lon": -9.1716378,
+              "distance_m": 609.48,
+              "surface_elevation_m": 30.13,
+              "depth_m": -1.12,
               "source": "measured"
             },
             {
@@ -3223,7 +3399,15 @@
               "lon": -9.1717634,
               "distance_m": 628.07,
               "surface_elevation_m": 29.58,
-              "depth_m": 13.16,
+              "depth_m": -1.76,
+              "source": "measured"
+            },
+            {
+              "lat": 38.788516,
+              "lon": -9.17186065,
+              "distance_m": 644.24,
+              "surface_elevation_m": 29.07,
+              "depth_m": -2.22,
               "source": "measured"
             },
             {
@@ -3231,7 +3415,15 @@
               "lon": -9.1719579,
               "distance_m": 660.41,
               "surface_elevation_m": 28.57,
-              "depth_m": 11.87,
+              "depth_m": -2.58,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78829565,
+              "lon": -9.17201575,
+              "distance_m": 672.22,
+              "surface_elevation_m": 28.14,
+              "depth_m": -2.87,
               "source": "measured"
             },
             {
@@ -3239,7 +3431,15 @@
               "lon": -9.1720736,
               "distance_m": 684.04,
               "surface_elevation_m": 27.72,
-              "depth_m": 10.92,
+              "depth_m": -3.15,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7881011,
+              "lon": -9.1721237,
+              "distance_m": 695.81,
+              "surface_elevation_m": 27.29,
+              "depth_m": -3.41,
               "source": "measured"
             },
             {
@@ -3247,7 +3447,7 @@
               "lon": -9.1721738,
               "distance_m": 707.57,
               "surface_elevation_m": 26.86,
-              "depth_m": 9.98,
+              "depth_m": -3.68,
               "source": "measured"
             },
             {
@@ -3255,7 +3455,7 @@
               "lon": -9.1722316,
               "distance_m": 724.97,
               "surface_elevation_m": 26.17,
-              "depth_m": 9.29,
+              "depth_m": -4.2,
               "source": "measured"
             },
             {
@@ -3263,7 +3463,7 @@
               "lon": -9.1722652,
               "distance_m": 736.77,
               "surface_elevation_m": 25.71,
-              "depth_m": 8.82,
+              "depth_m": -4.6,
               "source": "measured"
             },
             {
@@ -3271,7 +3471,15 @@
               "lon": -9.1722859,
               "distance_m": 747.34,
               "surface_elevation_m": 25.28,
-              "depth_m": 8.39,
+              "depth_m": -4.99,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7875626,
+              "lon": -9.17230125,
+              "distance_m": 757.86,
+              "surface_elevation_m": 24.87,
+              "depth_m": -5.36,
               "source": "measured"
             },
             {
@@ -3279,7 +3487,7 @@
               "lon": -9.1723166,
               "distance_m": 768.37,
               "surface_elevation_m": 24.45,
-              "depth_m": 7.55,
+              "depth_m": -5.77,
               "source": "measured"
             },
             {
@@ -3287,7 +3495,7 @@
               "lon": -9.1723246,
               "distance_m": 786.02,
               "surface_elevation_m": 23.81,
-              "depth_m": 6.85,
+              "depth_m": -6.41,
               "source": "measured"
             },
             {
@@ -3295,7 +3503,7 @@
               "lon": -9.1723239,
               "distance_m": 795.47,
               "surface_elevation_m": 23.46,
-              "depth_m": 6.47,
+              "depth_m": -6.76,
               "source": "measured"
             },
             {
@@ -3303,7 +3511,7 @@
               "lon": -9.1723199,
               "distance_m": 804.93,
               "surface_elevation_m": 23.11,
-              "depth_m": 6.09,
+              "depth_m": -7.12,
               "source": "measured"
             },
             {
@@ -3311,7 +3519,15 @@
               "lon": -9.1722962,
               "distance_m": 823.72,
               "surface_elevation_m": 22.45,
-              "depth_m": 5.34,
+              "depth_m": -7.81,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7868791,
+              "lon": -9.1722763,
+              "distance_m": 834.22,
+              "surface_elevation_m": 22.17,
+              "depth_m": -8.11,
               "source": "measured"
             },
             {
@@ -3319,7 +3535,7 @@
               "lon": -9.1722564,
               "distance_m": 844.71,
               "surface_elevation_m": 21.89,
-              "depth_m": 4.5,
+              "depth_m": -8.44,
               "source": "measured"
             },
             {
@@ -3327,7 +3543,7 @@
               "lon": -9.1722051,
               "distance_m": 862.96,
               "surface_elevation_m": 21.42,
-              "depth_m": 3.77,
+              "depth_m": -9.01,
               "source": "measured"
             },
             {
@@ -3335,7 +3551,23 @@
               "lon": -9.1721584,
               "distance_m": 878.04,
               "surface_elevation_m": 21.03,
-              "depth_m": 3.16,
+              "depth_m": -9.47,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7863789,
+              "lon": -9.17210973,
+              "distance_m": 891.75,
+              "surface_elevation_m": 20.85,
+              "depth_m": -9.7,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7862616,
+              "lon": -9.17206107,
+              "distance_m": 905.45,
+              "surface_elevation_m": 20.68,
+              "depth_m": -9.91,
               "source": "measured"
             },
             {
@@ -3343,7 +3575,7 @@
               "lon": -9.1720124,
               "distance_m": 919.16,
               "surface_elevation_m": 20.5,
-              "depth_m": 1.52,
+              "depth_m": -10.11,
               "source": "measured"
             },
             {
@@ -3351,7 +3583,15 @@
               "lon": -9.1719857,
               "distance_m": 926.73,
               "surface_elevation_m": 20.41,
-              "depth_m": 1.22,
+              "depth_m": -10.21,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78594942,
+              "lon": -9.17193129,
+              "distance_m": 941.94,
+              "surface_elevation_m": 20.36,
+              "depth_m": -10.27,
               "source": "measured"
             },
             {
@@ -3359,7 +3599,7 @@
               "lon": -9.17187687021052,
               "distance_m": 957.16,
               "surface_elevation_m": 20.31,
-              "depth_m": 0.0,
+              "depth_m": -10.32,
               "source": "measured"
             }
           ],
@@ -4044,7 +4284,15 @@
               "lon": -9.17187687021052,
               "distance_m": 957.16,
               "surface_elevation_m": 20.31,
-              "depth_m": 0.0,
+              "depth_m": -10.32,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78572507,
+              "lon": -9.17183744,
+              "distance_m": 968.18,
+              "surface_elevation_m": 20.35,
+              "depth_m": -10.28,
               "source": "measured"
             },
             {
@@ -4052,7 +4300,23 @@
               "lon": -9.171798,
               "distance_m": 979.21,
               "surface_elevation_m": 20.4,
-              "depth_m": 0.88,
+              "depth_m": -10.25,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78548113,
+              "lon": -9.1717357,
+              "distance_m": 996.71,
+              "surface_elevation_m": 20.66,
+              "depth_m": -10.02,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78533147,
+              "lon": -9.1716734,
+              "distance_m": 1014.2,
+              "surface_elevation_m": 20.91,
+              "depth_m": -9.83,
               "source": "measured"
             },
             {
@@ -4060,7 +4324,7 @@
               "lon": -9.1716111,
               "distance_m": 1031.7,
               "surface_elevation_m": 21.17,
-              "depth_m": 2.98,
+              "depth_m": -9.64,
               "source": "measured"
             },
             {
@@ -4068,7 +4332,7 @@
               "lon": -9.1715363,
               "distance_m": 1051.61,
               "surface_elevation_m": 21.72,
-              "depth_m": 3.78,
+              "depth_m": -9.19,
               "source": "measured"
             },
             {
@@ -4076,7 +4340,7 @@
               "lon": -9.1715145,
               "distance_m": 1056.27,
               "surface_elevation_m": 21.85,
-              "depth_m": 3.96,
+              "depth_m": -9.09,
               "source": "measured"
             },
             {
@@ -4084,7 +4348,7 @@
               "lon": -9.1714675,
               "distance_m": 1065.04,
               "surface_elevation_m": 22.19,
-              "depth_m": 4.32,
+              "depth_m": -8.8,
               "source": "measured"
             },
             {
@@ -4092,7 +4356,7 @@
               "lon": -9.1713905,
               "distance_m": 1077.74,
               "surface_elevation_m": 22.75,
-              "depth_m": 4.82,
+              "depth_m": -8.33,
               "source": "measured"
             },
             {
@@ -4100,7 +4364,7 @@
               "lon": -9.1713085,
               "distance_m": 1089.16,
               "surface_elevation_m": 23.26,
-              "depth_m": 5.28,
+              "depth_m": -7.9,
               "source": "measured"
             },
             {
@@ -4108,7 +4372,7 @@
               "lon": -9.1711942,
               "distance_m": 1103.42,
               "surface_elevation_m": 23.88,
-              "depth_m": 5.85,
+              "depth_m": -7.4,
               "source": "measured"
             },
             {
@@ -4116,7 +4380,7 @@
               "lon": -9.1710449,
               "distance_m": 1120.76,
               "surface_elevation_m": 24.63,
-              "depth_m": 6.54,
+              "depth_m": -6.8,
               "source": "measured"
             },
             {
@@ -4124,7 +4388,7 @@
               "lon": -9.170886,
               "distance_m": 1138.18,
               "surface_elevation_m": 25.45,
-              "depth_m": 7.24,
+              "depth_m": -6.14,
               "source": "measured"
             },
             {
@@ -4132,7 +4396,15 @@
               "lon": -9.1707415,
               "distance_m": 1153.76,
               "surface_elevation_m": 26.43,
-              "depth_m": 7.86,
+              "depth_m": -5.32,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7842868,
+              "lon": -9.1706217,
+              "distance_m": 1166.39,
+              "surface_elevation_m": 27.21,
+              "depth_m": -4.67,
               "source": "measured"
             },
             {
@@ -4140,7 +4412,7 @@
               "lon": -9.1705019,
               "distance_m": 1179.03,
               "surface_elevation_m": 28.0,
-              "depth_m": 8.87,
+              "depth_m": -4.02,
               "source": "measured"
             },
             {
@@ -4148,7 +4420,7 @@
               "lon": -9.170363,
               "distance_m": 1193.34,
               "surface_elevation_m": 28.88,
-              "depth_m": 9.45,
+              "depth_m": -3.32,
               "source": "measured"
             },
             {
@@ -4156,7 +4428,15 @@
               "lon": -9.1702135,
               "distance_m": 1208.33,
               "surface_elevation_m": 29.81,
-              "depth_m": 10.05,
+              "depth_m": -2.58,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78400695,
+              "lon": -9.17002205,
+              "distance_m": 1227.04,
+              "surface_elevation_m": 31.11,
+              "depth_m": -1.53,
               "source": "measured"
             },
             {
@@ -4164,7 +4444,7 @@
               "lon": -9.1698306,
               "distance_m": 1245.75,
               "surface_elevation_m": 32.41,
-              "depth_m": 11.54,
+              "depth_m": -0.5,
               "source": "measured"
             },
             {
@@ -4172,7 +4452,7 @@
               "lon": -9.1696317,
               "distance_m": 1264.8,
               "surface_elevation_m": 33.77,
-              "depth_m": 12.31,
+              "depth_m": 0.55,
               "source": "measured"
             },
             {
@@ -4180,7 +4460,7 @@
               "lon": -9.1694393,
               "distance_m": 1282.65,
               "surface_elevation_m": 35.09,
-              "depth_m": 13.02,
+              "depth_m": 1.54,
               "source": "measured"
             },
             {
@@ -4188,7 +4468,7 @@
               "lon": -9.16923,
               "distance_m": 1301.91,
               "surface_elevation_m": 36.54,
-              "depth_m": 13.79,
+              "depth_m": 2.61,
               "source": "measured"
             },
             {
@@ -4196,7 +4476,7 @@
               "lon": -9.1690769,
               "distance_m": 1315.49,
               "surface_elevation_m": 37.5,
-              "depth_m": 14.33,
+              "depth_m": 3.28,
               "source": "measured"
             },
             {
@@ -4204,7 +4484,7 @@
               "lon": -9.1689465,
               "distance_m": 1327.05,
               "surface_elevation_m": 38.32,
-              "depth_m": 14.8,
+              "depth_m": 3.83,
               "source": "measured"
             },
             {
@@ -4212,7 +4492,7 @@
               "lon": -9.1688049,
               "distance_m": 1339.38,
               "surface_elevation_m": 39.15,
-              "depth_m": 15.29,
+              "depth_m": 4.38,
               "source": "measured"
             },
             {
@@ -4220,7 +4500,7 @@
               "lon": -9.1686253,
               "distance_m": 1354.95,
               "surface_elevation_m": 40.17,
-              "depth_m": 15.91,
+              "depth_m": 5.02,
               "source": "measured"
             },
             {
@@ -4228,7 +4508,7 @@
               "lon": -9.1684986,
               "distance_m": 1365.96,
               "surface_elevation_m": 40.86,
-              "depth_m": 16.35,
+              "depth_m": 5.44,
               "source": "measured"
             },
             {
@@ -4236,7 +4516,7 @@
               "lon": -9.1684066,
               "distance_m": 1374.19,
               "surface_elevation_m": 41.28,
-              "depth_m": 16.68,
+              "depth_m": 5.65,
               "source": "measured"
             },
             {
@@ -4244,7 +4524,7 @@
               "lon": -9.1683095,
               "distance_m": 1382.98,
               "surface_elevation_m": 41.72,
-              "depth_m": 17.03,
+              "depth_m": 5.86,
               "source": "measured"
             },
             {
@@ -4252,7 +4532,15 @@
               "lon": -9.1681613,
               "distance_m": 1396.64,
               "surface_elevation_m": 42.35,
-              "depth_m": 17.58,
+              "depth_m": 6.13,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7838107,
+              "lon": -9.16804325,
+              "distance_m": 1407.66,
+              "surface_elevation_m": 42.86,
+              "depth_m": 6.36,
               "source": "measured"
             },
             {
@@ -4260,7 +4548,7 @@
               "lon": -9.1679252,
               "distance_m": 1418.67,
               "surface_elevation_m": 43.37,
-              "depth_m": 18.46,
+              "depth_m": 6.57,
               "source": "measured"
             },
             {
@@ -4268,7 +4556,7 @@
               "lon": -9.1678226,
               "distance_m": 1428.61,
               "surface_elevation_m": 43.78,
-              "depth_m": 18.86,
+              "depth_m": 6.73,
               "source": "measured"
             },
             {
@@ -4276,7 +4564,15 @@
               "lon": -9.1677194,
               "distance_m": 1438.81,
               "surface_elevation_m": 44.18,
-              "depth_m": 19.27,
+              "depth_m": 6.88,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78399865,
+              "lon": -9.1675826,
+              "distance_m": 1452.83,
+              "surface_elevation_m": 44.7,
+              "depth_m": 7.05,
               "source": "measured"
             },
             {
@@ -4284,7 +4580,15 @@
               "lon": -9.1674458,
               "distance_m": 1466.85,
               "surface_elevation_m": 45.23,
-              "depth_m": 18.51,
+              "depth_m": 7.24,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78416205,
+              "lon": -9.16725985,
+              "distance_m": 1486.19,
+              "surface_elevation_m": 45.94,
+              "depth_m": 7.48,
               "source": "measured"
             },
             {
@@ -4292,7 +4596,7 @@
               "lon": -9.1670739,
               "distance_m": 1505.53,
               "surface_elevation_m": 46.64,
-              "depth_m": 20.05,
+              "depth_m": 7.75,
               "source": "measured"
             },
             {
@@ -4300,7 +4604,23 @@
               "lon": -9.1669721,
               "distance_m": 1516.11,
               "surface_elevation_m": 47.03,
-              "depth_m": 20.48,
+              "depth_m": 7.97,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78440663,
+              "lon": -9.16678487,
+              "distance_m": 1535.53,
+              "surface_elevation_m": 47.76,
+              "depth_m": 8.36,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78450257,
+              "lon": -9.16659763,
+              "distance_m": 1554.95,
+              "surface_elevation_m": 48.5,
+              "depth_m": 8.75,
               "source": "measured"
             },
             {
@@ -4308,7 +4628,15 @@
               "lon": -9.1664104,
               "distance_m": 1574.37,
               "surface_elevation_m": 49.23,
-              "depth_m": 20.64,
+              "depth_m": 9.05,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7846519,
+              "lon": -9.16630365,
+              "distance_m": 1585.36,
+              "surface_elevation_m": 49.66,
+              "depth_m": 9.23,
               "source": "measured"
             },
             {
@@ -4316,7 +4644,15 @@
               "lon": -9.1661969,
               "distance_m": 1596.36,
               "surface_elevation_m": 50.08,
-              "depth_m": 21.52,
+              "depth_m": 9.34,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78475925,
+              "lon": -9.16608275,
+              "distance_m": 1607.93,
+              "surface_elevation_m": 50.52,
+              "depth_m": 9.44,
               "source": "measured"
             },
             {
@@ -4324,7 +4660,7 @@
               "lon": -9.1659686,
               "distance_m": 1619.5,
               "surface_elevation_m": 50.97,
-              "depth_m": 22.44,
+              "depth_m": 9.55,
               "source": "measured"
             },
             {
@@ -4332,7 +4668,15 @@
               "lon": -9.1658052,
               "distance_m": 1635.8,
               "surface_elevation_m": 51.6,
-              "depth_m": 23.1,
+              "depth_m": 9.7,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78493055,
+              "lon": -9.16567015,
+              "distance_m": 1648.52,
+              "surface_elevation_m": 52.18,
+              "depth_m": 9.92,
               "source": "measured"
             },
             {
@@ -4340,7 +4684,7 @@
               "lon": -9.1655351,
               "distance_m": 1661.24,
               "surface_elevation_m": 52.76,
-              "depth_m": 22.08,
+              "depth_m": 10.11,
               "source": "measured"
             },
             {
@@ -4348,7 +4692,7 @@
               "lon": -9.1653619,
               "distance_m": 1676.87,
               "surface_elevation_m": 53.56,
-              "depth_m": 21.45,
+              "depth_m": 10.34,
               "source": "measured"
             },
             {
@@ -4356,7 +4700,7 @@
               "lon": -9.1651796,
               "distance_m": 1693.03,
               "surface_elevation_m": 54.38,
-              "depth_m": 20.81,
+              "depth_m": 10.52,
               "source": "measured"
             },
             {
@@ -4364,7 +4708,7 @@
               "lon": -9.164968,
               "distance_m": 1711.55,
               "surface_elevation_m": 55.38,
-              "depth_m": 20.07,
+              "depth_m": 10.79,
               "source": "measured"
             },
             {
@@ -4372,7 +4716,7 @@
               "lon": -9.1647965,
               "distance_m": 1726.47,
               "surface_elevation_m": 56.2,
-              "depth_m": 19.47,
+              "depth_m": 11.06,
               "source": "measured"
             },
             {
@@ -4380,7 +4724,7 @@
               "lon": -9.1646169,
               "distance_m": 1742.04,
               "surface_elevation_m": 57.07,
-              "depth_m": 18.85,
+              "depth_m": 11.39,
               "source": "measured"
             },
             {
@@ -4388,7 +4732,7 @@
               "lon": -9.1644266,
               "distance_m": 1758.56,
               "surface_elevation_m": 57.98,
-              "depth_m": 18.19,
+              "depth_m": 11.8,
               "source": "measured"
             },
             {
@@ -4396,7 +4740,7 @@
               "lon": -9.1642351,
               "distance_m": 1775.31,
               "surface_elevation_m": 58.94,
-              "depth_m": 17.52,
+              "depth_m": 12.29,
               "source": "measured"
             },
             {
@@ -4404,7 +4748,23 @@
               "lon": -9.1640422,
               "distance_m": 1792.32,
               "surface_elevation_m": 59.94,
-              "depth_m": 16.84,
+              "depth_m": 12.84,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78497737,
+              "lon": -9.16382077,
+              "distance_m": 1812.16,
+              "surface_elevation_m": 61.05,
+              "depth_m": 13.41,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78493203,
+              "lon": -9.16359933,
+              "distance_m": 1832.01,
+              "surface_elevation_m": 62.15,
+              "depth_m": 13.96,
               "source": "measured"
             },
             {
@@ -4412,7 +4772,15 @@
               "lon": -9.1633779,
               "distance_m": 1851.85,
               "surface_elevation_m": 63.26,
-              "depth_m": 14.45,
+              "depth_m": 14.52,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78485795,
+              "lon": -9.1632316,
+              "distance_m": 1864.93,
+              "surface_elevation_m": 63.94,
+              "depth_m": 14.83,
               "source": "measured"
             },
             {
@@ -4420,7 +4788,7 @@
               "lon": -9.1630853,
               "distance_m": 1878.01,
               "surface_elevation_m": 64.61,
-              "depth_m": 13.59,
+              "depth_m": 15.15,
               "source": "measured"
             },
             {
@@ -4428,7 +4796,7 @@
               "lon": -9.1629425,
               "distance_m": 1890.91,
               "surface_elevation_m": 65.28,
-              "depth_m": 13.84,
+              "depth_m": 15.53,
               "source": "measured"
             },
             {
@@ -4436,7 +4804,7 @@
               "lon": -9.1627915,
               "distance_m": 1904.69,
               "surface_elevation_m": 66.0,
-              "depth_m": 13.29,
+              "depth_m": 15.94,
               "source": "measured"
             },
             {
@@ -4444,7 +4812,7 @@
               "lon": -9.1626173,
               "distance_m": 1920.97,
               "surface_elevation_m": 66.87,
-              "depth_m": 12.63,
+              "depth_m": 16.46,
               "source": "measured"
             },
             {
@@ -4452,7 +4820,7 @@
               "lon": -9.1624499,
               "distance_m": 1937.29,
               "surface_elevation_m": 67.7,
-              "depth_m": 11.98,
+              "depth_m": 16.95,
               "source": "measured"
             },
             {
@@ -4460,7 +4828,7 @@
               "lon": -9.1622949,
               "distance_m": 1952.79,
               "surface_elevation_m": 68.5,
-              "depth_m": 12.6,
+              "depth_m": 17.39,
               "source": "measured"
             },
             {
@@ -4468,7 +4836,15 @@
               "lon": -9.1621344,
               "distance_m": 1969.48,
               "surface_elevation_m": 69.38,
-              "depth_m": 13.27,
+              "depth_m": 17.81,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78442405,
+              "lon": -9.16203355,
+              "distance_m": 1980.42,
+              "surface_elevation_m": 69.97,
+              "depth_m": 18.09,
               "source": "measured"
             },
             {
@@ -4476,7 +4852,79 @@
               "lon": -9.1619327,
               "distance_m": 1991.37,
               "surface_elevation_m": 70.56,
-              "depth_m": 14.15,
+              "depth_m": 18.37,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78426191,
+              "lon": -9.16176275,
+              "distance_m": 2010.02,
+              "surface_elevation_m": 71.41,
+              "depth_m": 18.69,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78415902,
+              "lon": -9.1615928,
+              "distance_m": 2028.67,
+              "surface_elevation_m": 72.27,
+              "depth_m": 19.05,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78405613,
+              "lon": -9.16142285,
+              "distance_m": 2047.33,
+              "surface_elevation_m": 73.12,
+              "depth_m": 19.36,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78395324,
+              "lon": -9.1612529,
+              "distance_m": 2065.98,
+              "surface_elevation_m": 73.98,
+              "depth_m": 19.62,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78385035,
+              "lon": -9.16108295,
+              "distance_m": 2084.63,
+              "surface_elevation_m": 74.83,
+              "depth_m": 19.87,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78374746,
+              "lon": -9.160913,
+              "distance_m": 2103.28,
+              "surface_elevation_m": 75.68,
+              "depth_m": 20.11,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78364457,
+              "lon": -9.16074305,
+              "distance_m": 2121.93,
+              "surface_elevation_m": 76.54,
+              "depth_m": 20.43,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78354168,
+              "lon": -9.1605731,
+              "distance_m": 2140.59,
+              "surface_elevation_m": 77.39,
+              "depth_m": 20.8,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78343879,
+              "lon": -9.16040315,
+              "distance_m": 2159.24,
+              "surface_elevation_m": 78.25,
+              "depth_m": 21.21,
               "source": "measured"
             },
             {
@@ -4484,7 +4932,7 @@
               "lon": -9.1602332,
               "distance_m": 2177.89,
               "surface_elevation_m": 79.1,
-              "depth_m": 10.59,
+              "depth_m": 21.63,
               "source": "measured"
             },
             {
@@ -4492,7 +4940,7 @@
               "lon": -9.1600904,
               "distance_m": 2194.05,
               "surface_elevation_m": 79.74,
-              "depth_m": 11.24,
+              "depth_m": 21.9,
               "source": "measured"
             },
             {
@@ -4500,7 +4948,7 @@
               "lon": -9.1599502,
               "distance_m": 2210.75,
               "surface_elevation_m": 80.41,
-              "depth_m": 11.91,
+              "depth_m": 22.2,
               "source": "measured"
             },
             {
@@ -4508,7 +4956,15 @@
               "lon": -9.1598208,
               "distance_m": 2226.86,
               "surface_elevation_m": 81.03,
-              "depth_m": 12.55,
+              "depth_m": 22.47,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78295145,
+              "lon": -9.15972985,
+              "distance_m": 2239.09,
+              "surface_elevation_m": 81.47,
+              "depth_m": 22.65,
               "source": "measured"
             },
             {
@@ -4516,7 +4972,7 @@
               "lon": -9.1596389,
               "distance_m": 2251.31,
               "surface_elevation_m": 81.91,
-              "depth_m": 13.53,
+              "depth_m": 22.84,
               "source": "measured"
             },
             {
@@ -4524,7 +4980,7 @@
               "lon": -9.1595068,
               "distance_m": 2271.08,
               "surface_elevation_m": 82.64,
-              "depth_m": 14.32,
+              "depth_m": 23.19,
               "source": "measured"
             },
             {
@@ -4532,7 +4988,15 @@
               "lon": -9.1593936,
               "distance_m": 2289.27,
               "surface_elevation_m": 83.31,
-              "depth_m": 15.05,
+              "depth_m": 23.52,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7825018,
+              "lon": -9.15933565,
+              "distance_m": 2299.78,
+              "surface_elevation_m": 83.7,
+              "depth_m": 23.73,
               "source": "measured"
             },
             {
@@ -4540,7 +5004,7 @@
               "lon": -9.1592777,
               "distance_m": 2310.28,
               "surface_elevation_m": 84.09,
-              "depth_m": 15.89,
+              "depth_m": 23.95,
               "source": "measured"
             },
             {
@@ -4548,7 +5012,7 @@
               "lon": -9.1591901,
               "distance_m": 2328.53,
               "surface_elevation_m": 84.74,
-              "depth_m": 16.62,
+              "depth_m": 24.33,
               "source": "measured"
             },
             {
@@ -4556,7 +5020,7 @@
               "lon": -9.1591119,
               "distance_m": 2346.88,
               "surface_elevation_m": 85.34,
-              "depth_m": 17.35,
+              "depth_m": 24.7,
               "source": "measured"
             },
             {
@@ -4564,7 +5028,7 @@
               "lon": -9.1590553,
               "distance_m": 2363.18,
               "surface_elevation_m": 85.88,
-              "depth_m": 18.0,
+              "depth_m": 25.04,
               "source": "measured"
             },
             {
@@ -4572,7 +5036,15 @@
               "lon": -9.1589987,
               "distance_m": 2381.94,
               "surface_elevation_m": 86.46,
-              "depth_m": 18.75,
+              "depth_m": 25.42,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78169965,
+              "lon": -9.1589724,
+              "distance_m": 2394.82,
+              "surface_elevation_m": 86.84,
+              "depth_m": 25.67,
               "source": "measured"
             },
             {
@@ -4580,7 +5052,15 @@
               "lon": -9.1589461,
               "distance_m": 2407.69,
               "surface_elevation_m": 87.23,
-              "depth_m": 19.78,
+              "depth_m": 25.93,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78148695,
+              "lon": -9.15893265,
+              "distance_m": 2418.73,
+              "surface_elevation_m": 87.56,
+              "depth_m": 26.16,
               "source": "measured"
             },
             {
@@ -4588,7 +5068,15 @@
               "lon": -9.1589192,
               "distance_m": 2429.77,
               "surface_elevation_m": 87.89,
-              "depth_m": 20.67,
+              "depth_m": 26.39,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78128945,
+              "lon": -9.1589138,
+              "distance_m": 2440.76,
+              "surface_elevation_m": 88.16,
+              "depth_m": 26.56,
               "source": "measured"
             },
             {
@@ -4596,7 +5084,7 @@
               "lon": -9.1589084,
               "distance_m": 2451.75,
               "surface_elevation_m": 88.43,
-              "depth_m": 21.55,
+              "depth_m": 26.74,
               "source": "measured"
             },
             {
@@ -4604,7 +5092,7 @@
               "lon": -9.1589178,
               "distance_m": 2470.71,
               "surface_elevation_m": 88.91,
-              "depth_m": 22.3,
+              "depth_m": 27.06,
               "source": "measured"
             },
             {
@@ -4612,7 +5100,15 @@
               "lon": -9.1589354,
               "distance_m": 2487.37,
               "surface_elevation_m": 89.32,
-              "depth_m": 22.97,
+              "depth_m": 27.34,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78077965,
+              "lon": -9.1589543,
+              "distance_m": 2497.68,
+              "surface_elevation_m": 89.5,
+              "depth_m": 27.44,
               "source": "measured"
             },
             {
@@ -4620,7 +5116,7 @@
               "lon": -9.1589732,
               "distance_m": 2507.99,
               "surface_elevation_m": 89.69,
-              "depth_m": 23.79,
+              "depth_m": 27.55,
               "source": "measured"
             },
             {
@@ -4628,7 +5124,39 @@
               "lon": -9.1590286,
               "distance_m": 2526.56,
               "surface_elevation_m": 90.04,
-              "depth_m": 24.54,
+              "depth_m": 27.78,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78036754,
+              "lon": -9.15910843,
+              "distance_m": 2545.57,
+              "surface_elevation_m": 90.21,
+              "depth_m": 27.85,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78020828,
+              "lon": -9.15918827,
+              "distance_m": 2564.58,
+              "surface_elevation_m": 90.38,
+              "depth_m": 27.94,
+              "source": "measured"
+            },
+            {
+              "lat": 38.78004902,
+              "lon": -9.1592681,
+              "distance_m": 2583.6,
+              "surface_elevation_m": 90.55,
+              "depth_m": 28.05,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77988976,
+              "lon": -9.15934794,
+              "distance_m": 2602.61,
+              "surface_elevation_m": 90.72,
+              "depth_m": 28.18,
               "source": "measured"
             },
             {
@@ -5769,11 +6297,43 @@
               "source": "measured"
             },
             {
+              "lat": 38.77959284,
+              "lon": -9.15949678,
+              "distance_m": 2638.06,
+              "surface_elevation_m": 90.85,
+              "depth_m": 28.28,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77945517,
+              "lon": -9.15956579,
+              "distance_m": 2654.49,
+              "surface_elevation_m": 90.8,
+              "depth_m": 28.19,
+              "source": "measured"
+            },
+            {
               "lat": 38.7793175,
               "lon": -9.1596348,
               "distance_m": 2670.93,
               "surface_elevation_m": 90.76,
-              "depth_m": 26.37,
+              "depth_m": 28.08,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77916207,
+              "lon": -9.1597127,
+              "distance_m": 2689.48,
+              "surface_elevation_m": 90.57,
+              "depth_m": 27.78,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77900663,
+              "lon": -9.1597906,
+              "distance_m": 2708.04,
+              "surface_elevation_m": 90.37,
+              "depth_m": 27.44,
               "source": "measured"
             },
             {
@@ -5781,7 +6341,31 @@
               "lon": -9.1598685,
               "distance_m": 2726.59,
               "surface_elevation_m": 90.18,
-              "depth_m": 24.14,
+              "depth_m": 27.08,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7787085,
+              "lon": -9.15994025,
+              "distance_m": 2743.63,
+              "surface_elevation_m": 89.86,
+              "depth_m": 26.59,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7785658,
+              "lon": -9.160012,
+              "distance_m": 2760.68,
+              "surface_elevation_m": 89.53,
+              "depth_m": 26.06,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7784231,
+              "lon": -9.16008375,
+              "distance_m": 2777.72,
+              "surface_elevation_m": 89.21,
+              "depth_m": 25.51,
               "source": "measured"
             },
             {
@@ -5789,7 +6373,15 @@
               "lon": -9.1601555,
               "distance_m": 2794.76,
               "surface_elevation_m": 88.89,
-              "depth_m": 21.41,
+              "depth_m": 24.94,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77818895,
+              "lon": -9.1602004,
+              "distance_m": 2805.65,
+              "surface_elevation_m": 88.67,
+              "depth_m": 24.55,
               "source": "measured"
             },
             {
@@ -5797,7 +6389,15 @@
               "lon": -9.1602453,
               "distance_m": 2816.54,
               "surface_elevation_m": 88.45,
-              "depth_m": 20.54,
+              "depth_m": 24.14,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77800145,
+              "lon": -9.1602922,
+              "distance_m": 2827.97,
+              "surface_elevation_m": 88.22,
+              "depth_m": 23.7,
               "source": "measured"
             },
             {
@@ -5805,7 +6405,7 @@
               "lon": -9.1603391,
               "distance_m": 2839.4,
               "surface_elevation_m": 88.0,
-              "depth_m": 19.63,
+              "depth_m": 23.25,
               "source": "measured"
             },
             {
@@ -5813,7 +6413,7 @@
               "lon": -9.1603885,
               "distance_m": 2852.5,
               "surface_elevation_m": 87.75,
-              "depth_m": 19.1,
+              "depth_m": 22.71,
               "source": "measured"
             },
             {
@@ -5821,7 +6421,15 @@
               "lon": -9.1604392,
               "distance_m": 2868.17,
               "surface_elevation_m": 87.48,
-              "depth_m": 18.48,
+              "depth_m": 22.03,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7775651,
+              "lon": -9.1604659,
+              "distance_m": 2878.84,
+              "surface_elevation_m": 87.3,
+              "depth_m": 21.54,
               "source": "measured"
             },
             {
@@ -5829,7 +6437,7 @@
               "lon": -9.1604926,
               "distance_m": 2889.51,
               "surface_elevation_m": 87.12,
-              "depth_m": 17.62,
+              "depth_m": 21.03,
               "source": "measured"
             },
             {
@@ -5837,7 +6445,7 @@
               "lon": -9.16053,
               "distance_m": 2909.03,
               "surface_elevation_m": 86.81,
-              "depth_m": 16.84,
+              "depth_m": 20.06,
               "source": "measured"
             },
             {
@@ -5845,7 +6453,7 @@
               "lon": -9.160554,
               "distance_m": 2923.51,
               "surface_elevation_m": 86.65,
-              "depth_m": 16.26,
+              "depth_m": 19.36,
               "source": "measured"
             },
             {
@@ -5853,7 +6461,7 @@
               "lon": -9.1605647,
               "distance_m": 2937.89,
               "surface_elevation_m": 86.5,
-              "depth_m": 15.69,
+              "depth_m": 18.64,
               "source": "measured"
             },
             {
@@ -5861,7 +6469,7 @@
               "lon": -9.1605714,
               "distance_m": 2952.02,
               "surface_elevation_m": 86.35,
-              "depth_m": 15.12,
+              "depth_m": 17.93,
               "source": "measured"
             },
             {
@@ -5869,7 +6477,7 @@
               "lon": -9.1605701,
               "distance_m": 2970.33,
               "surface_elevation_m": 86.23,
-              "depth_m": 14.39,
+              "depth_m": 17.25,
               "source": "measured"
             },
             {
@@ -5877,7 +6485,7 @@
               "lon": -9.1605621,
               "distance_m": 2985.62,
               "surface_elevation_m": 86.19,
-              "depth_m": 13.78,
+              "depth_m": 16.83,
               "source": "measured"
             },
             {
@@ -5885,7 +6493,7 @@
               "lon": -9.160542,
               "distance_m": 3001.56,
               "surface_elevation_m": 86.16,
-              "depth_m": 13.14,
+              "depth_m": 16.5,
               "source": "measured"
             },
             {
@@ -5893,7 +6501,7 @@
               "lon": -9.16051,
               "distance_m": 3020.18,
               "surface_elevation_m": 86.14,
-              "depth_m": 12.4,
+              "depth_m": 16.19,
               "source": "measured"
             },
             {
@@ -5901,7 +6509,7 @@
               "lon": -9.1604739,
               "distance_m": 3035.79,
               "surface_elevation_m": 86.23,
-              "depth_m": 11.77,
+              "depth_m": 16.01,
               "source": "measured"
             },
             {
@@ -5909,7 +6517,15 @@
               "lon": -9.1604365,
               "distance_m": 3050.16,
               "surface_elevation_m": 86.32,
-              "depth_m": 11.2,
+              "depth_m": 15.77,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77595235,
+              "lon": -9.1604024,
+              "distance_m": 3060.34,
+              "surface_elevation_m": 86.39,
+              "depth_m": 15.58,
               "source": "measured"
             },
             {
@@ -5917,7 +6533,95 @@
               "lon": -9.1603683,
               "distance_m": 3070.51,
               "surface_elevation_m": 86.46,
-              "depth_m": 10.38,
+              "depth_m": 15.39,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77570175,
+              "lon": -9.16030002,
+              "distance_m": 3089.58,
+              "surface_elevation_m": 86.76,
+              "depth_m": 15.19,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7755387,
+              "lon": -9.16023175,
+              "distance_m": 3108.65,
+              "surface_elevation_m": 87.06,
+              "depth_m": 15.12,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77537565,
+              "lon": -9.16016348,
+              "distance_m": 3127.73,
+              "surface_elevation_m": 87.36,
+              "depth_m": 15.11,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7752126,
+              "lon": -9.1600952,
+              "distance_m": 3146.8,
+              "surface_elevation_m": 87.66,
+              "depth_m": 15.22,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77504955,
+              "lon": -9.16002693,
+              "distance_m": 3165.87,
+              "surface_elevation_m": 87.96,
+              "depth_m": 15.35,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7748865,
+              "lon": -9.15995865,
+              "distance_m": 3184.94,
+              "surface_elevation_m": 88.25,
+              "depth_m": 15.55,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77472345,
+              "lon": -9.15989037,
+              "distance_m": 3204.01,
+              "surface_elevation_m": 88.55,
+              "depth_m": 15.75,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7745604,
+              "lon": -9.1598221,
+              "distance_m": 3223.08,
+              "surface_elevation_m": 88.85,
+              "depth_m": 15.87,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77439735,
+              "lon": -9.15975382,
+              "distance_m": 3242.15,
+              "surface_elevation_m": 89.15,
+              "depth_m": 15.97,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7742343,
+              "lon": -9.15968555,
+              "distance_m": 3261.23,
+              "surface_elevation_m": 89.45,
+              "depth_m": 16.02,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77407125,
+              "lon": -9.15961728,
+              "distance_m": 3280.3,
+              "surface_elevation_m": 89.75,
+              "depth_m": 16.06,
               "source": "measured"
             },
             {
@@ -5925,7 +6629,23 @@
               "lon": -9.159549,
               "distance_m": 3299.37,
               "surface_elevation_m": 90.05,
-              "depth_m": 12.15,
+              "depth_m": 16.13,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7737385,
+              "lon": -9.1594784,
+              "distance_m": 3319.21,
+              "surface_elevation_m": 90.3,
+              "depth_m": 16.18,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7735688,
+              "lon": -9.1594078,
+              "distance_m": 3339.04,
+              "surface_elevation_m": 90.55,
+              "depth_m": 16.26,
               "source": "measured"
             },
             {
@@ -5933,7 +6653,23 @@
               "lon": -9.1593372,
               "distance_m": 3358.88,
               "surface_elevation_m": 90.8,
-              "depth_m": 14.53,
+              "depth_m": 16.38,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77325368,
+              "lon": -9.1592767,
+              "distance_m": 3375.88,
+              "surface_elevation_m": 90.91,
+              "depth_m": 16.41,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77310826,
+              "lon": -9.15921619,
+              "distance_m": 3392.88,
+              "surface_elevation_m": 91.03,
+              "depth_m": 16.48,
               "source": "measured"
             },
             {
@@ -6632,11 +7368,83 @@
               "source": "measured"
             },
             {
+              "lat": 38.77279532,
+              "lon": -9.15908599,
+              "distance_m": 3429.46,
+              "surface_elevation_m": 91.0,
+              "depth_m": 16.42,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77262779,
+              "lon": -9.15901629,
+              "distance_m": 3449.05,
+              "surface_elevation_m": 90.86,
+              "depth_m": 16.26,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77246027,
+              "lon": -9.15894659,
+              "distance_m": 3468.63,
+              "surface_elevation_m": 90.72,
+              "depth_m": 16.09,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77229274,
+              "lon": -9.1588769,
+              "distance_m": 3488.21,
+              "surface_elevation_m": 90.58,
+              "depth_m": 15.91,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77212522,
+              "lon": -9.1588072,
+              "distance_m": 3507.8,
+              "surface_elevation_m": 90.44,
+              "depth_m": 15.72,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7719577,
+              "lon": -9.1587375,
+              "distance_m": 3527.38,
+              "surface_elevation_m": 90.29,
+              "depth_m": 15.52,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77179017,
+              "lon": -9.1586678,
+              "distance_m": 3546.96,
+              "surface_elevation_m": 90.15,
+              "depth_m": 15.33,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77162265,
+              "lon": -9.1585981,
+              "distance_m": 3566.54,
+              "surface_elevation_m": 90.01,
+              "depth_m": 15.13,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77145512,
+              "lon": -9.1585284,
+              "distance_m": 3586.13,
+              "surface_elevation_m": 89.87,
+              "depth_m": 14.9,
+              "source": "measured"
+            },
+            {
               "lat": 38.7712876,
               "lon": -9.1584587,
               "distance_m": 3605.71,
               "surface_elevation_m": 89.73,
-              "depth_m": 8.74,
+              "depth_m": 14.62,
               "source": "measured"
             },
             {
@@ -6644,7 +7452,7 @@
               "lon": -9.1584073,
               "distance_m": 3619.33,
               "surface_elevation_m": 89.54,
-              "depth_m": 8.19,
+              "depth_m": 14.33,
               "source": "measured"
             },
             {
@@ -6652,7 +7460,7 @@
               "lon": -9.1583546,
               "distance_m": 3631.64,
               "surface_elevation_m": 89.37,
-              "depth_m": 7.7,
+              "depth_m": 14.06,
               "source": "measured"
             },
             {
@@ -6660,7 +7468,15 @@
               "lon": -9.1582934,
               "distance_m": 3644.23,
               "surface_elevation_m": 89.2,
-              "depth_m": 7.2,
+              "depth_m": 13.75,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77088165,
+              "lon": -9.1582321,
+              "distance_m": 3655.05,
+              "surface_elevation_m": 89.06,
+              "depth_m": 13.47,
               "source": "measured"
             },
             {
@@ -6668,7 +7484,15 @@
               "lon": -9.1581708,
               "distance_m": 3665.87,
               "surface_elevation_m": 88.93,
-              "depth_m": 6.33,
+              "depth_m": 13.23,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77070955,
+              "lon": -9.1580934,
+              "distance_m": 3677.68,
+              "surface_elevation_m": 88.8,
+              "depth_m": 12.92,
               "source": "measured"
             },
             {
@@ -6676,7 +7500,15 @@
               "lon": -9.158016,
               "distance_m": 3689.48,
               "surface_elevation_m": 88.67,
-              "depth_m": 5.39,
+              "depth_m": 12.53,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77055,
+              "lon": -9.1579414,
+              "distance_m": 3699.79,
+              "surface_elevation_m": 88.58,
+              "depth_m": 12.17,
               "source": "measured"
             },
             {
@@ -6684,7 +7516,15 @@
               "lon": -9.1578668,
               "distance_m": 3710.1,
               "surface_elevation_m": 88.48,
-              "depth_m": 4.56,
+              "depth_m": 11.8,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77040705,
+              "lon": -9.15777605,
+              "distance_m": 3721.22,
+              "surface_elevation_m": 88.39,
+              "depth_m": 11.39,
               "source": "measured"
             },
             {
@@ -6692,7 +7532,15 @@
               "lon": -9.1576853,
               "distance_m": 3732.35,
               "surface_elevation_m": 88.3,
-              "depth_m": 3.67,
+              "depth_m": 10.94,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7702376,
+              "lon": -9.157548,
+              "distance_m": 3748.54,
+              "surface_elevation_m": 88.2,
+              "depth_m": 10.19,
               "source": "measured"
             },
             {
@@ -6700,7 +7548,23 @@
               "lon": -9.1574107,
               "distance_m": 3764.73,
               "surface_elevation_m": 88.1,
-              "depth_m": 2.38,
+              "depth_m": 9.58,
+              "source": "measured"
+            },
+            {
+              "lat": 38.77005553,
+              "lon": -9.1572935,
+              "distance_m": 3778.48,
+              "surface_elevation_m": 88.06,
+              "depth_m": 9.38,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76997217,
+              "lon": -9.1571763,
+              "distance_m": 3792.24,
+              "surface_elevation_m": 88.03,
+              "depth_m": 9.33,
               "source": "measured"
             },
             {
@@ -6708,7 +7572,23 @@
               "lon": -9.1570591,
               "distance_m": 3805.99,
               "surface_elevation_m": 87.99,
-              "depth_m": 0.73,
+              "depth_m": 9.32,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76978993,
+              "lon": -9.1569295,
+              "distance_m": 3821.71,
+              "surface_elevation_m": 87.99,
+              "depth_m": 9.52,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76969107,
+              "lon": -9.1567999,
+              "distance_m": 3837.43,
+              "surface_elevation_m": 87.99,
+              "depth_m": 9.66,
               "source": "measured"
             },
             {
@@ -6716,7 +7596,15 @@
               "lon": -9.1566703,
               "distance_m": 3853.15,
               "surface_elevation_m": 87.99,
-              "depth_m": 0.0,
+              "depth_m": 9.74,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76950315,
+              "lon": -9.1565547,
+              "distance_m": 3867.24,
+              "surface_elevation_m": 88.04,
+              "depth_m": 9.8,
               "source": "measured"
             },
             {
@@ -6724,7 +7612,7 @@
               "lon": -9.1564391,
               "distance_m": 3881.33,
               "surface_elevation_m": 88.09,
-              "depth_m": 0.56,
+              "depth_m": 9.93,
               "source": "measured"
             },
             {
@@ -6732,7 +7620,7 @@
               "lon": -9.1563041,
               "distance_m": 3899.08,
               "surface_elevation_m": 88.16,
-              "depth_m": 1.27,
+              "depth_m": 10.11,
               "source": "measured"
             },
             {
@@ -6740,7 +7628,7 @@
               "lon": -9.1561928,
               "distance_m": 3915.53,
               "surface_elevation_m": 88.24,
-              "depth_m": 1.93,
+              "depth_m": 10.24,
               "source": "measured"
             },
             {
@@ -6748,7 +7636,7 @@
               "lon": -9.1561065,
               "distance_m": 3928.84,
               "surface_elevation_m": 88.33,
-              "depth_m": 2.46,
+              "depth_m": 10.26,
               "source": "measured"
             },
             {
@@ -6756,7 +7644,7 @@
               "lon": -9.1560302,
               "distance_m": 3942.13,
               "surface_elevation_m": 88.43,
-              "depth_m": 2.99,
+              "depth_m": 10.29,
               "source": "measured"
             },
             {
@@ -6764,7 +7652,15 @@
               "lon": -9.1559519,
               "distance_m": 3956.83,
               "surface_elevation_m": 88.55,
-              "depth_m": 3.58,
+              "depth_m": 10.33,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7687689,
+              "lon": -9.1559054,
+              "distance_m": 3967.15,
+              "surface_elevation_m": 88.63,
+              "depth_m": 10.36,
               "source": "measured"
             },
             {
@@ -6772,7 +7668,7 @@
               "lon": -9.1558589,
               "distance_m": 3977.47,
               "surface_elevation_m": 88.72,
-              "depth_m": 4.41,
+              "depth_m": 10.44,
               "source": "measured"
             },
             {
@@ -6780,7 +7676,7 @@
               "lon": -9.1557989,
               "distance_m": 3993.14,
               "surface_elevation_m": 88.87,
-              "depth_m": 5.03,
+              "depth_m": 10.69,
               "source": "measured"
             },
             {
@@ -6788,7 +7684,7 @@
               "lon": -9.1557557,
               "distance_m": 4006.37,
               "surface_elevation_m": 88.99,
-              "depth_m": 5.56,
+              "depth_m": 10.87,
               "source": "measured"
             },
             {
@@ -6796,7 +7692,7 @@
               "lon": -9.1557146,
               "distance_m": 4022.32,
               "surface_elevation_m": 89.14,
-              "depth_m": 6.2,
+              "depth_m": 11.07,
               "source": "measured"
             },
             {
@@ -6804,7 +7700,15 @@
               "lon": -9.1556817,
               "distance_m": 4038.03,
               "surface_elevation_m": 89.27,
-              "depth_m": 6.83,
+              "depth_m": 11.22,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76805275,
+              "lon": -9.1556589,
+              "distance_m": 4049.86,
+              "surface_elevation_m": 89.35,
+              "depth_m": 11.29,
               "source": "measured"
             },
             {
@@ -6812,7 +7716,7 @@
               "lon": -9.1556361,
               "distance_m": 4061.7,
               "surface_elevation_m": 89.44,
-              "depth_m": 7.77,
+              "depth_m": 11.35,
               "source": "measured"
             },
             {
@@ -6820,7 +7724,23 @@
               "lon": -9.1556037,
               "distance_m": 4079.6,
               "surface_elevation_m": 89.57,
-              "depth_m": 8.49,
+              "depth_m": 11.44,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7676318,
+              "lon": -9.15557777,
+              "distance_m": 4097.2,
+              "surface_elevation_m": 89.65,
+              "depth_m": 11.48,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7674748,
+              "lon": -9.15555183,
+              "distance_m": 4114.8,
+              "surface_elevation_m": 89.74,
+              "depth_m": 11.53,
               "source": "measured"
             },
             {
@@ -6828,7 +7748,15 @@
               "lon": -9.1555259,
               "distance_m": 4132.4,
               "surface_elevation_m": 89.82,
-              "depth_m": 10.6,
+              "depth_m": 11.58,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76720436,
+              "lon": -9.15550719,
+              "distance_m": 4145.12,
+              "surface_elevation_m": 89.84,
+              "depth_m": 11.59,
               "source": "measured"
             },
             {
@@ -7510,11 +8438,19 @@
               "source": "measured"
             },
             {
+              "lat": 38.76696886,
+              "lon": -9.15546834,
+              "distance_m": 4171.52,
+              "surface_elevation_m": 89.86,
+              "depth_m": 11.6,
+              "source": "measured"
+            },
+            {
               "lat": 38.7668468,
               "lon": -9.1554482,
               "distance_m": 4185.21,
               "surface_elevation_m": 89.84,
-              "depth_m": 10.53,
+              "depth_m": 11.56,
               "source": "measured"
             },
             {
@@ -7522,7 +8458,111 @@
               "lon": -9.1554325,
               "distance_m": 4196.01,
               "surface_elevation_m": 89.83,
-              "depth_m": 10.09,
+              "depth_m": 11.52,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76658298,
+              "lon": -9.15539571,
+              "distance_m": 4214.9,
+              "surface_elevation_m": 89.63,
+              "depth_m": 11.25,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76641556,
+              "lon": -9.15535891,
+              "distance_m": 4233.79,
+              "surface_elevation_m": 89.44,
+              "depth_m": 10.96,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76624814,
+              "lon": -9.15532212,
+              "distance_m": 4252.67,
+              "surface_elevation_m": 89.24,
+              "depth_m": 10.65,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76608071,
+              "lon": -9.15528533,
+              "distance_m": 4271.56,
+              "surface_elevation_m": 89.05,
+              "depth_m": 10.34,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76591329,
+              "lon": -9.15524854,
+              "distance_m": 4290.45,
+              "surface_elevation_m": 88.85,
+              "depth_m": 10.0,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76574587,
+              "lon": -9.15521174,
+              "distance_m": 4309.34,
+              "surface_elevation_m": 88.66,
+              "depth_m": 9.66,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76557845,
+              "lon": -9.15517495,
+              "distance_m": 4328.23,
+              "surface_elevation_m": 88.46,
+              "depth_m": 9.29,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76541103,
+              "lon": -9.15513816,
+              "distance_m": 4347.11,
+              "surface_elevation_m": 88.26,
+              "depth_m": 8.92,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76524361,
+              "lon": -9.15510136,
+              "distance_m": 4366.0,
+              "surface_elevation_m": 88.07,
+              "depth_m": 8.54,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76507619,
+              "lon": -9.15506457,
+              "distance_m": 4384.89,
+              "surface_elevation_m": 87.87,
+              "depth_m": 8.13,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76490876,
+              "lon": -9.15502778,
+              "distance_m": 4403.78,
+              "surface_elevation_m": 87.68,
+              "depth_m": 7.72,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76474134,
+              "lon": -9.15499099,
+              "distance_m": 4422.66,
+              "surface_elevation_m": 87.48,
+              "depth_m": 7.29,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76457392,
+              "lon": -9.15495419,
+              "distance_m": 4441.55,
+              "surface_elevation_m": 87.29,
+              "depth_m": 6.82,
               "source": "measured"
             },
             {
@@ -7530,7 +8570,31 @@
               "lon": -9.1549174,
               "distance_m": 4460.44,
               "surface_elevation_m": 87.09,
-              "depth_m": 0.0,
+              "depth_m": 6.3,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7642419,
+              "lon": -9.1548917,
+              "distance_m": 4478.88,
+              "surface_elevation_m": 86.87,
+              "depth_m": 5.64,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7640773,
+              "lon": -9.154866,
+              "distance_m": 4497.31,
+              "surface_elevation_m": 86.65,
+              "depth_m": 4.86,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7639127,
+              "lon": -9.1548403,
+              "distance_m": 4515.75,
+              "surface_elevation_m": 86.43,
+              "depth_m": 3.98,
               "source": "measured"
             },
             {
@@ -7538,7 +8602,31 @@
               "lon": -9.1548146,
               "distance_m": 4534.19,
               "surface_elevation_m": 86.21,
-              "depth_m": 0.0,
+              "depth_m": 3.05,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7636099,
+              "lon": -9.15480712,
+              "distance_m": 4549.57,
+              "surface_elevation_m": 86.06,
+              "depth_m": 2.29,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7634717,
+              "lon": -9.15479965,
+              "distance_m": 4564.95,
+              "surface_elevation_m": 85.91,
+              "depth_m": 1.54,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7633335,
+              "lon": -9.15479218,
+              "distance_m": 4580.34,
+              "surface_elevation_m": 85.76,
+              "depth_m": 0.88,
               "source": "measured"
             },
             {
@@ -7546,7 +8634,23 @@
               "lon": -9.1547847,
               "distance_m": 4595.72,
               "surface_elevation_m": 85.61,
-              "depth_m": 0.0,
+              "depth_m": 0.26,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76303103,
+              "lon": -9.1547988,
+              "distance_m": 4614.03,
+              "surface_elevation_m": 85.47,
+              "depth_m": -0.34,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76286677,
+              "lon": -9.1548129,
+              "distance_m": 4632.33,
+              "surface_elevation_m": 85.33,
+              "depth_m": -0.96,
               "source": "measured"
             },
             {
@@ -7554,7 +8658,15 @@
               "lon": -9.154827,
               "distance_m": 4650.64,
               "surface_elevation_m": 85.19,
-              "depth_m": 0.0,
+              "depth_m": -1.58,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7625863,
+              "lon": -9.1548434,
+              "distance_m": 4663.64,
+              "surface_elevation_m": 85.11,
+              "depth_m": -2.02,
               "source": "measured"
             },
             {
@@ -7562,7 +8674,7 @@
               "lon": -9.1548598,
               "distance_m": 4676.63,
               "surface_elevation_m": 85.03,
-              "depth_m": 0.0,
+              "depth_m": -2.47,
               "source": "measured"
             },
             {
@@ -7570,7 +8682,7 @@
               "lon": -9.1548751,
               "distance_m": 4686.35,
               "surface_elevation_m": 84.98,
-              "depth_m": 0.0,
+              "depth_m": -2.79,
               "source": "measured"
             },
             {
@@ -7578,7 +8690,7 @@
               "lon": -9.1549094,
               "distance_m": 4702.61,
               "surface_elevation_m": 84.89,
-              "depth_m": 0.0,
+              "depth_m": -3.36,
               "source": "measured"
             },
             {
@@ -7586,7 +8698,7 @@
               "lon": -9.1549424,
               "distance_m": 4715.3,
               "surface_elevation_m": 84.83,
-              "depth_m": 0.0,
+              "depth_m": -3.77,
               "source": "measured"
             },
             {
@@ -7594,7 +8706,7 @@
               "lon": -9.1549846,
               "distance_m": 4726.79,
               "surface_elevation_m": 84.78,
-              "depth_m": 0.0,
+              "depth_m": -4.13,
               "source": "measured"
             },
             {
@@ -7602,7 +8714,7 @@
               "lon": -9.1550516,
               "distance_m": 4743.48,
               "surface_elevation_m": 84.73,
-              "depth_m": 0.0,
+              "depth_m": -4.58,
               "source": "measured"
             },
             {
@@ -7610,7 +8722,7 @@
               "lon": -9.1551335,
               "distance_m": 4761.2,
               "surface_elevation_m": 84.67,
-              "depth_m": 0.0,
+              "depth_m": -4.95,
               "source": "measured"
             },
             {
@@ -7618,7 +8730,7 @@
               "lon": -9.1551927,
               "distance_m": 4772.07,
               "surface_elevation_m": 84.64,
-              "depth_m": 0.0,
+              "depth_m": -5.1,
               "source": "measured"
             },
             {
@@ -7626,7 +8738,7 @@
               "lon": -9.1552414,
               "distance_m": 4780.52,
               "surface_elevation_m": 84.61,
-              "depth_m": 0.0,
+              "depth_m": -5.25,
               "source": "measured"
             },
             {
@@ -7634,7 +8746,7 @@
               "lon": -9.1552894,
               "distance_m": 4788.17,
               "surface_elevation_m": 84.6,
-              "depth_m": 0.0,
+              "depth_m": -5.36,
               "source": "measured"
             },
             {
@@ -7642,7 +8754,7 @@
               "lon": -9.1553519,
               "distance_m": 4797.38,
               "surface_elevation_m": 84.58,
-              "depth_m": 0.0,
+              "depth_m": -5.49,
               "source": "measured"
             },
             {
@@ -7650,7 +8762,7 @@
               "lon": -9.15542,
               "distance_m": 4807.28,
               "surface_elevation_m": 84.57,
-              "depth_m": 0.0,
+              "depth_m": -5.63,
               "source": "measured"
             },
             {
@@ -7658,7 +8770,7 @@
               "lon": -9.155486771557001,
               "distance_m": 4816.78,
               "surface_elevation_m": 84.55,
-              "depth_m": 0.0,
+              "depth_m": -5.78,
               "source": "measured"
             },
             {
@@ -7666,7 +8778,7 @@
               "lon": -9.15560654745353,
               "distance_m": 4831.65,
               "surface_elevation_m": 84.54,
-              "depth_m": 0.0,
+              "depth_m": -5.97,
               "source": "measured"
             },
             {
@@ -7674,7 +8786,15 @@
               "lon": -9.15578295961342,
               "distance_m": 4850.99,
               "surface_elevation_m": 84.52,
-              "depth_m": 0.0,
+              "depth_m": -6.24,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76106864,
+              "lon": -9.15589444,
+              "distance_m": 4862.57,
+              "surface_elevation_m": 84.5,
+              "depth_m": -6.45,
               "source": "measured"
             },
             {
@@ -7682,7 +8802,15 @@
               "lon": -9.15600592625116,
               "distance_m": 4874.14,
               "surface_elevation_m": 84.49,
-              "depth_m": 0.0,
+              "depth_m": -6.65,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7609515,
+              "lon": -9.15613565,
+              "distance_m": 4887.21,
+              "surface_elevation_m": 84.48,
+              "depth_m": -6.85,
               "source": "measured"
             },
             {
@@ -7690,7 +8818,15 @@
               "lon": -9.156265365581243,
               "distance_m": 4900.28,
               "surface_elevation_m": 84.48,
-              "depth_m": 0.0,
+              "depth_m": -7.03,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76083036,
+              "lon": -9.15640828,
+              "distance_m": 4914.42,
+              "surface_elevation_m": 84.47,
+              "depth_m": -7.22,
               "source": "measured"
             },
             {
@@ -7698,7 +8834,15 @@
               "lon": -9.15655119581816,
               "distance_m": 4928.56,
               "surface_elevation_m": 84.47,
-              "depth_m": 0.0,
+              "depth_m": -7.39,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76070788,
+              "lon": -9.15670227,
+              "distance_m": 4943.33,
+              "surface_elevation_m": 84.46,
+              "depth_m": -7.58,
               "source": "measured"
             },
             {
@@ -7706,7 +8850,15 @@
               "lon": -9.1568533351764,
               "distance_m": 4958.09,
               "surface_elevation_m": 84.45,
-              "depth_m": 0.0,
+              "depth_m": -7.75,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76058676,
+              "lon": -9.15700752,
+              "distance_m": 4973.02,
+              "surface_elevation_m": 84.44,
+              "depth_m": -7.93,
               "source": "measured"
             },
             {
@@ -7714,7 +8866,15 @@
               "lon": -9.157161701870459,
               "distance_m": 4987.96,
               "surface_elevation_m": 84.43,
-              "depth_m": 0.0,
+              "depth_m": -8.11,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76046969,
+              "lon": -9.15731396,
+              "distance_m": 5002.61,
+              "surface_elevation_m": 84.44,
+              "depth_m": -8.25,
               "source": "measured"
             },
             {
@@ -7722,7 +8882,15 @@
               "lon": -9.157466214114823,
               "distance_m": 5017.26,
               "surface_elevation_m": 84.44,
-              "depth_m": 0.0,
+              "depth_m": -8.38,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76035933,
+              "lon": -9.1576115,
+              "distance_m": 5031.18,
+              "surface_elevation_m": 84.44,
+              "depth_m": -8.49,
               "source": "measured"
             },
             {
@@ -7730,7 +8898,15 @@
               "lon": -9.157756790123987,
               "distance_m": 5045.09,
               "surface_elevation_m": 84.44,
-              "depth_m": 0.0,
+              "depth_m": -8.61,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76025838,
+              "lon": -9.15789007,
+              "distance_m": 5057.81,
+              "surface_elevation_m": 84.46,
+              "depth_m": -8.69,
               "source": "measured"
             },
             {
@@ -7738,7 +8914,15 @@
               "lon": -9.158023348112442,
               "distance_m": 5070.53,
               "surface_elevation_m": 84.48,
-              "depth_m": 0.0,
+              "depth_m": -8.76,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76016953,
+              "lon": -9.15813958,
+              "distance_m": 5081.59,
+              "surface_elevation_m": 84.5,
+              "depth_m": -8.82,
               "source": "measured"
             },
             {
@@ -7746,7 +8930,7 @@
               "lon": -9.158255806294676,
               "distance_m": 5092.66,
               "surface_elevation_m": 84.52,
-              "depth_m": 0.0,
+              "depth_m": -8.87,
               "source": "measured"
             },
             {
@@ -7754,7 +8938,7 @@
               "lon": -9.158444082885184,
               "distance_m": 5110.56,
               "surface_elevation_m": 84.55,
-              "depth_m": 0.0,
+              "depth_m": -8.96,
               "source": "measured"
             },
             {
@@ -7762,7 +8946,7 @@
               "lon": -9.158578096098456,
               "distance_m": 5123.31,
               "surface_elevation_m": 84.59,
-              "depth_m": 0.0,
+              "depth_m": -9.0,
               "source": "measured"
             },
             {
@@ -7770,7 +8954,7 @@
               "lon": -9.15864776414898,
               "distance_m": 5130.0,
               "surface_elevation_m": 84.63,
-              "depth_m": 0.0,
+              "depth_m": -8.99,
               "source": "measured"
             },
             {
@@ -7778,7 +8962,7 @@
               "lon": -9.158643005251255,
               "distance_m": 5130.44,
               "surface_elevation_m": 84.63,
-              "depth_m": 0.0,
+              "depth_m": -8.99,
               "source": "measured"
             },
             {
@@ -7786,7 +8970,23 @@
               "lon": -9.158553737619764,
               "distance_m": 5138.68,
               "surface_elevation_m": 84.58,
-              "depth_m": 0.0,
+              "depth_m": -9.08,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76006943,
+              "lon": -9.15836219,
+              "distance_m": 5156.43,
+              "surface_elevation_m": 84.54,
+              "depth_m": -9.19,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76012567,
+              "lon": -9.15817064,
+              "distance_m": 5174.17,
+              "surface_elevation_m": 84.51,
+              "depth_m": -9.26,
               "source": "measured"
             },
             {
@@ -7794,7 +8994,7 @@
               "lon": -9.157979090658463,
               "distance_m": 5191.92,
               "surface_elevation_m": 84.47,
-              "depth_m": 0.0,
+              "depth_m": -9.31,
               "source": "measured"
             }
           ],
@@ -8684,7 +9884,23 @@
               "lon": -9.157979090658463,
               "distance_m": 5191.92,
               "surface_elevation_m": 84.47,
-              "depth_m": 0.0,
+              "depth_m": -9.31,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76023814,
+              "lon": -9.15778757,
+              "distance_m": 5209.66,
+              "surface_elevation_m": 84.46,
+              "depth_m": -9.32,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76029437,
+              "lon": -9.15759606,
+              "distance_m": 5227.41,
+              "surface_elevation_m": 84.44,
+              "depth_m": -9.32,
               "source": "measured"
             },
             {
@@ -8692,7 +9908,7 @@
               "lon": -9.1574045379228,
               "distance_m": 5245.15,
               "surface_elevation_m": 84.43,
-              "depth_m": 0.0,
+              "depth_m": -9.31,
               "source": "measured"
             },
             {
@@ -8700,7 +9916,7 @@
               "lon": -9.157315911597511,
               "distance_m": 5253.44,
               "surface_elevation_m": 84.43,
-              "depth_m": 0.0,
+              "depth_m": -9.3,
               "source": "measured"
             },
             {
@@ -8708,7 +9924,7 @@
               "lon": -9.157313247637706,
               "distance_m": 5254.16,
               "surface_elevation_m": 84.43,
-              "depth_m": 0.0,
+              "depth_m": -9.3,
               "source": "measured"
             },
             {
@@ -8716,7 +9932,7 @@
               "lon": -9.157386720786853,
               "distance_m": 5260.69,
               "surface_elevation_m": 84.43,
-              "depth_m": 0.0,
+              "depth_m": -9.28,
               "source": "measured"
             },
             {
@@ -8724,7 +9940,7 @@
               "lon": -9.157526505788416,
               "distance_m": 5273.26,
               "surface_elevation_m": 84.44,
-              "depth_m": 0.0,
+              "depth_m": -9.25,
               "source": "measured"
             },
             {
@@ -8732,7 +9948,15 @@
               "lon": -9.157722777385866,
               "distance_m": 5290.97,
               "surface_elevation_m": 84.44,
-              "depth_m": 0.0,
+              "depth_m": -9.21,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76026987,
+              "lon": -9.15784424,
+              "distance_m": 5301.94,
+              "surface_elevation_m": 84.45,
+              "depth_m": -9.17,
               "source": "measured"
             },
             {
@@ -8740,7 +9964,15 @@
               "lon": -9.157965710322667,
               "distance_m": 5312.92,
               "surface_elevation_m": 84.47,
-              "depth_m": 0.0,
+              "depth_m": -9.12,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76020962,
+              "lon": -9.15810559,
+              "distance_m": 5325.57,
+              "surface_elevation_m": 84.5,
+              "depth_m": -9.04,
               "source": "measured"
             },
             {
@@ -8748,7 +9980,15 @@
               "lon": -9.15824547934229,
               "distance_m": 5338.23,
               "surface_elevation_m": 84.52,
-              "depth_m": 0.0,
+              "depth_m": -8.98,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76014148,
+              "lon": -9.15839887,
+              "distance_m": 5352.11,
+              "surface_elevation_m": 84.55,
+              "depth_m": -8.9,
               "source": "measured"
             },
             {
@@ -8756,7 +9996,15 @@
               "lon": -9.158552259188198,
               "distance_m": 5365.99,
               "surface_elevation_m": 84.58,
-              "depth_m": 0.0,
+              "depth_m": -8.81,
+              "source": "measured"
+            },
+            {
+              "lat": 38.76006797,
+              "lon": -9.15871424,
+              "distance_m": 5380.65,
+              "surface_elevation_m": 84.65,
+              "depth_m": -8.67,
               "source": "measured"
             },
             {
@@ -8764,7 +10012,15 @@
               "lon": -9.158876224603862,
               "distance_m": 5395.31,
               "surface_elevation_m": 84.72,
-              "depth_m": 0.0,
+              "depth_m": -8.53,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75999161,
+              "lon": -9.15904189,
+              "distance_m": 5410.3,
+              "surface_elevation_m": 84.8,
+              "depth_m": -8.36,
               "source": "measured"
             },
             {
@@ -8772,7 +10028,15 @@
               "lon": -9.159207550332745,
               "distance_m": 5425.29,
               "surface_elevation_m": 84.88,
-              "depth_m": 0.0,
+              "depth_m": -8.19,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75991491,
+              "lon": -9.15937198,
+              "distance_m": 5440.16,
+              "surface_elevation_m": 85.02,
+              "depth_m": -7.95,
               "source": "measured"
             },
             {
@@ -8780,7 +10044,15 @@
               "lon": -9.159536411118319,
               "distance_m": 5455.04,
               "surface_elevation_m": 85.15,
-              "depth_m": 0.0,
+              "depth_m": -7.7,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7598404,
+              "lon": -9.1596947,
+              "distance_m": 5469.35,
+              "surface_elevation_m": 85.28,
+              "depth_m": -7.44,
               "source": "measured"
             },
             {
@@ -8788,7 +10060,15 @@
               "lon": -9.159852981704049,
               "distance_m": 5483.66,
               "surface_elevation_m": 85.41,
-              "depth_m": 0.0,
+              "depth_m": -7.16,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7597706,
+              "lon": -9.16000021,
+              "distance_m": 5496.95,
+              "surface_elevation_m": 85.59,
+              "depth_m": -6.83,
               "source": "measured"
             },
             {
@@ -8796,7 +10076,15 @@
               "lon": -9.160147436833402,
               "distance_m": 5510.25,
               "surface_elevation_m": 85.77,
-              "depth_m": 0.0,
+              "depth_m": -6.48,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75970803,
+              "lon": -9.16027869,
+              "distance_m": 5522.08,
+              "surface_elevation_m": 85.93,
+              "depth_m": -6.16,
               "source": "measured"
             },
             {
@@ -8804,7 +10092,7 @@
               "lon": -9.160409951249845,
               "distance_m": 5533.91,
               "surface_elevation_m": 86.09,
-              "depth_m": 0.0,
+              "depth_m": -5.85,
               "source": "measured"
             },
             {
@@ -8812,7 +10100,7 @@
               "lon": -9.160630699696846,
               "distance_m": 5553.76,
               "surface_elevation_m": 86.39,
-              "depth_m": 0.0,
+              "depth_m": -5.33,
               "source": "measured"
             },
             {
@@ -8820,7 +10108,7 @@
               "lon": -9.160799856917873,
               "distance_m": 5568.91,
               "surface_elevation_m": 86.68,
-              "depth_m": 0.0,
+              "depth_m": -4.95,
               "source": "measured"
             },
             {
@@ -8828,7 +10116,7 @@
               "lon": -9.1609857,
               "distance_m": 5585.48,
               "surface_elevation_m": 86.99,
-              "depth_m": 0.0,
+              "depth_m": -4.62,
               "source": "measured"
             },
             {
@@ -8836,7 +10124,7 @@
               "lon": -9.1611546,
               "distance_m": 5601.13,
               "surface_elevation_m": 87.27,
-              "depth_m": 0.0,
+              "depth_m": -4.35,
               "source": "measured"
             },
             {
@@ -8844,7 +10132,7 @@
               "lon": -9.1612969,
               "distance_m": 5614.8,
               "surface_elevation_m": 87.52,
-              "depth_m": 0.0,
+              "depth_m": -4.11,
               "source": "measured"
             },
             {
@@ -8852,7 +10140,7 @@
               "lon": -9.1614339,
               "distance_m": 5628.43,
               "surface_elevation_m": 87.8,
-              "depth_m": 0.0,
+              "depth_m": -3.83,
               "source": "measured"
             },
             {
@@ -8860,7 +10148,7 @@
               "lon": -9.1615712,
               "distance_m": 5642.77,
               "surface_elevation_m": 88.08,
-              "depth_m": 0.0,
+              "depth_m": -3.54,
               "source": "measured"
             },
             {
@@ -8868,7 +10156,7 @@
               "lon": -9.1616658,
               "distance_m": 5652.86,
               "surface_elevation_m": 88.26,
-              "depth_m": 0.0,
+              "depth_m": -3.37,
               "source": "measured"
             },
             {
@@ -8876,7 +10164,7 @@
               "lon": -9.161747,
               "distance_m": 5661.97,
               "surface_elevation_m": 88.41,
-              "depth_m": 0.0,
+              "depth_m": -3.22,
               "source": "measured"
             },
             {
@@ -8884,7 +10172,7 @@
               "lon": -9.1618485,
               "distance_m": 5673.55,
               "surface_elevation_m": 88.59,
-              "depth_m": 0.0,
+              "depth_m": -3.01,
               "source": "measured"
             },
             {
@@ -8892,7 +10180,7 @@
               "lon": -9.1619538,
               "distance_m": 5686.06,
               "surface_elevation_m": 88.77,
-              "depth_m": 0.0,
+              "depth_m": -2.78,
               "source": "measured"
             },
             {
@@ -8900,7 +10188,7 @@
               "lon": -9.1620525,
               "distance_m": 5698.49,
               "surface_elevation_m": 88.97,
-              "depth_m": 0.0,
+              "depth_m": -2.54,
               "source": "measured"
             },
             {
@@ -8908,7 +10196,7 @@
               "lon": -9.1621458,
               "distance_m": 5710.78,
               "surface_elevation_m": 89.13,
-              "depth_m": 0.0,
+              "depth_m": -2.31,
               "source": "measured"
             },
             {
@@ -8916,7 +10204,7 @@
               "lon": -9.162227,
               "distance_m": 5722.21,
               "surface_elevation_m": 89.25,
-              "depth_m": 0.0,
+              "depth_m": -2.07,
               "source": "measured"
             },
             {
@@ -8924,7 +10212,7 @@
               "lon": -9.1623137,
               "distance_m": 5735.33,
               "surface_elevation_m": 89.37,
-              "depth_m": 0.0,
+              "depth_m": -1.76,
               "source": "measured"
             },
             {
@@ -8932,7 +10220,7 @@
               "lon": -9.162399,
               "distance_m": 5749.24,
               "surface_elevation_m": 89.46,
-              "depth_m": 0.0,
+              "depth_m": -1.59,
               "source": "measured"
             },
             {
@@ -8940,7 +10228,7 @@
               "lon": -9.1625071,
               "distance_m": 5768.66,
               "surface_elevation_m": 89.54,
-              "depth_m": 0.0,
+              "depth_m": -1.2,
               "source": "measured"
             },
             {
@@ -8948,7 +10236,7 @@
               "lon": -9.162575,
               "distance_m": 5783.08,
               "surface_elevation_m": 89.55,
-              "depth_m": 0.0,
+              "depth_m": -1.01,
               "source": "measured"
             },
             {
@@ -8956,7 +10244,7 @@
               "lon": -9.1626457,
               "distance_m": 5800.51,
               "surface_elevation_m": 89.52,
-              "depth_m": 0.0,
+              "depth_m": -0.69,
               "source": "measured"
             },
             {
@@ -8964,7 +10252,7 @@
               "lon": -9.1627017,
               "distance_m": 5816.97,
               "surface_elevation_m": 89.47,
-              "depth_m": 0.0,
+              "depth_m": -0.44,
               "source": "measured"
             },
             {
@@ -8972,7 +10260,7 @@
               "lon": -9.162739,
               "distance_m": 5829.85,
               "surface_elevation_m": 89.4,
-              "depth_m": 0.0,
+              "depth_m": -0.43,
               "source": "measured"
             },
             {
@@ -8980,7 +10268,7 @@
               "lon": -9.1627723,
               "distance_m": 5846.53,
               "surface_elevation_m": 89.29,
-              "depth_m": 0.0,
+              "depth_m": -0.28,
               "source": "measured"
             },
             {
@@ -8988,7 +10276,7 @@
               "lon": -9.1627897,
               "distance_m": 5858.86,
               "surface_elevation_m": 89.19,
-              "depth_m": 0.0,
+              "depth_m": 0.06,
               "source": "measured"
             },
             {
@@ -8996,7 +10284,7 @@
               "lon": -9.1628017,
               "distance_m": 5874.63,
               "surface_elevation_m": 89.04,
-              "depth_m": 0.0,
+              "depth_m": 0.45,
               "source": "measured"
             },
             {
@@ -9004,7 +10292,7 @@
               "lon": -9.162803,
               "distance_m": 5893.13,
               "surface_elevation_m": 88.87,
-              "depth_m": 0.0,
+              "depth_m": 1.02,
               "source": "measured"
             },
             {
@@ -9012,7 +10300,7 @@
               "lon": -9.162791,
               "distance_m": 5908.65,
               "surface_elevation_m": 88.71,
-              "depth_m": 0.0,
+              "depth_m": 1.33,
               "source": "measured"
             },
             {
@@ -9020,7 +10308,7 @@
               "lon": -9.1627617,
               "distance_m": 5927.2,
               "surface_elevation_m": 88.52,
-              "depth_m": 0.0,
+              "depth_m": 1.63,
               "source": "measured"
             },
             {
@@ -9028,7 +10316,15 @@
               "lon": -9.1627164,
               "distance_m": 5945.88,
               "surface_elevation_m": 88.33,
-              "depth_m": 0.0,
+              "depth_m": 1.69,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75683655,
+              "lon": -9.16268305,
+              "distance_m": 5956.13,
+              "surface_elevation_m": 88.23,
+              "depth_m": 1.71,
               "source": "measured"
             },
             {
@@ -9036,7 +10332,7 @@
               "lon": -9.1626497,
               "distance_m": 5966.38,
               "surface_elevation_m": 88.14,
-              "depth_m": 0.0,
+              "depth_m": 1.84,
               "source": "measured"
             },
             {
@@ -9044,7 +10340,7 @@
               "lon": -9.1625883,
               "distance_m": 5981.45,
               "surface_elevation_m": 88.01,
-              "depth_m": 0.0,
+              "depth_m": 2.05,
               "source": "measured"
             },
             {
@@ -9052,7 +10348,15 @@
               "lon": -9.1625257,
               "distance_m": 5995.27,
               "surface_elevation_m": 87.9,
-              "depth_m": 0.0,
+              "depth_m": 2.05,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7564162,
+              "lon": -9.1624648,
+              "distance_m": 6006.67,
+              "surface_elevation_m": 87.83,
+              "depth_m": 1.96,
               "source": "measured"
             },
             {
@@ -9060,7 +10364,15 @@
               "lon": -9.1624039,
               "distance_m": 6018.06,
               "surface_elevation_m": 87.75,
-              "depth_m": 0.0,
+              "depth_m": 1.86,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7562204,
+              "lon": -9.1623356,
+              "distance_m": 6031.15,
+              "surface_elevation_m": 87.69,
+              "depth_m": 1.78,
               "source": "measured"
             },
             {
@@ -9068,7 +10380,7 @@
               "lon": -9.1622673,
               "distance_m": 6044.24,
               "surface_elevation_m": 87.62,
-              "depth_m": 0.0,
+              "depth_m": 1.66,
               "source": "measured"
             },
             {
@@ -9076,7 +10388,7 @@
               "lon": -9.1621832,
               "distance_m": 6059.0,
               "surface_elevation_m": 87.56,
-              "depth_m": 0.0,
+              "depth_m": 1.57,
               "source": "measured"
             },
             {
@@ -9084,7 +10396,7 @@
               "lon": -9.1620885,
               "distance_m": 6074.15,
               "surface_elevation_m": 87.53,
-              "depth_m": 0.0,
+              "depth_m": 1.52,
               "source": "measured"
             },
             {
@@ -9092,7 +10404,47 @@
               "lon": -9.1619867,
               "distance_m": 6089.49,
               "surface_elevation_m": 87.52,
-              "depth_m": 0.0,
+              "depth_m": 1.55,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75562657,
+              "lon": -9.16185585,
+              "distance_m": 6109.31,
+              "surface_elevation_m": 87.59,
+              "depth_m": 1.69,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75548043,
+              "lon": -9.161725,
+              "distance_m": 6129.13,
+              "surface_elevation_m": 87.67,
+              "depth_m": 1.85,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7553343,
+              "lon": -9.16159415,
+              "distance_m": 6148.94,
+              "surface_elevation_m": 87.75,
+              "depth_m": 2.0,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75518817,
+              "lon": -9.1614633,
+              "distance_m": 6168.76,
+              "surface_elevation_m": 87.82,
+              "depth_m": 2.13,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75504203,
+              "lon": -9.16133245,
+              "distance_m": 6188.58,
+              "surface_elevation_m": 87.89,
+              "depth_m": 2.28,
               "source": "measured"
             },
             {
@@ -9100,7 +10452,23 @@
               "lon": -9.1612016,
               "distance_m": 6208.4,
               "surface_elevation_m": 87.97,
-              "depth_m": 0.0,
+              "depth_m": 2.42,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75479863,
+              "lon": -9.16111063,
+              "distance_m": 6221.79,
+              "surface_elevation_m": 88.11,
+              "depth_m": 2.63,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75470137,
+              "lon": -9.16101967,
+              "distance_m": 6235.17,
+              "surface_elevation_m": 88.25,
+              "depth_m": 2.81,
               "source": "measured"
             },
             {
@@ -9108,7 +10476,15 @@
               "lon": -9.1609287,
               "distance_m": 6248.56,
               "surface_elevation_m": 88.39,
-              "depth_m": 0.0,
+              "depth_m": 3.02,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7544881,
+              "lon": -9.16082525,
+              "distance_m": 6264.27,
+              "surface_elevation_m": 88.6,
+              "depth_m": 3.3,
               "source": "measured"
             },
             {
@@ -9116,7 +10492,15 @@
               "lon": -9.1607218,
               "distance_m": 6279.98,
               "surface_elevation_m": 88.81,
-              "depth_m": 0.0,
+              "depth_m": 3.61,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7542901,
+              "lon": -9.16065395,
+              "distance_m": 6290.83,
+              "surface_elevation_m": 88.98,
+              "depth_m": 3.84,
               "source": "measured"
             },
             {
@@ -9124,7 +10508,15 @@
               "lon": -9.1605861,
               "distance_m": 6301.69,
               "surface_elevation_m": 89.16,
-              "depth_m": 0.0,
+              "depth_m": 4.08,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75411695,
+              "lon": -9.16051525,
+              "distance_m": 6313.54,
+              "surface_elevation_m": 89.36,
+              "depth_m": 4.35,
               "source": "measured"
             },
             {
@@ -9132,7 +10524,15 @@
               "lon": -9.1604444,
               "distance_m": 6325.39,
               "surface_elevation_m": 89.56,
-              "depth_m": 0.0,
+              "depth_m": 4.63,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7539378,
+              "lon": -9.1603789,
+              "distance_m": 6336.7,
+              "surface_elevation_m": 89.77,
+              "depth_m": 4.91,
               "source": "measured"
             },
             {
@@ -9140,7 +10540,15 @@
               "lon": -9.1603134,
               "distance_m": 6348.02,
               "surface_elevation_m": 89.98,
-              "depth_m": 0.0,
+              "depth_m": 5.19,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7537414,
+              "lon": -9.1602382,
+              "distance_m": 6361.73,
+              "surface_elevation_m": 90.26,
+              "depth_m": 5.55,
               "source": "measured"
             },
             {
@@ -9148,7 +10556,15 @@
               "lon": -9.160163,
               "distance_m": 6375.43,
               "surface_elevation_m": 90.54,
-              "depth_m": 1.09,
+              "depth_m": 5.91,
+              "source": "measured"
+            },
+            {
+              "lat": 38.753517,
+              "lon": -9.1600888,
+              "distance_m": 6389.85,
+              "surface_elevation_m": 90.86,
+              "depth_m": 6.31,
               "source": "measured"
             },
             {
@@ -9156,7 +10572,15 @@
               "lon": -9.1600146,
               "distance_m": 6404.26,
               "surface_elevation_m": 91.17,
-              "depth_m": 2.24,
+              "depth_m": 6.7,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7533104,
+              "lon": -9.1599602,
+              "distance_m": 6415.39,
+              "surface_elevation_m": 91.41,
+              "depth_m": 6.99,
               "source": "measured"
             },
             {
@@ -9164,7 +10588,7 @@
               "lon": -9.1599058,
               "distance_m": 6426.51,
               "surface_elevation_m": 91.65,
-              "depth_m": 3.13,
+              "depth_m": 7.29,
               "source": "measured"
             },
             {
@@ -9172,7 +10596,15 @@
               "lon": -9.1598305,
               "distance_m": 6442.58,
               "surface_elevation_m": 91.99,
-              "depth_m": 3.77,
+              "depth_m": 7.7,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75293895,
+              "lon": -9.15975295,
+              "distance_m": 6460.43,
+              "surface_elevation_m": 92.32,
+              "depth_m": 8.1,
               "source": "measured"
             },
             {
@@ -9180,7 +10612,23 @@
               "lon": -9.1596754,
               "distance_m": 6478.29,
               "surface_elevation_m": 92.66,
-              "depth_m": 5.2,
+              "depth_m": 8.51,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7526505,
+              "lon": -9.15960963,
+              "distance_m": 6494.84,
+              "surface_elevation_m": 92.92,
+              "depth_m": 8.83,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7525108,
+              "lon": -9.15954387,
+              "distance_m": 6511.38,
+              "surface_elevation_m": 93.19,
+              "depth_m": 9.14,
               "source": "measured"
             },
             {
@@ -9188,7 +10636,31 @@
               "lon": -9.1594781,
               "distance_m": 6527.93,
               "surface_elevation_m": 93.45,
-              "depth_m": 7.19,
+              "depth_m": 9.44,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7522239,
+              "lon": -9.15941057,
+              "distance_m": 6545.32,
+              "surface_elevation_m": 93.56,
+              "depth_m": 9.58,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7520767,
+              "lon": -9.15934304,
+              "distance_m": 6562.7,
+              "surface_elevation_m": 93.68,
+              "depth_m": 9.72,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7519295,
+              "lon": -9.15927551,
+              "distance_m": 6580.09,
+              "surface_elevation_m": 93.8,
+              "depth_m": 9.86,
               "source": "measured"
             },
             {
@@ -10435,11 +11907,27 @@
               "source": "measured"
             },
             {
+              "lat": 38.75164445,
+              "lon": -9.15914474,
+              "distance_m": 6613.75,
+              "surface_elevation_m": 93.82,
+              "depth_m": 9.89,
+              "source": "measured"
+            },
+            {
               "lat": 38.7515066,
               "lon": -9.1590815,
               "distance_m": 6630.03,
               "surface_elevation_m": 93.74,
-              "depth_m": 8.67,
+              "depth_m": 9.83,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75135415,
+              "lon": -9.15901155,
+              "distance_m": 6648.03,
+              "surface_elevation_m": 93.52,
+              "depth_m": 9.65,
               "source": "measured"
             },
             {
@@ -10447,7 +11935,7 @@
               "lon": -9.1589416,
               "distance_m": 6666.04,
               "surface_elevation_m": 93.29,
-              "depth_m": 7.23,
+              "depth_m": 9.47,
               "source": "measured"
             },
             {
@@ -10455,7 +11943,23 @@
               "lon": -9.1588711,
               "distance_m": 6684.17,
               "surface_elevation_m": 93.0,
-              "depth_m": 6.5,
+              "depth_m": 9.24,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75088787,
+              "lon": -9.15879743,
+              "distance_m": 6703.11,
+              "surface_elevation_m": 92.6,
+              "depth_m": 8.93,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75072753,
+              "lon": -9.15872377,
+              "distance_m": 6722.04,
+              "surface_elevation_m": 92.19,
+              "depth_m": 8.61,
               "source": "measured"
             },
             {
@@ -10463,7 +11967,7 @@
               "lon": -9.1586501,
               "distance_m": 6740.98,
               "surface_elevation_m": 91.79,
-              "depth_m": 4.23,
+              "depth_m": 8.31,
               "source": "measured"
             },
             {
@@ -10471,7 +11975,7 @@
               "lon": -9.158566,
               "distance_m": 6760.03,
               "surface_elevation_m": 91.34,
-              "depth_m": 3.47,
+              "depth_m": 7.98,
               "source": "measured"
             },
             {
@@ -10479,7 +11983,7 @@
               "lon": -9.15848,
               "distance_m": 6776.54,
               "surface_elevation_m": 90.9,
-              "depth_m": 2.81,
+              "depth_m": 7.65,
               "source": "measured"
             },
             {
@@ -10487,7 +11991,7 @@
               "lon": -9.1583867,
               "distance_m": 6792.6,
               "surface_elevation_m": 90.42,
-              "depth_m": 2.16,
+              "depth_m": 7.28,
               "source": "measured"
             },
             {
@@ -10495,7 +11999,7 @@
               "lon": -9.15829,
               "distance_m": 6807.69,
               "surface_elevation_m": 89.99,
-              "depth_m": 1.56,
+              "depth_m": 6.96,
               "source": "measured"
             },
             {
@@ -10503,7 +12007,7 @@
               "lon": -9.1582001,
               "distance_m": 6820.55,
               "surface_elevation_m": 89.62,
-              "depth_m": 1.05,
+              "depth_m": 6.68,
               "source": "measured"
             },
             {
@@ -10511,7 +12015,7 @@
               "lon": -9.1581127,
               "distance_m": 6832.29,
               "surface_elevation_m": 89.3,
-              "depth_m": 0.58,
+              "depth_m": 6.44,
               "source": "measured"
             },
             {
@@ -10519,7 +12023,15 @@
               "lon": -9.1580395,
               "distance_m": 6841.73,
               "surface_elevation_m": 89.05,
-              "depth_m": 0.2,
+              "depth_m": 6.26,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74973715,
+              "lon": -9.1579525,
+              "distance_m": 6852.28,
+              "surface_elevation_m": 88.78,
+              "depth_m": 6.07,
               "source": "measured"
             },
             {
@@ -10527,7 +12039,7 @@
               "lon": -9.1578655,
               "distance_m": 6862.83,
               "surface_elevation_m": 88.51,
-              "depth_m": 0.0,
+              "depth_m": 5.88,
               "source": "measured"
             },
             {
@@ -10535,7 +12047,7 @@
               "lon": -9.1577095,
               "distance_m": 6880.25,
               "surface_elevation_m": 88.05,
-              "depth_m": 0.0,
+              "depth_m": 5.54,
               "source": "measured"
             },
             {
@@ -10543,7 +12055,7 @@
               "lon": -9.1575722,
               "distance_m": 6894.98,
               "surface_elevation_m": 87.65,
-              "depth_m": 0.0,
+              "depth_m": 5.23,
               "source": "measured"
             },
             {
@@ -10551,7 +12063,7 @@
               "lon": -9.1573955,
               "distance_m": 6913.09,
               "surface_elevation_m": 87.19,
-              "depth_m": 0.0,
+              "depth_m": 4.88,
               "source": "measured"
             },
             {
@@ -10559,7 +12071,7 @@
               "lon": -9.1572463,
               "distance_m": 6927.77,
               "surface_elevation_m": 86.86,
-              "depth_m": 0.0,
+              "depth_m": 4.61,
               "source": "measured"
             },
             {
@@ -10567,7 +12079,7 @@
               "lon": -9.1571037,
               "distance_m": 6941.37,
               "surface_elevation_m": 86.56,
-              "depth_m": 0.0,
+              "depth_m": 4.36,
               "source": "measured"
             },
             {
@@ -10575,7 +12087,7 @@
               "lon": -9.1568983,
               "distance_m": 6960.53,
               "surface_elevation_m": 86.13,
-              "depth_m": 0.0,
+              "depth_m": 3.97,
               "source": "measured"
             },
             {
@@ -10583,7 +12095,7 @@
               "lon": -9.1566849,
               "distance_m": 6979.83,
               "surface_elevation_m": 85.72,
-              "depth_m": 0.0,
+              "depth_m": 3.59,
               "source": "measured"
             },
             {
@@ -10591,7 +12103,7 @@
               "lon": -9.1565638,
               "distance_m": 6990.64,
               "surface_elevation_m": 85.51,
-              "depth_m": 0.0,
+              "depth_m": 3.39,
               "source": "measured"
             },
             {
@@ -10599,7 +12111,7 @@
               "lon": -9.1564166,
               "distance_m": 7003.62,
               "surface_elevation_m": 85.27,
-              "depth_m": 0.0,
+              "depth_m": 3.19,
               "source": "measured"
             },
             {
@@ -10607,7 +12119,7 @@
               "lon": -9.1562331,
               "distance_m": 7019.66,
               "surface_elevation_m": 84.97,
-              "depth_m": 0.0,
+              "depth_m": 2.92,
               "source": "measured"
             },
             {
@@ -10615,7 +12127,15 @@
               "lon": -9.1560895,
               "distance_m": 7032.14,
               "surface_elevation_m": 84.75,
-              "depth_m": 0.0,
+              "depth_m": 2.75,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7491129,
+              "lon": -9.15595365,
+              "distance_m": 7043.92,
+              "surface_elevation_m": 84.56,
+              "depth_m": 2.65,
               "source": "measured"
             },
             {
@@ -10623,7 +12143,7 @@
               "lon": -9.1558178,
               "distance_m": 7055.7,
               "surface_elevation_m": 84.37,
-              "depth_m": 0.0,
+              "depth_m": 2.58,
               "source": "measured"
             },
             {
@@ -10631,7 +12151,7 @@
               "lon": -9.1556346,
               "distance_m": 7071.63,
               "surface_elevation_m": 84.13,
-              "depth_m": 0.0,
+              "depth_m": 2.55,
               "source": "measured"
             },
             {
@@ -10639,7 +12159,7 @@
               "lon": -9.1554246,
               "distance_m": 7090.06,
               "surface_elevation_m": 83.86,
-              "depth_m": 0.0,
+              "depth_m": 2.57,
               "source": "measured"
             },
             {
@@ -10647,7 +12167,7 @@
               "lon": -9.1552502,
               "distance_m": 7105.57,
               "surface_elevation_m": 83.66,
-              "depth_m": 0.0,
+              "depth_m": 2.65,
               "source": "measured"
             },
             {
@@ -10655,7 +12175,7 @@
               "lon": -9.1550455,
               "distance_m": 7124.17,
               "surface_elevation_m": 83.43,
-              "depth_m": 0.0,
+              "depth_m": 2.78,
               "source": "measured"
             },
             {
@@ -10663,7 +12183,7 @@
               "lon": -9.1549181,
               "distance_m": 7135.95,
               "surface_elevation_m": 83.3,
-              "depth_m": 0.0,
+              "depth_m": 2.91,
               "source": "measured"
             },
             {
@@ -10671,7 +12191,7 @@
               "lon": -9.1548209,
               "distance_m": 7145.06,
               "surface_elevation_m": 83.21,
-              "depth_m": 0.0,
+              "depth_m": 3.04,
               "source": "measured"
             },
             {
@@ -10679,7 +12199,31 @@
               "lon": -9.1546969,
               "distance_m": 7157.01,
               "surface_elevation_m": 83.09,
-              "depth_m": 0.0,
+              "depth_m": 3.21,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74942405,
+              "lon": -9.1544996,
+              "distance_m": 7176.22,
+              "surface_elevation_m": 82.9,
+              "depth_m": 3.47,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7495026,
+              "lon": -9.1543023,
+              "distance_m": 7195.43,
+              "surface_elevation_m": 82.71,
+              "depth_m": 3.69,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74958115,
+              "lon": -9.154105,
+              "distance_m": 7214.64,
+              "surface_elevation_m": 82.52,
+              "depth_m": 4.01,
               "source": "measured"
             },
             {
@@ -10687,7 +12231,7 @@
               "lon": -9.1539077,
               "distance_m": 7233.85,
               "surface_elevation_m": 82.33,
-              "depth_m": 0.0,
+              "depth_m": 4.34,
               "source": "measured"
             },
             {
@@ -10695,7 +12239,7 @@
               "lon": -9.1537256,
               "distance_m": 7251.5,
               "surface_elevation_m": 82.15,
-              "depth_m": 0.0,
+              "depth_m": 4.58,
               "source": "measured"
             },
             {
@@ -10703,7 +12247,7 @@
               "lon": -9.1535842,
               "distance_m": 7264.98,
               "surface_elevation_m": 82.0,
-              "depth_m": 0.0,
+              "depth_m": 4.78,
               "source": "measured"
             },
             {
@@ -10711,7 +12255,7 @@
               "lon": -9.153434,
               "distance_m": 7279.0,
               "surface_elevation_m": 81.85,
-              "depth_m": 0.0,
+              "depth_m": 5.04,
               "source": "measured"
             },
             {
@@ -10719,7 +12263,7 @@
               "lon": -9.153275,
               "distance_m": 7293.66,
               "surface_elevation_m": 81.68,
-              "depth_m": 0.0,
+              "depth_m": 5.38,
               "source": "measured"
             },
             {
@@ -10727,7 +12271,7 @@
               "lon": -9.1530986,
               "distance_m": 7309.62,
               "surface_elevation_m": 81.49,
-              "depth_m": 0.0,
+              "depth_m": 5.78,
               "source": "measured"
             },
             {
@@ -10735,7 +12279,7 @@
               "lon": -9.1529297,
               "distance_m": 7324.77,
               "surface_elevation_m": 81.3,
-              "depth_m": 0.0,
+              "depth_m": 6.19,
               "source": "measured"
             },
             {
@@ -10743,7 +12287,7 @@
               "lon": -9.15277,
               "distance_m": 7338.94,
               "surface_elevation_m": 81.14,
-              "depth_m": 0.0,
+              "depth_m": 6.55,
               "source": "measured"
             },
             {
@@ -10751,7 +12295,7 @@
               "lon": -9.1526171,
               "distance_m": 7352.39,
               "surface_elevation_m": 80.98,
-              "depth_m": 0.0,
+              "depth_m": 6.81,
               "source": "measured"
             },
             {
@@ -10759,7 +12303,7 @@
               "lon": -9.1524763,
               "distance_m": 7364.72,
               "surface_elevation_m": 80.82,
-              "depth_m": 0.0,
+              "depth_m": 6.99,
               "source": "measured"
             },
             {
@@ -10767,7 +12311,7 @@
               "lon": -9.1523328,
               "distance_m": 7377.21,
               "surface_elevation_m": 80.66,
-              "depth_m": 0.0,
+              "depth_m": 7.18,
               "source": "measured"
             },
             {
@@ -10775,7 +12319,15 @@
               "lon": -9.1521779,
               "distance_m": 7390.67,
               "surface_elevation_m": 80.51,
-              "depth_m": 0.0,
+              "depth_m": 7.36,
+              "source": "measured"
+            },
+            {
+              "lat": 38.75002985,
+              "lon": -9.15204905,
+              "distance_m": 7401.85,
+              "surface_elevation_m": 80.38,
+              "depth_m": 7.46,
               "source": "measured"
             },
             {
@@ -10783,7 +12335,7 @@
               "lon": -9.1519202,
               "distance_m": 7413.02,
               "surface_elevation_m": 80.25,
-              "depth_m": 0.0,
+              "depth_m": 7.52,
               "source": "measured"
             },
             {
@@ -10791,7 +12343,7 @@
               "lon": -9.1517086,
               "distance_m": 7431.39,
               "surface_elevation_m": 80.03,
-              "depth_m": 0.0,
+              "depth_m": 7.59,
               "source": "measured"
             },
             {
@@ -10799,7 +12351,15 @@
               "lon": -9.151524,
               "distance_m": 7447.48,
               "surface_elevation_m": 79.84,
-              "depth_m": 0.0,
+              "depth_m": 7.59,
+              "source": "measured"
+            },
+            {
+              "lat": 38.749996,
+              "lon": -9.1514092,
+              "distance_m": 7457.55,
+              "surface_elevation_m": 79.73,
+              "depth_m": 7.58,
               "source": "measured"
             },
             {
@@ -10807,7 +12367,7 @@
               "lon": -9.1512944,
               "distance_m": 7467.61,
               "surface_elevation_m": 79.63,
-              "depth_m": 0.0,
+              "depth_m": 7.6,
               "source": "measured"
             },
             {
@@ -10815,7 +12375,7 @@
               "lon": -9.1510999,
               "distance_m": 7484.85,
               "surface_elevation_m": 79.43,
-              "depth_m": 0.0,
+              "depth_m": 7.63,
               "source": "measured"
             },
             {
@@ -10823,7 +12383,7 @@
               "lon": -9.1509281,
               "distance_m": 7500.2,
               "surface_elevation_m": 79.25,
-              "depth_m": 0.0,
+              "depth_m": 7.67,
               "source": "measured"
             },
             {
@@ -10831,7 +12391,7 @@
               "lon": -9.1507429,
               "distance_m": 7516.99,
               "surface_elevation_m": 79.08,
-              "depth_m": 0.0,
+              "depth_m": 7.73,
               "source": "measured"
             },
             {
@@ -10839,7 +12399,7 @@
               "lon": -9.1505368,
               "distance_m": 7536.0,
               "surface_elevation_m": 78.88,
-              "depth_m": 0.0,
+              "depth_m": 7.73,
               "source": "measured"
             },
             {
@@ -10847,7 +12407,7 @@
               "lon": -9.1503482,
               "distance_m": 7553.77,
               "surface_elevation_m": 78.68,
-              "depth_m": 0.0,
+              "depth_m": 7.69,
               "source": "measured"
             },
             {
@@ -10855,7 +12415,7 @@
               "lon": -9.1501443,
               "distance_m": 7573.45,
               "surface_elevation_m": 78.47,
-              "depth_m": 0.0,
+              "depth_m": 7.65,
               "source": "measured"
             },
             {
@@ -10863,7 +12423,7 @@
               "lon": -9.1499699,
               "distance_m": 7590.7,
               "surface_elevation_m": 78.3,
-              "depth_m": 0.0,
+              "depth_m": 7.58,
               "source": "measured"
             },
             {
@@ -10871,7 +12431,7 @@
               "lon": -9.1498432,
               "distance_m": 7603.58,
               "surface_elevation_m": 78.17,
-              "depth_m": 0.0,
+              "depth_m": 7.54,
               "source": "measured"
             },
             {
@@ -10879,7 +12439,7 @@
               "lon": -9.1497166,
               "distance_m": 7616.73,
               "surface_elevation_m": 78.02,
-              "depth_m": 0.0,
+              "depth_m": 7.49,
               "source": "measured"
             },
             {
@@ -10887,7 +12447,7 @@
               "lon": -9.1495643,
               "distance_m": 7633.04,
               "surface_elevation_m": 77.84,
-              "depth_m": 0.0,
+              "depth_m": 7.43,
               "source": "measured"
             },
             {
@@ -10895,7 +12455,7 @@
               "lon": -9.1494262,
               "distance_m": 7648.46,
               "surface_elevation_m": 77.69,
-              "depth_m": 0.19,
+              "depth_m": 7.41,
               "source": "measured"
             },
             {
@@ -10903,7 +12463,7 @@
               "lon": -9.1493217,
               "distance_m": 7660.55,
               "surface_elevation_m": 77.59,
-              "depth_m": 0.68,
+              "depth_m": 7.43,
               "source": "measured"
             },
             {
@@ -10911,7 +12471,7 @@
               "lon": -9.1491662,
               "distance_m": 7679.42,
               "surface_elevation_m": 77.42,
-              "depth_m": 1.43,
+              "depth_m": 7.43,
               "source": "measured"
             },
             {
@@ -10919,7 +12479,7 @@
               "lon": -9.1490878,
               "distance_m": 7689.37,
               "surface_elevation_m": 77.32,
-              "depth_m": 1.83,
+              "depth_m": 7.42,
               "source": "measured"
             },
             {
@@ -10927,7 +12487,7 @@
               "lon": -9.1489791,
               "distance_m": 7704.08,
               "surface_elevation_m": 77.18,
-              "depth_m": 2.42,
+              "depth_m": 7.43,
               "source": "measured"
             },
             {
@@ -10935,7 +12495,7 @@
               "lon": -9.1489162,
               "distance_m": 7713.51,
               "surface_elevation_m": 77.08,
-              "depth_m": 2.79,
+              "depth_m": 7.42,
               "source": "measured"
             },
             {
@@ -10943,7 +12503,7 @@
               "lon": -9.1488593,
               "distance_m": 7722.55,
               "surface_elevation_m": 77.0,
-              "depth_m": 3.16,
+              "depth_m": 7.42,
               "source": "measured"
             },
             {
@@ -10951,7 +12511,7 @@
               "lon": -9.1487939,
               "distance_m": 7734.14,
               "surface_elevation_m": 76.92,
-              "depth_m": 3.62,
+              "depth_m": 7.43,
               "source": "measured"
             },
             {
@@ -10959,7 +12519,7 @@
               "lon": -9.1487495,
               "distance_m": 7742.35,
               "surface_elevation_m": 76.87,
-              "depth_m": 3.95,
+              "depth_m": 7.43,
               "source": "measured"
             },
             {
@@ -10967,7 +12527,7 @@
               "lon": -9.1486688,
               "distance_m": 7758.2,
               "surface_elevation_m": 76.78,
-              "depth_m": 4.58,
+              "depth_m": 7.44,
               "source": "measured"
             },
             {
@@ -10975,7 +12535,7 @@
               "lon": -9.1485982,
               "distance_m": 7772.53,
               "surface_elevation_m": 76.69,
-              "depth_m": 5.16,
+              "depth_m": 7.41,
               "source": "measured"
             },
             {
@@ -10983,7 +12543,7 @@
               "lon": -9.1485523,
               "distance_m": 7782.86,
               "surface_elevation_m": 76.64,
-              "depth_m": 5.57,
+              "depth_m": 7.39,
               "source": "measured"
             },
             {
@@ -10991,7 +12551,7 @@
               "lon": -9.1485038,
               "distance_m": 7794.79,
               "surface_elevation_m": 76.61,
-              "depth_m": 6.05,
+              "depth_m": 7.39,
               "source": "measured"
             },
             {
@@ -10999,7 +12559,7 @@
               "lon": -9.1484613,
               "distance_m": 7806.56,
               "surface_elevation_m": 76.58,
-              "depth_m": 6.52,
+              "depth_m": 7.38,
               "source": "measured"
             },
             {
@@ -11007,7 +12567,7 @@
               "lon": -9.1484282,
               "distance_m": 7817.24,
               "surface_elevation_m": 76.55,
-              "depth_m": 6.94,
+              "depth_m": 7.36,
               "source": "measured"
             },
             {
@@ -11888,7 +13448,39 @@
               "lon": -9.1483765,
               "distance_m": 7837.24,
               "surface_elevation_m": 76.5,
-              "depth_m": 6.94,
+              "depth_m": 7.31,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74768768,
+              "lon": -9.1483341,
+              "distance_m": 7855.82,
+              "surface_elevation_m": 76.53,
+              "depth_m": 7.34,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74752386,
+              "lon": -9.1482917,
+              "distance_m": 7874.4,
+              "surface_elevation_m": 76.56,
+              "depth_m": 7.37,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74736004,
+              "lon": -9.1482493,
+              "distance_m": 7892.99,
+              "surface_elevation_m": 76.6,
+              "depth_m": 7.41,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74719622,
+              "lon": -9.1482069,
+              "distance_m": 7911.57,
+              "surface_elevation_m": 76.63,
+              "depth_m": 7.41,
               "source": "measured"
             },
             {
@@ -11896,7 +13488,255 @@
               "lon": -9.1481645,
               "distance_m": 7930.15,
               "surface_elevation_m": 76.66,
-              "depth_m": 3.22,
+              "depth_m": 7.41,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74685785,
+              "lon": -9.14812343,
+              "distance_m": 7949.88,
+              "surface_elevation_m": 76.62,
+              "depth_m": 7.35,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7466833,
+              "lon": -9.14808237,
+              "distance_m": 7969.62,
+              "surface_elevation_m": 76.58,
+              "depth_m": 7.29,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74650875,
+              "lon": -9.1480413,
+              "distance_m": 7989.35,
+              "surface_elevation_m": 76.55,
+              "depth_m": 7.25,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7463342,
+              "lon": -9.14800024,
+              "distance_m": 8009.08,
+              "surface_elevation_m": 76.51,
+              "depth_m": 7.22,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74615965,
+              "lon": -9.14795917,
+              "distance_m": 8028.82,
+              "surface_elevation_m": 76.47,
+              "depth_m": 7.21,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7459851,
+              "lon": -9.14791811,
+              "distance_m": 8048.55,
+              "surface_elevation_m": 76.44,
+              "depth_m": 7.22,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74581055,
+              "lon": -9.14787704,
+              "distance_m": 8068.28,
+              "surface_elevation_m": 76.4,
+              "depth_m": 7.23,
+              "source": "measured"
+            },
+            {
+              "lat": 38.745636,
+              "lon": -9.14783597,
+              "distance_m": 8088.01,
+              "surface_elevation_m": 76.36,
+              "depth_m": 7.2,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74546146,
+              "lon": -9.14779491,
+              "distance_m": 8107.75,
+              "surface_elevation_m": 76.32,
+              "depth_m": 7.13,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74528691,
+              "lon": -9.14775384,
+              "distance_m": 8127.48,
+              "surface_elevation_m": 76.28,
+              "depth_m": 7.06,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74511236,
+              "lon": -9.14771278,
+              "distance_m": 8147.21,
+              "surface_elevation_m": 76.25,
+              "depth_m": 6.77,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74493781,
+              "lon": -9.14767171,
+              "distance_m": 8166.95,
+              "surface_elevation_m": 76.21,
+              "depth_m": 6.39,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74476326,
+              "lon": -9.14763065,
+              "distance_m": 8186.68,
+              "surface_elevation_m": 76.17,
+              "depth_m": 5.92,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74458871,
+              "lon": -9.14758958,
+              "distance_m": 8206.41,
+              "surface_elevation_m": 76.13,
+              "depth_m": 5.36,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74441416,
+              "lon": -9.14754851,
+              "distance_m": 8226.15,
+              "surface_elevation_m": 76.1,
+              "depth_m": 4.95,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74423961,
+              "lon": -9.14750745,
+              "distance_m": 8245.88,
+              "surface_elevation_m": 76.06,
+              "depth_m": 4.57,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74406506,
+              "lon": -9.14746638,
+              "distance_m": 8265.61,
+              "surface_elevation_m": 76.02,
+              "depth_m": 4.37,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74389051,
+              "lon": -9.14742532,
+              "distance_m": 8285.35,
+              "surface_elevation_m": 75.98,
+              "depth_m": 4.3,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74371596,
+              "lon": -9.14738425,
+              "distance_m": 8305.08,
+              "surface_elevation_m": 75.95,
+              "depth_m": 4.39,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74354141,
+              "lon": -9.14734318,
+              "distance_m": 8324.81,
+              "surface_elevation_m": 75.91,
+              "depth_m": 4.7,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74336686,
+              "lon": -9.14730212,
+              "distance_m": 8344.55,
+              "surface_elevation_m": 75.87,
+              "depth_m": 5.05,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74319231,
+              "lon": -9.14726105,
+              "distance_m": 8364.28,
+              "surface_elevation_m": 75.83,
+              "depth_m": 5.8,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74301776,
+              "lon": -9.14721999,
+              "distance_m": 8384.01,
+              "surface_elevation_m": 75.8,
+              "depth_m": 6.47,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74284321,
+              "lon": -9.14717892,
+              "distance_m": 8403.75,
+              "surface_elevation_m": 75.76,
+              "depth_m": 6.89,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74266867,
+              "lon": -9.14713786,
+              "distance_m": 8423.48,
+              "surface_elevation_m": 75.72,
+              "depth_m": 7.19,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74249412,
+              "lon": -9.14709679,
+              "distance_m": 8443.21,
+              "surface_elevation_m": 75.68,
+              "depth_m": 7.2,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74231957,
+              "lon": -9.14705572,
+              "distance_m": 8462.94,
+              "surface_elevation_m": 75.65,
+              "depth_m": 7.17,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74214502,
+              "lon": -9.14701466,
+              "distance_m": 8482.68,
+              "surface_elevation_m": 75.61,
+              "depth_m": 7.11,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74197047,
+              "lon": -9.14697359,
+              "distance_m": 8502.41,
+              "surface_elevation_m": 75.57,
+              "depth_m": 7.05,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74179592,
+              "lon": -9.14693253,
+              "distance_m": 8522.14,
+              "surface_elevation_m": 75.53,
+              "depth_m": 7.01,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74162137,
+              "lon": -9.14689146,
+              "distance_m": 8541.88,
+              "surface_elevation_m": 75.5,
+              "depth_m": 6.99,
               "source": "measured"
             },
             {
@@ -12816,11 +14656,51 @@
               "source": "measured"
             },
             {
+              "lat": 38.74128106,
+              "lon": -9.1468114,
+              "distance_m": 8580.35,
+              "surface_elevation_m": 75.48,
+              "depth_m": 6.95,
+              "source": "measured"
+            },
+            {
               "lat": 38.7411153,
               "lon": -9.1467724,
               "distance_m": 8599.09,
               "surface_elevation_m": 75.51,
-              "depth_m": 5.45,
+              "depth_m": 6.94,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74095302,
+              "lon": -9.14673202,
+              "distance_m": 8617.47,
+              "surface_elevation_m": 75.6,
+              "depth_m": 6.95,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74079074,
+              "lon": -9.14669164,
+              "distance_m": 8635.85,
+              "surface_elevation_m": 75.69,
+              "depth_m": 6.95,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74062846,
+              "lon": -9.14665126,
+              "distance_m": 8654.24,
+              "surface_elevation_m": 75.78,
+              "depth_m": 6.93,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74046618,
+              "lon": -9.14661088,
+              "distance_m": 8672.62,
+              "surface_elevation_m": 75.87,
+              "depth_m": 6.9,
               "source": "measured"
             },
             {
@@ -12828,7 +14708,63 @@
               "lon": -9.1465705,
               "distance_m": 8691.0,
               "surface_elevation_m": 75.96,
-              "depth_m": 1.77,
+              "depth_m": 6.85,
+              "source": "measured"
+            },
+            {
+              "lat": 38.74014628,
+              "lon": -9.14653112,
+              "distance_m": 8708.86,
+              "surface_elevation_m": 76.13,
+              "depth_m": 6.86,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73998865,
+              "lon": -9.14649175,
+              "distance_m": 8726.71,
+              "surface_elevation_m": 76.3,
+              "depth_m": 6.83,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73983103,
+              "lon": -9.14645237,
+              "distance_m": 8744.57,
+              "surface_elevation_m": 76.48,
+              "depth_m": 6.78,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7396734,
+              "lon": -9.146413,
+              "distance_m": 8762.42,
+              "surface_elevation_m": 76.65,
+              "depth_m": 6.67,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73951578,
+              "lon": -9.14637363,
+              "distance_m": 8780.28,
+              "surface_elevation_m": 76.82,
+              "depth_m": 6.49,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73935815,
+              "lon": -9.14633425,
+              "distance_m": 8798.14,
+              "surface_elevation_m": 77.0,
+              "depth_m": 6.15,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73920053,
+              "lon": -9.14629488,
+              "distance_m": 8815.99,
+              "surface_elevation_m": 77.17,
+              "depth_m": 5.69,
               "source": "measured"
             },
             {
@@ -12836,7 +14772,167 @@
               "lon": -9.1462555,
               "distance_m": 8833.85,
               "surface_elevation_m": 77.34,
-              "depth_m": 0.0,
+              "depth_m": 5.15,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73887174,
+              "lon": -9.14621411,
+              "distance_m": 8853.22,
+              "surface_elevation_m": 77.73,
+              "depth_m": 4.78,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73870058,
+              "lon": -9.14617273,
+              "distance_m": 8872.59,
+              "surface_elevation_m": 78.13,
+              "depth_m": 4.58,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73852941,
+              "lon": -9.14613134,
+              "distance_m": 8891.95,
+              "surface_elevation_m": 78.52,
+              "depth_m": 4.51,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73835825,
+              "lon": -9.14608996,
+              "distance_m": 8911.32,
+              "surface_elevation_m": 78.92,
+              "depth_m": 4.47,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73818709,
+              "lon": -9.14604857,
+              "distance_m": 8930.69,
+              "surface_elevation_m": 79.31,
+              "depth_m": 4.42,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73801593,
+              "lon": -9.14600719,
+              "distance_m": 8950.06,
+              "surface_elevation_m": 79.7,
+              "depth_m": 4.44,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73784477,
+              "lon": -9.1459658,
+              "distance_m": 8969.43,
+              "surface_elevation_m": 80.1,
+              "depth_m": 4.6,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7376736,
+              "lon": -9.14592441,
+              "distance_m": 8988.79,
+              "surface_elevation_m": 80.49,
+              "depth_m": 4.85,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73750244,
+              "lon": -9.14588303,
+              "distance_m": 9008.16,
+              "surface_elevation_m": 80.88,
+              "depth_m": 5.33,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73733128,
+              "lon": -9.14584164,
+              "distance_m": 9027.53,
+              "surface_elevation_m": 81.28,
+              "depth_m": 5.9,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73716012,
+              "lon": -9.14580026,
+              "distance_m": 9046.9,
+              "surface_elevation_m": 81.67,
+              "depth_m": 6.35,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73698896,
+              "lon": -9.14575887,
+              "distance_m": 9066.27,
+              "surface_elevation_m": 82.07,
+              "depth_m": 6.78,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7368178,
+              "lon": -9.14571749,
+              "distance_m": 9085.64,
+              "surface_elevation_m": 82.46,
+              "depth_m": 6.95,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73664663,
+              "lon": -9.1456761,
+              "distance_m": 9105.0,
+              "surface_elevation_m": 82.85,
+              "depth_m": 7.11,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73647547,
+              "lon": -9.14563471,
+              "distance_m": 9124.37,
+              "surface_elevation_m": 83.25,
+              "depth_m": 7.27,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73630431,
+              "lon": -9.14559333,
+              "distance_m": 9143.74,
+              "surface_elevation_m": 83.64,
+              "depth_m": 7.45,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73613315,
+              "lon": -9.14555194,
+              "distance_m": 9163.11,
+              "surface_elevation_m": 84.03,
+              "depth_m": 7.65,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73596199,
+              "lon": -9.14551056,
+              "distance_m": 9182.48,
+              "surface_elevation_m": 84.43,
+              "depth_m": 7.9,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73579082,
+              "lon": -9.14546917,
+              "distance_m": 9201.84,
+              "surface_elevation_m": 84.82,
+              "depth_m": 8.18,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73561966,
+              "lon": -9.14542779,
+              "distance_m": 9221.21,
+              "surface_elevation_m": 85.22,
+              "depth_m": 8.5,
               "source": "measured"
             },
             {
@@ -12844,7 +14940,7 @@
               "lon": -9.1453864,
               "distance_m": 9240.58,
               "surface_elevation_m": 85.61,
-              "depth_m": 8.23,
+              "depth_m": 8.84,
               "source": "measured"
             },
             {
@@ -13609,11 +15705,35 @@
               "source": "measured"
             },
             {
+              "lat": 38.73515169,
+              "lon": -9.14531507,
+              "distance_m": 9274.15,
+              "surface_elevation_m": 85.49,
+              "depth_m": 8.72,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7349953,
+              "lon": -9.14527749,
+              "distance_m": 9291.85,
+              "surface_elevation_m": 85.34,
+              "depth_m": 8.6,
+              "source": "measured"
+            },
+            {
               "lat": 38.7348389,
               "lon": -9.1452399,
               "distance_m": 9309.54,
               "surface_elevation_m": 85.18,
-              "depth_m": 6.75,
+              "depth_m": 8.48,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73467645,
+              "lon": -9.1452009,
+              "distance_m": 9327.92,
+              "surface_elevation_m": 84.84,
+              "depth_m": 8.19,
               "source": "measured"
             },
             {
@@ -13621,7 +15741,7 @@
               "lon": -9.1451619,
               "distance_m": 9346.3,
               "surface_elevation_m": 84.5,
-              "depth_m": 5.28,
+              "depth_m": 7.92,
               "source": "measured"
             },
             {
@@ -13629,7 +15749,7 @@
               "lon": -9.1451424,
               "distance_m": 9355.46,
               "surface_elevation_m": 84.27,
-              "depth_m": 4.91,
+              "depth_m": 7.73,
               "source": "measured"
             },
             {
@@ -13637,7 +15757,7 @@
               "lon": -9.1451225,
               "distance_m": 9364.47,
               "surface_elevation_m": 84.04,
-              "depth_m": 4.55,
+              "depth_m": 7.54,
               "source": "measured"
             },
             {
@@ -13645,7 +15765,7 @@
               "lon": -9.1451103,
               "distance_m": 9371.2,
               "surface_elevation_m": 83.87,
-              "depth_m": 4.28,
+              "depth_m": 7.4,
               "source": "measured"
             },
             {
@@ -13653,7 +15773,7 @@
               "lon": -9.1451002,
               "distance_m": 9377.6,
               "surface_elevation_m": 83.71,
-              "depth_m": 4.02,
+              "depth_m": 7.27,
               "source": "measured"
             },
             {
@@ -13661,7 +15781,7 @@
               "lon": -9.1450934,
               "distance_m": 9382.97,
               "surface_elevation_m": 83.58,
-              "depth_m": 3.81,
+              "depth_m": 7.16,
               "source": "measured"
             },
             {
@@ -13669,7 +15789,7 @@
               "lon": -9.1450884,
               "distance_m": 9388.3,
               "surface_elevation_m": 83.45,
-              "depth_m": 3.6,
+              "depth_m": 7.06,
               "source": "measured"
             },
             {
@@ -13677,7 +15797,7 @@
               "lon": -9.1450826,
               "distance_m": 9396.98,
               "surface_elevation_m": 83.21,
-              "depth_m": 3.25,
+              "depth_m": 6.85,
               "source": "measured"
             },
             {
@@ -13685,7 +15805,7 @@
               "lon": -9.1450819,
               "distance_m": 9402.88,
               "surface_elevation_m": 83.05,
-              "depth_m": 3.01,
+              "depth_m": 6.71,
               "source": "measured"
             },
             {
@@ -13693,7 +15813,7 @@
               "lon": -9.1450823,
               "distance_m": 9410.18,
               "surface_elevation_m": 82.85,
-              "depth_m": 2.72,
+              "depth_m": 6.53,
               "source": "measured"
             },
             {
@@ -13701,7 +15821,7 @@
               "lon": -9.145088,
               "distance_m": 9421.13,
               "surface_elevation_m": 82.55,
-              "depth_m": 2.28,
+              "depth_m": 6.27,
               "source": "measured"
             },
             {
@@ -13709,7 +15829,7 @@
               "lon": -9.1450982,
               "distance_m": 9430.29,
               "surface_elevation_m": 82.31,
-              "depth_m": 1.92,
+              "depth_m": 6.06,
               "source": "measured"
             },
             {
@@ -13717,7 +15837,7 @@
               "lon": -9.1451106,
               "distance_m": 9438.85,
               "surface_elevation_m": 82.09,
-              "depth_m": 1.57,
+              "depth_m": 5.86,
               "source": "measured"
             },
             {
@@ -13725,7 +15845,7 @@
               "lon": -9.1451342,
               "distance_m": 9452.58,
               "surface_elevation_m": 81.76,
-              "depth_m": 1.03,
+              "depth_m": 5.53,
               "source": "measured"
             },
             {
@@ -13733,7 +15853,7 @@
               "lon": -9.1451575,
               "distance_m": 9463.36,
               "surface_elevation_m": 81.52,
-              "depth_m": 0.59,
+              "depth_m": 5.27,
               "source": "measured"
             },
             {
@@ -13741,7 +15861,7 @@
               "lon": -9.1451797,
               "distance_m": 9472.78,
               "surface_elevation_m": 81.31,
-              "depth_m": 0.22,
+              "depth_m": 4.98,
               "source": "measured"
             },
             {
@@ -13749,7 +15869,15 @@
               "lon": -9.1452198,
               "distance_m": 9487.29,
               "surface_elevation_m": 80.99,
-              "depth_m": 0.0,
+              "depth_m": 4.46,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73316635,
+              "lon": -9.1452545,
+              "distance_m": 9498.19,
+              "surface_elevation_m": 80.78,
+              "depth_m": 4.11,
               "source": "measured"
             },
             {
@@ -13757,7 +15885,7 @@
               "lon": -9.1452892,
               "distance_m": 9509.1,
               "surface_elevation_m": 80.56,
-              "depth_m": 0.0,
+              "depth_m": 3.73,
               "source": "measured"
             },
             {
@@ -13765,7 +15893,7 @@
               "lon": -9.1453438,
               "distance_m": 9523.77,
               "surface_elevation_m": 80.36,
-              "depth_m": 0.0,
+              "depth_m": 3.38,
               "source": "measured"
             },
             {
@@ -13773,7 +15901,7 @@
               "lon": -9.1453971,
               "distance_m": 9536.78,
               "surface_elevation_m": 80.17,
-              "depth_m": 0.0,
+              "depth_m": 3.2,
               "source": "measured"
             },
             {
@@ -13781,7 +15909,7 @@
               "lon": -9.1454523,
               "distance_m": 9549.15,
               "surface_elevation_m": 80.0,
-              "depth_m": 0.0,
+              "depth_m": 3.12,
               "source": "measured"
             },
             {
@@ -13789,7 +15917,7 @@
               "lon": -9.1455223,
               "distance_m": 9563.83,
               "surface_elevation_m": 79.8,
-              "depth_m": 0.0,
+              "depth_m": 3.16,
               "source": "measured"
             },
             {
@@ -13797,7 +15925,87 @@
               "lon": -9.1456119,
               "distance_m": 9581.89,
               "surface_elevation_m": 79.68,
-              "depth_m": 0.0,
+              "depth_m": 3.52,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73230891,
+              "lon": -9.14570952,
+              "distance_m": 9601.55,
+              "surface_elevation_m": 79.71,
+              "depth_m": 4.21,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73214932,
+              "lon": -9.14580714,
+              "distance_m": 9621.21,
+              "surface_elevation_m": 79.73,
+              "depth_m": 4.95,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73198973,
+              "lon": -9.14590476,
+              "distance_m": 9640.88,
+              "surface_elevation_m": 79.76,
+              "depth_m": 5.77,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73183015,
+              "lon": -9.14600238,
+              "distance_m": 9660.54,
+              "surface_elevation_m": 79.78,
+              "depth_m": 6.34,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73167056,
+              "lon": -9.1461,
+              "distance_m": 9680.2,
+              "surface_elevation_m": 79.81,
+              "depth_m": 6.66,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73151097,
+              "lon": -9.14619762,
+              "distance_m": 9699.86,
+              "surface_elevation_m": 79.83,
+              "depth_m": 6.76,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73135138,
+              "lon": -9.14629524,
+              "distance_m": 9719.52,
+              "surface_elevation_m": 79.86,
+              "depth_m": 6.83,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73119179,
+              "lon": -9.14639286,
+              "distance_m": 9739.18,
+              "surface_elevation_m": 79.88,
+              "depth_m": 6.88,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7310322,
+              "lon": -9.14649048,
+              "distance_m": 9758.85,
+              "surface_elevation_m": 79.91,
+              "depth_m": 6.93,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73087261,
+              "lon": -9.1465881,
+              "distance_m": 9778.51,
+              "surface_elevation_m": 79.93,
+              "depth_m": 6.98,
               "source": "measured"
             },
             {
@@ -14449,11 +16657,51 @@
               "source": "measured"
             },
             {
+              "lat": 38.73058912,
+              "lon": -9.14676151,
+              "distance_m": 9813.44,
+              "surface_elevation_m": 80.07,
+              "depth_m": 7.16,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73046521,
+              "lon": -9.14683731,
+              "distance_m": 9828.7,
+              "surface_elevation_m": 80.17,
+              "depth_m": 7.34,
+              "source": "measured"
+            },
+            {
               "lat": 38.7303413,
               "lon": -9.1469131,
               "distance_m": 9843.97,
               "surface_elevation_m": 80.28,
-              "depth_m": 5.19,
+              "depth_m": 7.57,
+              "source": "measured"
+            },
+            {
+              "lat": 38.73020485,
+              "lon": -9.14699658,
+              "distance_m": 9860.78,
+              "surface_elevation_m": 80.4,
+              "depth_m": 7.87,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7300684,
+              "lon": -9.14708005,
+              "distance_m": 9877.59,
+              "surface_elevation_m": 80.52,
+              "depth_m": 8.22,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72993195,
+              "lon": -9.14716352,
+              "distance_m": 9894.41,
+              "surface_elevation_m": 80.64,
+              "depth_m": 8.62,
               "source": "measured"
             },
             {
@@ -14461,7 +16709,175 @@
               "lon": -9.147247,
               "distance_m": 9911.22,
               "surface_elevation_m": 80.76,
-              "depth_m": 2.5,
+              "depth_m": 9.06,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72963254,
+              "lon": -9.1473439,
+              "distance_m": 9931.19,
+              "surface_elevation_m": 80.25,
+              "depth_m": 8.98,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72946958,
+              "lon": -9.14744079,
+              "distance_m": 9951.17,
+              "surface_elevation_m": 79.74,
+              "depth_m": 8.96,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72930662,
+              "lon": -9.14753769,
+              "distance_m": 9971.14,
+              "surface_elevation_m": 79.23,
+              "depth_m": 8.98,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72914366,
+              "lon": -9.14763458,
+              "distance_m": 9991.12,
+              "surface_elevation_m": 78.72,
+              "depth_m": 9.05,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7289807,
+              "lon": -9.14773148,
+              "distance_m": 10011.09,
+              "surface_elevation_m": 78.21,
+              "depth_m": 9.16,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72881775,
+              "lon": -9.14782837,
+              "distance_m": 10031.07,
+              "surface_elevation_m": 77.71,
+              "depth_m": 9.31,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72865479,
+              "lon": -9.14792527,
+              "distance_m": 10051.04,
+              "surface_elevation_m": 77.2,
+              "depth_m": 9.49,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72849183,
+              "lon": -9.14802216,
+              "distance_m": 10071.02,
+              "surface_elevation_m": 76.69,
+              "depth_m": 9.7,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72832887,
+              "lon": -9.14811906,
+              "distance_m": 10090.99,
+              "surface_elevation_m": 76.18,
+              "depth_m": 9.94,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72816591,
+              "lon": -9.14821595,
+              "distance_m": 10110.97,
+              "surface_elevation_m": 75.67,
+              "depth_m": 10.18,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72800295,
+              "lon": -9.14831285,
+              "distance_m": 10130.94,
+              "surface_elevation_m": 75.16,
+              "depth_m": 10.44,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72783999,
+              "lon": -9.14840975,
+              "distance_m": 10150.91,
+              "surface_elevation_m": 74.65,
+              "depth_m": 10.7,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72767703,
+              "lon": -9.14850664,
+              "distance_m": 10170.89,
+              "surface_elevation_m": 74.14,
+              "depth_m": 10.98,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72751407,
+              "lon": -9.14860354,
+              "distance_m": 10190.86,
+              "surface_elevation_m": 73.63,
+              "depth_m": 11.27,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72735111,
+              "lon": -9.14870043,
+              "distance_m": 10210.84,
+              "surface_elevation_m": 73.12,
+              "depth_m": 11.55,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72718815,
+              "lon": -9.14879733,
+              "distance_m": 10230.81,
+              "surface_elevation_m": 72.61,
+              "depth_m": 11.82,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7270252,
+              "lon": -9.14889422,
+              "distance_m": 10250.79,
+              "surface_elevation_m": 72.11,
+              "depth_m": 12.1,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72686224,
+              "lon": -9.14899112,
+              "distance_m": 10270.76,
+              "surface_elevation_m": 71.6,
+              "depth_m": 12.33,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72669928,
+              "lon": -9.14908801,
+              "distance_m": 10290.74,
+              "surface_elevation_m": 71.09,
+              "depth_m": 12.54,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72653632,
+              "lon": -9.14918491,
+              "distance_m": 10310.71,
+              "surface_elevation_m": 70.58,
+              "depth_m": 12.71,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72637336,
+              "lon": -9.1492818,
+              "distance_m": 10330.69,
+              "surface_elevation_m": 70.07,
+              "depth_m": 12.85,
               "source": "measured"
             },
             {
@@ -14469,7 +16885,55 @@
               "lon": -9.1493787,
               "distance_m": 10350.66,
               "surface_elevation_m": 69.56,
-              "depth_m": 19.08,
+              "depth_m": 12.94,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7260549,
+              "lon": -9.14947116,
+              "distance_m": 10369.72,
+              "surface_elevation_m": 68.99,
+              "depth_m": 12.92,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7258994,
+              "lon": -9.14956361,
+              "distance_m": 10388.78,
+              "surface_elevation_m": 68.43,
+              "depth_m": 12.86,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7257439,
+              "lon": -9.14965607,
+              "distance_m": 10407.84,
+              "surface_elevation_m": 67.86,
+              "depth_m": 12.74,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7255884,
+              "lon": -9.14974853,
+              "distance_m": 10426.9,
+              "surface_elevation_m": 67.3,
+              "depth_m": 12.59,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7254329,
+              "lon": -9.14984099,
+              "distance_m": 10445.96,
+              "surface_elevation_m": 66.73,
+              "depth_m": 12.38,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7252774,
+              "lon": -9.14993344,
+              "distance_m": 10465.02,
+              "surface_elevation_m": 66.17,
+              "depth_m": 12.12,
               "source": "measured"
             },
             {
@@ -14477,7 +16941,23 @@
               "lon": -9.1500259,
               "distance_m": 10484.08,
               "surface_elevation_m": 65.6,
-              "depth_m": 13.74,
+              "depth_m": 11.79,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72498287,
+              "lon": -9.15011773,
+              "distance_m": 10501.47,
+              "surface_elevation_m": 65.41,
+              "depth_m": 11.76,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72484383,
+              "lon": -9.15020957,
+              "distance_m": 10518.87,
+              "surface_elevation_m": 65.23,
+              "depth_m": 11.69,
               "source": "measured"
             },
             {
@@ -14485,7 +16965,7 @@
               "lon": -9.1503014,
               "distance_m": 10536.26,
               "surface_elevation_m": 65.04,
-              "depth_m": 11.65,
+              "depth_m": 11.55,
               "source": "measured"
             },
             {
@@ -15244,11 +17724,27 @@
               "source": "measured"
             },
             {
+              "lat": 38.72454951,
+              "lon": -9.15040397,
+              "distance_m": 10555.68,
+              "surface_elevation_m": 65.0,
+              "depth_m": 11.5,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7244186,
+              "lon": -9.15049044,
+              "distance_m": 10572.06,
+              "surface_elevation_m": 64.97,
+              "depth_m": 11.45,
+              "source": "measured"
+            },
+            {
               "lat": 38.7242877,
               "lon": -9.1505769,
               "distance_m": 10588.43,
               "surface_elevation_m": 64.95,
-              "depth_m": 13.49,
+              "depth_m": 11.41,
               "source": "measured"
             },
             {
@@ -15256,7 +17752,111 @@
               "lon": -9.1506261,
               "distance_m": 10597.71,
               "surface_elevation_m": 64.98,
-              "depth_m": 13.87,
+              "depth_m": 11.42,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72405621,
+              "lon": -9.15072067,
+              "distance_m": 10617.04,
+              "surface_elevation_m": 65.3,
+              "depth_m": 11.66,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72389883,
+              "lon": -9.15081524,
+              "distance_m": 10636.37,
+              "surface_elevation_m": 65.62,
+              "depth_m": 11.86,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72374144,
+              "lon": -9.15090981,
+              "distance_m": 10655.7,
+              "surface_elevation_m": 65.94,
+              "depth_m": 11.98,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72358406,
+              "lon": -9.15100439,
+              "distance_m": 10675.02,
+              "surface_elevation_m": 66.27,
+              "depth_m": 12.07,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72342667,
+              "lon": -9.15109896,
+              "distance_m": 10694.35,
+              "surface_elevation_m": 66.59,
+              "depth_m": 12.18,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72326929,
+              "lon": -9.15119353,
+              "distance_m": 10713.68,
+              "surface_elevation_m": 66.91,
+              "depth_m": 12.35,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7231119,
+              "lon": -9.1512881,
+              "distance_m": 10733.01,
+              "surface_elevation_m": 67.23,
+              "depth_m": 12.8,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72295451,
+              "lon": -9.15138267,
+              "distance_m": 10752.34,
+              "surface_elevation_m": 67.55,
+              "depth_m": 12.85,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72279713,
+              "lon": -9.15147724,
+              "distance_m": 10771.67,
+              "surface_elevation_m": 67.87,
+              "depth_m": 13.13,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72263974,
+              "lon": -9.15157181,
+              "distance_m": 10791.0,
+              "surface_elevation_m": 68.19,
+              "depth_m": 12.87,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72248236,
+              "lon": -9.15166639,
+              "distance_m": 10810.32,
+              "surface_elevation_m": 68.52,
+              "depth_m": 12.75,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72232497,
+              "lon": -9.15176096,
+              "distance_m": 10829.65,
+              "surface_elevation_m": 68.84,
+              "depth_m": 12.35,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72216759,
+              "lon": -9.15185553,
+              "distance_m": 10848.98,
+              "surface_elevation_m": 69.16,
+              "depth_m": 12.02,
               "source": "measured"
             },
             {
@@ -15264,7 +17864,47 @@
               "lon": -9.1519501,
               "distance_m": 10868.31,
               "surface_elevation_m": 69.48,
-              "depth_m": 18.61,
+              "depth_m": 11.74,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7218759,
+              "lon": -9.15204223,
+              "distance_m": 10885.25,
+              "surface_elevation_m": 70.16,
+              "depth_m": 11.91,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7217416,
+              "lon": -9.15213437,
+              "distance_m": 10902.19,
+              "surface_elevation_m": 70.84,
+              "depth_m": 11.91,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7216073,
+              "lon": -9.1522265,
+              "distance_m": 10919.12,
+              "surface_elevation_m": 71.52,
+              "depth_m": 12.06,
+              "source": "measured"
+            },
+            {
+              "lat": 38.721473,
+              "lon": -9.15231863,
+              "distance_m": 10936.06,
+              "surface_elevation_m": 72.2,
+              "depth_m": 12.54,
+              "source": "measured"
+            },
+            {
+              "lat": 38.7213387,
+              "lon": -9.15241077,
+              "distance_m": 10953.0,
+              "surface_elevation_m": 72.88,
+              "depth_m": 13.19,
               "source": "measured"
             },
             {
@@ -15272,7 +17912,23 @@
               "lon": -9.1525029,
               "distance_m": 10969.94,
               "surface_elevation_m": 73.56,
-              "depth_m": 15.81,
+              "depth_m": 14.13,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72109837,
+              "lon": -9.15261447,
+              "distance_m": 10985.19,
+              "surface_elevation_m": 74.3,
+              "depth_m": 14.96,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72099233,
+              "lon": -9.15272603,
+              "distance_m": 11000.45,
+              "surface_elevation_m": 75.03,
+              "depth_m": 15.75,
               "source": "measured"
             },
             {
@@ -15280,7 +17936,39 @@
               "lon": -9.1528376,
               "distance_m": 11015.7,
               "surface_elevation_m": 75.77,
-              "depth_m": 16.61,
+              "depth_m": 16.67,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72081382,
+              "lon": -9.15302156,
+              "distance_m": 11033.58,
+              "surface_elevation_m": 76.41,
+              "depth_m": 17.7,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72074134,
+              "lon": -9.15320552,
+              "distance_m": 11051.46,
+              "surface_elevation_m": 77.05,
+              "depth_m": 18.76,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72066886,
+              "lon": -9.15338948,
+              "distance_m": 11069.33,
+              "surface_elevation_m": 77.68,
+              "depth_m": 19.81,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72059638,
+              "lon": -9.15357344,
+              "distance_m": 11087.21,
+              "surface_elevation_m": 78.32,
+              "depth_m": 20.77,
               "source": "measured"
             },
             {
@@ -15288,7 +17976,23 @@
               "lon": -9.1537574,
               "distance_m": 11105.09,
               "surface_elevation_m": 78.96,
-              "depth_m": 20.19,
+              "depth_m": 21.53,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72045423,
+              "lon": -9.15392761,
+              "distance_m": 11121.77,
+              "surface_elevation_m": 79.18,
+              "depth_m": 21.78,
+              "source": "measured"
+            },
+            {
+              "lat": 38.72038455,
+              "lon": -9.15409782,
+              "distance_m": 11138.44,
+              "surface_elevation_m": 79.39,
+              "depth_m": 21.98,
               "source": "measured"
             },
             {

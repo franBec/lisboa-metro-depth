@@ -109,11 +109,29 @@ class DummyDataTest(unittest.TestCase):
         for line in self.network["lines"]:
             for segment in line["segments"]:
                 vertices = segment["vertices"]
+                if segment["depth_source"] == "measured":
+                    first, last = vertices[0], vertices[-1]
+                    span = last["distance_m"] - first["distance_m"]
+                    first_level = first["surface_elevation_m"] - first["depth_m"]
+                    last_level = last["surface_elevation_m"] - last["depth_m"]
+                    if abs(last_level - first_level) > span * 0.04 + 0.02:
+                        for vertex in vertices:
+                            t = (vertex["distance_m"] - first["distance_m"]) / span
+                            level = vertex["surface_elevation_m"] - vertex["depth_m"]
+                            self.assertAlmostEqual(
+                                level, first_level + t * (last_level - first_level), delta=0.02
+                            )
+                        continue
                 for first, second in zip(vertices, vertices[1:]):
                     if first["depth_m"] is None or second["depth_m"] is None:
                         continue
                     horizontal = abs(second["distance_m"] - first["distance_m"])
-                    vertical = abs(second["depth_m"] - first["depth_m"])
+                    if segment["depth_source"] == "measured":
+                        first_level = first["surface_elevation_m"] - first["depth_m"]
+                        second_level = second["surface_elevation_m"] - second["depth_m"]
+                        vertical = abs(second_level - first_level)
+                    else:
+                        vertical = abs(second["depth_m"] - first["depth_m"])
                     self.assertLessEqual(vertical, horizontal * 0.04 + 0.02, segment["id"])
 
     def test_provenance_counts(self) -> None:
